@@ -159,6 +159,18 @@ void opcontrol() {
 
     //setIntake((master.get_digital(DIGITAL_L1)-master.get_difital(DIGITAL_L2))*127);
 
+    if(master.get_digital_new_press(DIGITAL_A)){
+        clamp1.toggle();
+    }
+
+    //Using 2 buttons pneumatics
+    //if(master.get_digital(DIGITAL_A)){
+    //    clamp1.extend();
+    //}
+    //else if(master.get_digital(DIGITAL_B)){
+    //  clamp1.retract();
+    //}
+
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
