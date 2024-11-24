@@ -147,10 +147,10 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
-    if(master.get_digital(DIGITAL_L1)){
+    if(master.get_digital(DIGITAL_R1)){
       setIntake(127);
     }
-    else if(master.get_digital(DIGITAL_L2)){
+    else if(master.get_digital(DIGITAL_R2)){
       setIntake(-127);
     }
     else {
@@ -159,7 +159,7 @@ void opcontrol() {
 
     //setIntake((master.get_digital(DIGITAL_L1)-master.get_difital(DIGITAL_L2))*127);
 
-    if(master.get_digital_new_press(DIGITAL_A)){
+    if(master.get_digital_new_press(DIGITAL_L1)){
         clamp1.toggle();
     }
 
