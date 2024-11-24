@@ -159,7 +159,7 @@ void opcontrol() {
 
     //setIntake((master.get_digital(DIGITAL_L1)-master.get_difital(DIGITAL_L2))*127);
 
-    if(master.get_digital_new_press(DIGITAL_A)){
+    if(master.get_digital_new_press(DIGITAL_L2)){
         clamp1.toggle();
     }
 
