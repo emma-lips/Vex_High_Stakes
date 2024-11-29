@@ -147,6 +147,8 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
+
+
     if(master.get_digital(DIGITAL_R1)){
       setIntake(127);
     }
@@ -161,6 +163,16 @@ void opcontrol() {
 
     if(master.get_digital_new_press(DIGITAL_L2)){
         clamp1.toggle();
+    }
+
+      if(master.get_digital(DIGITAL_L1)){
+      setDoinker(80);
+    }
+    else if(master.get_digital(DIGITAL_Y)){
+      setDoinker(-80);
+    }
+    else {
+      setDoinker(0);
     }
 
     //Using 2 buttons pneumatics
