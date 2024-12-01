@@ -46,12 +46,14 @@ void sigma_mode() {
   clamp1.extend();
   chassis.pid_wait();
 
-  //setIntake(127);
+  setIntake(127);
+  pros::delay(2000);
+  setIntake(0);
 
   chassis.pid_drive_set(15_in, DRIVE_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_turn_set(-120_deg, TURN_SPEED);
+  chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
 
   chassis.pid_drive_set(16_in, DRIVE_SPEED);
