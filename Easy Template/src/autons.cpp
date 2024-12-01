@@ -34,7 +34,7 @@ void default_constants() {
 
 void sigma_moderightblue() {
 
-  chassis.pid_drive_set(-24.5_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-25_in, DRIVE_SPEED);
   chassis.pid_wait();
 
   chassis.pid_turn_set(-30_deg, TURN_SPEED);
@@ -57,7 +57,7 @@ void sigma_moderightblue() {
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(800);
+  pros::delay(2500);
   setIntake(0);
 }
 
