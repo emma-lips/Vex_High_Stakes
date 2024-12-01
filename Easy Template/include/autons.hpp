@@ -4,6 +4,7 @@
 
 extern Drive chassis;
 
+void sigma_mode();
 void drive_example();
 void turn_example();
 void drive_and_turn();

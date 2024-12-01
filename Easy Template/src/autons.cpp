@@ -34,13 +34,28 @@ void default_constants() {
 
 void sigma_mode() {
 
-  chassis.pid_drive_set(-36_in, DRIVE_SPEED, true);
+  chassis.pid_drive_set(-24.5_in, DRIVE_SPEED);
   chassis.pid_wait();
 
   chassis.pid_turn_set(-30_deg, TURN_SPEED);
   chassis.pid_wait();
 
-  
+  chassis.pid_drive_set(-15_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  clamp1.extend();
+  chassis.pid_wait();
+
+  //setIntake(127);
+
+  chassis.pid_drive_set(15_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-120_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(16_in, DRIVE_SPEED);
+  chassis.pid_wait();
 
 }
 
