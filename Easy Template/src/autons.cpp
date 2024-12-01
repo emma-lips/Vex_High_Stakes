@@ -40,25 +40,25 @@ void sigma_moderightblue() {
   chassis.pid_turn_set(-30_deg, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-15_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-15_in, 60, true);
   chassis.pid_wait();
 
   clamp1.extend();
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(2000);
+  pros::delay(800);
   setIntake(0);
-
-  chassis.pid_drive_set(15_in, DRIVE_SPEED);
-  chassis.pid_wait();
 
   chassis.pid_turn_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(16_in, DRIVE_SPEED);
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
   chassis.pid_wait();
 
+  setIntake(127);
+  pros::delay(800);
+  setIntake(0);
 }
 
 ///
