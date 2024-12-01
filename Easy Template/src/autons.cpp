@@ -30,6 +30,20 @@ void default_constants() {
   chassis.slew_drive_constants_set(7_in, 80);
 }
 
+//Nolansigma
+
+void sigma_mode() {
+
+  chassis.pid_drive_set(-36_in, DRIVE_SPEED, true);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-30_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  
+
+}
+
 ///
 // Drive Example
 ///
