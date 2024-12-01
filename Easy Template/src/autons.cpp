@@ -59,6 +59,16 @@ void sigma_moderightblue() {
   setIntake(127);
   pros::delay(2500);
   setIntake(0);
+
+  chassis.pid_turn_set(-180_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(14_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(2500);
+  setIntake(0);
 }
 
 ///
