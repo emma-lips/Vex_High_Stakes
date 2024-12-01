@@ -5,6 +5,7 @@
 extern Drive chassis;
 
 void sigma_moderightblue();
+void sigma_modeleftred();
 void drive_example();
 void turn_example();
 void drive_and_turn();

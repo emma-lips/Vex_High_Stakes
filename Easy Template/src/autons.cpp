@@ -30,7 +30,7 @@ void default_constants() {
   chassis.slew_drive_constants_set(7_in, 80);
 }
 
-//Nolansigma
+//Emmaverysigma(right blue)
 
 void sigma_moderightblue() {
 
@@ -61,6 +61,47 @@ void sigma_moderightblue() {
   setIntake(0);
 
   chassis.pid_turn_set(-180_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(14_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(2500);
+  setIntake(0);
+}
+
+//Emmaverysigma(left red)
+
+void sigma_modeleftred() {
+
+  chassis.pid_drive_set(-25_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(30_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-15_in, 60, true);
+  chassis.pid_wait();
+
+  clamp1.extend();
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(800);
+  setIntake(0);
+
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(20_in, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(2500);
+  setIntake(0);
+
+  chassis.pid_turn_set(180_deg, TURN_SPEED);
   chassis.pid_wait();
 
   chassis.pid_drive_set(14_in, DRIVE_SPEED);
