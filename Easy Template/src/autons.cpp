@@ -32,7 +32,7 @@ void default_constants() {
 
 //Nolansigma
 
-void sigma_mode() {
+void sigma_moderightblue() {
 
   chassis.pid_drive_set(-24.5_in, DRIVE_SPEED);
   chassis.pid_wait();
