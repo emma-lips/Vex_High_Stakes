@@ -10,6 +10,7 @@ const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 90;
 
+//ALSO FOR RIGHT RED
 
 const double RIGHTblueback = -25;
 const double RIGHTblueturn = -30;
@@ -22,6 +23,8 @@ const int delay_2 = 1800;
 const double RIGHTblueturn3 = -180;
 const double RIGHTblueforward2 = 14;
 const int delay_3 = 2500;
+
+//ALSO FOR LEFT BLUE
 
 const double LEFTredback = -25;
 const double LEFTredturn = 30;
@@ -96,6 +99,38 @@ void sigma_moderightblue() {
   setIntake(0);
 }
 
+
+//Nolanverysigma(right red)
+
+void sigma_moderightblue() {
+
+  chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(RIGHTblueturn, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueback2, slow_speed, true);
+  chassis.pid_wait();
+
+  clamp1.extend();
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_1);
+  setIntake(0);
+
+  chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_2);
+  setIntake(0);
+}
+
 //Emmaverysigma(left red)
 
 void sigma_modeleftred() {
@@ -136,6 +171,38 @@ void sigma_modeleftred() {
   pros::delay(delay_3);
   setIntake(0);
 }
+
+//Emmaverysigma(left blue)
+
+void sigma_modeleftblue() {
+
+    chassis.pid_drive_set(LEFTredback, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(LEFTredturn, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredback2, slow_speed, true);
+  chassis.pid_wait();
+
+  clamp1.extend();
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_1);
+  setIntake(0);
+
+  chassis.pid_turn_set(LEFTredturn2, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_2);
+  setIntake(0);
+}
+
 
 ///
 // Drive Example
