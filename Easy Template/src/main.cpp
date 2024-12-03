@@ -43,6 +43,8 @@ void initialize() {
   ez::as::auton_selector.autons_add({
       Auton("nolanrightbluesigma\n\nyes", sigma_moderightblue),
       Auton("emmaleftredsigma\n\nyes", sigma_modeleftred),
+      Auton("emmaleftredsigma\n\nyes", sigma_moderightred),
+      Auton("emmaleftredsigma\n\nyes", sigma_modeleftblue),
       Auton("Example Drive\n\nDrive forward and come back.", drive_example),
       Auton("Example Turn\n\nTurn 3 times.", turn_example),
       Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),

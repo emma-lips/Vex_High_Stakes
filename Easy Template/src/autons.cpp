@@ -102,7 +102,7 @@ void sigma_moderightblue() {
 
 //Nolanverysigma(right red)
 
-void sigma_moderightblue() {
+void sigma_moderightred() {
 
   chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED);
   chassis.pid_wait();
