@@ -23,6 +23,18 @@ const double RIGHTblueturn3 = -180;
 const double RIGHTblueforward2 = 14;
 const int delay_3 = 2500;
 
+const double LEFTredback = -25;
+const double LEFTredturn = 30;
+const double LEFTredback2 = -15;
+//const int slow_speed = 60;
+//const int delay_1 = 800;
+const double LEFTredturn2 = 90;
+const double LEFTredforward = 20;
+//const int delay_2 = 1800;
+const double LEFTredturn3 = 180;
+const double LEFTredforward2 = 14;
+//const int delay_3 = 2500;
+
 ///
 // Constants
 ///
@@ -88,40 +100,40 @@ void sigma_moderightblue() {
 
 void sigma_modeleftred() {
 
-  chassis.pid_drive_set(-25_in, DRIVE_SPEED);
+    chassis.pid_drive_set(LEFTredback, DRIVE_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_turn_set(30_deg, TURN_SPEED);
+  chassis.pid_turn_set(LEFTredturn, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-15_in, 60, true);
+  chassis.pid_drive_set(LEFTredback2, slow_speed, true);
   chassis.pid_wait();
 
   clamp1.extend();
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(800);
+  pros::delay(delay_1);
   setIntake(0);
 
-  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_turn_set(LEFTredturn2, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(20_in, DRIVE_SPEED);
+  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED);
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(2500);
+  pros::delay(delay_2);
   setIntake(0);
 
-  chassis.pid_turn_set(180_deg, TURN_SPEED);
+  chassis.pid_turn_set(LEFTredturn3, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(14_in, DRIVE_SPEED);
+  chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED);
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(2500);
+  pros::delay(delay_3);
   setIntake(0);
 }
 
