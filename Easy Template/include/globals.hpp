@@ -7,3 +7,5 @@ extern pros::MotorGroup doinker5W;
 //pneumatics
 extern pros::adi::Pneumatics clamp1;
 
+//pneumatics lifter
+extern pros::adi::Pneumatics lifter;
