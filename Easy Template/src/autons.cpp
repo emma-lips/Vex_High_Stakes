@@ -23,6 +23,8 @@ const int delay_2 = 1800;
 const double RIGHTblueturn3 = -180;
 const double RIGHTblueforward2 = 14;
 const int delay_3 = 2500;
+const int delay_3b = 500;
+const int delay_3c = 1500;
 
 //ALSO FOR LEFT BLUE
 
@@ -36,6 +38,9 @@ const double LEFTredforward = 20;
 //const int delay_2 = 1800;
 const double LEFTredturn3 = 180;
 const double LEFTredforward2 = 14;
+const double LEFTredturn3b = -63.43;
+const double LEFTredforward2b = 53.66563146;
+const double LEFTredback3b = -6;
 //const int delay_3 = 2500;
 
 ///
@@ -97,6 +102,8 @@ void sigma_moderightblue() {
   setIntake(127);
   pros::delay(delay_3);
   setIntake(0);
+
+
 }
 
 
@@ -129,6 +136,8 @@ void sigma_moderightred() {
   setIntake(127);
   pros::delay(delay_2);
   setIntake(0);
+
+
 }
 
 //Emmaverysigma(left red)
@@ -201,6 +210,28 @@ void sigma_modeleftblue() {
   setIntake(127);
   pros::delay(delay_2);
   setIntake(0);
+
+  chassis.pid_turn_set(LEFTredturn3b, TURN_SPEED);
+  
+  lifter.extend();
+
+  chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  lifter.retract();
+
+  setIntake(127);
+  pros::delay(delay_3b);
+  setIntake(0);
+
+  chassis.pid_drive_set(LEFTredback3b, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_3c);
+  setIntake(0);
+
+  
 }
 
 

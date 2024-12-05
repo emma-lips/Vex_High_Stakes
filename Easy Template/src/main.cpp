@@ -170,10 +170,7 @@ void opcontrol() {
     }
 
         if(master.get_digital_new_press(DIGITAL_UP)){
-        lifter.extend();
-    }
-    else if(master.get_digital_new_press(DIGITAL_DOWN)){
-      lifter.retract();
+        lifter.toggle();
     }
 
       if(master.get_digital(DIGITAL_L1)){
