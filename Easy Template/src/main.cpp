@@ -156,7 +156,7 @@ void opcontrol() {
     if(master.get_digital(DIGITAL_R1)){
       setIntake(127);
     }
-    else if(master.get_digital(DIGITAL_R2)){
+    else if(master.get_digital(DIGITAL_X)){
       setIntake(-127);
     }
     else {
@@ -169,14 +169,14 @@ void opcontrol() {
         clamp1.toggle();
     }
 
-        if(master.get_digital_new_press(DIGITAL_UP)){
+        if(master.get_digital_new_press(DIGITAL_R2)){
         lifter.toggle();
     }
 
-      if(master.get_digital(DIGITAL_L1)){
+      if(master.get_digital(DIGITAL_Y)){
       setDoinker(80);
     }
-    else if(master.get_digital(DIGITAL_Y)){
+    else if(master.get_digital(DIGITAL_L1)){
       setDoinker(-80);
     }
     else {
