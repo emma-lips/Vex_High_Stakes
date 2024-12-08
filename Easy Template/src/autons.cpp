@@ -103,6 +103,8 @@ void sigma_moderightblue() {
   chassis.pid_turn_set(RIGHTblueturn3, TURN_SPEED);
   chassis.pid_wait();
 
+//Right blue forward towards four donuts
+
   chassis.pid_drive_set(RIGHTblueforward2, DRIVE_SPEED);
     chassis.pid_wait_until(6_in);
   setIntake(127);
@@ -226,7 +228,14 @@ void sigma_modeleftred() {
   chassis.pid_turn_set(LEFTredturn3, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED);
+//Right blue forward towards four donuts
+
+  chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED);;
+    chassis.pid_wait_until(6_in);
+  setIntake(127);
+  pros::delay(delay_2);
+  setIntake(0);
+
   chassis.pid_wait();
 
   setIntake(127);
