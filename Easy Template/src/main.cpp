@@ -148,11 +148,6 @@ void opcontrol() {
     //chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
 
-  void doinkerconstants(){
-      chassis.pid_turn_constants_set(3, 0.05, 20, 15);
-
-  }
-
     // . . .
     // Put more user control code here!
     // . . .
@@ -180,10 +175,10 @@ void opcontrol() {
     }
 
       if(master.get_digital(DIGITAL_Y)){
-        doinker5W.pid_turn_set(70, 60);
+        setDoinker(60);
     }
     else if(master.get_digital(DIGITAL_L1)){
-      setDoinker(-80);
+        setDoinker(-60);
     }
     else {
       setDoinker(0);
