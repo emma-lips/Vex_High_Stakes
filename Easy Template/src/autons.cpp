@@ -19,7 +19,7 @@ const int slow_speed = 60;
 const int delay_1 = 800;
 const double RIGHTblueturn2 = -90;
 const double RIGHTblueforward = 20;
-const int delay_2 = 1800;
+const int delay_2 = 1000;
 //For donut side
 const double RIGHTblueturn3 = -180;
 const double RIGHTblueforward2 = 14;
@@ -128,6 +128,8 @@ void sigma_moderightred() {
   clamp1.extend();
   chassis.pid_wait();
 
+//Drop Preload
+
   setIntake(127);
   pros::delay(delay_1);
   setIntake(0);
@@ -137,6 +139,8 @@ void sigma_moderightred() {
 
   chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED);
   chassis.pid_wait();
+
+//Pick up first floor donut
 
   setIntake(127);
   pros::delay(delay_2);
@@ -148,16 +152,27 @@ void sigma_moderightred() {
   lifter.extend();
 
   chassis.pid_drive_set(RIGHTblueforward2b, DRIVE_SPEED);
+
+  setIntake(127);
+  pros::delay(delay_2);
+  setIntake(0);
+    
   chassis.pid_wait();
 
   lifter.retract();
+
+  //Pick up second raised donut
 
   setIntake(127);
   pros::delay(delay_3b);
   setIntake(0);
 
+//Move back to avoid picking BLUE
+
   chassis.pid_drive_set(RIGHTblueback3b, DRIVE_SPEED);
   chassis.pid_wait();
+
+//Continue Intake
 
   setIntake(127);
   pros::delay(delay_3c);
