@@ -12,12 +12,12 @@ const int SWING_SPEED = 90;
 
 //ALSO FOR RIGHT RED
 
-const double RIGHTblueback = -25;
+const double RIGHTblueback = -24.5;
 const double RIGHTblueturn = -30;
 const double RIGHTblueback2 = -15;
 const int slow_speed = 60;
-const int delay_1 = 800;
-const double RIGHTblueturn2 = -90;
+const int delay_1 = 800; //While dropping preload
+const double RIGHTblueturn2 = -90; //Turning to direction of first donut
 const double RIGHTblueforward = 20;
 const int delay_2 = 1000;
 //For donut side
@@ -25,7 +25,7 @@ const double RIGHTblueturn3 = -180;
 const double RIGHTblueforward2 = 14;
 const int delay_3 = 2500;
 const int delay_3b = 500;
-const int delay_3c = 1500;
+const int delay_3c = 2500;
 //Add on for mogo side
 const double RIGHTblueturn3b = 63.43;
 const double RIGHTblueforward2b = 53;
@@ -94,6 +94,8 @@ void sigma_moderightblue() {
   chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED);
   chassis.pid_wait();
 
+//Picking up first donut
+
   setIntake(127);
   pros::delay(delay_2);
   setIntake(0);
@@ -102,13 +104,19 @@ void sigma_moderightblue() {
   chassis.pid_wait();
 
   chassis.pid_drive_set(RIGHTblueforward2, DRIVE_SPEED);
+    chassis.pid_wait_until(6_in);
+  setIntake(127);
+  pros::delay(delay_2);
+  setIntake(0);
+
   chassis.pid_wait();
 
   setIntake(127);
   pros::delay(delay_3);
   setIntake(0);
 
-
+  chassis.pid_drive_set(RIGHTblueback2, DRIVE_SPEED);
+  chassis.pid_wait();
 }
 
 
@@ -152,11 +160,11 @@ void sigma_moderightred() {
   lifter.extend();
 
   chassis.pid_drive_set(RIGHTblueforward2b, DRIVE_SPEED);
-
+  chassis.pid_wait_until(6_in);
   setIntake(127);
   pros::delay(delay_2);
   setIntake(0);
-    
+
   chassis.pid_wait();
 
   lifter.retract();
@@ -209,6 +217,8 @@ void sigma_modeleftred() {
   chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED);
   chassis.pid_wait();
 
+//Picking up first donut
+
   setIntake(127);
   pros::delay(delay_2);
   setIntake(0);
@@ -254,15 +264,22 @@ void sigma_modeleftblue() {
   pros::delay(delay_2);
   setIntake(0);
 
+//Add on
   chassis.pid_turn_set(LEFTredturn3b, TURN_SPEED);
   
   lifter.extend();
 
   chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED);
+  chassis.pid_wait_until(6_in);
+  setIntake(127);
+  pros::delay(delay_2);
+  setIntake(0);
+
   chassis.pid_wait();
 
   lifter.retract();
 
+  //Pick up second raised donut
   setIntake(127);
   pros::delay(delay_3b);
   setIntake(0);
