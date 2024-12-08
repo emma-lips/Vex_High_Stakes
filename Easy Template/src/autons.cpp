@@ -21,7 +21,7 @@ const double RIGHTblueturn2 = -90; //Turning to direction of first donut
 const double RIGHTblueforward = 20;
 const int delay_2 = 1000;
 //For donut side
-const double RIGHTblueturn3 = -180;
+const double RIGHTblueturn3 = -170;
 const double RIGHTblueforward2 = 14;
 const int delay_3 = 2500;
 const int delay_3b = 500;
@@ -43,7 +43,7 @@ const double LEFTredforward = 20;
 //const int delay_2 = 1800;
 const double LEFTredturn3 = 180;
 const double LEFTredforward2 = 14;
-const double LEFTredturn3b = -63.43;
+const double LEFTredturn3b = -66; //Turn towards second donut
 const double LEFTredforward2b = 53;
 const double LEFTredback3b = -6;
 //const int delay_3 = 2500;
