@@ -174,7 +174,21 @@ void opcontrol() {
         lifter.toggle();
     }
 
-      if(master.get_digital(DIGITAL_Y)){
+
+
+//if(master.get_digital(DIGITAL_Y)){
+  //  pros::lcd::print(0, "setDoinkerPOS called");
+    //setDoinkerPOS(60, 50);
+//}
+//else if(master.get_digital(DIGITAL_L1)){
+  //  setDoinker(-60); 
+//}
+//else {
+  //  setDoinker(0); // Set doinker to neutral position when no button is pressed
+//}
+
+
+    if(master.get_digital(DIGITAL_Y)){
         setDoinker(60);
     }
     else if(master.get_digital(DIGITAL_L1)){

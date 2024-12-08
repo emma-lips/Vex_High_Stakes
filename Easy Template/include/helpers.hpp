@@ -4,4 +4,6 @@ void setIntake(int intakePower);
 
 void clampSwitch();
 
-void setDoinker(int intakePower);
+void setDoinker(int doinkerPower);
+
+void setDoinkerPOS(int deg, int speed);
