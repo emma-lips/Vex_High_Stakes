@@ -231,7 +231,7 @@ void sigma_modeleftred() {
 //Right blue forward towards four donuts
 
   chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED);;
-    chassis.pid_wait_until(6_in);
+  chassis.pid_wait_until(6_in);
   setIntake(127);
   pros::delay(delay_2);
   setIntake(0);
@@ -244,6 +244,8 @@ void sigma_modeleftred() {
 
 //move away from auton line
   chassis.pid_drive_set(LEFTredback2, DRIVE_SPEED);
+  chassis.pid_wait();
+  
 }
 
 //Emmaverysigma(left blue)
