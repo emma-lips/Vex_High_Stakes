@@ -41,9 +41,9 @@ const double LEFTredback2 = -15;
 const double LEFTredturn2 = 90;
 const double LEFTredforward = 20;
 //const int delay_2 = 1800;
-const double LEFTredturn3 = 170; //turn towards stack of 8 donuts
+const double LEFTredturn3 = 170; //turn towards stack of 8 donuts on left red
 const double LEFTredforward2 = 14;
-const double LEFTredturn3b = -66; //Turn towards second donut
+const double LEFTredturn3b = -68; //Turn towards second donut on left blue
 const double LEFTredforward2b = 53;
 const double LEFTredback3b = -6;
 //const int delay_3 = 2500;
@@ -245,7 +245,7 @@ void sigma_modeleftred() {
 //move away from auton line
   chassis.pid_drive_set(LEFTredback2, DRIVE_SPEED);
   chassis.pid_wait();
-  
+
 }
 
 //Emmaverysigma(left blue)
