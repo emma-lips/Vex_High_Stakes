@@ -308,9 +308,71 @@ void sigma_modeleftblue() {
   
 }
 
-void nolansigma_robotskills() {
+const double robotskillsback = -16; // go backwards
+const double robotskillsturn = -90; // turn to stake
+const double robotskillsback2 = -20; // move to stake
+const double robotskillsturn2 = -180; // turn to first donut
+const double robotskillsforward = 23; // move to first/second/third donut
+const double robotskillsturnb = 90; //turn to third donut
+const double robotskillsturn3 = -0; //
+const double robotskillsforward2 = 11;
+const double robotskillsturn4 = 135;
+const double robotskillsforward3 = 15.6;
 
+//nolansupersigmarobotautonskills
+
+void sigma_robotskills() {
+
+  chassis.pid_drive_set(robotskillsback, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(robotskillsturn, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(robotskillsback2, slow_speed);
+  chassis.pid_wait();
+
+  clamp1.extend();
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(robotskillsturn2, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
+  chassis.pid_wait_until(16);
+  setIntake(127);
+  //pros::delay(delay_3c);
+  chassis.pid_wait();
   
+  chassis.pid_turn_set(robotskillsturnb, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
+  chassis.pid_wait_until(16);
+  //setIntake(127);
+  //pros::delay(delay_3c);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(robotskillsturn3, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
+  chassis.pid_wait_until(16);
+  //setIntake(127);
+  //pros::delay(delay_3c);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(robotskillsforward2, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(robotskillsturn4, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(robotskillsforward3, DRIVE_SPEED);
+  chassis.pid_wait_until(10);
+  //pros::delay(delay_3c);
+  setIntake(0);
+  chassis.pid_wait();
 }
 
 ///

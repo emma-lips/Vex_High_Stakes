@@ -41,7 +41,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      Auton("robotskills\n\nyes", nolan_sigmarobotskills),
+      Auton("robotskills\n\nyes", sigma_robotskills),
       Auton("rightblue\n\nyes", sigma_moderightblue),
       Auton("leftred\n\nyes", sigma_modeleftred),
       Auton("rightred\n\nyes", sigma_moderightred),
