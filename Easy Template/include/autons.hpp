@@ -4,6 +4,7 @@
 
 extern Drive chassis;
 
+void nolan_sigmarobotskills();
 void sigma_moderightblue();
 void sigma_modeleftred();
 void sigma_modeleftblue();

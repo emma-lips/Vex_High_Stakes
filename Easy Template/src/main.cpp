@@ -41,10 +41,11 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-      Auton("nolanrightbluesigma\n\nyes", sigma_moderightblue),
-      Auton("emmaleftredsigma\n\nyes", sigma_modeleftred),
-      Auton("emmarightredsigma\n\nyes", sigma_moderightred),
-      Auton("emmaleftbluesigma\n\nyes", sigma_modeleftblue),
+      Auton("robotskills\n\nyes", nolan_sigmarobotskills),
+      Auton("rightblue\n\nyes", sigma_moderightblue),
+      Auton("leftred\n\nyes", sigma_modeleftred),
+      Auton("rightred\n\nyes", sigma_moderightred),
+      Auton("leftblue\n\nyes", sigma_modeleftblue),
       Auton("Example Drive\n\nDrive forward and come back.", drive_example),
       Auton("Example Turn\n\nTurn 3 times.", turn_example),
       Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
