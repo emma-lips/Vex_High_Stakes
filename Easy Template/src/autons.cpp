@@ -24,12 +24,12 @@ const int delay_2 = 1000;
 const double RIGHTblueturn3 = -170;
 const double RIGHTblueforward2 = 14;
 const int delay_3 = 2500;
-const int delay_3b = 500;
+const int delay_3b = 350;
 const int delay_3c = 2500;
 //Add on for mogo side
-const double RIGHTblueturn3b = 63.43;
-const double RIGHTblueforward2b = 53;
-const double RIGHTblueback3b = -6;
+const double RIGHTblueturn3b = 65;
+const double RIGHTblueforward2b = 48;
+const double RIGHTblueback3b = -8;
 
 //ALSO FOR LEFT BLUE
 
@@ -44,7 +44,7 @@ const double LEFTredforward = 20;
 const double LEFTredturn3 = 170; //turn towards stack of 8 donuts on left red
 const double LEFTredforward2 = 14;
 const double LEFTredturn3b = -68; //Turn towards second donut on left blue
-const double LEFTredforward2b = 53;
+const double LEFTredforward2b = 50;
 const double LEFTredback3b = -6;
 //const int delay_3 = 2500;
 
