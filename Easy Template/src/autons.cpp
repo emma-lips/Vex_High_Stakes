@@ -12,7 +12,7 @@ const int SWING_SPEED = 90;
 const int DRIVE_SPEED1 = 90;
 //ALSO FOR RIGHT RED
 
-const double RIGHTblueback = -24.5;
+const double RIGHTblueback = -23.25;
 const double RIGHTblueturn = -30;
 const double RIGHTblueback2 = -15;
 const int slow_speed = 60;
@@ -33,7 +33,7 @@ const double RIGHTblueback3b = -8;
 
 //ALSO FOR LEFT BLUE
 
-const double LEFTredback = -25;
+const double LEFTredback = -23.75;
 const double LEFTredturn = 30;
 const double LEFTredback2 = -15;
 //const int slow_speed = 60;
@@ -308,12 +308,12 @@ void sigma_modeleftblue() {
   
 }
 
-const double robotskillsback = -16; // go backwards
+const double robotskillsback = -14.75; // go backwards
 const double robotskillsturn = -90; // turn to stake
 const double robotskillsback2 = -20.5; // move to stake
 const double robotskillsturn2 = -185; // turn to first donut
 const double robotskillsforward = 23; // move to first/second/third donut
-const double robotskillsturnb = 90; //turn to second donut
+const double robotskillsturnb = 90; //turn to second donut relative turn
 const double robotskillsturn3 = -0; //turn towards 3rd donut
 const double robotskillsforward2 = 11; // move to 4th donut
 const double robotskillsturn4 = 130; //turn to 5th donut
@@ -352,7 +352,7 @@ void sigma_robotskills() {
   pros::delay(delay_3c);
   
   //Turn towards 2nd donut
-  chassis.pid_turn_set(robotskillsturnb, TURN_SPEED);
+  chassis.pid_turn_relative_set(robotskillsturnb, TURN_SPEED);
   chassis.pid_wait();
 
   //Forward towards 2nd donut
@@ -390,6 +390,19 @@ void sigma_robotskills() {
   pros::delay(delay_3c);
 
   setIntake(0);
+
+  chassis.pid_turn_set(180, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(-7, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  clamp1.retract();
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(5, DRIVE_SPEED);
+  chassis.pid_wait();
+
 }
 
 ///
