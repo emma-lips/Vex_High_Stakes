@@ -308,16 +308,22 @@ void sigma_modeleftblue() {
   
 }
 
-const double robotskillsback = -14; // go backwards
+const double robotskillsback = -15.5; // go backwards
 const double robotskillsturn = -90; // turn to stake
 const double robotskillsback2 = -20.5; // move to stake
 const double robotskillsturn2 = -185; // turn to first donut
 const double robotskillsforward = 23; // move to first/second/third donut
 const double robotskillsturnb = -85; //turn to second donut relative turn
 const double robotskillsturn3 = -0; //turn towards 3rd donut
-const double robotskillsforward2 = 11; // move to 4th donut
+const double robotskillsforward2 = 8; // move to 4th donut
 const double robotskillsturn4 = 130; //turn to 5th donut
-const double robotskillsforward3 = 8; // drive forward and secure 5th donut
+const double robotskillsforward3 = 11; // drive forward and secure 5th donut
+
+const double robotskillsback3 = -3;
+const double robotskillsintakeback = -80;
+const double robotskillsturn5 = -140;
+const double robotskillsback4 = -7;
+const double robotskillsforward4 = 5;
 
 //nolansupersigmarobotautonskills
 
@@ -378,6 +384,9 @@ void sigma_robotskills() {
   chassis.pid_drive_set(robotskillsforward2, DRIVE_SPEED1);
   chassis.pid_wait();
 
+  // go backwards to not hit the wall
+  chassis.pid_drive_set(robotskillsback3, slow_speed);
+
   //Turn to 5th donut
   chassis.pid_turn_set(robotskillsturn4, TURN_SPEED);
   chassis.pid_wait();
@@ -389,22 +398,26 @@ void sigma_robotskills() {
   chassis.pid_wait();
   pros::delay(delay_3c);
 
-  setIntake(-80);
+
+
+  setIntake(robotskillsintakeback);
   pros::delay(500);
   setIntake(0);
 
-  
-
-  chassis.pid_turn_set(-140, TURN_SPEED);
+  // turn before backing up into corner
+  chassis.pid_turn_set(robotskillsturn5, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-7, DRIVE_SPEED);
+  // back into corner
+  chassis.pid_drive_set(robotskillsback4, DRIVE_SPEED);
   chassis.pid_wait();
 
+  // let it go
   clamp1.retract();
-  pros::delay(500);
+  pros::delay(1000);
 
-  chassis.pid_drive_set(5, DRIVE_SPEED);
+  // move forward after backing into corner
+  chassis.pid_drive_set(robotskillsforward4, DRIVE_SPEED);
   chassis.pid_wait();
 
 }
