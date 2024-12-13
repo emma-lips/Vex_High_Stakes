@@ -333,7 +333,7 @@ void sigma_robotskills() {
 
   //Slowly move towards stake
   chassis.pid_drive_set(robotskillsback2, slow_speed);
-  chassis.pid_wait_until(15);
+  chassis.pid_wait_until(18);
   //Secure stake
   clamp1.extend();
   chassis.pid_wait();
