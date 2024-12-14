@@ -18,8 +18,8 @@ const double RIGHTblueback2 = -15;
 const int slow_speed = 60;
 const int delay_1 = 800; //While dropping preload
 const double RIGHTblueturn2 = -90; //Turning to direction of first donut
-const double RIGHTblueforward = 20;
-const int delay_2 = 1000;
+const double RIGHTblueforward = 25;
+const int delay_2 = 1500;
 //For donut side
 const double RIGHTblueturn3 = -170;
 const double RIGHTblueforward2 = 14;
@@ -39,12 +39,12 @@ const double LEFTredback2 = -15;
 //const int slow_speed = 60;
 //const int delay_1 = 800;
 const double LEFTredturn2 = 90;
-const double LEFTredforward = 20;
+const double LEFTredforward = 25;
 //const int delay_2 = 1800;
-const double LEFTredturn3 = 170; //turn towards stack of 8 donuts on left red
+const double LEFTredturn3 = 180; //turn towards stack of 8 donuts on left red
 const double LEFTredforward2 = 14;
-const double LEFTredturn3b = -68; //Turn towards second donut on left blue
-const double LEFTredforward2b = 50;
+const double LEFTredturn3b = -70; //Turn towards second donut on left blue
+const double LEFTredforward2b = 54;
 const double LEFTredback3b = -6;
 //const int delay_3 = 2500;
 
@@ -246,6 +246,10 @@ void sigma_modeleftred() {
   chassis.pid_drive_set(LEFTredback2, DRIVE_SPEED);
   chassis.pid_wait();
 
+  setIntake(127);
+  pros::delay(500);
+  setIntake(0);
+
 }
 
 //Emmaverysigma(left blue)
@@ -308,7 +312,7 @@ void sigma_modeleftblue() {
   
 }
 
-const double robotskillsback = -15.5; // go backwards
+const double robotskillsback = -13.5; // go backwards
 const double robotskillsturn = -90; // turn to stake
 const double robotskillsback2 = -20.5; // move to stake
 const double robotskillsturn2 = -185; // turn to first donut
@@ -321,8 +325,8 @@ const double robotskillsforward3 = 11; // drive forward and secure 5th donut
 
 const double robotskillsback3 = -3;
 const double robotskillsintakeback = -80;
-const double robotskillsturn5 = -140;
-const double robotskillsback4 = -7;
+const double robotskillsturn5 = -150;
+const double robotskillsback4 = -11;
 const double robotskillsforward4 = 5;
 
 //nolansupersigmarobotautonskills
@@ -398,7 +402,8 @@ void sigma_robotskills() {
   chassis.pid_wait();
   pros::delay(delay_3c);
 
-
+  setIntake(0);
+  chassis.pid_wait();
 
   setIntake(robotskillsintakeback);
   pros::delay(500);
