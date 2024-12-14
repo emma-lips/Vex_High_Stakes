@@ -238,16 +238,16 @@ void sigma_modeleftred() {
 
 //left red forward towards eight donuts
 
-  chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED);;
+  chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED); // move to second donut
   chassis.pid_wait_until(6_in);
-  setIntake(127);
+  setIntake(127); // intake second donut
   pros::delay(delay_2);
   setIntake(0);
 
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(delay_3);
+  pros::delay(delay_3); // finish off second donut just in case
   setIntake(0);
 
 //move away from auton line
@@ -255,7 +255,7 @@ void sigma_modeleftred() {
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(500);
+  pros::delay(500); // just in case again?
   setIntake(0);
 
 }
@@ -264,44 +264,44 @@ void sigma_modeleftred() {
 
 void sigma_modeleftblue() {
 
-    chassis.pid_drive_set(LEFTredback, DRIVE_SPEED);
+    chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move to mogo 
   chassis.pid_wait();
 
-  chassis.pid_turn_set(LEFTredturn, TURN_SPEED);
+  chassis.pid_turn_set(LEFTredturn, TURN_SPEED); // turn to mogo
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredback2, slow_speed, true);
+  chassis.pid_drive_set(LEFTredback2, slow_speed, true); // move slowly to mogo
   chassis.pid_wait();
 
-  clamp1.extend();
+  clamp1.extend(); // clamp mogo mech
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(delay_1);
+  pros::delay(delay_1); // intake preload
   setIntake(0);
 
-  chassis.pid_turn_set(LEFTredturn2, TURN_SPEED);
+  chassis.pid_turn_set(LEFTredturn2, TURN_SPEED); // turn to first donut
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED);
+  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED); // move to first donut
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(delay_2);
+  pros::delay(delay_2); // intake first donut
   setIntake(0);
 
 //Add on
-  chassis.pid_turn_set(LEFTredturn3b, TURN_SPEED);
+  chassis.pid_turn_set(LEFTredturn3b, TURN_SPEED); // turn to raised donut in spawn
 
   //lifter.extend();
 
-  chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED);
+  chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED); // move towards raised second donut in spawn
   chassis.pid_wait_until(20_in);
-  lifter.extend();
+  lifter.extend(); // extend lifter to get over raised second donut
   chassis.pid_wait_until(47_in);
-  lifter.retract();
+  lifter.retract(); // let down lifter to intake raised second donut
   setIntake(127);
-  pros::delay(600);
+  pros::delay(600); // pick up second raised donut
   setIntake(0);
   chassis.pid_wait();
 
@@ -310,14 +310,14 @@ void sigma_modeleftblue() {
   // pros::delay(delay_3b);
   // setIntake(0);
 
-  chassis.pid_drive_set(LEFTredback3b, DRIVE_SPEED);
+  chassis.pid_drive_set(LEFTredback3b, DRIVE_SPEED); // move back and avoid picking up red donut
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(delay_3c);
+  pros::delay(delay_3c); // load second donut onto stake
   setIntake(0);
 
-  chassis.pid_drive_set(-10, slow_speed);
+  chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
   chassis.pid_wait();
 
   
@@ -331,14 +331,14 @@ const double robotskillsforward = 23; // move to first/second/third donut
 const double robotskillsturnb = -85; //turn to second donut relative turn
 const double robotskillsturn3 = -0; //turn towards 3rd donut
 const double robotskillsforward2 = 8; // move to 4th donut
+const double robotskillsback3 = -3; // move back to not hit wall
 const double robotskillsturn4 = 130; //turn to 5th donut
 const double robotskillsforward3 = 11; // drive forward and secure 5th donut
 
-const double robotskillsback3 = -3;
-const double robotskillsintakeback = -80;
-const double robotskillsturn5 = -150;
-const double robotskillsback4 = -11;
-const double robotskillsforward4 = 5;
+const double robotskillsintakeback = -80; // move intake back as to not jam donut
+const double robotskillsturn5 = -150; // turn to corner
+const double robotskillsback4 = -11; // back into corner
+const double robotskillsforward4 = 5; // get away from mogo
 
 //nolansupersigmarobotautonskills
 
@@ -416,6 +416,7 @@ void sigma_robotskills() {
   setIntake(0);
   chassis.pid_wait();
 
+  // roll intake back so we dont hook onto donut on stake
   setIntake(robotskillsintakeback);
   pros::delay(500);
   setIntake(0);
