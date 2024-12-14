@@ -27,7 +27,7 @@ const int delay_3 = 2500;
 const int delay_3b = 350;
 const int delay_3c = 2500;
 //Add on for mogo side
-const double RIGHTblueturn3b = 65;
+const double RIGHTblueturn3b = 70;
 const double RIGHTblueforward2b = 48;
 const double RIGHTblueback3b = -8;
 
@@ -44,7 +44,7 @@ const double LEFTredforward = 25;
 const double LEFTredturn3 = 180; //turn towards stack of 8 donuts on left red
 const double LEFTredforward2 = 14;
 const double LEFTredturn3b = -70; //Turn towards second donut on left blue
-const double LEFTredforward2b = 54;
+const double LEFTredforward2b = 52;
 const double LEFTredback3b = -6;
 //const int delay_3 = 2500;
 
@@ -159,13 +159,17 @@ void sigma_moderightred() {
 //Add on
   chassis.pid_turn_set(RIGHTblueturn3b, TURN_SPEED);
   
-  lifter.extend();
+  // lifter.extend();
 
   chassis.pid_drive_set(RIGHTblueforward2b, DRIVE_SPEED);
-  chassis.pid_wait_until(6_in);
+  chassis.pid_wait_until(20_in);
+  lifter.extend();
+  chassis.pid_wait_until(47_in);
+  lifter.retract();
   setIntake(127);
-  pros::delay(delay_2);
+  pros::delay(600);
   setIntake(0);
+  chassis.pid_wait();
 
   chassis.pid_wait();
 
@@ -284,23 +288,23 @@ void sigma_modeleftblue() {
 
 //Add on
   chassis.pid_turn_set(LEFTredturn3b, TURN_SPEED);
-  
-  lifter.extend();
+
+  //lifter.extend();
 
   chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED);
-  chassis.pid_wait_until(6_in);
+  chassis.pid_wait_until(20_in);
+  lifter.extend();
+  chassis.pid_wait_until(47_in);
+  lifter.retract();
   setIntake(127);
-  pros::delay(delay_2);
+  pros::delay(600);
   setIntake(0);
-
   chassis.pid_wait();
 
-  lifter.retract();
-
-  //Pick up second raised donut
-  setIntake(127);
-  pros::delay(delay_3b);
-  setIntake(0);
+  // Pick up second raised donut
+  // setIntake(127);
+  // pros::delay(delay_3b);
+  // setIntake(0);
 
   chassis.pid_drive_set(LEFTredback3b, DRIVE_SPEED);
   chassis.pid_wait();
@@ -308,6 +312,9 @@ void sigma_modeleftblue() {
   setIntake(127);
   pros::delay(delay_3c);
   setIntake(0);
+
+  chassis.pid_drive_set(-10, slow_speed);
+  chassis.pid_wait();
 
   
 }
