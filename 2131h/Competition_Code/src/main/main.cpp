@@ -1,3 +1,4 @@
+#include "lemlib/api.hpp" // IWYU pragma: keep
 #include "main.h"
 
 #include "ButtonConfig.hpp"
@@ -26,10 +27,10 @@ void initialize()
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled()
-{
-  if (pros::c::competition_is_switch()) { Systems::Clamp::disableAutoClamp(); }
-}
+// void disabled()
+// {
+//   if (pros::c::competition_is_switch()) { Systems::Clamp::disableAutoClamp(); }
+// }
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -53,12 +54,12 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous()
-{
-  // Get AutonCard from screen
-  // From AutonCard get Autonomous Callback, then call it (pass the team color to the auton)
-  Screen::getAuton()->getAutonCB()(Screen::isRedTeam());
-}
+// void autonomous()
+// {
+//   // Get AutonCard from screen
+//   // From AutonCard get Autonomous Callback, then call it (pass the team color to the auton)
+//   Screen::getAuton()->getAutonCB()(Screen::isRedTeam());
+// }
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -81,7 +82,7 @@ void opcontrol()
     Systems::Drivetrain::teleOp();
     Systems::Arm::teleOp();
     Systems::Intake::teleOp();
-    Systems::Clamp::teleOp();
+    // Systems::Clamp::teleOp();
 
     // Allow for V5 Sensors to update and tasks to update
     pros::delay(10);

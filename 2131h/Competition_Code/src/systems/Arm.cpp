@@ -61,7 +61,7 @@ void teleOp()
     motor.move_absolute(positions[index], 100);  // Move Arm
   }
 
-  if (Buttons::Doinkler.changedToPressed()) { doinkler.toggle(); }
+  if (Buttons::lift.changedToPressed()) { lift.toggle(); }
 }
 
 /**
@@ -71,17 +71,17 @@ void teleOp()
  */
 void setPosition(int newIndex) { index = newIndex; }
 
-pros::Task armThread(
-    []() {
-      while (true)
-      {
-        // Get output from PID (Target - Actual (Accounts for gear ratio))
-        double out = armPID.update(positions[index] - rotational.get_position() / 100.0);
-        motor.move_voltage(out * 100);  // Output to motor
-        pros::delay(10);                // Don't take up CPU resources
-      }
-    },
-    "ARM THREAD");
+// pros::Task armThread(
+//     []() {
+//       while (true)
+//       {
+//         // Get output from PID (Target - Actual (Accounts for gear ratio))
+//         double out = armPID.update(positions[index] - rotational.get_position() / 100.0);
+//         motor.move_voltage(out * 100);  // Output to motor
+//         pros::delay(10);                // Don't take up CPU resources
+//       }
+//     },
+//     "ARM THREAD");
 
 }  // namespace Arm
 }  // namespace Systems

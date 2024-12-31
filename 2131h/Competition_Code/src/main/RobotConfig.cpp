@@ -25,7 +25,7 @@ namespace Clamp
 pros::adi::Pneumatics pneumatic('A', false, false);
 // Distance sensor to detect goals
 // pros::Distance goalDetector(1);
-// }  // namespace Clamp
+}  // namespace Clamp
 
 namespace Arm
 {
@@ -50,7 +50,7 @@ pros::Distance ringDetector(4);
 
 // // Pneumatic discard / eject
 // pros::adi::Pneumatics ringSort('A', false, false);
-// }  // namespace Intake
+}  // namespace Intake
 
 }  // namespace Systems
 
@@ -68,11 +68,11 @@ lemlib::Drivetrain drivetrain(&Systems::Drivetrain::leftDrive,   // left motor g
                               8                                  // Traction Wheel drive
 );
 
-// Odometry
-// horizontal tracking wheel
-// lemlib::TrackingWheel leftTrackingWheel(&Systems::Drivetrain::leftDrive, 2.75, -6.625, 450);
-// // vertical tracking wheel
-// lemlib::TrackingWheel rightTrackingWheel(&Systems::Drivetrain::rightDrive, 2.75, 6.625, 450);
+//Odometry
+//horizontal tracking wheel
+lemlib::TrackingWheel leftTrackingWheel(&Systems::Drivetrain::leftDrive, 2.75, -6.625, 450);
+// vertical tracking wheel
+lemlib::TrackingWheel rightTrackingWheel(&Systems::Drivetrain::rightDrive, 2.75, 6.625, 450);
 
 lemlib::OdomSensors sensors(&leftTrackingWheel, &rightTrackingWheel, nullptr, nullptr, &Systems::Drivetrain::imu);
 
@@ -107,3 +107,4 @@ Pathing::Chassis chassis(drivetrain,          // drivetrain settings
                          angular_controller,  // angular PID settings
                          sensors              // odometry sensors
 );
+

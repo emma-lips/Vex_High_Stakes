@@ -10,7 +10,7 @@ extern ButtonDetector Outtake;  // Outtake
 extern ButtonDetector ArmUp;    // Arm Up
 extern ButtonDetector ArmDown;  // Arm Down
 
-extern ButtonDetector Doinkler;  // Doinkler
+extern ButtonDetector lift;  // lift
 
 extern ButtonDetector ClampToggle;  // Clamp
 
