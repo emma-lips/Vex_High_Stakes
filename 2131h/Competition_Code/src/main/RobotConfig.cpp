@@ -12,45 +12,45 @@ namespace Systems
 namespace Drivetrain
 {
 // Left Drive
-pros::v5::MotorGroup leftDrive({-16, -19, -20}, pros::v5::MotorGearset::blue);
+pros::v5::MotorGroup leftDrive({-2, -3, -5}, pros::v5::MotorGearset::blue);
 // Right Drive
-pros::v5::MotorGroup rightDrive({2, 9, 10}, pros::v5::MotorGearset::blue);
+pros::v5::MotorGroup rightDrive({11, 14, 15}, pros::v5::MotorGearset::blue);
 // Vex V5 Inertial Sensor
-pros::Imu imu(21);
+pros::Imu imu(7);
 }  // namespace Drivetrain
 
 namespace Clamp
 {
 // Clamp Pneumatic
-pros::adi::Pneumatics pneumatic('G', false, false);
+pros::adi::Pneumatics pneumatic('A', false, false);
 // Distance sensor to detect goals
-pros::Distance goalDetector(1);
-}  // namespace Clamp
+// pros::Distance goalDetector(1);
+// }  // namespace Clamp
 
 namespace Arm
 {
-// Arm Motor
-pros::v5::Motor motor(13, pros::MotorGear::red);
-pros::v5::Rotation rotational(-12);
+// doinker motor
+pros::v5::Motor motor(17, pros::MotorGear::red);
+// pros::v5::Rotation rotational(-12);
 
-// Doinkler (For removing corner rings)
-pros::adi::Pneumatics doinkler('H', false, false);
+// intake lift (For removing corner rings)
+pros::adi::Pneumatics lift('H', false, false);
 }  // namespace Arm
 
 namespace Intake
 {
 // Intake Motor
-pros::v5::Motor motor(14, pros::v5::MotorGearset::blue);
+pros::v5::Motor motor(8, pros::v5::MotorGearset::green);
 // Vex V5 Optical Sensor (For detecting ring colors)
 pros::Optical colorDetector(18);
 // Vex V5 Distance Sensor (For detecting rings as they approach the top of the intake)
 //* Two sensors are being used due to the refresh rate on Vex V5 Optical Sensors.
 //* Optical sensors update at 100 Msec and Distance sensors update at ~50 msec
-pros::Distance ringDetector(2);
+pros::Distance ringDetector(4);
 
-// Pneumatic discard / eject
-pros::adi::Pneumatics ringSort('A', false, false);
-}  // namespace Intake
+// // Pneumatic discard / eject
+// pros::adi::Pneumatics ringSort('A', false, false);
+// }  // namespace Intake
 
 }  // namespace Systems
 
@@ -63,16 +63,16 @@ pros::Controller primary(pros::E_CONTROLLER_MASTER);
 lemlib::Drivetrain drivetrain(&Systems::Drivetrain::leftDrive,   // left motor group
                               &Systems::Drivetrain::rightDrive,  // right motor group
                               13.25,                             // 13.25 inch track width
-                              3.25,                              // using new 3.25" omniwheel
+                              2.75,                              // using 2.75" omniwheel
                               driveRPM,                          // drivetrain rpm is 450
                               8                                  // Traction Wheel drive
 );
 
 // Odometry
 // horizontal tracking wheel
-lemlib::TrackingWheel leftTrackingWheel(&Systems::Drivetrain::leftDrive, 2.75, -6.625, 450);
-// vertical tracking wheel
-lemlib::TrackingWheel rightTrackingWheel(&Systems::Drivetrain::rightDrive, 2.75, 6.625, 450);
+// lemlib::TrackingWheel leftTrackingWheel(&Systems::Drivetrain::leftDrive, 2.75, -6.625, 450);
+// // vertical tracking wheel
+// lemlib::TrackingWheel rightTrackingWheel(&Systems::Drivetrain::rightDrive, 2.75, 6.625, 450);
 
 lemlib::OdomSensors sensors(&leftTrackingWheel, &rightTrackingWheel, nullptr, nullptr, &Systems::Drivetrain::imu);
 
