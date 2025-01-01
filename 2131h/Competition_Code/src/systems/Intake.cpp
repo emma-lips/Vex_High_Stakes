@@ -97,38 +97,38 @@ pros::Task possessionTask(
     "POSSESSION TASK");
 
 // Auto Sort thread
-// pros::Task autoSortTask(
-//     []() {
-//       while (true)
-//       {
-//         if (autoSortEnabled)  // If enabled
-//         {
-//           // Check if the ring is detected
-//           RingChangeDetector.check(ringDetector.get() < 50);
+pros::Task autoSortTask(
+    []() {
+      while (true)
+      {
+        if (autoSortEnabled)  // If enabled
+        {
+          // Check if the ring is detected
+          RingChangeDetector.check(ringDetector.get() < 50);
 
-//           // If ring detection has changed from none, to ring
-//           if (RingChangeDetector.getChanged() && RingChangeDetector.getValue())
-//           {
-//             // Check team color (Convert to ring state)
-//             int teamColor = Screen::isRedTeam() ? 1 : 2;
+          // If ring detection has changed from none, to ring
+          if (RingChangeDetector.getChanged() && RingChangeDetector.getValue())
+          {
+            // Check team color (Convert to ring state)
+            int teamColor = Screen::isRedTeam() ? 1 : 2;
 
-//             // If ring current ring isn't ring color, and there are rings
-//             if (possession[0] != teamColor && possession[0] != ringState::none)
-//             // {
-//             //   // Disable the intake (stop if from spinning)
-//             //   ringSort.extend();   // Eject the ring
-//             //   pros::delay(400);    // Wait for Pneumatic to extend
-//             //   ringSort.retract();  // Retract the intake
-//             // }
-//             possession[0] = possession[1];    // Ring 2 is now Ring 1
-//             possession[1] = ringState::none;  // Remove ring from possession
-//           }
-//           // Don't take up CPU resources
-//           pros::delay(50);
-//         }
-//       }
-//     },
-//     "AUTO-SORT TASK");
+            // If ring current ring isn't ring color, and there are rings
+            if (possession[0] != teamColor && possession[0] != ringState::none)
+            {
+              // Disable the intake (stop if from spinning)
+              ringSort.extend();   // Eject the ring
+              pros::delay(400);    // Wait for Pneumatic to extend
+              ringSort.retract();  // Retract the intake
+            }
+            possession[0] = possession[1];    // Ring 2 is now Ring 1
+            possession[1] = ringState::none;  // Remove ring from possession
+          }
+          // Don't take up CPU resources
+          pros::delay(50);
+        }
+      }
+    },
+    "AUTO-SORT TASK");
 
 }  // namespace Intake
 }  // namespace Systems
