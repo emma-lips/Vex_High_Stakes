@@ -166,8 +166,16 @@ pros::Distance ringDetector(4);
     // . . .
 
   // ring detector
-    printf("Distance: %d mm\n", ringDetector.get()); 
-    pros::delay(20);
+    if(master.get_digital(DIGITAL_B)){
+      ringDetector.get();
+      if (ringDetector.get() < 100){
+        setIntake(0);
+        pros::delay(100);
+        setIntake(50);
+        pros::delay(500);
+        setIntake(0);
+      }      
+    }
 
 
     if(master.get_digital(DIGITAL_R1)){
