@@ -15,6 +15,16 @@ ez::Drive chassis(
     2.75,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM
 
+    // right motors are 15, 14, 11
+    // left motors are 2, 5, 3
+    // intake is 8
+    // imu is 7
+    // distance sensor(ring detector) is 4
+    // colour sensor is 18
+    // mogo mech is A
+    // lifter is H
+    // radio is 12
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -152,6 +162,10 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
+
+  // ring detector
+    printf("Distance: %d mm\n", ringDetector.get()); 
+    pros::delay(20);
 
 
     if(master.get_digital(DIGITAL_R1)){
