@@ -128,6 +128,8 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+pros::Distance ringDetector(4);
+ 
   // This is preference to what you like to drive on
   pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
 
