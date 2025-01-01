@@ -8,6 +8,8 @@ void setDoinker(int doinkerPower){
     doinker5W.move(doinkerPower);
 }
 
+void distancify()
+
 void setDoinkerPOS(int deg, int speed) {
     doinker5W.move_absolute(deg, speed);
 }

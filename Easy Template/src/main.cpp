@@ -129,6 +129,7 @@ void autonomous() {
  */
 void opcontrol() {
 pros::Distance ringDetector(4);
+pros::Optical colorDetector(18);
  
   // This is preference to what you like to drive on
   pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
@@ -166,13 +167,12 @@ pros::Distance ringDetector(4);
     // . . .
 
   // ring detector
-    if(master.get_digital(DIGITAL_B)){
-      ringDetector.get();
-      if (ringDetector.get() < 100){
+    if(colorDetector.get_hue() < 20){
+      if (ringDetector.get() < 50){
         setIntake(0);
         pros::delay(100);
         setIntake(50);
-        pros::delay(500);
+        pros::delay(700);
         setIntake(0);
       }      
     }
