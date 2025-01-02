@@ -174,12 +174,12 @@ bool wrongcolour = false;
   // ring detector
     if (wrongcolour && ringDetector.get() < 50){
       button_enabled = false;
-      setIntake(75);
-      pros::delay(1000);
-      setIntake(-15);
-      pros::delay(100);
+      setIntake(127);
+      pros::delay(230);
+      setIntake(-100);
+      pros::delay(250);
       setIntake(0);
-      pros::delay(20);
+      pros::delay(850);
     button_enabled = true;
     wrongcolour = false;
       }      
