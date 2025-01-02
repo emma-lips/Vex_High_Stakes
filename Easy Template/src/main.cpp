@@ -170,40 +170,80 @@ bool wrongcolour = false;
   // colour detector
     if(colorDetector.get_hue() < 20){
     wrongcolour = true;
+    state = 1;
     }
   // ring detector
-    // if (wrongcolour && ringDetector.get() < 50){
-    //   button_enabled = false;
-    //   setIntake(127);
-    //   pros::delay(235);
-    //   setIntake(-100);
-    //   pros::delay(1000);
-    //   setIntake(0);
-    //   pros::delay(20);
-    // button_enabled = true;
-    // wrongcolour = false;
-    //   }      
-    
-  int intake_start_time = pros::millis();  // Get the current time
-
-if (wrongcolour && ringDetector.get() < 50) {
-    button_enabled = false;
-    
-    setIntake(127);  // Start intake
-    
-    // Wait until a specific time has passed (e.g., 235ms)
-    if (pros::millis() - intake_start_time >= 235) {
-        setIntake(-100);  // Reverse intake
-        intake_start_time = pros::millis();  // Reset timer
+    if(state == 1 && wrongcolour && ringDetector.get() < 50){
+      intaketime = pros::millis();
+      button_enabled = false;
+      static int state = 0;
+      static int intaketime = pros::millis();
+      while(pros::millis() - intaketime < 235){
+      state = 2;
+      setIntake(127);
+      intaketime = pros::millis();
+      }
+    if(state == 2){
+      button_enabled = false;
+      intaketime = pros::millis();
+      while(pros::millis() - intaketime < 1000){
+      setIntake(-100);
+      state = 3;
+      intaketime = pros::millis();
+      }
+      
+      pros::delay(20);
+    button_enabled = true;
+    wrongcolour = false;
     }
-
-    // Wait until a specific time has passed (e.g., 1000ms)
-    if (pros::millis() - intake_start_time >= 1000) {
-        setIntake(0);  // Stop intake
-        button_enabled = true;
-        wrongcolour = false;
     }
-}
+//  // ring detector
+//     if (wrongcolour && ringDetector.get() < 50){
+//       button_enabled = false;
+//       setIntake(127);
+//       pros::delay(235);
+//       setIntake(-100);
+//       pros::delay(1000);
+//       setIntake(0);
+//       pros::delay(20);
+//     button_enabled = true;
+//     wrongcolour = false;
+//  }      
+    
+ 
+
+// if (wrongcolour && ringDetector.get() < 50) {
+//     button_enabled = false;
+
+//     static int state = 0;  // Track the current state
+//     static int state_start_time = pros::millis();  // Track when the state started
+
+//     switch (state) {
+//         case 0:  // Start intake
+//             setIntake(127);
+//             if (pros::millis() - state_start_time >= 235) {
+//                 state = 1;  // Move to the next state
+//                 state_start_time = pros::millis();  // Reset state timer
+//             }
+//             break;
+
+//         case 1:  // Reverse intake
+//             setIntake(-100);
+//             if (pros::millis() - state_start_time >= 1000) {
+//                 state = 2;  // Move to the next state
+//                 state_start_time = pros::millis();  // Reset state timer
+//             }
+//             break;
+
+//         case 2:  // Stop intake and reset
+//             setIntake(0);
+//             button_enabled = true;
+//             wrongcolour = false;
+//             state = 0;  // Reset state for the next time
+//             break;
+//     }
+// }
+
 
     
 
