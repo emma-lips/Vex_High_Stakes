@@ -177,7 +177,7 @@ bool wrongcolour = false;
       setIntake(127);
       pros::delay(235);
       setIntake(-100);
-      pros::delay(250);
+      pros::delay(1000);
       setIntake(0);
       pros::delay(850);
     button_enabled = true;
