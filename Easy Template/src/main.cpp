@@ -179,7 +179,7 @@ bool wrongcolour = false;
       setIntake(-100);
       pros::delay(1000);
       setIntake(0);
-      pros::delay(850);
+      pros::delay(20);
     button_enabled = true;
     wrongcolour = false;
       }      
