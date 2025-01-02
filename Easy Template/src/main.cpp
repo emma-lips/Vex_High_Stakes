@@ -172,18 +172,39 @@ bool wrongcolour = false;
     wrongcolour = true;
     }
   // ring detector
-    if (wrongcolour && ringDetector.get() < 50){
-      button_enabled = false;
-      setIntake(127);
-      pros::delay(235);
-      setIntake(-100);
-      pros::delay(1000);
-      setIntake(0);
-      pros::delay(20);
-    button_enabled = true;
-    wrongcolour = false;
-      }      
+    // if (wrongcolour && ringDetector.get() < 50){
+    //   button_enabled = false;
+    //   setIntake(127);
+    //   pros::delay(235);
+    //   setIntake(-100);
+    //   pros::delay(1000);
+    //   setIntake(0);
+    //   pros::delay(20);
+    // button_enabled = true;
+    // wrongcolour = false;
+    //   }      
     
+  int intake_start_time = pros::millis();  // Get the current time
+
+if (wrongcolour && ringDetector.get() < 50) {
+    button_enabled = false;
+    
+    setIntake(127);  // Start intake
+    
+    // Wait until a specific time has passed (e.g., 235ms)
+    if (pros::millis() - intake_start_time >= 235) {
+        setIntake(-100);  // Reverse intake
+        intake_start_time = pros::millis();  // Reset timer
+    }
+
+    // Wait until a specific time has passed (e.g., 1000ms)
+    if (pros::millis() - intake_start_time >= 1000) {
+        setIntake(0);  // Stop intake
+        button_enabled = true;
+        wrongcolour = false;
+    }
+}
+
     
 
 
@@ -243,3 +264,5 @@ bool wrongcolour = false;
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
+
+
