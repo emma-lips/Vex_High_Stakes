@@ -130,7 +130,7 @@ void autonomous() {
 void opcontrol() {
 pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
- 
+bool button_disabled = false;
   // This is preference to what you like to drive on
   pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
 
@@ -168,20 +168,23 @@ pros::Optical colorDetector(18);
 
   // ring detector
     if(colorDetector.get_hue() < 20){
+    button_disabled = true; 
       if (ringDetector.get() < 50){
         setIntake(0);
         pros::delay(100);
         setIntake(50);
         pros::delay(700);
         setIntake(0);
+    button_disabled = false;
       }      
+    
     }
 
 
-    if(master.get_digital(DIGITAL_R1)){
+    if(button_disabled && master.get_digital(DIGITAL_R1)){
       setIntake(127);
     }
-    else if(master.get_digital(DIGITAL_X)){
+    else if(button_disabled && master.get_digital(DIGITAL_X)){
       setIntake(-127);
     }
     else {
