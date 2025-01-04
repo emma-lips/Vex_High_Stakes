@@ -127,34 +127,57 @@ void autonomous() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
-void opcontrol() {
+// ring detector
 pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
 bool button_enabled = true;
 bool wrongcolour = false;
+pros::Task sigmarizztaskcolorsort([]() {
+    while (true) {
+        if (colorDetector.get_hue() < 20) {
+        wrongcolour = true;
+        
+        pros::delay(20);  // Add a delay to prevent excessive CPU usage
+        }
+        if (wrongcolour && ringDetector.get() < 50) {
+            // Automatically trigger the behavior if the ring color is wrong
+            button_enabled = false;
+            setIntake(127);
+            pros::delay(215);
+            setIntake(-100);
+            pros::delay(1000);
+            setIntake(0);
+
+            button_enabled = true;
+            wrongcolour = false;
+            pros::delay(20);
+        }
+
+    }
+});
+
+void opcontrol() {
+
+
   // This is preference to what you like to drive on
   pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
 
   chassis.drive_brake_set(driver_preference_brake);
 
- // ring detector
-pros::Task ringDetectorTask([]() {
-    while (true) { 
-        if (wrongcolour && ringDetector.get() < 50) {
-            // Automatically trigger the behavior if the ring color is wrong
-            button_enabled = false;
-            setIntake(127);     
-            pros::delay(235);    
-            setIntake(-100);     
-            pros::delay(1000);   
-            setIntake(0);          
-            
-            button_enabled = true;
-            wrongcolour = false;
-        }
-        pros::delay(20);  
-    }
-});
+// colour detector
+// pros::Task colordetectortask([&]() {
+//     while (true) {
+//         if (colorDetector.get_hue() < 20) {
+//             wrongcolour = true;
+//         }
+//         pros::delay(20);  // Add a delay to prevent excessive CPU usage
+//     }
+// });
+
+
+
+ 
+
 
   while (true) {
     // PID Tuner
@@ -186,10 +209,7 @@ pros::Task ringDetectorTask([]() {
     // Put more user control code here!
     // . . .
 
-  // colour detector
-    if(colorDetector.get_hue() < 20){
-    wrongcolour = true;
-    }
+
   // // ring detector
   //   if(state == 1 && wrongcolour && ringDetector.get() < 50){
   //     intaketime = pros::millis();
@@ -261,7 +281,7 @@ pros::Task ringDetectorTask([]() {
     else if(button_enabled && master.get_digital(DIGITAL_X)){
       setIntake(-127);
     }
-    else {
+    else if(!wrongcolour){
       setIntake(0);
     }
 
