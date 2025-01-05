@@ -133,16 +133,19 @@ pros::Optical colorDetector(18);
 bool button_enabled = true;
 bool wrongcolour = false;
 bool toggleRingSort = true;
-colorDetector.set_led_pwm(100);  
+  
 
 pros::Task sigmarizztaskcolorsort([]() {
     while (true) {
         // if (toggleRingSort && colorDetector.get_hue() < 20) {
-        if (toggleRingSort && colorDetector.get_hue() > 100) {
-        wrongcolour = true;
-        pros::delay(20);  // Add a delay to prevent excessive CPU usage
-        }
-        if (wrongcolour && ringDetector.get() < 50) {
+        if (toggleRingSort) {
+          colorDetector.set_led_pwm(100);
+          if(colorDetector.get_hue() > 100){
+          wrongcolour = true;
+         pros::delay(20);  // Add a delay to prevent excessive CPU usage
+          }
+      
+          if (wrongcolour && ringDetector.get() < 50) {
             // Automatically trigger the behavior if the ring color is wrong
             button_enabled = false;
             setIntake(127);
@@ -157,7 +160,7 @@ pros::Task sigmarizztaskcolorsort([]() {
         }
 
     }
-});
+}});
 
 void opcontrol() {
 
@@ -211,23 +214,21 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
-pros::v5::Controller master(CONTROLLER_MASTER);
+// pros::v5::Controller master(CONTROLLER_MASTER);
 
-
-    if(master.get_digital_new_press(DIGITAL_UP)){
-        toggleRingSort = !toggleRingSort;
-        
-        if(!toggleRingSort){
-          colorDetector.set_led_pwm(0);
-        }
-        else if(toggleRingSort){
-          colorDetector.set_led_pwm(100);
-        }
+        // if(!toggleRingSort){
+        //   colorDetector.set_led_pwm(0);
+        // }
+        // else if(toggleRingSort){
+        //   colorDetector.set_led_pwm(100);
+        // }
 // pros::v5::Controller.master.clearScreen();
 //  pros::v5::Controller.master.setCursor(1,1);
 //  pros::v5::Controller.master.print("Hello World");
 
-    };
+    if(master.get_digital_new_press(DIGITAL_UP)){
+        toggleRingSort = !toggleRingSort;
+    }
 
     if(toggleRingSort){
        if(button_enabled && master.get_digital(DIGITAL_R1)){
@@ -239,8 +240,8 @@ pros::v5::Controller master(CONTROLLER_MASTER);
       else if(!wrongcolour){
       setIntake(0);
     }
-
-    else (){
+    }
+    if(!toggleRingSort){
     
     if(master.get_digital(DIGITAL_R1)){
       setIntake(127);
@@ -248,11 +249,11 @@ pros::v5::Controller master(CONTROLLER_MASTER);
     else if(master.get_digital(DIGITAL_X)){
       setIntake(-127);
     }
-    else (){
+    else {
       setIntake(0);
     }
-    }
-    }
+    
+    };
 
     //setIntake((master.get_digital(DIGITAL_L1)-master.get_difital(DIGITAL_L2))*127);
 
