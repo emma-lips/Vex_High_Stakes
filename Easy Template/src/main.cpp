@@ -141,7 +141,7 @@ pros::Task sigmarizztaskcolorsort([]() {
         
         pros::delay(20);  // Add a delay to prevent excessive CPU usage
         }
-        if (wrongcolour && ringDetector.get() < 50) {
+        if (toggleRingSort && wrongcolour && ringDetector.get() < 50) {
             // Automatically trigger the behavior if the ring color is wrong
             button_enabled = false;
             setIntake(127);
