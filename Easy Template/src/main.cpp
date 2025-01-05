@@ -138,10 +138,9 @@ pros::Task sigmarizztaskcolorsort([]() {
     while (true) {
         if (toggleRingSort && colorDetector.get_hue() < 20) {
         wrongcolour = true;
-        
         pros::delay(20);  // Add a delay to prevent excessive CPU usage
         }
-        if (toggleRingSort && wrongcolour && ringDetector.get() < 50) {
+        if (wrongcolour && ringDetector.get() < 50) {
             // Automatically trigger the behavior if the ring color is wrong
             button_enabled = false;
             setIntake(127);
@@ -212,67 +211,6 @@ void opcontrol() {
     // . . .
 
 
-  // // ring detector
-  //   if(state == 1 && wrongcolour && ringDetector.get() < 50){
-  //     intaketime = pros::millis();
-  //     button_enabled = false;
-  //     static int state = 0;
-  //     static int intaketime = pros::millis();
-  //     while(pros::millis() - intaketime < 235){
-  //     state = 2;
-  //     setIntake(127);
-  //     intaketime = pros::millis();
-  //     }
-  //   if(state == 2){
-  //     button_enabled = false;
-  //     intaketime = pros::millis();
-  //     while(pros::millis() - intaketime < 1000){
-  //     setIntake(-100);
-  //     state = 3;
-  //     intaketime = pros::millis();
-  //     }
-      
-  //     pros::delay(20);
-  //   button_enabled = true;
-  //   wrongcolour = false;
-  //   }
-  //   }
-
-
- 
-
-// if (wrongcolour && ringDetector.get() < 50) {
-//     button_enabled = false;
-
-//     static int state = 0;  // Track the current state
-//     static int state_start_time = pros::millis();  // Track when the state started
-
-//     switch (state) {
-//         case 0:  // Start intake
-//             setIntake(127);
-//             if (pros::millis() - state_start_time >= 235) {
-//                 state = 1;  // Move to the next state
-//                 state_start_time = pros::millis();  // Reset state timer
-//             }
-//             break;
-
-//         case 1:  // Reverse intake
-//             setIntake(-100);
-//             if (pros::millis() - state_start_time >= 1000) {
-//                 state = 2;  // Move to the next state
-//                 state_start_time = pros::millis();  // Reset state timer
-//             }
-//             break;
-
-//         case 2:  // Stop intake and reset
-//             setIntake(0);
-//             button_enabled = true;
-//             wrongcolour = false;
-//             state = 0;  // Reset state for the next time
-//             break;
-//     }
-// }
-
 
     if(master.get_digital_new_press(DIGITAL_UP)){
         toggleRingSort = !toggleRingSort;
@@ -286,7 +224,7 @@ void opcontrol() {
     else if(button_enabled && master.get_digital(DIGITAL_X)){
       setIntake(-127);
     }
-    else if(!wrongcolour){
+    else if(!wrongcolour || !toggleRingSort){
       setIntake(0);
     }
 
