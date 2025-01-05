@@ -132,9 +132,11 @@ pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
 bool button_enabled = true;
 bool wrongcolour = false;
+bool toggleRingSort = true;
+
 pros::Task sigmarizztaskcolorsort([]() {
     while (true) {
-        if (colorDetector.get_hue() < 20) {
+        if (toggleRingSort && colorDetector.get_hue() < 20) {
         wrongcolour = true;
         
         pros::delay(20);  // Add a delay to prevent excessive CPU usage
@@ -272,7 +274,10 @@ void opcontrol() {
 // }
 
 
-    
+    if(master.get_digital_new_press(DIGITAL_UP)){
+        toggleRingSort = !toggleRingSort;
+
+    }
 
 
     if(button_enabled && master.get_digital(DIGITAL_R1)){
