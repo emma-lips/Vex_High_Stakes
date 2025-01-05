@@ -134,9 +134,11 @@ bool button_enabled = true;
 bool wrongcolour = false;
 bool toggleRingSort = true;
 
+
 pros::Task sigmarizztaskcolorsort([]() {
     while (true) {
-        if (toggleRingSort && colorDetector.get_hue() < 20) {
+        // if (toggleRingSort && colorDetector.get_hue() < 20) {
+        if (toggleRingSort && colorDetector.get_hue() > 100) {
         wrongcolour = true;
         pros::delay(20);  // Add a delay to prevent excessive CPU usage
         }
@@ -241,17 +243,6 @@ void opcontrol() {
 
 
 
-//if(master.get_digital(DIGITAL_Y)){
-  //  pros::lcd::print(0, "setDoinkerPOS called");
-    //setDoinkerPOS(60, 50);
-//}
-//else if(master.get_digital(DIGITAL_L1)){
-  //  setDoinker(-60); 
-//}
-//else {
-  //  setDoinker(0); // Set doinker to neutral position when no button is pressed
-//}
-
 
     if(master.get_digital(DIGITAL_Y)){
         setDoinker(60);
@@ -262,14 +253,6 @@ void opcontrol() {
     else {
       setDoinker(0);
     }
-
-    //Using 2 buttons pneumatics
-    //if(master.get_digital(DIGITAL_A)){
-    //    clamp1.extend();
-    //}
-    //else if(master.get_digital(DIGITAL_B)){
-    //  clamp1.retract();
-    //}
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
