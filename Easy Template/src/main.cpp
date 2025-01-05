@@ -133,7 +133,7 @@ pros::Optical colorDetector(18);
 bool button_enabled = true;
 bool wrongcolour = false;
 bool toggleRingSort = true;
-
+colorDetector.set_led_pwm(100);  
 
 pros::Task sigmarizztaskcolorsort([]() {
     while (true) {
@@ -216,22 +216,42 @@ pros::v5::Controller master(CONTROLLER_MASTER);
 
     if(master.get_digital_new_press(DIGITAL_UP)){
         toggleRingSort = !toggleRingSort;
-
-pros::v5::Controller.master.clearScreen();
- pros::v5::Controller.master.setCursor(1,1);
- pros::v5::Controller.master.print("Hello World");
+        
+        if(!toggleRingSort){
+          colorDetector.set_led_pwm(0);
+        }
+        else if(toggleRingSort){
+          colorDetector.set_led_pwm(100);
+        }
+// pros::v5::Controller.master.clearScreen();
+//  pros::v5::Controller.master.setCursor(1,1);
+//  pros::v5::Controller.master.print("Hello World");
 
     };
 
-
-    if(button_enabled && master.get_digital(DIGITAL_R1)){
+    if(toggleRingSort){
+       if(button_enabled && master.get_digital(DIGITAL_R1)){
       setIntake(127);
     }
-    else if(button_enabled && master.get_digital(DIGITAL_X)){
+      else if(button_enabled && master.get_digital(DIGITAL_X)){
       setIntake(-127);
     }
-    else if(!wrongcolour || !toggleRingSort){
+      else if(!wrongcolour){
       setIntake(0);
+    }
+
+    else (){
+    
+    if(master.get_digital(DIGITAL_R1)){
+      setIntake(127);
+    }
+    else if(master.get_digital(DIGITAL_X)){
+      setIntake(-127);
+    }
+    else (){
+      setIntake(0);
+    }
+    }
     }
 
     //setIntake((master.get_digital(DIGITAL_L1)-master.get_difital(DIGITAL_L2))*127);
