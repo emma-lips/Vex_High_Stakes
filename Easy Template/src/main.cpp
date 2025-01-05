@@ -211,13 +211,17 @@ void opcontrol() {
     // . . .
     // Put more user control code here!
     // . . .
-
+pros::v5::Controller master(CONTROLLER_MASTER);
 
 
     if(master.get_digital_new_press(DIGITAL_UP)){
         toggleRingSort = !toggleRingSort;
 
-    }
+pros::v5::Controller.master.clearScreen();
+ pros::v5::Controller.master.setCursor(1,1);
+ pros::v5::Controller.master.print("Hello World");
+
+    };
 
 
     if(button_enabled && master.get_digital(DIGITAL_R1)){
