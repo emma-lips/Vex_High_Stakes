@@ -10,11 +10,7 @@ const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 70;
 const int SWING_SPEED = 90;
 const int DRIVE_SPEED1 = 90;
-//ALSO FOR RIGHT RED
-
-const double RIGHTblueback = -22.75;// move backwards to mogo 
-const double RIGHTblueturn = -30; // turn towards mogo 
-const double RIGHTblueback2 = -15; // move to mogo
+//ALSO FOR RIGHT REDmove to mogo
 const int slow_speed = 60; // speed for clamping mogo
 const int delay_1 = 800; //While dropping preload
 const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
@@ -22,7 +18,11 @@ const double RIGHTblueforward = 25; // move to first donut
 const int delay_2 = 2000; // intaking and dropping first donut
 //For donut side(right blue(stack of 8 donuts)) 
 const double RIGHTblueturn3 = -170; // turn towards second donut
-const double RIGHTblueforward2 = 11; // move to second donut (group of 8)
+const double RIGHTblueforward2 = 11; /
+
+const double RIGHTblueback = -22.75;// move backwards to mogo 
+const double RIGHTblueturn = -30; // turn towards mogo 
+const double RIGHTblueback2 = -15; // / move to second donut (group of 8)
 const int delay_3 = 2500; // intake second donut
 //Add on for mogo side(right red(donut in middle of spawn))
 const double RIGHTblueturn3b = 70; // turn to second donut
