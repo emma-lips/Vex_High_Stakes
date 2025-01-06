@@ -12,7 +12,7 @@ const int SWING_SPEED = 90;
 const int DRIVE_SPEED1 = 90;
 //ALSO FOR RIGHT RED
 
-const double RIGHTblueback = -23.25;// move backwards to mogo 
+const double RIGHTblueback = -22.75;// move backwards to mogo 
 const double RIGHTblueturn = -30; // turn towards mogo 
 const double RIGHTblueback2 = -15; // move to mogo
 const int slow_speed = 60; // speed for clamping mogo
