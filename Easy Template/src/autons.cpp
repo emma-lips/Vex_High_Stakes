@@ -168,7 +168,7 @@ void sigma_moderightred() {
   // lifter.extend();
 
   chassis.pid_drive_set(RIGHTblueforward2b, DRIVE_SPEED); // move to second donut
-  chassis.pid_wait_until(20_in);
+  chassis.pid_wait_until(5_in);
   lifter.extend(); // extend lifter to get over tall donut
   chassis.pid_wait_until(47_in);
   lifter.retract(); // let down lifter to intake second donut
