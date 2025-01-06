@@ -135,32 +135,32 @@ bool wrongcolour = false;
 bool toggleRingSort = true;
   
 
-pros::Task sigmarizztaskcolorsort([]() {
-    while (true) {
-        // if (toggleRingSort && colorDetector.get_hue() < 20) {
-        if (toggleRingSort) {
-          colorDetector.set_led_pwm(100);
-          if(colorDetector.get_hue() > 115 && colorDetector.get_hue() < 155){
-          wrongcolour = true;
-         pros::delay(20);  // Add a delay to prevent excessive CPU usage
-          }
+// pros::Task sigmarizztaskcolorsort([]() {
+//     while (true) {
+//         // if (toggleRingSort && colorDetector.get_hue() < 20) {
+//         if (toggleRingSort) {
+//           colorDetector.set_led_pwm(100);
+//           if(colorDetector.get_hue() > 115 && colorDetector.get_hue() < 155){
+//           wrongcolour = true;
+//          pros::delay(20);  // Add a delay to prevent excessive CPU usage
+//           }
       
-          if (wrongcolour && ringDetector.get() < 50) {
-            // Automatically trigger the behavior if the ring color is wrong
-            button_enabled = false;
-            setIntake(127);
-            pros::delay(225);
-            setIntake(-100);
-            pros::delay(1000);
-            setIntake(0);
+//           if (wrongcolour && ringDetector.get() < 50) {
+//             // Automatically trigger the behavior if the ring color is wrong
+//             button_enabled = false;
+//             setIntake(127);
+//             pros::delay(225);
+//             setIntake(-100);
+//             pros::delay(1000);
+//             setIntake(0);
 
-            button_enabled = true;
-            wrongcolour = false;
-            pros::delay(20);
-        }
+//             button_enabled = true;
+//             wrongcolour = false;
+//             pros::delay(20);
+//         }
 
-    }
-}});
+//     }
+// }});
 
 void opcontrol() {
 

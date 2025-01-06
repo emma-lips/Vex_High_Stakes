@@ -296,7 +296,7 @@ void sigma_modeleftblue() {
   //lifter.extend();
 
   chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED); // move towards raised second donut in spawn
-  chassis.pid_wait_until(20_in);
+  chassis.pid_wait_until(5_in);
   lifter.extend(); // extend lifter to get over raised second donut
   chassis.pid_wait_until(47_in);
   lifter.retract(); // let down lifter to intake raised second donut
