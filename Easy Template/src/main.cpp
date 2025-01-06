@@ -140,7 +140,7 @@ pros::Task sigmarizztaskcolorsort([]() {
         // if (toggleRingSort && colorDetector.get_hue() < 20) {
         if (toggleRingSort) {
           colorDetector.set_led_pwm(100);
-          if(colorDetector.get_hue() > 100){
+          if(colorDetector.get_hue() > 115 && colorDetector.get_hue() < 155){
           wrongcolour = true;
          pros::delay(20);  // Add a delay to prevent excessive CPU usage
           }
@@ -226,8 +226,9 @@ void opcontrol() {
 //  pros::v5::Controller.master.setCursor(1,1);
 //  pros::v5::Controller.master.print("Hello World");
 
-    if(master.get_digital_new_press(DIGITAL_UP)){
+    if(master.get_digital(DIGITAL_UP)){
         toggleRingSort = !toggleRingSort;
+        pros::delay(300);
     }
 
     if(toggleRingSort){
