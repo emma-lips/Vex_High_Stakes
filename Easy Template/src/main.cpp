@@ -141,7 +141,7 @@ pros::Task sigmarizztaskcolorsort([]() {
         colorDetector.set_led_pwm(100);
         if (toggleRingSort) {
           
-          if(colorDetector.get_hue() > 200 && colorDetector.get_proximity() < 10){
+          if(colorDetector.get_hue() > 200 && colorDetector.get_hue() < 260 && colorDetector.get_proximity() > 45){
           wrongcolour = true;
          pros::delay(20);  // Add a delay to prevent excessive CPU usage
           }
