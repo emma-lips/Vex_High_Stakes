@@ -150,7 +150,7 @@ pros::Task sigmarizztaskcolorsort([]() {
             // Automatically trigger the behavior if the ring color is wrong
             button_enabled = false;
             setIntake(127);
-            pros::delay(225);
+            pros::delay(240);
             setIntake(-100);
             pros::delay(1000);
             setIntake(0);
