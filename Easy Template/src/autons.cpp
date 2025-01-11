@@ -27,7 +27,7 @@ const double RIGHTblueback2 = -15; // / move to second donut (group of 8)
 const int delay_3 = 2500; // intake second donut
 //Add on for mogo side(right red(donut in middle of spawn))
 const double RIGHTblueturn3b = 65; // turn to second donut
-const double RIGHTblueforward2b = 52; // move to second donut
+const double RIGHTblueforward2b = 50; // move to second donut
 const double RIGHTblueback3b = -6; // move back after intaking second donut
 const int delay_3b = 350; // intake at first to intake second donut
 const int delay_3c = 2500; // drop second donut on stake
@@ -51,7 +51,7 @@ const double LEFTredforward2 = 14; // move to second donut on left red
 //mogo side
 
 const double LEFTredturn3b = -68; //Turn towards second donut on left blue
-const double LEFTredforward2b = 52; // move to second donut on left blue
+const double LEFTredforward2b = 50; // move to second donut on left blue
 const double LEFTredback3b = -6; // move back as to not pick up red donut on left blue
 //const int delay_3 = 2500;
 

@@ -367,7 +367,7 @@ void sigmarizz_task_function() {
             if (wrongcolour && ringDetector.get() < 50) {
                 button_enabled = false;
                 setIntake(127);
-                pros::delay(250);
+                pros::delay(235);
                 setIntake(-100);
                 pros::delay(1000);
                 setIntake(0);
