@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "globals.hpp"
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -105,6 +105,9 @@ void competition_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+
+// bool isRed = true;
+
 void autonomous() {
   chassis.pid_targets_reset();                // Resets PID targets to 0
   chassis.drive_imu_reset();                  // Reset gyro position to 0
@@ -135,58 +138,258 @@ bool wrongcolour = false;
 bool toggleRingSort = true;
   
 
-pros::Task sigmarizztaskcolorsort([]() {
-    while (true) {
-        // if (toggleRingSort && colorDetector.get_hue() < 20) {
-        colorDetector.set_led_pwm(100);
-        if (toggleRingSort) {
-          
-          if(colorDetector.get_hue() > 200 && colorDetector.get_hue() < 260 && colorDetector.get_proximity() > 45){
-          wrongcolour = true;
-         pros::delay(20);  // Add a delay to prevent excessive CPU usage
-          }
-      
-          if (wrongcolour && ringDetector.get() < 50) {
-            // Automatically trigger the behavior if the ring color is wrong
-            button_enabled = false;
-            setIntake(127);
-            pros::delay(240);
-            setIntake(-100);
-            pros::delay(1000);
-            setIntake(0);
-
-            button_enabled = true;
-            wrongcolour = false;
-            pros::delay(20);
-        }
-
-    }
-}});
-
-void opcontrol() {
-
-
-  // This is preference to what you like to drive on
-  pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
-
-  chassis.drive_brake_set(driver_preference_brake);
-
-// colour detector
-// pros::Task colordetectortask([&]() {
+// pros::Task sigmarizztaskcolorsort([]() {
 //     while (true) {
-//         if (colorDetector.get_hue() < 20) {
-//             wrongcolour = true;
+//         // if (toggleRingSort && colorDetector.get_hue() < 20) {
+//         colorDetector.set_led_pwm(100);
+//         if (toggleRingSort) {
+
+//           if (isRed) {
+
+//             if(colorDetector.get_hue() > 200 && colorDetector.get_hue() < 260 && colorDetector.get_proximity() > 45){
+//           wrongcolour = true;
+//          pros::delay(20);  // Add a delay to prevent excessive CPU usage
+//           }
+
+//           }
+          
+//           if (!isRed) {
+
+//             if(colorDetector.get_hue() < 20 && colorDetector.get_proximity() > 45){
+//           wrongcolour = true;
+//          pros::delay(20);  // Add a delay to prevent excessive CPU usage
+//           }
+//           }
+
+
+//           if (wrongcolour && ringDetector.get() < 50) {
+//             // Automatically trigger the behavior if the ring color is wrong
+//             button_enabled = false;
+//             setIntake(127);
+//             pros::delay(240);
+//             setIntake(-100);
+//             pros::delay(1000);
+//             setIntake(0);
+
+//             button_enabled = true;
+//             wrongcolour = false;
+//             pros::delay(20);
 //         }
-//         pros::delay(20);  // Add a delay to prevent excessive CPU usage
+
 //     }
-// });
+// }});
+
+// //void opcontrol() {
+
+  
+
+
+//   // This is preference to what you like to drive on
+//   pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
+
+//   chassis.drive_brake_set(driver_preference_brake);
+
+// // colour detector
+// // pros::Task colordetectortask([&]() {
+// //     while (true) {
+// //         if (colorDetector.get_hue() < 20) {
+// //             wrongcolour = true;
+// //         }
+// //         pros::delay(20);  // Add a delay to prevent excessive CPU usage
+// //     }
+// // });
 
 
 
  
 
 
-  while (true) {
+//   while (true) {
+//     // PID Tuner
+//     // After you find values that you're happy with, you'll have to set them in auton.cpp
+//     if (!pros::competition::is_connected()) {
+//       // Enable / Disable PID Tuner
+//       //  When enabled:
+//       //  * use A and Y to increment / decrement the constants
+//       //  * use the arrow keys to navigate the constants
+//       if (master.get_digital_new_press(DIGITAL_X))
+//         chassis.pid_tuner_toggle();
+
+//       // Trigger the selected autonomous routine
+//       if (master.get_digital(DIGITAL_B) && master.get_digital(DIGITAL_DOWN)) {
+//         autonomous();
+//         chassis.drive_brake_set(driver_preference_brake);
+//       }
+
+//       chassis.pid_tuner_iterate();  // Allow PID Tuner to iterate
+//     }
+
+//     // chassis.opcontrol_tank();  // Tank control
+//     chassis.opcontrol_arcade_standard(ez::SPLIT);   // Standard split arcade
+//     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
+//     //chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
+//     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
+
+//     // . . .
+//     // Put more user control code here!
+//     // . . .
+// // pros::v5::Controller master(CONTROLLER_MASTER);
+
+//         // if(!toggleRingSort){
+//         //   colorDetector.set_led_pwm(0);
+//         // }
+//         // else if(toggleRingSort){
+//         //   colorDetector.set_led_pwm(100);
+//         // }
+// // pros::v5::Controller.master.clearScreen();
+// //  pros::v5::Controller.master.setCursor(1,1);
+// //  pros::v5::Controller.master.print("Hello World");
+
+//     if(master.get_digital(DIGITAL_UP)){
+//         toggleRingSort = !toggleRingSort;
+//         pros::delay(300);
+//     }
+
+//     if(toggleRingSort){
+//        if(button_enabled && master.get_digital(DIGITAL_R1)){
+//       setIntake(127);
+//     }
+//       else if(button_enabled && master.get_digital(DIGITAL_X)){
+//       setIntake(-127);
+//     }
+//       else if(!wrongcolour){
+//       setIntake(0);
+//     }
+//     }
+//     if(!toggleRingSort){
+    
+//     if(master.get_digital(DIGITAL_R1)){
+//       setIntake(127);
+//     }
+//     else if(master.get_digital(DIGITAL_X)){
+//       setIntake(-127);
+//     }
+//     else {
+//       setIntake(0);
+//     }
+    
+//     };
+
+//     //setIntake((master.get_digital(DIGITAL_L1)-master.get_difital(DIGITAL_L2))*127);
+
+//     if(master.get_digital_new_press(DIGITAL_L2)){
+//         clamp1.toggle();
+
+//     }
+
+//         if(master.get_digital_new_press(DIGITAL_R2)){
+//         lifter.toggle();
+//     }
+
+
+
+
+//     if(master.get_digital(DIGITAL_Y)){
+//         setDoinker(60);
+//     }
+//     else if(master.get_digital(DIGITAL_L1)){
+//         setDoinker(-60);
+//     }
+//     else {
+//       setDoinker(0);
+//     }
+
+//     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
+//   }
+// }
+
+
+// pros::Task sigmarizztaskcolorsort([]() {
+//     while (true) {
+//         // if (toggleRingSort && colorDetector.get_hue() < 20) {
+//         colorDetector.set_led_pwm(100);
+//         if (toggleRingSort) {
+
+//           if (isRed) {
+
+//             if(colorDetector.get_hue() > 200 && colorDetector.get_hue() < 260 && colorDetector.get_proximity() > 45){
+//           wrongcolour = true;
+//          pros::delay(20);  // Add a delay to prevent excessive CPU usage
+//           }
+
+//           }
+          
+//           if (!isRed) {
+
+//             if(colorDetector.get_hue() < 20 && colorDetector.get_proximity() > 45){
+//           wrongcolour = true;
+//          pros::delay(20);  // Add a delay to prevent excessive CPU usage
+//           }
+//           }
+
+
+//           if (wrongcolour && ringDetector.get() < 50) {
+//             // Automatically trigger the behavior if the ring color is wrong
+//             button_enabled = false;
+//             setIntake(127);
+//             pros::delay(240);
+//             setIntake(-100);
+//             pros::delay(1000);
+//             setIntake(0);
+
+//             button_enabled = true;
+//             wrongcolour = false;
+//             pros::delay(20);
+//         }
+
+//     }
+// }});
+
+// Declare the task globally but do not start it here
+pros::Task* sigmarizztaskcolorsort = nullptr;
+
+// The task logic
+void sigmarizz_task_function() {
+    while (true) {
+        if (toggleRingSort) {
+            colorDetector.set_led_pwm(100);
+
+            if (isRed) {
+                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 260 && colorDetector.get_proximity() > 45) {
+                    wrongcolour = true;
+                }
+            } else {
+                if (colorDetector.get_hue() < 20 && colorDetector.get_proximity() > 45) {
+                    wrongcolour = true;
+                }
+            }
+
+            if (wrongcolour && ringDetector.get() < 50) {
+                button_enabled = false;
+                setIntake(127);
+                pros::delay(250);
+                setIntake(-100);
+                pros::delay(1000);
+                setIntake(0);
+                button_enabled = true;
+                wrongcolour = false;
+            }
+        }
+        pros::delay(20);  // Allow other tasks to run
+    }
+}
+
+// opcontrol() function
+void opcontrol() {
+    // Start the task only if it hasn't already been started
+    if (sigmarizztaskcolorsort == nullptr) {
+        sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+    }
+
+    pros::motor_brake_mode_e_t driver_preference_brake = MOTOR_BRAKE_COAST;
+    chassis.drive_brake_set(driver_preference_brake);
+
+      while (true) {
     // PID Tuner
     // After you find values that you're happy with, you'll have to set them in auton.cpp
     if (!pros::competition::is_connected()) {
@@ -284,5 +487,3 @@ void opcontrol() {
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
-
-

@@ -1,31 +1,32 @@
 #include "main.h"
-
+#include "globals.hpp"
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
 /////
-
+bool isRed = true;
 // These are out of 127
 const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 70;
+const int TURN_SPEED2 = 60;
 const int SWING_SPEED = 90;
 const int DRIVE_SPEED1 = 90;
 //ALSO FOR RIGHT REDmove to mogo
 const int slow_speed = 60; // speed for clamping mogo
-const int delay_1 = 800; //While dropping preload
+const int delay_1 = 870; //While dropping preload
 const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
 const double RIGHTblueforward = 25; // move to first donut
 const int delay_2 = 2000; // intaking and dropping first donut
 //For donut side(right blue(stack of 8 donuts)) 
 const double RIGHTblueturn3 = -170; // turn towards second donut
-const double RIGHTblueforward2 = 11; /
+const double RIGHTblueforward2 = 11; // move towards second donut
 
 const double RIGHTblueback = -22.75;// move backwards to mogo 
 const double RIGHTblueturn = -30; // turn towards mogo 
 const double RIGHTblueback2 = -15; // / move to second donut (group of 8)
 const int delay_3 = 2500; // intake second donut
 //Add on for mogo side(right red(donut in middle of spawn))
-const double RIGHTblueturn3b = 70; // turn to second donut
+const double RIGHTblueturn3b = 65; // turn to second donut
 const double RIGHTblueforward2b = 52; // move to second donut
 const double RIGHTblueback3b = -6; // move back after intaking second donut
 const int delay_3b = 350; // intake at first to intake second donut
@@ -33,7 +34,7 @@ const int delay_3c = 2500; // drop second donut on stake
 
 //ALSO FOR LEFT BLUE
 
-const double LEFTredback = -23.75; // move backwards to mogo
+const double LEFTredback = -22.75; // move backwards to mogo
 const double LEFTredturn = 30; // turn to mogo
 const double LEFTredback2 = -15; // pick up and clamp mogo
 //const int slow_speed = 60;
@@ -49,7 +50,7 @@ const double LEFTredforward2 = 14; // move to second donut on left red
 
 //mogo side
 
-const double LEFTredturn3b = -70; //Turn towards second donut on left blue
+const double LEFTredturn3b = -68; //Turn towards second donut on left blue
 const double LEFTredforward2b = 52; // move to second donut on left blue
 const double LEFTredback3b = -6; // move back as to not pick up red donut on left blue
 //const int delay_3 = 2500;
@@ -77,6 +78,8 @@ void default_constants() {
 //Nolanverysigma(right blue)
 
 void sigma_moderightblue() {
+
+  isRed = false;
 
   chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED); // move back towards mogo
   chassis.pid_wait();
@@ -131,6 +134,8 @@ void sigma_moderightblue() {
 //Nolanverysigma(right red)
 
 void sigma_moderightred() {
+
+  isRed = true;
 
   chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED); // move backwards to mogo
   chassis.pid_wait();
@@ -205,6 +210,8 @@ void sigma_moderightred() {
 
 void sigma_modeleftred() {
 
+  isRed = true;
+
     chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move back to mogo
   chassis.pid_wait();
 
@@ -263,6 +270,8 @@ void sigma_modeleftred() {
 //Emmaverysigma(left blue)
 
 void sigma_modeleftblue() {
+
+  isRed = false;
 
     chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move to mogo 
   chassis.pid_wait();
