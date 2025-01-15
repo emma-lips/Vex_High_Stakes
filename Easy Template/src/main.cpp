@@ -1,5 +1,5 @@
 #include "main.h"
-#include "globals.hpp"
+// #include "globals.hpp"
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -8,12 +8,12 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-2, -5, -3},     // Left Chassis Ports (negative port will reverse it!)
-    {15, 14, 11},  // Right Chassis Ports (negative port will reverse it!)
+    {-5, -3},     // Left Chassis Ports (negative port will reverse it!)
+    {15, 11},  // Right Chassis Ports (negative port will reverse it!)
 
     7,      // IMU Port
     2.75,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
-    375);   // Wheel RPM
+    450);   // Wheel RPM
 
     // right motors are 15, 14, 11
     // left motors are 2, 5, 3
@@ -381,6 +381,7 @@ void sigmarizz_task_function() {
 
 // opcontrol() function
 void opcontrol() {
+
     // Start the task only if it hasn't already been started
     if (sigmarizztaskcolorsort == nullptr) {
         sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
