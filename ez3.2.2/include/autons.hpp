@@ -1,7 +1,14 @@
 #pragma once
 
-void default_constants();
+#include "EZ-Template/drive/drive.hpp"
 
+extern Drive chassis;
+
+void sigma_robotskills();
+void sigma_moderightblue();
+void sigma_modeleftred();
+void sigma_modeleftblue();
+void sigma_moderightred();
 void drive_example();
 void turn_example();
 void drive_and_turn();
@@ -10,9 +17,5 @@ void swing_example();
 void motion_chaining();
 void combining_movements();
 void interfered_example();
-void odom_drive_example();
-void odom_pure_pursuit_example();
-void odom_pure_pursuit_wait_until_example();
-void odom_boomerang_example();
-void odom_boomerang_injected_pure_pursuit_example();
-void measure_offsets();
+
+void default_constants();

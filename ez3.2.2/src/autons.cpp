@@ -10,6 +10,57 @@ const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
 
+bool isRed = true;
+// These are out of 127
+const int DRIVE_SPEED = 110;
+const int TURN_SPEED = 70;
+const int TURN_SPEED2 = 60;
+const int SWING_SPEED = 90;
+const int DRIVE_SPEED1 = 90;
+//ALSO FOR RIGHT REDmove to mogo
+const int slow_speed = 60; // speed for clamping mogo
+const int delay_1 = 870; //While dropping preload
+const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
+const double RIGHTblueforward = 25; // move to first donut
+const int delay_2 = 2000; // intaking and dropping first donut
+//For donut side(right blue(stack of 8 donuts)) 
+const double RIGHTblueturn3 = -170; // turn towards second donut
+const double RIGHTblueforward2 = 11; // move towards second donut
+
+const double RIGHTblueback = -22.75;// move backwards to mogo 
+const double RIGHTblueturn = -30; // turn towards mogo 
+const double RIGHTblueback2 = -15; // / move to second donut (group of 8)
+const int delay_3 = 2500; // intake second donut
+//Add on for mogo side(right red(donut in middle of spawn))
+const double RIGHTblueturn3b = 65; // turn to second donut
+const double RIGHTblueforward2b = 50; // move to second donut
+const double RIGHTblueback3b = -6; // move back after intaking second donut
+const int delay_3b = 350; // intake at first to intake second donut
+const int delay_3c = 2500; // drop second donut on stake
+
+//ALSO FOR LEFT BLUE
+
+const double LEFTredback = -22.75; // move backwards to mogo
+const double LEFTredturn = 30; // turn to mogo
+const double LEFTredback2 = -15; // pick up and clamp mogo
+//const int slow_speed = 60;
+//const int delay_1 = 800;
+const double LEFTredturn2 = 90; // turn to first donut (preload does not count)
+const double LEFTredforward = 25; // move to first donut
+//const int delay_2 = 1800;
+
+// donut side
+
+const double LEFTredturn3 = 180; //turn towards stack of 8 donuts on left red
+const double LEFTredforward2 = 14; // move to second donut on left red
+
+//mogo side
+
+const double LEFTredturn3b = -68; //Turn towards second donut on left blue
+const double LEFTredforward2b = 50; // move to second donut on left blue
+const double LEFTredback3b = -6; // move back as to not pick up red donut on left blue
+//const int delay_3 = 2500;
+
 ///
 // Constants
 ///
@@ -47,6 +98,380 @@ void default_constants() {
 
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
+
+//Nolanverysigma(right blue)
+
+void sigma_moderightblue() {
+
+  isRed = false;
+
+  chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED); // move back towards mogo
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(RIGHTblueturn, TURN_SPEED); // turn toward mogo
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueback2, slow_speed, true); // move slowly to clamp mogo
+  chassis.pid_wait();
+
+  clamp1.extend(); // clamp mogo
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_1); // intake preload
+  setIntake(0);
+
+  chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED); // move to first donut
+  chassis.pid_wait();
+
+//Picking up first donut
+
+  setIntake(127);
+  pros::delay(delay_2); // intake first donut
+  setIntake(0);
+
+  chassis.pid_turn_set(RIGHTblueturn3, TURN_SPEED); // turn to stack of 8 donuts
+  chassis.pid_wait();
+
+//Right blue forward towards eight donuts
+
+  chassis.pid_drive_set(RIGHTblueforward2, DRIVE_SPEED); // move to second donut
+    chassis.pid_wait_until(6_in);
+  setIntake(127);
+  pros::delay(delay_2); // intake the second donut
+  setIntake(0);
+
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_3); // continue intaking second donut?
+  setIntake(0);
+
+  chassis.pid_drive_set(RIGHTblueback2, DRIVE_SPEED); // move back to avoid autonomous line
+  chassis.pid_wait();
+}
+
+
+//Nolanverysigma(right red)
+
+void sigma_moderightred() {
+
+  isRed = true;
+
+  chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED); // move backwards to mogo
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(RIGHTblueturn, TURN_SPEED); // turn to mogo
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueback2, slow_speed, true); // go slow into mogo
+  chassis.pid_wait();
+
+  clamp1.extend(); // clamp mogo
+  chassis.pid_wait();
+
+//Drop Preload
+
+  setIntake(127);
+  pros::delay(delay_1); // load preload
+  setIntake(0);
+
+  chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED);// move to first donut
+  chassis.pid_wait();
+
+//Pick up first floor donut
+
+  setIntake(127);
+  pros::delay(delay_2); // intake first donut
+  setIntake(0);
+
+//Add on
+  chassis.pid_turn_set(RIGHTblueturn3b, TURN_SPEED); // turn to second donut in spawn
+  
+  // lifter.extend();
+
+  chassis.pid_drive_set(RIGHTblueforward2b, DRIVE_SPEED); // move to second donut
+  chassis.pid_wait_until(5_in);
+  lifter.extend(); // extend lifter to get over tall donut
+  chassis.pid_wait_until(47_in);
+  lifter.retract(); // let down lifter to intake second donut
+  setIntake(127); // pick up second donut
+  pros::delay(600);
+  setIntake(0);
+  chassis.pid_wait();
+
+  lifter.retract();
+
+  //Pick up second raised donut
+
+  setIntake(127);
+  pros::delay(delay_3b);
+  setIntake(0);
+
+//Move back to avoid picking BLUE
+
+  chassis.pid_drive_set(RIGHTblueback3b, DRIVE_SPEED);
+  chassis.pid_wait();
+
+//Continue Intake
+
+  setIntake(127);
+  pros::delay(delay_3c);
+  setIntake(0);
+
+  
+}
+
+
+
+//Emmaverysigma(left red)
+
+void sigma_modeleftred() {
+
+  isRed = true;
+
+    chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move back to mogo
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(LEFTredturn, TURN_SPEED); // turn towards mogo
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredback2, slow_speed, true); // move to mogo slowly
+  chassis.pid_wait();
+
+  clamp1.extend(); // clamp mogo mech
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_1); // load preload
+  setIntake(0);
+
+  chassis.pid_turn_set(LEFTredturn2, TURN_SPEED); // turn towards first donut 
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED); // move towards first donut
+  chassis.pid_wait();
+
+//Picking up first donut
+
+  setIntake(127);
+  pros::delay(delay_2); // pick up first donut
+  setIntake(0);
+
+  chassis.pid_turn_set(LEFTredturn3, TURN_SPEED); // turn to stack of 8 donuts
+  chassis.pid_wait();
+
+//left red forward towards eight donuts
+
+  chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED); // move to second donut
+  chassis.pid_wait_until(6_in);
+  setIntake(127); // intake second donut
+  pros::delay(delay_2);
+  setIntake(0);
+
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_3); // finish off second donut just in case
+  setIntake(0);
+
+//move away from auton line
+  chassis.pid_drive_set(LEFTredback2, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(500); // just in case again?
+  setIntake(0);
+
+}
+
+//Emmaverysigma(left blue)
+
+void sigma_modeleftblue() {
+
+  isRed = false;
+
+    chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move to mogo 
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(LEFTredturn, TURN_SPEED); // turn to mogo
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredback2, slow_speed, true); // move slowly to mogo
+  chassis.pid_wait();
+
+  clamp1.extend(); // clamp mogo mech
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_1); // intake preload
+  setIntake(0);
+
+  chassis.pid_turn_set(LEFTredturn2, TURN_SPEED); // turn to first donut
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED); // move to first donut
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_2); // intake first donut
+  setIntake(0);
+
+//Add on
+  chassis.pid_turn_set(LEFTredturn3b, TURN_SPEED); // turn to raised donut in spawn
+
+  //lifter.extend();
+
+  chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED); // move towards raised second donut in spawn
+  chassis.pid_wait_until(5_in);
+  lifter.extend(); // extend lifter to get over raised second donut
+  chassis.pid_wait_until(47_in);
+  lifter.retract(); // let down lifter to intake raised second donut
+  setIntake(127);
+  pros::delay(600); // pick up second raised donut
+  setIntake(0);
+  chassis.pid_wait();
+
+  // Pick up second raised donut
+  // setIntake(127);
+  // pros::delay(delay_3b);
+  // setIntake(0);
+
+  chassis.pid_drive_set(LEFTredback3b, DRIVE_SPEED); // move back and avoid picking up red donut
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_3c); // load second donut onto stake
+  setIntake(0);
+
+  chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
+  chassis.pid_wait();
+
+  
+}
+
+const double robotskillsback = -13.5; // go backwards
+const double robotskillsturn = -90; // turn to stake
+const double robotskillsback2 = -20.5; // move to stake
+const double robotskillsturn2 = -185; // turn to first donut
+const double robotskillsforward = 23; // move to first/second/third donut
+const double robotskillsturnb = -85; //turn to second donut relative turn
+const double robotskillsturn3 = -0; //turn towards 3rd donut
+const double robotskillsforward2 = 8; // move to 4th donut
+const double robotskillsback3 = -3; // move back to not hit wall
+const double robotskillsturn4 = 130; //turn to 5th donut
+const double robotskillsforward3 = 11; // drive forward and secure 5th donut
+
+const double robotskillsintakeback = -80; // move intake back as to not jam donut
+const double robotskillsturn5 = -150; // turn to corner
+const double robotskillsback4 = -11; // back into corner
+const double robotskillsforward4 = 5; // get away from mogo
+
+//nolansupersigmarobotautonskills
+
+void sigma_robotskills() {
+
+  //Starting (backing up)
+  chassis.pid_drive_set(robotskillsback, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  //Turn towards stake
+  chassis.pid_turn_set(robotskillsturn, TURN_SPEED);
+  chassis.pid_wait();
+
+  //Slowly move towards stake
+  chassis.pid_drive_set(robotskillsback2, slow_speed);
+  chassis.pid_wait_until(18);
+  //Secure stake
+  clamp1.extend();
+  chassis.pid_wait();
+
+
+  //Turning towards 1st donut
+  chassis.pid_turn_set(robotskillsturn2, TURN_SPEED);
+  chassis.pid_wait();
+
+  //Drives towards 1st donut and secures preload and 1st donut
+  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
+  chassis.pid_wait_until(16);
+  setIntake(127);
+  //pros::delay(delay_3c);
+  chassis.pid_wait();
+  pros::delay(delay_3c);
+  
+  //Turn towards 2nd donut
+  chassis.pid_turn_relative_set(robotskillsturnb, TURN_SPEED);
+  chassis.pid_wait();
+
+  //Forward towards 2nd donut
+  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
+  chassis.pid_wait_until(16);
+  //setIntake(127);
+  //pros::delay(delay_3c);
+  chassis.pid_wait();
+  pros::delay(delay_3c);
+
+  //Turn towards 3rd donut
+  chassis.pid_turn_set(robotskillsturn3, TURN_SPEED);
+  chassis.pid_wait();
+
+  //Drive forward to 3rd and 4th donut
+  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED1);
+  chassis.pid_wait_until(16);
+  //setIntake(127);
+  //pros::delay(delay_3c);
+  chassis.pid_wait();
+
+  //Moving to 4th donut
+  chassis.pid_drive_set(robotskillsforward2, DRIVE_SPEED1);
+  chassis.pid_wait();
+
+  // go backwards to not hit the wall
+  chassis.pid_drive_set(robotskillsback3, slow_speed);
+
+  //Turn to 5th donut
+  chassis.pid_turn_set(robotskillsturn4, TURN_SPEED);
+  chassis.pid_wait();
+
+  //Drive forward and secures 5th donut
+  chassis.pid_drive_set(robotskillsforward3, DRIVE_SPEED1);
+  chassis.pid_wait_until(10);
+  //pros::delay(delay_3c);
+  chassis.pid_wait();
+  pros::delay(delay_3c);
+
+  setIntake(0);
+  chassis.pid_wait();
+
+  // roll intake back so we dont hook onto donut on stake
+  setIntake(robotskillsintakeback);
+  pros::delay(500);
+  setIntake(0);
+
+  // turn before backing up into corner
+  chassis.pid_turn_set(robotskillsturn5, TURN_SPEED);
+  chassis.pid_wait();
+
+  // back into corner
+  chassis.pid_drive_set(robotskillsback4, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  // let it go
+  clamp1.retract();
+  pros::delay(1000);
+
+  // move forward after backing into corner
+  chassis.pid_drive_set(robotskillsforward4, DRIVE_SPEED);
+  chassis.pid_wait();
+
+}
+
 
 ///
 // Drive Example
