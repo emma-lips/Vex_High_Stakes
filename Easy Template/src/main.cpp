@@ -133,6 +133,7 @@ void opcontrol() {
 		left_mg.move(dir - turn);                      // Sets left motor voltage
 		right_mg.move(dir + turn);                     // Sets right motor voltage
 
+
     if(master.get_digital(DIGITAL_UP)){
         toggleRingSort = !toggleRingSort;
         pros::delay(300);
