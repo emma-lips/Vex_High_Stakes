@@ -68,11 +68,11 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
-      // Auton("robotskills\n\nyes", sigma_robotskills),
-      // Auton("rightblue\n\nyes", sigma_moderightblue),
-      // Auton("leftred\n\nyes", sigma_modeleftred),
-      // Auton("rightred\n\nyes", sigma_moderightred),
-      // Auton("leftblue\n\nyes", sigma_modeleftblue),
+      Auton("robotskills\n\nyes", sigma_robotskills),
+      Auton("rightblue\n\nyes", sigma_moderightblue),
+      Auton("leftred\n\nyes", sigma_modeleftred),
+      Auton("rightred\n\nyes", sigma_moderightred),
+      Auton("leftblue\n\nyes", sigma_modeleftblue),
       Auton("skibiid\n\nyes", skibidi_rizz),
       Auton("Example Drive\n\nDrive forward and come back.", drive_example),
       Auton("Example Turn\n\nTurn 3 times.", turn_example),
@@ -129,6 +129,8 @@ void autonomous() {
   chassis.drive_sensor_reset();               // Reset drive sensors to 0
   chassis.odom_xyt_set(0_in, 0_in, 0_deg);    // Set the current position, you can start at a specific position with this
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
+
+
 
   /*
   Odometry and Pure Pursuit are not magic
@@ -256,7 +258,7 @@ pros::Optical colorDetector(18);
 bool button_enabled = true;
 bool wrongcolour = false;
 bool toggleRingSort = true;
-bool isRed;
+// bool isRed;
 
 
 // Declare the task globally but do not start it here

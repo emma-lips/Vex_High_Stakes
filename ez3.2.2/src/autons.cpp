@@ -13,7 +13,7 @@ const int TURN_SPEED = 70;
 const int TURN_SPEED2 = 60;
 const int SWING_SPEED = 90;
 const int DRIVE_SPEED1 = 90;
-//ALSO FOR RIGHT REDmove to mogo
+//ALSO FOR RIGHT RED move to mogo
 const int slow_speed = 60; // speed for clamping mogo
 const int delay_1 = 870; //While dropping preload
 const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
@@ -99,8 +99,9 @@ void default_constants() {
 
 void sigma_moderightblue() {
 
+  
   isRed = false;
-
+  
   chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED); // move back towards mogo
   chassis.pid_wait();
 
@@ -372,6 +373,8 @@ const double robotskillsforward4 = 5; // get away from mogo
 //nolansupersigmarobotautonskills
 
 void sigma_robotskills() {
+
+  isRed = false;
 
   //Starting (backing up)
   chassis.pid_drive_set(robotskillsback, DRIVE_SPEED);

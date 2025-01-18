@@ -1,6 +1,6 @@
 #include "main.h"
 
-// extern bool isRed;
+extern bool isRed;
 
 //for motors
 extern pros::Motor intake11W;
