@@ -1,8 +1,8 @@
 #pragma once
 
-#include "EZ-Template/drive/drive.hpp"
+// #include "EZ-Template/drive/drive.hpp"
 
-extern Drive chassis;
+// extern Drive chassis;
 
 void sigma_robotskills();
 void sigma_moderightblue();
@@ -10,6 +10,7 @@ void sigma_modeleftred();
 void sigma_modeleftblue();
 void sigma_moderightred();
 void drive_example();
+void skibidi_rizz();
 void turn_example();
 void drive_and_turn();
 void wait_until_change_speed();

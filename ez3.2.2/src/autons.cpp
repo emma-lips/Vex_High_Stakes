@@ -1,14 +1,10 @@
 #include "main.h"
-
+#include "globals.hpp"
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
 /////
 
-// These are out of 127
-const int DRIVE_SPEED = 110;
-const int TURN_SPEED = 90;
-const int SWING_SPEED = 110;
 
 bool isRed = true;
 // These are out of 127
@@ -473,6 +469,10 @@ void sigma_robotskills() {
 }
 
 
+void skibidi_rizz() {
+  chassis.pid_odom_set(24, 100, true);
+
+}
 ///
 // Drive Example
 ///
