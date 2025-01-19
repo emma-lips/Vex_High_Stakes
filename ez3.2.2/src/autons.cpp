@@ -34,12 +34,12 @@ const double RIGHTblueforward2b = 50; // move to second donut
 const double RIGHTblueback3b = -6; // move back after intaking second donut
 const int delay_3b = 350; // intake at first to intake second donut
 const int delay_3c = 2500; // drop second donut on stake
-const double RIGHTblueturn4 = -250;
-const double RIGHTblueback4 = 4;
-const double RIGHTblueforward4 = -5;
-const double RIGHTblueturn5 = 80;
-const double RIGHTblueback5 = 35;
-const double RIGHTbluebyeautonline = -2;
+const double RIGHTbluebyeautonline = -2; //move away from auton ilne after second donut
+const double RIGHTblueturn4 = -205; //turn to third donut (beside second donut)
+const double RIGHTblueback4 = 4; // move towards third donut
+const double RIGHTblueforward4 = -5; // move away from auton line
+const double RIGHTblueturn5 = 80; // turn to ladder
+const double RIGHTblueback5 = 35; // go to ladder
 
 //ALSO FOR LEFT BLUE
 
@@ -64,12 +64,12 @@ const double LEFTredforward2b = 50; // move to second donut on left blue
 const double LEFTredback3b = -6; // move back as to not pick up red donut on left blue
 //const int delay_3 = 2500;
 
-const double LEFTredturn4 = 250;
-const double LEFTredback4 = 4;
-const double LEFTredforward4 = -5;
-const double LEFTredturn5 = -80;
-const double LEFTredback5 = 35;
-const double LEFTredbyeautonline = -2;
+const double LEFTredbyeautonline = -2; //move away from auton ilne after second donut
+const double LEFTredturn4 = 205; //turn to third donut (beside second donut)
+const double LEFTredback4 = 4; // move towards third donut
+const double LEFTredforward4 = -5; // move away from auton line
+const double LEFTredturn5 = -80; // turn to ladder
+const double LEFTredback5 = 35; // go to ladder
 
 ///
 // Constants
@@ -160,22 +160,22 @@ void sigma_moderightblue() {
   chassis.pid_drive_set(RIGHTbluebyeautonline, DRIVE_SPEED); // move back to avoid autonomous line
   chassis.pid_wait();
 
-  chassis.pid_turn_set(RIGHTblueturn4, TURN_SPEED);
+  chassis.pid_turn_set(RIGHTblueturn4, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait();
 
-  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);
+  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait_until(1_in);
   setIntake(127);
   pros::delay(delay_3);
   setIntake(0);
 
-  chassis.pid_drive_set(RIGHTblueforward4, DRIVE_SPEED);
+  chassis.pid_drive_set(RIGHTblueforward4, DRIVE_SPEED);// move away from auton line
   chassis.pid_wait();
 
-  chassis.pid_turn_set(RIGHTblueturn5, TURN_SPEED);
+  chassis.pid_turn_set(RIGHTblueturn5, TURN_SPEED);// turn to ladder
   chassis.pid_wait();
 
-  chassis.pid_drive_set(RIGHTblueback5, FULL_SPEED);
+  chassis.pid_drive_set(RIGHTblueback5, FULL_SPEED);// go to ladder
   chassis.pid_wait();
 
 
@@ -316,22 +316,22 @@ void sigma_modeleftred() {
   // pros::delay(500); // just in case again?
   // setIntake(0);
 
-  chassis.pid_turn_set(LEFTredturn4, TURN_SPEED);
+  chassis.pid_turn_set(LEFTredturn4, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);
+  chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait_until(1_in);
   setIntake(127);
   pros::delay(delay_3);
   setIntake(0);
   
-  chassis.pid_drive_set(LEFTredforward4, DRIVE_SPEED);
+  chassis.pid_drive_set(LEFTredforward4, DRIVE_SPEED);// move away from auton line
   chassis.pid_wait();
 
-  chassis.pid_turn_set(LEFTredturn5, TURN_SPEED);
+  chassis.pid_turn_set(LEFTredturn5, TURN_SPEED);// turn to ladder
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredback5, FULL_SPEED);
+  chassis.pid_drive_set(LEFTredback5, FULL_SPEED);// go to ladder
   chassis.pid_wait();
 }
 
