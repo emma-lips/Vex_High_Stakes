@@ -20,12 +20,12 @@ const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preloa
 const double RIGHTblueforward = 25; // move to first donut
 const int delay_2 = 2000; // intaking and dropping first donut
 //For donut side(right blue(stack of 8 donuts)) 
-const double RIGHTblueturn3 = -170; // turn towards second donut
-const double RIGHTblueforward2 = 11; // move towards second donut
+const double RIGHTblueturn3 = -175; // turn towards second donut
+const double RIGHTblueforward2 = 9; // move towards second donut
 
 const double RIGHTblueback = -22.75;// move backwards to mogo 
 const double RIGHTblueturn = -30; // turn towards mogo 
-const double RIGHTblueback2 = -15; // / move to second donut (group of 8)
+const double RIGHTblueback2 = -15; // / move to mogo (group of 8)
 const int delay_3 = 2500; // intake second donut
 //Add on for mogo side(right red(donut in middle of spawn))
 const double RIGHTblueturn3b = 65; // turn to second donut
@@ -116,19 +116,19 @@ void sigma_moderightblue() {
 
   setIntake(127);
   pros::delay(delay_1); // intake preload
-  setIntake(0);
+  // setIntake(0);
 
   chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
   chassis.pid_wait();
 
-  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED); // move to first donut
+  chassis.pid_drive_set(23, DRIVE_SPEED); // move to first donut
   chassis.pid_wait();
 
 //Picking up first donut
 
   setIntake(127);
-  pros::delay(delay_2); // intake first donut
-  setIntake(0);
+  pros::delay(1000); // intake first donut
+  // setIntake(0);
 
   chassis.pid_turn_set(RIGHTblueturn3, TURN_SPEED); // turn to stack of 8 donuts
   chassis.pid_wait();
@@ -138,17 +138,33 @@ void sigma_moderightblue() {
   chassis.pid_drive_set(RIGHTblueforward2, DRIVE_SPEED); // move to second donut
     chassis.pid_wait_until(6_in);
   setIntake(127);
-  pros::delay(delay_2); // intake the second donut
-  setIntake(0);
+  pros::delay(1000); // intake the second donut
+  // setIntake(0);
 
   chassis.pid_wait();
 
+  chassis.pid_drive_set(-2, DRIVE_SPEED); // move back to avoid autonomous line
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(-205, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(4, DRIVE_SPEED);
+  chassis.pid_wait_until(1_in);
   setIntake(127);
-  pros::delay(delay_3); // continue intaking second donut?
+  pros::delay(delay_3);
   setIntake(0);
 
-  chassis.pid_drive_set(RIGHTblueback2, DRIVE_SPEED); // move back to avoid autonomous line
+  chassis.pid_drive_set(-5, DRIVE_SPEED);
   chassis.pid_wait();
+
+  chassis.pid_turn_set(80, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(35, 127);
+  chassis.pid_wait();
+
+
 }
 
 
