@@ -296,6 +296,7 @@ void sigmarizz_task_function() {
 }
 
 void opcontrol() {
+  chassis.opcontrol_speed_max_set(99);
       // Start the task only if it hasn't already been started
     if (sigmarizztaskcolorsort == nullptr) {
         sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
