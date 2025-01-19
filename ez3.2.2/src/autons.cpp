@@ -17,31 +17,35 @@ const int DRIVE_SPEED1 = 90;
 //ALSO FOR RIGHT RED move to mogo
 const int slow_speed = 60; // speed for clamping mogo
 const int delay_1 = 870; //While dropping preload
-const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
-const double RIGHTblueforward = 23; // move to first donut
-const int delay_2 = 1000; // intaking and dropping first donut
-//For donut side(right blue(stack of 8 donuts)) 
-const double RIGHTblueturn3 = -175; // turn towards second donut
-const double RIGHTblueforward2 = 9; // move towards second donut
 
 const double RIGHTblueback = -22.75;// move backwards to mogo 
 const double RIGHTblueturn = -30; // turn towards mogo 
 const double RIGHTblueback2 = -15; // / move to mogo (group of 8)
+const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
+const double RIGHTblueforward = 23; // move to first donut
+const int delay_2 = 1000; // intaking and dropping first donut
+
+//For donut side(right blue(stack of 8 donuts)) 
+const double RIGHTblueturn3 = -175; // turn towards second donut
+const double RIGHTblueforward2 = 9; // move towards second donut
 const int delay_3 = 1500; // intake second donut
+
 //Add on for mogo side(right red(donut in middle of spawn))
 const double RIGHTblueturn3b = 65; // turn to second donut
 const double RIGHTblueforward2b = 50; // move to second donut
 const double RIGHTblueback3b = -6; // move back after intaking second donut
 const int delay_3b = 350; // intake at first to intake second donut
 const int delay_3c = 2500; // drop second donut on stake
-const double RIGHTbluebyeautonline = -2; //move away from auton ilne after second donut
-const double RIGHTblueturn4 = -205; //turn to third donut (beside second donut)
-const double RIGHTblueback4 = 4; // move towards third donut
-const double RIGHTblueforward4 = -5; // move away from auton line
-const double RIGHTblueturn5 = 80; // turn to ladder
-const double RIGHTblueback5 = 35; // go to ladder
 
-//ALSO FOR LEFT BLUE
+//continue RIGHTblue
+const double RIGHTbluebyeautonline = -2; //move away from auton line after second donut
+const double RIGHTblueturn4 = -205; //turn to third donut (beside second donut)
+const double RIGHTblueforward4 = 4; // move towards third donut
+const double RIGHTblueback4 = -5; // move away from auton line
+const double RIGHTblueturn5 = 80; // turn to ladder
+const double RIGHTblueforward5 = 35; // go to ladder
+
+//LEFT RED AND ALSO FOR LEFT BLUE
 
 const double LEFTredback = -22.75; // move backwards to mogo
 const double LEFTredturn = 30; // turn to mogo
@@ -57,19 +61,22 @@ const double LEFTredforward = 23; // move to first donut
 const double LEFTredturn3 = 180; //turn towards stack of 8 donuts on left red
 const double LEFTredforward2 = 14; // move to second donut on left red
 
-//mogo side
+//mogo side aka LEFT blue
 
 const double LEFTredturn3b = -68; //Turn towards second donut on left blue
 const double LEFTredforward2b = 50; // move to second donut on left blue
 const double LEFTredback3b = -6; // move back as to not pick up red donut on left blue
 //const int delay_3 = 2500;
 
-const double LEFTredbyeautonline = -2; //move away from auton ilne after second donut
+//continue LEFTred
+const double LEFTredbyeautonline = -2; //move away from auton line after second donut
 const double LEFTredturn4 = 205; //turn to third donut (beside second donut)
-const double LEFTredback4 = 4; // move towards third donut
-const double LEFTredforward4 = -5; // move away from auton line
+const double LEFTredforward4 = 4; // move towards third donut
+const double LEFTredback4 = -5; // move away from auton line
 const double LEFTredturn5 = -80; // turn to ladder
-const double LEFTredback5 = 35; // go to ladder
+const double LEFTredforward5 = 35; // go to ladder
+
+
 
 ///
 // Constants
@@ -163,19 +170,19 @@ void sigma_moderightblue() {
   chassis.pid_turn_set(RIGHTblueturn4, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait();
 
-  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move towards third donut
+  chassis.pid_drive_set(RIGHTblueforward4, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait_until(1_in);
   setIntake(127);
   pros::delay(delay_3);
   setIntake(0);
 
-  chassis.pid_drive_set(RIGHTblueforward4, DRIVE_SPEED);// move away from auton line
+  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move away from auton line
   chassis.pid_wait();
 
   chassis.pid_turn_set(RIGHTblueturn5, TURN_SPEED);// turn to ladder
   chassis.pid_wait();
 
-  chassis.pid_drive_set(RIGHTblueback5, FULL_SPEED);// go to ladder
+  chassis.pid_drive_set(RIGHTblueforward5, FULL_SPEED);// go to ladder
   chassis.pid_wait();
 
 
@@ -260,7 +267,10 @@ void sigma_moderightred() {
 //Emmaverysigma(left red)
 
 void sigma_modeleftred() {
-
+    //   // Start the task only if it hasn't already been started
+    // if (sigmarizztaskcolorsort == nullptr) {
+    //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+    // }
   isRed = true;
 
     chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move back to mogo
@@ -319,19 +329,19 @@ void sigma_modeleftred() {
   chassis.pid_turn_set(LEFTredturn4, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);// move towards third donut
+  chassis.pid_drive_set(LEFTredforward4, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait_until(1_in);
   setIntake(127);
   pros::delay(delay_3);
   setIntake(0);
   
-  chassis.pid_drive_set(LEFTredforward4, DRIVE_SPEED);// move away from auton line
+  chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);// move away from auton line
   chassis.pid_wait();
 
   chassis.pid_turn_set(LEFTredturn5, TURN_SPEED);// turn to ladder
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredback5, FULL_SPEED);// go to ladder
+  chassis.pid_drive_set(LEFTredforward5, FULL_SPEED);// go to ladder
   chassis.pid_wait();
 }
 
