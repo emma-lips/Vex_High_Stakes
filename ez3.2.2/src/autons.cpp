@@ -9,6 +9,7 @@
 bool isRed = true;
 // These are out of 127
 const int DRIVE_SPEED = 110;
+const int FULL_SPEED = 127;
 const int TURN_SPEED = 70;
 const int TURN_SPEED2 = 60;
 const int SWING_SPEED = 90;
@@ -17,8 +18,8 @@ const int DRIVE_SPEED1 = 90;
 const int slow_speed = 60; // speed for clamping mogo
 const int delay_1 = 870; //While dropping preload
 const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
-const double RIGHTblueforward = 25; // move to first donut
-const int delay_2 = 2000; // intaking and dropping first donut
+const double RIGHTblueforward = 23; // move to first donut
+const int delay_2 = 1000; // intaking and dropping first donut
 //For donut side(right blue(stack of 8 donuts)) 
 const double RIGHTblueturn3 = -175; // turn towards second donut
 const double RIGHTblueforward2 = 9; // move towards second donut
@@ -26,13 +27,19 @@ const double RIGHTblueforward2 = 9; // move towards second donut
 const double RIGHTblueback = -22.75;// move backwards to mogo 
 const double RIGHTblueturn = -30; // turn towards mogo 
 const double RIGHTblueback2 = -15; // / move to mogo (group of 8)
-const int delay_3 = 2500; // intake second donut
+const int delay_3 = 1500; // intake second donut
 //Add on for mogo side(right red(donut in middle of spawn))
 const double RIGHTblueturn3b = 65; // turn to second donut
 const double RIGHTblueforward2b = 50; // move to second donut
 const double RIGHTblueback3b = -6; // move back after intaking second donut
 const int delay_3b = 350; // intake at first to intake second donut
 const int delay_3c = 2500; // drop second donut on stake
+const double RIGHTblueturn4 = -250;
+const double RIGHTblueback4 = 4;
+const double RIGHTblueforward4 = -5;
+const double RIGHTblueturn5 = 80;
+const double RIGHTblueback5 = 35;
+const double RIGHTbluebyeautonline = -2;
 
 //ALSO FOR LEFT BLUE
 
@@ -42,7 +49,7 @@ const double LEFTredback2 = -15; // pick up and clamp mogo
 //const int slow_speed = 60;
 //const int delay_1 = 800;
 const double LEFTredturn2 = 90; // turn to first donut (preload does not count)
-const double LEFTredforward = 25; // move to first donut
+const double LEFTredforward = 23; // move to first donut
 //const int delay_2 = 1800;
 
 // donut side
@@ -56,6 +63,13 @@ const double LEFTredturn3b = -68; //Turn towards second donut on left blue
 const double LEFTredforward2b = 50; // move to second donut on left blue
 const double LEFTredback3b = -6; // move back as to not pick up red donut on left blue
 //const int delay_3 = 2500;
+
+const double LEFTredturn4 = 250;
+const double LEFTredback4 = 4;
+const double LEFTredforward4 = -5;
+const double LEFTredturn5 = -80;
+const double LEFTredback5 = 35;
+const double LEFTredbyeautonline = -2;
 
 ///
 // Constants
@@ -121,13 +135,13 @@ void sigma_moderightblue() {
   chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
   chassis.pid_wait();
 
-  chassis.pid_drive_set(23, DRIVE_SPEED); // move to first donut
+  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED); // move to first donut
   chassis.pid_wait();
 
 //Picking up first donut
 
   setIntake(127);
-  pros::delay(1000); // intake first donut
+  pros::delay(delay_2); // intake first donut
   // setIntake(0);
 
   chassis.pid_turn_set(RIGHTblueturn3, TURN_SPEED); // turn to stack of 8 donuts
@@ -138,30 +152,30 @@ void sigma_moderightblue() {
   chassis.pid_drive_set(RIGHTblueforward2, DRIVE_SPEED); // move to second donut
     chassis.pid_wait_until(6_in);
   setIntake(127);
-  pros::delay(1000); // intake the second donut
+  pros::delay(delay_2); // intake the second donut
   // setIntake(0);
 
   chassis.pid_wait();
 
-  chassis.pid_drive_set(-2, DRIVE_SPEED); // move back to avoid autonomous line
+  chassis.pid_drive_set(RIGHTbluebyeautonline, DRIVE_SPEED); // move back to avoid autonomous line
   chassis.pid_wait();
 
-  chassis.pid_turn_set(-205, TURN_SPEED);
+  chassis.pid_turn_set(RIGHTblueturn4, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(4, DRIVE_SPEED);
+  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);
   chassis.pid_wait_until(1_in);
   setIntake(127);
   pros::delay(delay_3);
   setIntake(0);
 
-  chassis.pid_drive_set(-5, DRIVE_SPEED);
+  chassis.pid_drive_set(RIGHTblueforward4, DRIVE_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_turn_set(80, TURN_SPEED);
+  chassis.pid_turn_set(RIGHTblueturn5, TURN_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(35, 127);
+  chassis.pid_drive_set(RIGHTblueback5, FULL_SPEED);
   chassis.pid_wait();
 
 
@@ -263,7 +277,7 @@ void sigma_modeleftred() {
 
   setIntake(127);
   pros::delay(delay_1); // load preload
-  setIntake(0);
+  //setIntake(0);
 
   chassis.pid_turn_set(LEFTredturn2, TURN_SPEED); // turn towards first donut 
   chassis.pid_wait();
@@ -275,7 +289,7 @@ void sigma_modeleftred() {
 
   setIntake(127);
   pros::delay(delay_2); // pick up first donut
-  setIntake(0);
+  //setIntake(0);
 
   chassis.pid_turn_set(LEFTredturn3, TURN_SPEED); // turn to stack of 8 donuts
   chassis.pid_wait();
@@ -286,22 +300,39 @@ void sigma_modeleftred() {
   chassis.pid_wait_until(6_in);
   setIntake(127); // intake second donut
   pros::delay(delay_2);
-  setIntake(0);
+  //setIntake(0);
 
   chassis.pid_wait();
 
-  setIntake(127);
-  pros::delay(delay_3); // finish off second donut just in case
-  setIntake(0);
+  // setIntake(127);
+  // pros::delay(delay_3); // finish off second donut just in case
+  // setIntake(0);
 
 //move away from auton line
-  chassis.pid_drive_set(LEFTredback2, DRIVE_SPEED);
+  chassis.pid_drive_set(LEFTredbyeautonline, DRIVE_SPEED);
   chassis.pid_wait();
 
-  setIntake(127);
-  pros::delay(500); // just in case again?
-  setIntake(0);
+  // setIntake(127);
+  // pros::delay(500); // just in case again?
+  // setIntake(0);
 
+  chassis.pid_turn_set(LEFTredturn4, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);
+  chassis.pid_wait_until(1_in);
+  setIntake(127);
+  pros::delay(delay_3);
+  setIntake(0);
+  
+  chassis.pid_drive_set(LEFTredforward4, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(LEFTredturn5, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredback5, FULL_SPEED);
+  chassis.pid_wait();
 }
 
 //Emmaverysigma(left blue)
