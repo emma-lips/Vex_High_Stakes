@@ -123,6 +123,49 @@ void competition_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+// ring detector
+pros::Distance ringDetector(4);
+pros::Optical colorDetector(18);
+bool button_enabled = true;
+bool wrongcolour = false;
+bool toggleRingSort = true;
+// bool isRed;
+
+
+// Declare the task globally but do not start it here
+pros::Task* sigmarizztaskcolorsort = nullptr;
+
+// The task logic
+void sigmarizz_task_function() {
+    while (true) {
+        if (toggleRingSort) {
+            colorDetector.set_led_pwm(100);
+
+            if (isRed) {
+                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 260 && colorDetector.get_proximity() > 45) {
+                    wrongcolour = true;
+                }
+            } else {
+                if (colorDetector.get_hue() < 20 && colorDetector.get_proximity() > 45) {
+                    wrongcolour = true;
+                }
+            }
+
+            if (wrongcolour && ringDetector.get() < 50) {
+                button_enabled = false;
+                setIntake(127);
+                pros::delay(235);
+                setIntake(-100);
+                pros::delay(1000);
+                setIntake(0);
+                button_enabled = true;
+                wrongcolour = false;
+            }
+        }
+        pros::delay(20);  // Allow other tasks to run
+    }
+}
+
 void autonomous() {
   chassis.pid_targets_reset();                // Resets PID targets to 0
   chassis.drive_imu_reset();                  // Reset gyro position to 0
@@ -130,6 +173,12 @@ void autonomous() {
   chassis.odom_xyt_set(0_in, 0_in, 0_deg);    // Set the current position, you can start at a specific position with this
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
 
+  
+  chassis.opcontrol_speed_max_set(127);
+      // Start the task only if it hasn't already been started
+    if (sigmarizztaskcolorsort == nullptr) {
+        sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+    }
 
 
   /*
@@ -252,51 +301,10 @@ void ez_template_extras() {
  * task, not resume it from where it left off.
  */
 
-// ring detector
-pros::Distance ringDetector(4);
-pros::Optical colorDetector(18);
-bool button_enabled = true;
-bool wrongcolour = false;
-bool toggleRingSort = true;
-// bool isRed;
 
-
-// Declare the task globally but do not start it here
-pros::Task* sigmarizztaskcolorsort = nullptr;
-
-// The task logic
-void sigmarizz_task_function() {
-    while (true) {
-        if (toggleRingSort) {
-            colorDetector.set_led_pwm(100);
-
-            if (isRed) {
-                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 260 && colorDetector.get_proximity() > 45) {
-                    wrongcolour = true;
-                }
-            } else {
-                if (colorDetector.get_hue() < 20 && colorDetector.get_proximity() > 45) {
-                    wrongcolour = true;
-                }
-            }
-
-            if (wrongcolour && ringDetector.get() < 50) {
-                button_enabled = false;
-                setIntake(127);
-                pros::delay(235);
-                setIntake(-100);
-                pros::delay(1000);
-                setIntake(0);
-                button_enabled = true;
-                wrongcolour = false;
-            }
-        }
-        pros::delay(20);  // Allow other tasks to run
-    }
-}
 
 void opcontrol() {
-  chassis.opcontrol_speed_max_set(99);
+  chassis.opcontrol_speed_max_set(113);
       // Start the task only if it hasn't already been started
     if (sigmarizztaskcolorsort == nullptr) {
         sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);

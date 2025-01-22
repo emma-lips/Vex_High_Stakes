@@ -22,7 +22,7 @@ const double RIGHTblueback = -22.75;// move backwards to mogo
 const double RIGHTblueturn = -30; // turn towards mogo 
 const double RIGHTblueback2 = -15; // / move to mogo (group of 8)
 const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
-const double RIGHTblueforward = 24; // move to first donut
+const double RIGHTblueforward = 25; // move to first donut
 const int delay_2 = 1000; // intaking and dropping first donut
 
 //For donut side(right blue(stack of 8 donuts)) 
@@ -39,8 +39,8 @@ const int delay_3c = 2500; // drop second donut on stake
 
 //continue RIGHTblue
 const double RIGHTbluebyeautonline = -2; //move away from auton line after second donut
-const double RIGHTblueturn4 = -210; //turn to third donut (beside second donut)
-const double RIGHTblueforward4 = 4.5; // move towards third donut
+const double RIGHTblueturn4 = -215; //turn to third donut (beside second donut)
+const double RIGHTblueforward4 = 5; // move towards third donut
 const double RIGHTblueback4 = -5; // move away from auton line
 const double RIGHTblueturn5 = 80; // turn to ladder
 const double RIGHTblueforward5 = 35; // go to ladder
