@@ -11,6 +11,7 @@ void sigma_modeleftblue();
 void sigma_moderightred();
 void drive_example();
 void skibidi_rizz();
+void Version2_LeftBlue();
 void turn_example();
 void drive_and_turn();
 void wait_until_change_speed();

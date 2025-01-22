@@ -76,6 +76,7 @@ const double LEFTredback4 = -5; // move away from auton line
 const double LEFTredturn5 = -80; // turn to ladder
 const double LEFTredforward5 = 35; // go to ladder
 
+//Version 2 Left Blue
 
 
 ///
@@ -407,6 +408,79 @@ void sigma_modeleftblue() {
   chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
   chassis.pid_wait();
 
+  
+}
+
+void Version2_LeftBlue() {
+
+  isRed = false;
+
+    chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move to mogo 
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(LEFTredturn, TURN_SPEED); // turn to mogo
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredback2, slow_speed, true); // move slowly to mogo
+  chassis.pid_wait();
+
+  clamp1.extend(); // clamp mogo mech
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_1); // intake preload
+  setIntake(0);
+
+  chassis.pid_turn_set(LEFTredturn2, TURN_SPEED); // turn to first donut
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED); // move to first donut
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_2); // intake first donut
+  setIntake(0);
+
+//Add on
+  chassis.pid_turn_set(LEFTredturn3b, TURN_SPEED); // turn to raised donut in spawn
+
+  //lifter.extend();
+
+  chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED); // move towards raised second donut in spawn
+  chassis.pid_wait_until(5_in);
+  lifter.extend(); // extend lifter to get over raised second donut
+  chassis.pid_wait_until(47_in);
+  lifter.retract(); // let down lifter to intake raised second donut
+  setIntake(127);
+  pros::delay(600); // pick up second raised donut
+  setIntake(0);
+  chassis.pid_wait();
+
+  // Pick up second raised donut
+  // setIntake(127);
+  // pros::delay(delay_3b);
+  // setIntake(0);
+
+  chassis.pid_drive_set(LEFTredback3b, DRIVE_SPEED); // move back and avoid picking up red donut
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_3c); // load second donut onto stake
+  setIntake(0);
+
+  chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
+  chassis.pid_wait();
+
+// Version 2 Left Blue
+const double v2lbturn = 50; // Turn towards 2nd stake
+const double v2lbbackward = -34; // Going to 2nd stake
+
+
+  chassis.pid_turn_set(v2lbturn, TURN_SPEED); // Turn towards 2nd stake
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(v2lbbackward, DRIVE_SPEED); // Going to 2nd stake
+  chassis.pid_wait();
   
 }
 

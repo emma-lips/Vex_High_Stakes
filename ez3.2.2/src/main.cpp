@@ -74,6 +74,7 @@ ez::as::auton_selector.autons_add({
       Auton("rightred\n\nyes", sigma_moderightred),
       Auton("leftblue\n\nyes", sigma_modeleftblue),
       Auton("skibiid\n\nyes", skibidi_rizz),
+      Auton("v2leftblue\n\nyes", Version2_LeftBlue),
       Auton("Example Drive\n\nDrive forward and come back.", drive_example),
       Auton("Example Turn\n\nTurn 3 times.", turn_example),
       Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
