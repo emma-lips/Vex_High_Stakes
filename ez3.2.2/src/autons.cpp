@@ -447,9 +447,9 @@ void Version2_LeftBlue() {
   //lifter.extend();
 
   chassis.pid_drive_set(LEFTredforward2b, DRIVE_SPEED); // move towards raised second donut in spawn
-  chassis.pid_wait_until(5_in);
+  chassis.pid_wait_until(1_in);
   lifter.extend(); // extend lifter to get over raised second donut
-  chassis.pid_wait_until(47_in);
+  chassis.pid_wait_until(45_in);
   lifter.retract(); // let down lifter to intake raised second donut
   setIntake(127);
   pros::delay(600); // pick up second raised donut
@@ -464,12 +464,8 @@ void Version2_LeftBlue() {
   chassis.pid_drive_set(LEFTredback3b, DRIVE_SPEED); // move back and avoid picking up red donut
   chassis.pid_wait();
 
-  setIntake(127);
-  pros::delay(delay_3c); // load second donut onto stake
-  setIntake(0);
-
-  chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
-  chassis.pid_wait();
+  // chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
+  // chassis.pid_wait();
 
 // Version 2 Left Blue
 const double v2lbturn = 50; // Turn towards 2nd stake
@@ -480,8 +476,11 @@ const double v2lbbackward = -34; // Going to 2nd stake
   chassis.pid_wait();
 
   chassis.pid_drive_set(v2lbbackward, DRIVE_SPEED); // Going to 2nd stake
+  chassis.pid_wait_until(1_in);
+    setIntake(127);
+  pros::delay(delay_3c); // load second donut onto stake
+  setIntake(0);
   chassis.pid_wait();
-  
 }
 
 const double robotskillsback = -13.5; // go backwards
