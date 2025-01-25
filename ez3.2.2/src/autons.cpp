@@ -411,6 +411,22 @@ void sigma_modeleftblue() {
   
 }
 
+void Version3_LeftBlue() {
+
+  isRed = false;
+
+  // Drive forward to (0, 36) forward, end at 45 degrees
+chassis.pid_odom_set(ez::odom{{0, 36, 45}, rev, 110});
+
+chassis.pid_wait();
+
+// Drive back to (0, 0) backward, end at 0 degrees
+chassis.pid_odom_set(ez::odom{{0, 12, 0}, rev, 110});
+
+chassis.pid_wait();
+
+}
+
 void Version2_LeftBlue() {
 
   isRed = false;
@@ -489,7 +505,7 @@ const double robotskillsback2 = -20.5; // move to stake
 const double robotskillsturn2 = -185; // turn to first donut
 const double robotskillsforward = 23; // move to first/second/third donut
 const double robotskillsturnb = -85; //turn to second donut relative turn
-const double robotskillsturn3 = -0; //turn towards 3rd donut
+const double robotskillsturn3 = 5; //turn towards 3rd donut
 const double robotskillsforward2 = 8; // move to 4th donut
 const double robotskillsback3 = -3; // move back to not hit wall
 const double robotskillsturn4 = 130; //turn to 5th donut
@@ -504,7 +520,7 @@ const double robotskillsforward4 = 5; // get away from mogo
 
 void sigma_robotskills() {
 
-  isRed = false;
+  isRed = true; //Team RED
 
   //Starting (backing up)
   chassis.pid_drive_set(robotskillsback, DRIVE_SPEED);
@@ -516,7 +532,7 @@ void sigma_robotskills() {
 
   //Slowly move towards stake
   chassis.pid_drive_set(robotskillsback2, slow_speed);
-  chassis.pid_wait_until(18);
+  // chassis.pid_wait_until(18);
   //Secure stake
   clamp1.extend();
   chassis.pid_wait();
@@ -528,7 +544,7 @@ void sigma_robotskills() {
 
   //Drives towards 1st donut and secures preload and 1st donut
   chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
-  chassis.pid_wait_until(16);
+  // chassis.pid_wait_until(16);
   setIntake(127);
   //pros::delay(delay_3c);
   chassis.pid_wait();
@@ -540,7 +556,7 @@ void sigma_robotskills() {
 
   //Forward towards 2nd donut
   chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
-  chassis.pid_wait_until(16);
+  // chassis.pid_wait_until(16);
   //setIntake(127);
   //pros::delay(delay_3c);
   chassis.pid_wait();
@@ -552,7 +568,7 @@ void sigma_robotskills() {
 
   //Drive forward to 3rd and 4th donut
   chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED1);
-  chassis.pid_wait_until(16);
+  // chassis.pid_wait_until(16);
   //setIntake(127);
   //pros::delay(delay_3c);
   chassis.pid_wait();
@@ -570,7 +586,7 @@ void sigma_robotskills() {
 
   //Drive forward and secures 5th donut
   chassis.pid_drive_set(robotskillsforward3, DRIVE_SPEED1);
-  chassis.pid_wait_until(10);
+  // chassis.pid_wait_until(10);
   //pros::delay(delay_3c);
   chassis.pid_wait();
   pros::delay(delay_3c);
