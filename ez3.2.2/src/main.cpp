@@ -34,11 +34,11 @@ ez::Drive chassis(
 // ez::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is parallel to the drive wheels
 
 pros::Motor lb(-4);
-pros::Rotation rotationSensor(15);
+pros::Rotation rotationSensor(-15);
 
 const int numStates = 3;
 //make sure these are in centidegrees (1 degree = 100 centidegrees)
-int states[numStates] = {0, 300, 2000};
+int states[numStates] = {0, 10, 200};
 int currState = 0;
 int target = 0;
 
@@ -51,10 +51,31 @@ void nextState() {
 }
 
 void liftControl() {
-    double kp = 0.5;
+    double kp = 0.5;    // Proportional gain (tune as needed)
+    double kd = 0.1;    // Derivative gain (tune as needed)
+    static double prevError = 0;
+    static uint32_t prevTime = pros::millis(); // Track time for accurate dt
+
+    uint32_t currentTime = pros::millis();
+    double dt = (currentTime - prevTime) / 1000.0; // Convert to seconds
+
+    // Handle edge cases for time calculation
+    if (dt <= 0) dt = 0.01; // Prevent division by zero
+
     double error = target - rotationSensor.get_position();
-    double velocity = kp * error;
+    double derivative = (error - prevError) / dt; // Calculate derivative
+
+    // Compute velocity with PD control
+    double velocity = kp * error + kd * derivative;
+
+    // Clamp velocity to valid motor range (-127 to 127)
+    velocity = (velocity > 127) ? 127 : (velocity < -127) ? -127 : velocity;
+
     lb.move(velocity);
+
+    // Save previous error and time for next iteration
+    prevError = error;
+    prevTime = currentTime;
 }
 
 
@@ -415,7 +436,7 @@ void opcontrol() {
 
 
 // ladybrownsigmacode
-    if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+    if (master.get_digital(DIGITAL_DOWN)) {
 			nextState();
 		}
 	   pros::delay(20);
