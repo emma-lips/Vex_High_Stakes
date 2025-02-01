@@ -33,6 +33,31 @@ ez::Drive chassis(
 // ez::tracking_wheel horiz_tracker(8, 2.75, 4.0);  // This tracking wheel is perpendicular to the drive wheels
 // ez::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is parallel to the drive wheels
 
+pros::Motor lb(-4);
+pros::Rotation rotationSensor(15);
+
+const int numStates = 3;
+//make sure these are in centidegrees (1 degree = 100 centidegrees)
+int states[numStates] = {0, 300, 2000};
+int currState = 0;
+int target = 0;
+
+void nextState() {
+    currState += 1;
+    if (currState == numStates) {
+        currState = 0;
+    }
+    target = states[currState];
+}
+
+void liftControl() {
+    double kp = 0.5;
+    double error = target - rotationSensor.get_position();
+    double velocity = kp * error;
+    lb.move(velocity);
+}
+
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -44,6 +69,13 @@ void initialize() {
   ez::ez_template_print();
 
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
+
+      pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
@@ -381,7 +413,12 @@ void opcontrol() {
       setDoinker(0);
     }
 
-    
+
+// ladybrownsigmacode
+    if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+			nextState();
+		}
+	   pros::delay(20);
   
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
