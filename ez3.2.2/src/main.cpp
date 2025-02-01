@@ -33,50 +33,50 @@ ez::Drive chassis(
 // ez::tracking_wheel horiz_tracker(8, 2.75, 4.0);  // This tracking wheel is perpendicular to the drive wheels
 // ez::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is parallel to the drive wheels
 
-pros::Motor lb(-4);
-pros::Rotation rotationSensor(-15);
 
-const int numStates = 3;
-//make sure these are in centidegrees (1 degree = 100 centidegrees)
-int states[numStates] = {0, 10, 200};
-int currState = 0;
-int target = 0;
+// pros::Rotation rotationSensor(-15);
 
-void nextState() {
-    currState += 1;
-    if (currState == numStates) {
-        currState = 0;
-    }
-    target = states[currState];
-}
+// const int numStates = 3;
+// //make sure these are in centidegrees (1 degree = 100 centidegrees)
+// int states[numStates] = {0, 3000, 6000};
+// int currState = 0;
+// int target = 0;
 
-void liftControl() {
-    double kp = 0.5;    // Proportional gain (tune as needed)
-    double kd = 0.1;    // Derivative gain (tune as needed)
-    static double prevError = 0;
-    static uint32_t prevTime = pros::millis(); // Track time for accurate dt
+// void nextState() {
+//     currState += 1;
+//     if (currState == numStates) {
+//         currState = 0;
+//     }
+//     target = states[currState];
+// }
 
-    uint32_t currentTime = pros::millis();
-    double dt = (currentTime - prevTime) / 1000.0; // Convert to seconds
+// void liftControl() {
+//     double kp = 0.5;    // Proportional gain (tune as needed)
+//     double kd = 0.1;    // Derivative gain (tune as needed)
+//     static double prevError = 0;
+//     static uint32_t prevTime = pros::millis(); // Track time for accurate dt
 
-    // Handle edge cases for time calculation
-    if (dt <= 0) dt = 0.01; // Prevent division by zero
+//     uint32_t currentTime = pros::millis();
+//     double dt = (currentTime - prevTime) / 1000.0; // Convert to seconds
 
-    double error = target - rotationSensor.get_position();
-    double derivative = (error - prevError) / dt; // Calculate derivative
+//     // Handle edge cases for time calculation
+//     if (dt <= 0) dt = 0.01; // Prevent division by zero
 
-    // Compute velocity with PD control
-    double velocity = kp * error + kd * derivative;
+//     double error = target - rotationSensor.get_position();
+//     double derivative = (error - prevError) / dt; // Calculate derivative
 
-    // Clamp velocity to valid motor range (-127 to 127)
-    velocity = (velocity > 127) ? 127 : (velocity < -127) ? -127 : velocity;
+//     // Compute velocity with PD control
+//     double velocity = kp * error + kd * derivative;
 
-    lb.move(velocity);
+//     // Clamp velocity to valid motor range (-127 to 127)
+//     velocity = (velocity > 127) ? 127 : (velocity < -127) ? -127 : velocity;
 
-    // Save previous error and time for next iteration
-    prevError = error;
-    prevTime = currentTime;
-}
+//     lb.move(velocity);
+
+//     // Save previous error and time for next iteration
+//     prevError = error;
+//     prevTime = currentTime;
+// }
 
 
 /**
@@ -91,12 +91,12 @@ void initialize() {
 
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
 
-      pros::Task liftControlTask([]{
-        while (true) {
-            liftControl();
-            pros::delay(10);
-        }
-    });
+    //   pros::Task liftControlTask([]{
+    //     while (true) {
+    //         liftControl();
+    //         pros::delay(10);
+    //     }
+    // });
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
@@ -437,8 +437,17 @@ void opcontrol() {
 
 // ladybrownsigmacode
     if (master.get_digital(DIGITAL_DOWN)) {
-			nextState();
+			setLB(-90);
 		}
+
+    if (master.get_digital(DIGITAL_LEFT)) {
+      setLB(-20);
+    }
+
+      if (master.get_digital(DIGITAL_A)) {
+      setLB(0);
+    }
+
 	   pros::delay(20);
   
 
