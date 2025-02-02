@@ -210,6 +210,7 @@ pros::Optical colorDetector(18);
 bool button_enabled = true;
 bool wrongcolour = false;
 bool toggleRingSort = true;
+bool nextState1 = true;
 // bool isRed;
 
 
@@ -482,7 +483,24 @@ void opcontrol() {
     pros::delay(ez::util::DELAY_TIME);
 
 
+      if (master.get_digital(DIGITAL_LEFT)) {
+      liftPID.target_set(0);
+    }
+    // pros::delay(ez::util::DELAY_TIME);
+    if (master.get_digital(DIGITAL_DOWN)) {
 
+      if (nextState1){
+        liftPID.target_set(500);
+        nextState1 = false;
+        	   pros::delay(20);
+      }
+      else {
+        liftPID.target_set(2000);
+        nextState1 = true;
+        	   pros::delay(20);
+      }
+      
+    }
 // ladybrownnotsigmacode
     // if (master.get_digital(DIGITAL_DOWN)) {
 		// 	setLB(-90);
