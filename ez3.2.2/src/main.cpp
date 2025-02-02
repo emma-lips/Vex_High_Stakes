@@ -34,25 +34,47 @@ ez::Drive chassis(
 // ez::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is parallel to the drive wheels
 
 
-// pros::Rotation rotationSensor(-15);
 
-// const int numStates = 3;
-// //make sure these are in centidegrees (1 degree = 100 centidegrees)
-// int states[numStates] = {0, 3000, 6000};
-// int currState = 0;
-// int target = 0;
 
-// void nextState() {
-//     currState += 1;
-//     if (currState == numStates) {
-//         currState = 0;
-//     }
-//     target = states[currState];
+pros::Rotation rotationSensor(15);
+inline pros::Motor lb(4);
+inline ez::PID liftPID{0.45, 0, 0, 0, "Lift"};
+
+void set_lift(int input) {
+  lb.move(input);
+}
+
+ const int numStates = 3;
+//These are in degrees
+int states[numStates] = {0, 390, 750};
+int currState = 0;
+int target = 0;
+
+void nextState() {
+    currState += 1;
+    if (currState == numStates) {
+        currState = 0;
+    }
+    target = states[currState];
+}
+
+// void liftControl(){
+//   liftPID.target_set(target);
+//   // set_lift(liftPID.compute(lb.get_position()));
+// }
+
+
+
+// void liftControl() {
+//     double kp = 0.5;
+//     double error = target - rotationSensor.get_position();
+//     double velocity = kp * error;
+//     lb.move_absolute(target, velocity);
 // }
 
 // void liftControl() {
-//     double kp = 0.5;    // Proportional gain (tune as needed)
-//     double kd = 0.1;    // Derivative gain (tune as needed)
+//     double kp = 1;    // Proportional gain (tune as needed)
+//     double kd = 1;    // Derivative gain (tune as needed)
 //     static double prevError = 0;
 //     static uint32_t prevTime = pros::millis(); // Track time for accurate dt
 
@@ -90,6 +112,10 @@ void initialize() {
   ez::ez_template_print();
 
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
+
+   rotationSensor.reset_position();
+
+    lb.tare_position();
 
     //   pros::Task liftControlTask([]{
     //     while (true) {
@@ -436,17 +462,39 @@ void opcontrol() {
 
 
 // ladybrownsigmacode
-    if (master.get_digital(DIGITAL_DOWN)) {
-			setLB(-90);
-		}
-
-    if (master.get_digital(DIGITAL_LEFT)) {
-      setLB(-20);
+    if (master.get_digital(DIGITAL_L1)) {
+      liftPID.target_set(500);
     }
-
-      if (master.get_digital(DIGITAL_A)) {
-      setLB(0);
+    else if (master.get_digital(DIGITAL_L2)) {
+      liftPID.target_set(0);
     }
+    set_lift(liftPID.compute(lb.get_position()));
+
+    pros::delay(ez::util::DELAY_TIME);
+    // if (master.get_digital(DIGITAL_LEFT)) {
+    //   nextState();
+    // }
+    // else if (master.get_digital(DIGITAL_DOWN)) {
+    //   liftPID.target_set(0);
+    // }
+
+
+    pros::delay(ez::util::DELAY_TIME);
+
+
+
+// ladybrownnotsigmacode
+    // if (master.get_digital(DIGITAL_DOWN)) {
+		// 	setLB(-90);
+		// }
+
+    // if (master.get_digital(DIGITAL_LEFT)) {
+    //   setLB(-20);
+    // }
+
+    //   if (master.get_digital(DIGITAL_A)) {
+    //   setLB(0);
+    // }
 
 	   pros::delay(20);
   

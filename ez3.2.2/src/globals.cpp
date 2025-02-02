@@ -1,6 +1,6 @@
 #include "main.h"
 
-extern pros::Motor lb(-4);
+
 
 //for motors
 extern pros::Motor intake11W(8,pros::v5::MotorGears::green);

@@ -1,6 +1,5 @@
 #include "main.h"
 
-void setLB(int LBPower);
 
 void setIntake(int intakePower);
 

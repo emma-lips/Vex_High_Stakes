@@ -2,7 +2,6 @@
 
 extern bool isRed;
 
-extern pros::Motor lb;
 
 //for motors
 extern pros::Motor intake11W;
