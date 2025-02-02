@@ -38,7 +38,7 @@ ez::Drive chassis(
 
 pros::Rotation rotationSensor(15);
 inline pros::Motor lb(4);
-inline ez::PID liftPID{0.2, 0, 0.1, 0, "Lift"};
+inline ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
 
 void set_lift(int input) {
   lb.move(input);
