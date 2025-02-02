@@ -46,7 +46,7 @@ void set_lift(int input) {
 
  const int numStates = 4;
 //These are in degrees
-int states[numStates] = {0, 600, 600, 3400};
+int states[numStates] = {0, 575, 575, 3400};
 int currState = 0;
 int target = 0;
 
