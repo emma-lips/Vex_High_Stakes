@@ -38,7 +38,7 @@ ez::Drive chassis(
 
 pros::Rotation rotationSensor(15);
 inline pros::Motor lb(4);
-inline ez::PID liftPID{0.45, 0, 0, 0, "Lift"};
+inline ez::PID liftPID{0.2, 0, 0.1, 0, "Lift"};
 
 void set_lift(int input) {
   lb.move(input);
@@ -46,7 +46,7 @@ void set_lift(int input) {
 
  const int numStates = 3;
 //These are in degrees
-int states[numStates] = {0, 390, 750};
+int states[numStates] = {0, 375, 3500};
 int currState = 0;
 int target = 0;
 
@@ -58,10 +58,10 @@ void nextState() {
     target = states[currState];
 }
 
-// void liftControl(){
-//   liftPID.target_set(target);
-//   // set_lift(liftPID.compute(lb.get_position()));
-// }
+void liftControl(){
+  liftPID.target_set(target);
+
+}
 
 
 
@@ -117,12 +117,12 @@ void initialize() {
 
     lb.tare_position();
 
-    //   pros::Task liftControlTask([]{
-    //     while (true) {
-    //         liftControl();
-    //         pros::delay(10);
-    //     }
-    // });
+      pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
@@ -486,21 +486,28 @@ void opcontrol() {
       if (master.get_digital(DIGITAL_LEFT)) {
       liftPID.target_set(0);
     }
-    // pros::delay(ez::util::DELAY_TIME);
-    if (master.get_digital(DIGITAL_DOWN)) {
 
-      if (nextState1){
-        liftPID.target_set(500);
-        nextState1 = false;
-        	   pros::delay(20);
-      }
-      else {
-        liftPID.target_set(2000);
-        nextState1 = true;
-        	   pros::delay(20);
-      }
-      
+     if (master.get_digital(DIGITAL_DOWN)) {
+     nextState();
     }
+    liftPID.compute(lb.get_position());
+
+    // pros::delay(ez::util::DELAY_TIME);
+    // if (master.get_digital(DIGITAL_DOWN)) {
+
+    //   if (nextState1){
+    //     liftPID.target_set(500);
+    //     nextState1 = false;
+    //     	   pros::delay(20);
+    //   }
+    //   else {
+    //     liftPID.target_set(2000);
+    //     nextState1 = true;
+    //     	   pros::delay(20);
+    //   }
+        // }
+
+
 // ladybrownnotsigmacode
     // if (master.get_digital(DIGITAL_DOWN)) {
 		// 	setLB(-90);
