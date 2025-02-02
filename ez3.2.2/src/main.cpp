@@ -44,9 +44,9 @@ void set_lift(int input) {
   lb.move(input);
 }
 
- const int numStates = 3;
+ const int numStates = 4;
 //These are in degrees
-int states[numStates] = {0, 375, 3500};
+int states[numStates] = {0, 500, 500, 3250};
 int currState = 0;
 int target = 0;
 
@@ -55,6 +55,12 @@ void nextState() {
     if (currState == numStates) {
         currState = 0;
     }
+    if (currState == 3) {
+      setIntake(-50);
+      pros::delay(75);
+      setIntake(0);
+    }
+
     target = states[currState];
 }
 
@@ -462,14 +468,14 @@ void opcontrol() {
     }
 
 
-// ladybrownsigmacode
-    if (master.get_digital(DIGITAL_L1)) {
-      liftPID.target_set(500);
-    }
-    else if (master.get_digital(DIGITAL_L2)) {
-      liftPID.target_set(0);
-    }
-    set_lift(liftPID.compute(lb.get_position()));
+// // ladybrownsigmacode
+//     if (master.get_digital(DIGITAL_L1)) {
+//       liftPID.target_set(500);
+//     }
+//     else if (master.get_digital(DIGITAL_L2)) {
+//       liftPID.target_set(0);
+//     }
+//     set_lift(liftPID.compute(lb.get_position()));
 
     pros::delay(ez::util::DELAY_TIME);
     // if (master.get_digital(DIGITAL_LEFT)) {
@@ -487,10 +493,10 @@ void opcontrol() {
       liftPID.target_set(0);
     }
 
-     if (master.get_digital(DIGITAL_DOWN)) {
+     if (master.get_digital_new_press(DIGITAL_DOWN)) {
      nextState();
     }
-    liftPID.compute(lb.get_position());
+    set_lift(liftPID.compute(lb.get_position()));
 
     // pros::delay(ez::util::DELAY_TIME);
     // if (master.get_digital(DIGITAL_DOWN)) {
