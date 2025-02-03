@@ -24,6 +24,7 @@ ez::Drive chassis(
     // mogo mech is A
     // lifter is H
     // radio is 12
+    // lady brown is 5
 
 // Uncomment the trackers you're using here!
 // - `8` and `9` are smart ports (making these negative will reverse the sensor)
@@ -37,7 +38,7 @@ ez::Drive chassis(
 
 
 pros::Rotation rotationSensor(15);
-inline pros::Motor lb(4);
+inline pros::Motor lb(5);
 inline ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
 
 void set_lift(int input) {
