@@ -39,7 +39,7 @@ ez::Drive chassis(
 
 pros::Rotation rotationSensor(15);
 inline pros::Motor lb(5);
-inline ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
+inline ez::PID liftPID{0.7, 0.5, 1.5, 0, "Lift"};
 
 void set_lift(int input) {
   lb.move(input);
@@ -47,7 +47,7 @@ void set_lift(int input) {
 
  const int numStates = 4;
 //These are in degrees
-int states[numStates] = {0, 575, 575, 3400};
+double states[numStates] = {0, 5750, 5750, 34000};
 int currState = 0;
 int target = 0;
 
@@ -122,11 +122,11 @@ void initialize() {
 
    rotationSensor.reset_position();
 
-    lb.tare_position();
 
       pros::Task liftControlTask([]{
         while (true) {
             liftControl();
+            set_lift(liftPID.compute(rotationSensor.get_position()));
             pros::delay(10);
         }
     });
@@ -497,7 +497,7 @@ void opcontrol() {
      if (master.get_digital_new_press(DIGITAL_DOWN)) {
      nextState();
     }
-    set_lift(liftPID.compute(lb.get_position()));
+
 
     // pros::delay(ez::util::DELAY_TIME);
     // if (master.get_digital(DIGITAL_DOWN)) {
