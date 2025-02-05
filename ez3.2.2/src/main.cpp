@@ -124,12 +124,7 @@ void initialize() {
 
     lb.tare_position();
 
-      pros::Task liftControlTask([]{
-        while (true) {
-            liftControl();
-            pros::delay(10);
-        }
-    });
+
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
@@ -154,6 +149,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+      Auton("gyaaaaat\n\nthis is for the sigmas", nolanisthegoat),
       Auton("robotskills\n\nyes", sigma_robotskills),
       Auton("rightblue\n\nyes", sigma_moderightblue),
       Auton("leftred\n\nyes", sigma_modeleftred),
@@ -394,6 +390,13 @@ void ez_template_extras() {
 
 void opcontrol() {
   chassis.opcontrol_speed_max_set(127);
+
+        pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
       // Start the task only if it hasn't already been started
     if (sigmarizztaskcolorsort == nullptr) {
         sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
