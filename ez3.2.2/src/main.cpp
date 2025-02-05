@@ -148,6 +148,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+      Auton("v3RightRed\n\nyes", v3RightRed),
       Auton("rizz\n\nthis is for the sigmas", pickupladybrownstuffs),
       Auton("gyaaaaat\n\nthis is for the sigmas", nolanisthegoat),
       Auton("robotskills\n\nyes", sigma_robotskills),

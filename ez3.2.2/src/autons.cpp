@@ -518,6 +518,38 @@ chassis.pid_wait();
 
 }
 
+void v3RightRed() {
+
+isRed = true;
+
+lifter.extend(); // extend lifter to get over raised second donut
+
+chassis.pid_drive_set(12, DRIVE_SPEED);
+chassis.pid_wait();
+chassis.pid_turn_set(-90, TURN_SPEED);
+chassis.pid_wait();
+chassis.pid_drive_set(21, DRIVE_SPEED);
+chassis.pid_wait();
+
+
+  lifter.retract(); // let down lifter to intake raised second donut
+  chassis.pid_drive_set(-2.25, DRIVE_SPEED);
+  chassis.pid_wait();
+  setIntake(127);
+  pros::delay(375); // pick up second raised donutss
+  setIntake(0);
+
+  chassis.pid_turn_set(-180, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(12.5, slow_speed);
+  chassis.pid_wait();
+
+  liftPID.target_set(3000);
+  pros::delay(2000);
+  chassis.pid_drive_set(-3, 110);
+  chassis.pid_wait();
+
+}
 
 void Version3_LeftBlue() {
 
