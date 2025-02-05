@@ -1,6 +1,7 @@
 #include "main.h"
 
-
+extern pros::Motor lb(5);
+extern ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
 
 //for motors
 extern pros::Motor intake11W(8,pros::v5::MotorGears::green);

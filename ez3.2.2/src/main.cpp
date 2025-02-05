@@ -38,12 +38,9 @@ ez::Drive chassis(
 
 
 pros::Rotation rotationSensor(15);
-inline pros::Motor lb(5);
-inline ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
 
-void set_lift(int input) {
-  lb.move(input);
-}
+
+
 
  const int numStates = 4;
 //These are in degrees
@@ -124,6 +121,8 @@ void initialize() {
 
     lb.tare_position();
 
+  liftPID.exit_condition_set(80, 50, 300, 150, 500, 500);
+
 
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
@@ -149,6 +148,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+      Auton("rizz\n\nthis is for the sigmas", pickupladybrownstuffs),
       Auton("gyaaaaat\n\nthis is for the sigmas", nolanisthegoat),
       Auton("robotskills\n\nyes", sigma_robotskills),
       Auton("rightblue\n\nyes", sigma_moderightblue),

@@ -77,14 +77,23 @@ const double LEFTredturn5 = -80; // turn to ladder
 const double LEFTredforward5 = 35; // go to ladder
 
 //Version 2 Left Blue
-
+// nolan is the goat auton
+// void lift_auto(double target) {
+//   liftPID.target_set(target);
+//   while (liftPID.exit_condition({lb}, true) == ez::RUNNING) {
+//     double output = liftPID.compute(lb.get_position());
+//     set_lift(output);
+//     pros::delay(ez::util::DELAY_TIME);
+//   }
+//   set_lift(0);
+// }
 
 ///
 // Constants
 ///
 void default_constants() {
   // P, I, D, and Start I
-  chassis.pid_drive_constants_set(20.0, 0.0, 100.0);         // Fwd/rev constants, used for odom and non odom motions
+  chassis.pid_drive_constants_set(10.0, 0.0, 100.0);         // Fwd/rev constants, used for odom and non odom motions
   chassis.pid_heading_constants_set(11.0, 0.0, 20.0);        // Holds the robot straight while going forward without odom
   chassis.pid_turn_constants_set(3.0, 0.05, 20.0, 15.0);     // Turn in place constants
   chassis.pid_swing_constants_set(6.0, 0.0, 65.0);           // Swing constants
@@ -469,19 +478,44 @@ void nolanisthegoat() {
   pros::delay(200); // load second donut onto stake
   setIntake(0);
 
-  chassis.pid_turn_set(90, TURN_SPEED);
-  chassis.wait();
+  chassis.pid_turn_set(0, TURN_SPEED);
+  chassis.pid_wait();
 
   chassis.pid_drive_set(10, 70);
-  chassis.wait();
+  chassis.pid_wait();
 
-  liftPID.target_set(3000);
-  set_lift(liftPID.compute(lb.get_position()));
-  pros::delay(3000);
+  liftPID.target_set(300000);
+  pros::delay(300);
+  chassis.pid_drive_set(-5, slow_speed);
+  chassis.pid_wait();
   liftPID.target_set(0);
+  set_lift(liftPID.compute(lb.get_position()));
 
 
   
+}
+
+void pickupladybrownstuffs() {
+
+chassis.pid_odom_set({{10_in, 10_in, -90_deg}, fwd, 110});
+chassis.pid_wait();
+
+  lifter.extend(); // extend lifter to get over raised second donut
+  chassis.pid_wait_until(5);
+  lifter.retract(); // let down lifter to intake raised second donut
+  setIntake(127);
+  pros::delay(600); // pick up second raised donut
+
+
+  chassis.pid_turn_set(180, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(7, slow_speed);
+  chassis.pid_wait();
+
+  liftPID.target_set(3000);
+  pros::delay(300);
+  chassis.pid_drive_set(-3, 110);
+
 }
 
 
