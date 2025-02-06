@@ -1,4 +1,4 @@
-#include "subsystems.hpp"
+
 #include "main.h"
 #include "globals.hpp"
 /////
@@ -149,6 +149,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+      Auton("liftnotsigmafr\n\nyes", sigmasigma), 
       Auton("robotskills\n\nyes", sigma_robotskills),
       Auton("rightblue\n\nyes", sigma_moderightblue),
       Auton("leftred\n\nyes", sigma_modeleftred),

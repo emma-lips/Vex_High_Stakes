@@ -1,4 +1,4 @@
-#include "subsystems.hpp"
+
 #include "main.h"
 #include "globals.hpp"
 /////
@@ -117,6 +117,17 @@ void default_constants() {
 
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
+
+void sigmasigma() {
+  chassis.pid_drive_set(10, 110);
+  chassis.pid_wait();
+  liftPID.target_set(10000);
+  lift_wait();
+  liftPID.target_set(0);
+  lift_wait();
+
+}
+
 
 //Nolanverysigma(right blue)
 
