@@ -121,7 +121,7 @@ void default_constants() {
 void sigmasigma() {
   chassis.pid_drive_set(10, 110);
   chassis.pid_wait();
-  liftPID.target_set(10000);
+  liftPID.target_set(500);
   lift_wait();
   liftPID.target_set(0);
   lift_wait();

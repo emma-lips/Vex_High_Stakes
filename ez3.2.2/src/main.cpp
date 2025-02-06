@@ -40,25 +40,7 @@ ez::Drive chassis(
 
 
 
- const int numStates = 4;
-//These are in degrees
-int states[numStates] = {0, 575, 575, 3400};
-int currState = 0;
-int target = 0;
 
-void nextState() {
-    currState += 1;
-    if (currState == numStates) {
-        currState = 0;
-    }
-    if (currState == 2) {
-      setIntake(-50);
-      pros::delay(75);
-      setIntake(0);
-    }
-
-    target = states[currState];
-}
 
 void liftControl(){
   liftPID.target_set(target);
@@ -119,12 +101,7 @@ void initialize() {
 
     lb.tare_position();
 
-      pros::Task liftControlTask([]{
-        while (true) {
-            liftControl();
-            pros::delay(10);
-        }
-    });
+
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
@@ -268,9 +245,9 @@ void autonomous() {
   chassis.drive_sensor_reset();               // Reset drive sensors to 0
   chassis.odom_xyt_set(0_in, 0_in, 0_deg);    // Set the current position, you can start at a specific position with this
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
-
-  
   chassis.opcontrol_speed_max_set(127);
+
+
       // Start the task only if it hasn't already been started
     if (sigmarizztaskcolorsort == nullptr) {
         sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
@@ -400,6 +377,13 @@ void ez_template_extras() {
 
 
 void opcontrol() {
+
+        pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
   chassis.opcontrol_speed_max_set(127);
       // Start the task only if it hasn't already been started
     if (sigmarizztaskcolorsort == nullptr) {
@@ -497,11 +481,11 @@ void opcontrol() {
     pros::delay(ez::util::DELAY_TIME);
 
 
-      if (master.get_digital(DIGITAL_LEFT)) {
-      liftPID.target_set(0);
-    }
+    //   if (master.get_digital(DIGITAL_LEFT)) {
+    //   liftPID.target_set(0);
+    // }
 
-     if (master.get_digital_new_press(DIGITAL_DOWN)) {
+     if (master.get_digital_new_press(DIGITAL_LEFT)) {
      nextState();
     }
     // set_lift(liftPID.compute(lb.get_position()));
