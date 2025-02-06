@@ -1,3 +1,4 @@
+#include "subsystems.hpp"
 #include "main.h"
 #include "globals.hpp"
 /////
@@ -37,13 +38,7 @@ ez::Drive chassis(
 
 
 
-pros::Rotation rotationSensor(15);
-inline pros::Motor lb(5);
-inline ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
 
-void set_lift(int input) {
-  lb.move(input);
-}
 
  const int numStates = 4;
 //These are in degrees
@@ -211,6 +206,17 @@ void competition_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+
+void lift_task() {
+  pros::delay(2000);  // Set EZ-Template calibrate before this function starts running
+  while (true) {
+    set_lift(liftPID.compute(lb.get_position()));
+
+    pros::delay(ez::util::DELAY_TIME);
+  }
+}
+pros::Task Lift_Task(lift_task);  // Create the task, this will cause the function to start running
+
 // ring detector
 pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
@@ -497,7 +503,7 @@ void opcontrol() {
      if (master.get_digital_new_press(DIGITAL_DOWN)) {
      nextState();
     }
-    set_lift(liftPID.compute(lb.get_position()));
+    // set_lift(liftPID.compute(lb.get_position()));
 
     // pros::delay(ez::util::DELAY_TIME);
     // if (master.get_digital(DIGITAL_DOWN)) {
