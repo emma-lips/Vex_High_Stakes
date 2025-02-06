@@ -38,7 +38,27 @@ ez::Drive chassis(
 
 
 
+const int numStates = 4;
+//These are in degrees
+int states[numStates] = {0, 575, 575, 3400};
+int currState = 0;
+int target = 0;
 
+void nextState() {
+    currState += 1;
+    if (currState == numStates) {
+        currState = 0;
+    }
+    if (currState == 2) {
+      setIntake(75);
+      pros::delay(75);
+       setIntake(-50);
+       pros::delay(75);
+       setIntake(0);
+     }
+
+    target = states[currState];
+}
 
 
 
