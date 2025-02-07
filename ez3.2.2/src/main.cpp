@@ -214,7 +214,7 @@ pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
 bool button_enabled = true;
 bool wrongcolour = false;
-// bool toggleRingSort = true;
+bool toggleRingSort = true;
 bool nextState1 = true;
 // bool isRed;
 
@@ -262,9 +262,9 @@ void autonomous() {
   chassis.opcontrol_speed_max_set(127);
 
       // Start the task only if it hasn't already been started
-    if (sigmarizztaskcolorsort == nullptr) {
-        sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-    }
+    // if (sigmarizztaskcolorsort == nullptr) {
+    //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+    // }
 
 
   /*

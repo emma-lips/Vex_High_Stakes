@@ -130,7 +130,6 @@ void sigmasigma() {
 
 void autonwinpointrightblue() {
 
-  toggleRingSort = false;
   isRed = true;
 
   chassis.drive_angle_set(90_deg);  // Start the robot facing 90 degrees
