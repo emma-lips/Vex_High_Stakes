@@ -149,8 +149,9 @@ ez::as::auton_selector.autons_add({
       Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
       Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
       Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),
-      Auton("rightblue\n\nautonwinpointhopefully", autonwinpointrightblue),
+      Auton("rightblue\n\nautonwinpointhopefullyrightblue", autonwinpointrightblue),
       Auton("leftred\n\nworkingleftred", sigma_modeleftred),
+      Auton("rightred\n\nautonwinpointhopefullyrightred", autonwinpointrightred),
       Auton("rightred\n\nworkingrightred", sigma_moderightred),
       Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
       Auton("skibiid\n\ntrash", skibidi_rizz),
@@ -400,9 +401,9 @@ void opcontrol() {
 
   chassis.opcontrol_speed_max_set(127);
       // Start the task only if it hasn't already been started
-    if (sigmarizztaskcolorsort == nullptr) {
-        sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-    }
+    // if (sigmarizztaskcolorsort == nullptr) {
+    //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+    // }
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
