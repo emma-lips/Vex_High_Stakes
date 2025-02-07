@@ -9,7 +9,7 @@
 
 bool isRed = true;
 // These are out of 127
-const int DRIVE_SPEED = 110;
+const int DRIVE_SPEED = 100;
 const int FULL_SPEED = 127;
 const int TURN_SPEED = 70;
 const int TURN_SPEED2 = 60;
@@ -121,13 +121,60 @@ void default_constants() {
 void sigmasigma() {
   chassis.pid_drive_set(10, 110);
   chassis.pid_wait();
-  liftPID.target_set(500);
+  liftPID.target_set(3000);
   lift_wait();
   liftPID.target_set(0);
   lift_wait();
 
 }
 
+void autonwinpointrightblue() {
+
+  toggleRingSort = false;
+  isRed = true;
+
+  chassis.drive_angle_set(90_deg);  // Start the robot facing 90 degrees
+
+
+  lifter.extend();
+  chassis.pid_turn_set(130, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(7, slow_speed);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(3, slow_speed);
+  chassis.pid_wait_quick_chain();
+  lifter.retract();
+  setIntake(127);
+  pros::delay(400);
+  setIntake(0);
+  chassis.pid_turn_set(270, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(2.5, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(9, slow_speed);
+  liftPID.target_set(3200);
+  lift_wait();
+  chassis.pid_drive_set(-5, slow_speed);
+  liftPID.target_set(0);
+  lift_wait();
+
+
+  chassis.pid_turn_set(30, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-33, slow_speed);
+  chassis.pid_wait_quick_chain();
+  clamp1.extend();
+  chassis.pid_wait();
+  setIntake(127);
+
+  chassis.pid_turn_set(-90, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(16, DRIVE_SPEED);
+  chassis.pid_wait();
+  pros::delay(1000);
+  setIntake(0);
+  }
 
 //Nolanverysigma(right blue)
 

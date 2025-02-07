@@ -121,7 +121,7 @@ void initialize() {
 
     lb.tare_position();
 
-
+    liftPID.exit_condition_set(80, 50, 300, 150, 500, 500);
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
@@ -146,15 +146,16 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
-      Auton("liftnotsigmafr\n\nyes", sigmasigma), 
-      Auton("robotskills\n\nyes", sigma_robotskills),
-      Auton("rightblue\n\nyes", sigma_moderightblue),
-      Auton("leftred\n\nyes", sigma_modeleftred),
-      Auton("rightred\n\nyes", sigma_moderightred),
-      Auton("leftblue\n\nyes", sigma_modeleftblue),
-      Auton("skibiid\n\nyes", skibidi_rizz),
-      Auton("v2leftblue\n\nyes", Version2_LeftBlue),
-      Auton("v3leftblue\n\nyes", Version3_LeftBlue),
+      Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
+      Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
+      Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),
+      Auton("rightblue\n\nautonwinpointhopefully", autonwinpointrightblue),
+      Auton("leftred\n\nworkingleftred", sigma_modeleftred),
+      Auton("rightred\n\nworkingrightred", sigma_moderightred),
+      Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
+      Auton("skibiid\n\ntrash", skibidi_rizz),
+      Auton("v2leftblue\n\ntryingtogettwostakesdoNOTuse", Version2_LeftBlue),
+      Auton("v3leftblue\n\npoopoocodenotrealdoesntworkforrealsies", Version3_LeftBlue),
       Auton("Example Drive\n\nDrive forward and come back.", drive_example),
       Auton("Example Turn\n\nTurn 3 times.", turn_example),
       Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
@@ -213,7 +214,7 @@ pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
 bool button_enabled = true;
 bool wrongcolour = false;
-bool toggleRingSort = true;
+// bool toggleRingSort = true;
 bool nextState1 = true;
 // bool isRed;
 
@@ -390,12 +391,12 @@ void ez_template_extras() {
 
 void opcontrol() {
 
-        pros::Task liftControlTask([]{
-        while (true) {
-            liftControl();
-            pros::delay(10);
-        }
-    });
+    //     pros::Task liftControlTask([]{
+    //     while (true) {
+    //         liftControl();
+    //         pros::delay(10);
+    //     }
+    // });
 
   chassis.opcontrol_speed_max_set(127);
       // Start the task only if it hasn't already been started
