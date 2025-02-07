@@ -392,18 +392,18 @@ void ez_template_extras() {
 
 void opcontrol() {
 
-    //     pros::Task liftControlTask([]{
-    //     while (true) {
-    //         liftControl();
-    //         pros::delay(10);
-    //     }
-    // });
+        pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
 
   chassis.opcontrol_speed_max_set(127);
       // Start the task only if it hasn't already been started
-    // if (sigmarizztaskcolorsort == nullptr) {
-    //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-    // }
+    if (sigmarizztaskcolorsort == nullptr) {
+        sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+    }
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
