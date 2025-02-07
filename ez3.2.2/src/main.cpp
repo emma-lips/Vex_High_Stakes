@@ -260,7 +260,6 @@ void autonomous() {
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
   chassis.opcontrol_speed_max_set(127);
 
-
       // Start the task only if it hasn't already been started
     if (sigmarizztaskcolorsort == nullptr) {
         sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
@@ -386,16 +385,17 @@ void ez_template_extras() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
+
+
+void opcontrol() {
+
         pros::Task liftControlTask([]{
         while (true) {
             liftControl();
             pros::delay(10);
         }
     });
-
-
-void opcontrol() {
-
 
   chassis.opcontrol_speed_max_set(127);
       // Start the task only if it hasn't already been started
