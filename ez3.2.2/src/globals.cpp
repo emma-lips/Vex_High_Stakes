@@ -1,6 +1,28 @@
 #include "main.h"
+void set_lift(int input) {
+  lb.move(input);
+}
+
+ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
+void lift_task() {
+  pros::delay(2000);  // Set EZ-Template calibrate before this function starts running
+  while (true) {
+    set_lift(liftPID.compute(lb.get_position()));
+
+    pros::delay(ez::util::DELAY_TIME);
+  }
+}
 
 
+
+void lift_wait() {
+  while (liftPID.exit_condition({lb}, true) == ez::RUNNING) {
+    pros::delay(ez::util::DELAY_TIME);
+  }
+}
+
+extern pros::Rotation rotationSensor(15);
+extern pros::Motor lb(5);
 
 //for motors
 extern pros::Motor intake11W(8,pros::v5::MotorGears::green);

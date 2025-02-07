@@ -205,14 +205,7 @@ void competition_initialize() {
  * from where it left off.
  */
 
-void lift_task() {
-  pros::delay(2000);  // Set EZ-Template calibrate before this function starts running
-  while (true) {
-    set_lift(liftPID.compute(lb.get_position()));
 
-    pros::delay(ez::util::DELAY_TIME);
-  }
-}
 pros::Task Lift_Task(lift_task);  // Create the task, this will cause the function to start running
 
 // ring detector
@@ -393,17 +386,17 @@ void ez_template_extras() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
-
-
-
-void opcontrol() {
-
         pros::Task liftControlTask([]{
         while (true) {
             liftControl();
             pros::delay(10);
         }
     });
+
+
+void opcontrol() {
+
+
   chassis.opcontrol_speed_max_set(127);
       // Start the task only if it hasn't already been started
     if (sigmarizztaskcolorsort == nullptr) {
@@ -480,27 +473,9 @@ void opcontrol() {
     }
 
 
-// // ladybrownsigmacode
-//     if (master.get_digital(DIGITAL_L1)) {
-//       liftPID.target_set(500);
-//     }
-//     else if (master.get_digital(DIGITAL_L2)) {
-//       liftPID.target_set(0);
-//     }
-//     set_lift(liftPID.compute(lb.get_position()));
-
-    pros::delay(ez::util::DELAY_TIME);
-    // if (master.get_digital(DIGITAL_LEFT)) {
-    //   nextState();
-    // }
-    // else if (master.get_digital(DIGITAL_DOWN)) {
-    //   liftPID.target_set(0);
-    // }
 
 
-    pros::delay(ez::util::DELAY_TIME);
-
-
+// lady brown code
     //   if (master.get_digital(DIGITAL_LEFT)) {
     //   liftPID.target_set(0);
     // }
@@ -508,38 +483,6 @@ void opcontrol() {
      if (master.get_digital_new_press(DIGITAL_LEFT)) {
      nextState();
     }
-    // set_lift(liftPID.compute(lb.get_position()));
-
-    // pros::delay(ez::util::DELAY_TIME);
-    // if (master.get_digital(DIGITAL_DOWN)) {
-
-    //   if (nextState1){
-    //     liftPID.target_set(500);
-    //     nextState1 = false;
-    //     	   pros::delay(20);
-    //   }
-    //   else {
-    //     liftPID.target_set(2000);
-    //     nextState1 = true;
-    //     	   pros::delay(20);
-    //   }
-        // }
-
-
-// ladybrownnotsigmacode
-    // if (master.get_digital(DIGITAL_DOWN)) {
-		// 	setLB(-90);
-		// }
-
-    // if (master.get_digital(DIGITAL_LEFT)) {
-    //   setLB(-20);
-    // }
-
-    //   if (master.get_digital(DIGITAL_A)) {
-    //   setLB(0);
-    // }
-
-	   pros::delay(20);
   
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME

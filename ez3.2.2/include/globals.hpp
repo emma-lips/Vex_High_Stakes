@@ -2,6 +2,14 @@
 
 extern bool isRed;
 
+void lift_task();
+void set_lift();
+void lift_wait();
+
+extern ez::PID liftPID;
+
+extern pros::Rotation rotationSensor;
+extern pros::Motor lb;
 
 //for motors
 extern pros::Motor intake11W;
