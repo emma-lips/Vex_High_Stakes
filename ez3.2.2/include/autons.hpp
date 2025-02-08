@@ -8,6 +8,8 @@
 void sigmasigma();
 void sigma_robotskills();
 void sigma_moderightblue();
+void autonwinpointleftblue();
+void autonwinpointleftred();
 void autonwinpointrightblue();
 void autonwinpointrightred();
 void sigma_modeleftred();

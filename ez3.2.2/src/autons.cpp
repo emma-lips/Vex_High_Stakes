@@ -149,7 +149,7 @@ void autonwinpointleftblue() {
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(9, slow_speed);
+  chassis.pid_drive_set(10, slow_speed);
   setIntake(127);
   pros::delay(100);
   setIntake(0);
@@ -166,11 +166,11 @@ void autonwinpointleftblue() {
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
-
+  setIntake(127);
 
   chassis.pid_turn_set(90, TURN_SPEED2);
   chassis.pid_wait();
-    setIntake(127);
+ 
   chassis.pid_drive_set(16, DRIVE_SPEED);
   chassis.pid_wait();
   setIntake(127);
@@ -204,7 +204,7 @@ void autonwinpointleftred() {
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(9, slow_speed);
+  chassis.pid_drive_set(10, slow_speed);
   setIntake(127);
   pros::delay(100);
   setIntake(0);
@@ -221,11 +221,11 @@ void autonwinpointleftred() {
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
-
+  setIntake(127);
 
   chassis.pid_turn_set(90, TURN_SPEED2);
   chassis.pid_wait();
-    setIntake(127);
+  
   chassis.pid_drive_set(16, DRIVE_SPEED);
   chassis.pid_wait();
   setIntake(127);
@@ -260,7 +260,7 @@ void autonwinpointrightred() {
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(9, slow_speed);
+  chassis.pid_drive_set(10, slow_speed);
   setIntake(127);
   pros::delay(100);
   setIntake(0);
@@ -277,11 +277,11 @@ void autonwinpointrightred() {
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
-
+  setIntake(127);
 
   chassis.pid_turn_set(-90, TURN_SPEED2);
   chassis.pid_wait();
-    setIntake(127);
+
   chassis.pid_drive_set(16, DRIVE_SPEED);
   chassis.pid_wait();
   setIntake(127);
@@ -316,7 +316,7 @@ void autonwinpointrightblue() {
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(9, slow_speed);
+  chassis.pid_drive_set(10, slow_speed);
   setIntake(127);
   pros::delay(100);
   setIntake(0);
@@ -333,11 +333,11 @@ void autonwinpointrightblue() {
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
-
+  setIntake(127);
 
   chassis.pid_turn_set(-90, TURN_SPEED2);
   chassis.pid_wait();
-    setIntake(127);
+
   chassis.pid_drive_set(16, DRIVE_SPEED);
   chassis.pid_wait();
   setIntake(127);
