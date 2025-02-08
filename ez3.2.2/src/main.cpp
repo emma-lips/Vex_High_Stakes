@@ -146,6 +146,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+      Auton("rightredletotherteamgetawp\n\ntslowksoskibidi2donutsonstake", skibidi_moderightredwithoutdonutinspawn), 
       Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
       Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
       Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),

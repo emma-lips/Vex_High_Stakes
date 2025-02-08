@@ -502,7 +502,44 @@ void sigma_moderightred() {
   
 }
 
+void skibidi_moderightredwithoutdonutinspawn() {
 
+  isRed = true;
+
+  chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED); // move backwards to mogo
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(RIGHTblueturn, TURN_SPEED); // turn to mogo
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueback2, slow_speed, true); // go slow into mogo
+  chassis.pid_wait();
+
+  clamp1.extend(); // clamp mogo
+  chassis.pid_wait();
+
+//Drop Preload
+
+  setIntake(127);
+  pros::delay(delay_1); // load preload
+  setIntake(0);
+
+  chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED);// move to first donut
+  chassis.pid_wait();
+
+//Pick up first floor donut
+
+  setIntake(127);
+  pros::delay(delay_2); // intake first donut
+  setIntake(0);
+
+
+
+  
+}
 
 //Emmaverysigma(left red)
 

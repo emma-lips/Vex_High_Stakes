@@ -4,7 +4,7 @@
 
 // extern Drive chassis;
 
-
+void skibidi_moderightredwithoutdonutinspawn();
 void sigmasigma();
 void sigma_robotskills();
 void sigma_moderightblue();
