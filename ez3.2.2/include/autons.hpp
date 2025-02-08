@@ -4,6 +4,8 @@
 
 // extern Drive chassis;
 
+
+void weakahhblueleft();
 void lowkcannotdoanythingbruhtheseteamscarryforrealsies();
 void skibidi_moderightredwithoutdonutinspawn();
 void sigmasigma();

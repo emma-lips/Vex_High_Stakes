@@ -693,6 +693,38 @@ void sigma_modeleftblue() {
 
   
 }
+void weakahhblueleft() {
+
+  isRed = false;
+
+    chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move to mogo 
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(LEFTredturn, TURN_SPEED); // turn to mogo
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredback2, slow_speed, true); // move slowly to mogo
+  chassis.pid_wait();
+
+  clamp1.extend(); // clamp mogo mech
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_1); // intake preload
+  setIntake(0);
+
+  chassis.pid_turn_set(LEFTredturn2, TURN_SPEED); // turn to first donut
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED); // move to first donut
+  chassis.pid_wait();
+
+  setIntake(127);
+  pros::delay(delay_2); // intake first donut
+  setIntake(0);
+
+  
+}
 
 
 
