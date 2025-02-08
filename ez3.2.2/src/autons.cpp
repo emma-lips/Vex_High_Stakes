@@ -723,6 +723,12 @@ void weakahhblueleft() {
   pros::delay(delay_2); // intake first donut
   setIntake(0);
 
+  chassis.pid_turn_set(-90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(13, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(4, DRIVE_SPEED);
+
   
 }
 
