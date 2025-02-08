@@ -118,6 +118,11 @@ void default_constants() {
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
+void lowkcannotdoanythingbruhtheseteamscarryforrealsies() {
+  chassis.pid_drive_set(20, 127);
+  chassis.pid_wait();
+}
+
 void sigmasigma() {
   chassis.pid_drive_set(10, 110);
   chassis.pid_wait();

@@ -4,6 +4,7 @@
 
 // extern Drive chassis;
 
+void lowkcannotdoanythingbruhtheseteamscarryforrealsies();
 void skibidi_moderightredwithoutdonutinspawn();
 void sigmasigma();
 void sigma_robotskills();
