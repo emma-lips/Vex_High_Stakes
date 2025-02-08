@@ -179,8 +179,9 @@ void autonwinpointleftblue() {
 
   chassis.pid_turn_set(-90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(28, DRIVE_SPEED);
-  chassis.pid_wait();
+  chassis.pid_drive_set(13, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(3, 127);
   }
 
 void autonwinpointleftred() {
@@ -234,8 +235,9 @@ void autonwinpointleftred() {
 
   chassis.pid_turn_set(-90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(28, DRIVE_SPEED);
-  chassis.pid_wait();
+  chassis.pid_drive_set(13, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(3, 127);
   }
 
 void autonwinpointrightred() {
@@ -294,7 +296,7 @@ void autonwinpointrightred() {
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(13, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(4, DRIVE_SPEED);
+  chassis.pid_drive_set(3, DRIVE_SPEED);
   }
 
 void autonwinpointrightblue() {
@@ -353,7 +355,7 @@ void autonwinpointrightblue() {
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(13, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(4, DRIVE_SPEED);
+  chassis.pid_drive_set(3, DRIVE_SPEED);
   }
 
 //Nolanverysigma(right blue)
@@ -382,7 +384,7 @@ void sigma_moderightblue() {
   chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
   chassis.pid_wait();
 
-  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED); // move to first donut
+  chassis.pid_drive_set(23, DRIVE_SPEED); // move to first donut
   chassis.pid_wait();
 
 //Picking up first donut
