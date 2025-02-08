@@ -306,13 +306,13 @@ void autonwinpointrightblue() {
   chassis.pid_drive_set(7, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(3, slow_speed);
+  chassis.pid_drive_set(2, slow_speed);
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
   pros::delay(300);
   setIntake(0);
-  chassis.pid_turn_set(362.5, TURN_SPEED);
+  chassis.pid_turn_set(364, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
