@@ -40,7 +40,7 @@ const int delay_3c = 2500; // drop second donut on stake
 
 //continue RIGHTblue
 const double RIGHTbluebyeautonline = -2; //move away from auton line after second donut
-const double RIGHTblueturn4 = -215; //turn to third donut (beside second donut)
+const double RIGHTblueturn4 = -205; //turn to third donut (beside second donut)
 const double RIGHTblueforward4 = 5; // move towards third donut
 const double RIGHTblueback4 = -5; // move away from auton line
 const double RIGHTblueturn5 = 80; // turn to ladder
