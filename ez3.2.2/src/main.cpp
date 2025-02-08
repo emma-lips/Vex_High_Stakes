@@ -40,7 +40,7 @@ ez::Drive chassis(
 
 const int numStates = 4;
 //These are in degrees
-int states[numStates] = {0, 575, 575, 3400};
+int states[numStates] = {0, 600, 600, 3400};
 int currState = 0;
 int target = 0;
 
@@ -407,7 +407,7 @@ void opcontrol() {
     if (sigmarizztaskcolorsort == nullptr) {
       sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
   }
-  chassis.opcontrol_speed_max_set(127);
+  chassis.opcontrol_speed_max_set(113);
       // Start the task only if it hasn't already been started
 
   // This is preference to what you like to drive on
