@@ -23,7 +23,7 @@ const double RIGHTblueback = -22.75;// move backwards to mogo
 const double RIGHTblueturn = -30; // turn towards mogo 
 const double RIGHTblueback2 = -15; // / move to mogo (group of 8)
 const double RIGHTblueturn2 = -95; //Turning to direction of first donut (preload does not count)
-const double RIGHTblueforward = 25; // move to first donut
+const double RIGHTblueforward = 23; // move to first donut
 const int delay_2 = 1000; // intaking and dropping first donut
 
 //For donut side(right blue(stack of 8 donuts)) 
@@ -384,7 +384,7 @@ void sigma_moderightblue() {
   chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
   chassis.pid_wait();
 
-  chassis.pid_drive_set(23, DRIVE_SPEED); // move to first donut
+  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED); // move to first donut
   chassis.pid_wait();
 
 //Picking up first donut
