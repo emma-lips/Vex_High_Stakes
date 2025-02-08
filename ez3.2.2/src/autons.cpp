@@ -71,7 +71,7 @@ const double LEFTredback3b = -6; // move back as to not pick up red donut on lef
 
 //continue LEFTred
 const double LEFTredbyeautonline = -2; //move away from auton line after second donut
-const double LEFTredturn4 = 225; //turn to third donut (beside second donut)
+const double LEFTredturn4 = 205; //turn to third donut (beside second donut)
 const double LEFTredforward4 = 5; // move towards third donut
 const double LEFTredback4 = -5; // move away from auton line
 const double LEFTredturn5 = -80; // turn to ladder
