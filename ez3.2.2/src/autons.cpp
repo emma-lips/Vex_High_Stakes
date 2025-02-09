@@ -60,7 +60,7 @@ const double LEFTredforward = 23; // move to first donut
 // donut side
 
 const double LEFTredturn3 = 175; //turn towards stack of 8 donuts on left red
-const double LEFTredforward2 = 12.5; // move to second donut on left red
+const double LEFTredforward2 = 11; // move to second donut on left red
 
 //mogo side aka LEFT blue
 
@@ -71,10 +71,10 @@ const double LEFTredback3b = -6; // move back as to not pick up red donut on lef
 
 //continue LEFTred
 const double LEFTredbyeautonline = -2; //move away from auton line after second donut
-const double LEFTredturn4 = 205; //turn to third donut (beside second donut)
-const double LEFTredforward4 = 5; // move towards third donut
+const double LEFTredturn4 = 195; //turn to third donut (beside second donut)
+const double LEFTredforward4 = 6.5; // move towards third donut
 const double LEFTredback4 = -5; // move away from auton line
-const double LEFTredturn5 = -80; // turn to ladder
+const double LEFTredturn5 = 11; // turn to ladder
 const double LEFTredforward5 = 35; // go to ladder
 
 //Version 2 Left Blue
@@ -614,19 +614,21 @@ void sigma_modeleftred() {
   chassis.pid_wait();
 
   chassis.pid_drive_set(LEFTredforward4, DRIVE_SPEED);// move towards third donut
-  chassis.pid_wait_until(1_in);
+  chassis.pid_wait();
   setIntake(127);
-  pros::delay(delay_3);
-  setIntake(0);
+
   
   chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);// move away from auton line
   chassis.pid_wait();
 
-  chassis.pid_turn_set(LEFTredturn5, TURN_SPEED);// turn to ladder
+  chassis.pid_turn_set(LEFTredturn5, TURN_SPEED);// turn to negatives
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredforward5, FULL_SPEED);// go to ladder
+  chassis.pid_drive_set(LEFTredforward5, FULL_SPEED);// go to negatives
   chassis.pid_wait();
+
+  pros::delay(delay_3);
+  setIntake(0);
 }
 
 //Emmaverysigma(left blue)
