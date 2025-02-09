@@ -633,32 +633,57 @@ void sigma_modeleftred() {
 
 void robotskillsv2() {
   setIntake(127);
-  pros::delay(1000);
+  pros::delay(1500);
   
-  chassis.pid_drive_set(11, 127);
+  chassis.pid_drive_set(8, slow_speed);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-12, DRIVE_SPEED);
+  chassis.pid_drive_set(-18, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
-  chassis.pid_turn_set(0, TURN_SPEED);
+  chassis.pid_turn_set(-5, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(10, DRIVE_SPEED);
+  chassis.pid_drive_set(12, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(-45, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(17, 127);
+  chassis.pid_drive_set(29_in, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(-90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(6, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-6, DRIVE_SPEED);
+  chassis.pid_drive_set(-3, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(180, TURN_SPEED);
+  chassis.pid_turn_set(176, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(47, slow_speed);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-45, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(10, slow_speed);
+  chassis.pid_wait();
+  chassis.pid_turn_set(10, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-10, slow_speed);
+  chassis.pid_wait_quick_chain();
+  setIntake(-127);
+  pros::delay(300);
+  setIntake(127);
+  pros::delay(2000);
+  clamp1.retract();
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(10, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(48, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+
 }
 
 //Emmaverysigma(left blue)
