@@ -146,20 +146,23 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+      Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),
+      Auton("rightred\n\nworkingrightred", sigma_moderightred),
+      Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
+      Auton("leftred\n\nworkingleftred", sigma_modeleftred),
       Auton("v2robotskills1daybeforeWWW\n\nbetterstrongersmarter", robotskillsv2),
       Auton("tsissocookedletotherteamgetawponleftblue\n\nbruuuh", weakahhblueleft),
       Auton("gettingcarriedfrfr\n\nmaaaantheseteamsmakingtsboring", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
       Auton("rightredletotherteamgetawp\n\ntslowksoskibidi2donutsonstake", skibidi_moderightredwithoutdonutinspawn), 
       Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
       Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
-      Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),
+    
       Auton("rightbluealliancestake\n\nautonwinpointhopefullyrightblue", autonwinpointrightblue),
       Auton("leftbluealliancestake\n\nautonwinpointhopefullyleftblue", autonwinpointleftblue),
-      Auton("leftred\n\nworkingleftred", sigma_modeleftred),
+      
       Auton("leftredalliancestake\n\nautonwinpointhopefullyleftred", autonwinpointleftred),
       Auton("rightredalliancestake\n\nautonwinpointhopefullyrightred", autonwinpointrightred),
-      Auton("rightred\n\nworkingrightred", sigma_moderightred),
-      Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
+
       Auton("skibiid\n\ntrash", skibidi_rizz),
       Auton("v2leftblue\n\ntryingtogettwostakesdoNOTuse", Version2_LeftBlue),
       Auton("v3leftblue\n\npoopoocodenotrealdoesntworkforrealsies", Version3_LeftBlue),

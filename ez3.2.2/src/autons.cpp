@@ -755,7 +755,28 @@ void sigma_modeleftblue() {
   chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
   chassis.pid_wait();
 
-  
+  chassis.pid_turn_set(90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(24, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(20, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  setDoinker(-100);
+  pros::delay(400);
+  setDoinker(0);
+
+  chassis.pid_drive_set(14, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(-90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+
+
+
+
 }
 void weakahhblueleft() {
 
