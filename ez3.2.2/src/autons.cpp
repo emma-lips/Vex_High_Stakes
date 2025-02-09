@@ -749,8 +749,8 @@ void sigma_modeleftblue() {
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(delay_3c); // load second donut onto stake
-  setIntake(0);
+  pros::delay(800); // load second donut onto stake
+
 
   chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
   chassis.pid_wait();
@@ -758,7 +758,7 @@ void sigma_modeleftblue() {
   chassis.pid_turn_set(90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(24, DRIVE_SPEED);
+  chassis.pid_drive_set(22, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(20, TURN_SPEED);
@@ -774,7 +774,7 @@ void sigma_modeleftblue() {
   chassis.pid_turn_set(-90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-
+  setIntake(0);
 
 
 }
