@@ -248,7 +248,16 @@ void sigmarizz_task_function() {
             if (wrongcolour && ringDetector.get() < 50) {
                 button_enabled = false;
                 setIntake(127);
-                pros::delay(320);
+                if (isRed) {
+                  pros::delay(270);
+                  
+                }
+
+                else {
+                  pros::delay(280);
+
+                }
+
                 setIntake(-100);
                 pros::delay(1000);
                 setIntake(0);
@@ -270,7 +279,7 @@ void autonomous() {
 
       // Start the task only if it hasn't already been started
     // if (sigmarizztaskcolorsort == nullptr) {
-    //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+    //      sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
     // }
 
 

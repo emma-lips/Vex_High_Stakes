@@ -43,8 +43,8 @@ const double RIGHTbluebyeautonline = -2; //move away from auton line after secon
 const double RIGHTblueturn4 = -205; //turn to third donut (beside second donut)
 const double RIGHTblueforward4 = 5; // move towards third donut
 const double RIGHTblueback4 = -5; // move away from auton line
-const double RIGHTblueturn5 = -11; // turn to negative corner
-const double RIGHTblueforward5 = 35; // go to negative corner
+const double RIGHTblueturn5 = 11; // turn to negative corner
+const double RIGHTblueforward5 = 38; // go to negative corner
 
 //LEFT RED AND ALSO FOR LEFT BLUE
 
@@ -420,18 +420,21 @@ void sigma_moderightblue() {
   chassis.pid_drive_set(RIGHTblueforward4, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait_until(1_in);
   setIntake(127);
-  pros::delay(delay_3);
-  setIntake(0);
+
 
   chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move away from auton line
   chassis.pid_wait();
 
-  chassis.pid_turn_set(RIGHTblueturn5, TURN_SPEED);// turn to ladder
+  chassis.pid_turn_set(RIGHTblueturn5, TURN_SPEED);// turn to negative corner
   chassis.pid_wait();
 
-  chassis.pid_drive_set(RIGHTblueforward5, FULL_SPEED);// go to ladder
+  chassis.pid_drive_set(RIGHTblueforward5, FULL_SPEED);// go to negative corner
   chassis.pid_wait();
 
+  chassis.pid_turn_set(-80, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  pros::delay(delay_3);
+  setIntake(0);
 
 }
 
