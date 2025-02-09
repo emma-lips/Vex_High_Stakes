@@ -722,8 +722,8 @@ void sigma_modeleftblue() {
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(delay_2); // intake first donut
-  setIntake(0);
+  pros::delay(1500); // intake first donut
+  // setIntake(0);
 
 //Add on
   chassis.pid_turn_set(LEFTredturn3b, TURN_SPEED); // turn to raised donut in spawn
@@ -738,7 +738,7 @@ void sigma_modeleftblue() {
   setIntake(127);
   pros::delay(600); // pick up second raised donut
   setIntake(0);
-  chassis.pid_wait();
+
 
   // Pick up second raised donut
   // setIntake(127);
@@ -746,10 +746,10 @@ void sigma_modeleftblue() {
   // setIntake(0);
 
   chassis.pid_drive_set(LEFTredback3b, DRIVE_SPEED); // move back and avoid picking up red donut
-  chassis.pid_wait();
+  chassis.pid_wait_quick_chain();
 
   setIntake(127);
-  pros::delay(800); // load second donut onto stake
+  // pros::delay(800); // load second donut onto stake
 
 
   chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case
@@ -758,21 +758,20 @@ void sigma_modeleftblue() {
   chassis.pid_turn_set(90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(22, DRIVE_SPEED);
+  chassis.pid_drive_set(27, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(20, TURN_SPEED);
+  chassis.pid_turn_set(5, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
   setDoinker(-100);
   pros::delay(400);
-  setDoinker(0);
 
-  chassis.pid_drive_set(14, DRIVE_SPEED);
-  chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(14, DRIVE_SPEED);
+  // chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-90, TURN_SPEED);
-  chassis.pid_wait_quick_chain();
+  // chassis.pid_turn_set(-90, TURN_SPEED);
+  // chassis.pid_wait_quick_chain();
 
   setIntake(0);
 
