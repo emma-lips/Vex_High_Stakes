@@ -631,6 +631,36 @@ void sigma_modeleftred() {
   setIntake(0);
 }
 
+void robotskillsv2() {
+  setIntake(127);
+  pros::delay(1000);
+  
+  chassis.pid_drive_set(11, 127);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-12, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  clamp1.extend();
+  chassis.pid_wait();
+  chassis.pid_turn_set(0, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(10, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-45, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(17, 127);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(6, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-6, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(180, TURN_SPEED);
+}
+
 //Emmaverysigma(left blue)
 
 void sigma_modeleftblue() {

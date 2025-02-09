@@ -146,7 +146,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
-
+      Auton("v2robotskills1daybeforeWWW\n\nbetterstrongersmarter", robotskillsv2),
       Auton("tsissocookedletotherteamgetawponleftblue\n\nbruuuh", weakahhblueleft),
       Auton("gettingcarriedfrfr\n\nmaaaantheseteamsmakingtsboring", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
       Auton("rightredletotherteamgetawp\n\ntslowksoskibidi2donutsonstake", skibidi_moderightredwithoutdonutinspawn), 
@@ -248,7 +248,7 @@ void sigmarizz_task_function() {
             if (wrongcolour && ringDetector.get() < 50) {
                 button_enabled = false;
                 setIntake(127);
-                pros::delay(305);
+                pros::delay(320);
                 setIntake(-100);
                 pros::delay(1000);
                 setIntake(0);

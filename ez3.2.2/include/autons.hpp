@@ -5,6 +5,7 @@
 // extern Drive chassis;
 
 
+void robotskillsv2();
 void weakahhblueleft();
 void lowkcannotdoanythingbruhtheseteamscarryforrealsies();
 void skibidi_moderightredwithoutdonutinspawn();
