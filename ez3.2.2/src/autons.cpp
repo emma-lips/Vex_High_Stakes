@@ -43,8 +43,8 @@ const double RIGHTbluebyeautonline = -2; //move away from auton line after secon
 const double RIGHTblueturn4 = -205; //turn to third donut (beside second donut)
 const double RIGHTblueforward4 = 5; // move towards third donut
 const double RIGHTblueback4 = -5; // move away from auton line
-const double RIGHTblueturn5 = 80; // turn to ladder
-const double RIGHTblueforward5 = 35; // go to ladder
+const double RIGHTblueturn5 = -11; // turn to negative corner
+const double RIGHTblueforward5 = 35; // go to negative corner
 
 //LEFT RED AND ALSO FOR LEFT BLUE
 
@@ -74,8 +74,8 @@ const double LEFTredbyeautonline = -2; //move away from auton line after second 
 const double LEFTredturn4 = 195; //turn to third donut (beside second donut)
 const double LEFTredforward4 = 6.5; // move towards third donut
 const double LEFTredback4 = -5; // move away from auton line
-const double LEFTredturn5 = 11; // turn to ladder
-const double LEFTredforward5 = 35; // go to ladder
+const double LEFTredturn5 = 11; // turn to negative corner
+const double LEFTredforward5 = 35; // go to negative corner
 
 //Version 2 Left Blue
 
@@ -640,7 +640,7 @@ void robotskillsv2() {
 
   chassis.pid_turn_set(90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-18, DRIVE_SPEED);
+  chassis.pid_drive_set(-18, slow_speed);
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
@@ -660,21 +660,25 @@ void robotskillsv2() {
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(178, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(47, slow_speed);
+  chassis.pid_drive_set(47, 40);
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(-55, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(10, slow_speed);
   chassis.pid_wait();
-  chassis.pid_turn_set(10, TURN_SPEED);
+  chassis.pid_turn_set(30, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-10, slow_speed);
+  chassis.pid_drive_set(-1, slow_speed);
   chassis.pid_wait_quick_chain();
   setIntake(-127);
   pros::delay(300);
   setIntake(127);
   pros::delay(2000);
+  setIntake(-100);
+  pros::delay(400);
+  setIntake(0);
   clamp1.retract();
+
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(10, DRIVE_SPEED);
