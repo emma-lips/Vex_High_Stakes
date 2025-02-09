@@ -658,11 +658,11 @@ void robotskillsv2() {
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-3, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(176, TURN_SPEED);
+  chassis.pid_turn_set(178, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(47, slow_speed);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(-45, TURN_SPEED);
+  chassis.pid_turn_set(-55, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(10, slow_speed);
   chassis.pid_wait();
