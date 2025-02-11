@@ -736,7 +736,7 @@ void sigma_modeleftblue() {
   chassis.pid_wait_until(47_in);
   lifter.retract(); // let down lifter to intake raised second donut
   setIntake(127);
-  pros::delay(600); // pick up second raised donut
+  pros::delay(450); // pick up second raised donut
   setIntake(0);
 
 
