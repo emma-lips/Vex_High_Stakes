@@ -44,6 +44,14 @@ int states[numStates] = {0, 625, 625, 3400};
 int currState = 0;
 int target = 0;
 
+void backState() {
+  currState -= 1;  // Use -= instead of += -1
+  if (currState < 0) {  // Corrected condition
+    currState = numStates - 1;  // Proper wrap-around
+  }  
+  target = states[currState];
+}
+
 void nextState() {
     currState += 1;
     if (currState == numStates) {
@@ -51,7 +59,7 @@ void nextState() {
     }
     if (currState == 2) {
       setIntake(75);
-      pros::delay(75);
+      pros::delay(300);
        setIntake(-50);
        pros::delay(75);
        setIntake(0);
@@ -250,19 +258,10 @@ void sigmarizz_task_function() {
 
             if (wrongcolour && ringDetector.get() < 50) {
                 button_enabled = false;
-                setIntake(127);
-                if (isRed) {
-                  pros::delay(270);
-                  
-                }
-
-                else {
-                  pros::delay(280);
-
-                }
-
-                setIntake(-100);
-                pros::delay(1000);
+                setIntakesigma(50, 127);
+                pros::delay(2000);
+                setIntake(-127);
+                pros::delay(300);
                 setIntake(0);
                 button_enabled = true;
                 wrongcolour = false;
@@ -493,13 +492,20 @@ void opcontrol() {
       setDoinker(0);
     }
 
-
+      if(master.get_digital(DIGITAL_RIGHT)){
+        setIntakesigma(12, 127);
+        pros::delay(2000);
+      }
 
 
 // lady brown code
     //   if (master.get_digital(DIGITAL_LEFT)) {
     //   liftPID.target_set(0);
     // }
+
+    if (master.get_digital_new_press(DIGITAL_DOWN)) {
+      backState();
+    } 
 
      if (master.get_digital_new_press(DIGITAL_LEFT)) {
      nextState();
