@@ -493,7 +493,8 @@ void opcontrol() {
     }
 
       if(master.get_digital(DIGITAL_RIGHT)){
-        setIntakesigma(12, 127);
+        intake11W.tare_position();
+        intake11W.move_absolute(12, 127);
         pros::delay(2000);
       }
 
