@@ -520,6 +520,49 @@ void lockedin_rightblue() {
 
 }
 
+void goalrushrightblue() {
+
+  chassis.drive_angle_set(-21.04);
+
+  isRed = false;
+
+  setIntake(127);
+  chassis.pid_drive_set(41, DRIVE_SPEED);
+  chassis.pid_wait();
+  setIntake(0);
+
+  setDoinker(-100);
+  pros::delay(450);
+  
+  chassis.pid_wait();
+
+  setIntake(-60);
+
+  chassis.pid_drive_set(-15, slow_speed);
+  chassis.pid_wait_until(-8);
+  setIntake(0);
+
+  setDoinker(127);
+  pros::delay(500);
+  setDoinker(0);
+
+  chassis.pid_drive_set(-3, slow_speed);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(176, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(-15, slow_speed);
+  chassis.pid_wait_quick_chain();
+
+  clamp1.extend();
+
+  setIntake(127);
+  pros::delay(1000);
+  
+
+}
+
 //Nolanverysigma(right red)
 
 void sigma_moderightred() {

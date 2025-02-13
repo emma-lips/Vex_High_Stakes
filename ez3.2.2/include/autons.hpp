@@ -4,7 +4,7 @@
 
 // extern Drive chassis;
 
-
+void goalrushrightblue();
 void robotskillsv2();
 void weakahhblueleft();
 void lowkcannotdoanythingbruhtheseteamscarryforrealsies();

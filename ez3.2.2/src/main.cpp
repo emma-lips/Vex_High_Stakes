@@ -154,6 +154,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+      Auton("rightblue\n\nnah", goalrushrightblue),
       Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),
       Auton("rightred\n\nworkingrightred", sigma_moderightred),
       Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
@@ -409,16 +410,16 @@ void ez_template_extras() {
 
 void opcontrol() {
 
-        pros::Task liftControlTask([]{
-        while (true) {
-            liftControl();
-            pros::delay(10);
-        }
-    });
+  //       pros::Task liftControlTask([]{
+  //       while (true) {
+  //           liftControl();
+  //           pros::delay(10);
+  //       }
+  //   });
 
-    if (sigmarizztaskcolorsort == nullptr) {
-      sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-  }
+  //   if (sigmarizztaskcolorsort == nullptr) {
+  //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+  // }
   chassis.opcontrol_speed_max_set(113);
       // Start the task only if it hasn't already been started
 
