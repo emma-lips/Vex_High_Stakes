@@ -37,7 +37,7 @@ extern pros::Motor intake11W(8,pros::v5::MotorGears::green);
 // //* Optical sensors update at 100 Msec and Distance sensors update at ~50 msec
 // extern pros::Distance ringDetector(4);
 //for doinker
-extern pros::MotorGroup doinker5W({17}, pros::v5::MotorGears::red);
+extern pros::MotorGroup doinker5W({17}, pros::v5::MotorGears::green);
 
 //pneumatics
 pros::adi::Pneumatics clamp1('A', false);
