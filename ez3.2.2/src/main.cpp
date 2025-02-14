@@ -154,8 +154,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
-      Auton("rightred\n\nnah", goalrushrightred2),
       Auton("rightred\n\nnah", goalrushrightred),
+      Auton("rightred\n\nnah", goalrushrightred2),
+
       Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),
       Auton("rightred\n\nworkingrightred", sigma_moderightred),
       Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
