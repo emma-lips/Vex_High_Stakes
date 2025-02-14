@@ -410,16 +410,18 @@ void ez_template_extras() {
 
 void opcontrol() {
 
-  //       pros::Task liftControlTask([]{
-  //       while (true) {
-  //           liftControl();
-  //           pros::delay(10);
-  //       }
-  //   });
+    //     pros::Task liftControlTask([]{
+    //     while (true) {
+    //         liftControl();
+    //         pros::delay(10);
+    //     }
+    // });
 
   //   if (sigmarizztaskcolorsort == nullptr) {
   //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
   // }
+
+  chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);
       // Start the task only if it hasn't already been started
 

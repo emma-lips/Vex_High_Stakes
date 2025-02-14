@@ -558,8 +558,15 @@ void goalrushrightblue() {
   clamp1.extend();
 
   setIntake(127);
-  pros::delay(1000);
-  
+
+  chassis.pid_drive_set(30, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(-150, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set()
+
 
 }
 
