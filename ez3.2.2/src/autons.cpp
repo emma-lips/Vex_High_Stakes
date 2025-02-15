@@ -520,78 +520,109 @@ void lockedin_rightblue() {
 
 }
 
-void goalrushrightred2() {
+void goalrushleftblue() {
 
-  isRed = true;
+  chassis.drive_angle_set(21.04);//setting starting position so its ez as in ez template HAHAHAAHAH
 
-  setIntake(127);
+  isRed = false;
 
-  chassis.pid_drive_set(12, DRIVE_SPEED);
+  setIntake(127); //setting the intake just cause tahaha
+  chassis.pid_drive_set(12, DRIVE_SPEED); // driving forward because it needs to drive forward
+  chassis.pid_wait_quick_chain(); 
+  chassis.pid_turn_set(25, TURN_SPEED);
   chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(24, DRIVE_SPEED);
+  pros::delay(350); //picking up red donut. and blue donut :(
+    setDoinker(-70); // putting down doinker and getting that goal because its a goal rush
+    pros::delay(250);
+    setIntake(0);
+  chassis.pid_wait_quick_chain(); 
+  chassis.pid_turn_set(5, TURN_SPEED);
+  chassis.pid_wait_quick_chain();  
+  chassis.pid_drive_set(5, slow_speed);
+  chassis.pid_wait_quick_chain(); 
 
-  chassis.pid_turn_set(-40, TURN_SPEED);
-  chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(25, DRIVE_SPEED);
-  chassis.pid_wait_quick_chain();
-  pros::delay(600);
-  setIntake(0);
-  chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-21, TURN_SPEED);
-  chassis.pid_wait_quick_chain();
 
-  setDoinker(-70);
-  pros::delay(450);
   
   chassis.pid_wait();
 
-  setIntake(-60);
+  setIntake(-60); // ejecting the blue that we probably picked up
 
-  chassis.pid_drive_set(-15, slow_speed);
+  chassis.pid_drive_set(-15, slow_speed); // moving back that goal because its a goal rush
   chassis.pid_wait_until(-8);
-  setIntake(0);
+  setIntake(0); // dont let that red donut get out
 
-  setDoinker(70);
+  setDoinker(70); // bring the doinker up 
   pros::delay(500);
   setDoinker(0);
 
-  chassis.pid_drive_set(-3, slow_speed);
+  chassis.pid_drive_set(-3, slow_speed); // moving back for positioning to clamp goal
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(176, TURN_SPEED);
+  chassis.pid_turn_set(-176, TURN_SPEED); // turning backwards to get that goal
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-18, slow_speed);
+  chassis.pid_drive_set(-18, slow_speed); // driving into goal to clamp
   chassis.pid_wait_quick_chain();
 
-  clamp1.extend();
+  clamp1.extend(); // clamp obviously
 
-  setIntake(127);
-
-  chassis.pid_turn_set(180, TURN_SPEED);
-  chassis.pid_wait_quick_chain();
-
-  chassis.pid_drive_set(45, DRIVE_SPEED);
-  chassis.pid_wait_until(14);
-  clamp1.retract();
-  setIntake(0);
-  chassis.pid_wait_quick_chain();
-
-  setIntake(127);
-  pros::delay(300);
+  setIntake(127); // put that red donut on
+  pros::delay(1000);
   setIntake(0);
 
-  chassis.pid_turn_set(135, TURN_SPEED);
+  clamp1.retract(); // let go of that stake to get another one
+
+  chassis.pid_drive_set(3, slow_speed); // idk prolly positioning to get other stake
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-18, DRIVE_SPEED);
+  chassis.pid_turn_set(-90, TURN_SPEED); // turning to other stake
   chassis.pid_wait_quick_chain();
 
+  chassis.pid_drive_set(-27, slow_speed); // moving to clamp stake
+  chassis.pid_wait_quick_chain();
+
+  clamp1.extend(); // also obviously a clamp
+
+  chassis.pid_wait_quick_chain();
+  setIntake(127); // lowk just wanted to turn on the intake but it works because it should
+  chassis.pid_drive_set(24, DRIVE_SPEED); // moving forward for positioning to donut preload
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(-180, TURN_SPEED); // turning to preload
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(28, DRIVE_SPEED); // moving to preload and getting it at the end of auton
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(-95, TURN_SPEED); // turning to clear positive corner
+  chassis.pid_wait_quick_chain();
+
+  setDoinker(-70); // getting ready to clear in driver control
+  pros::delay(500);
+  setDoinker(0);
+
+  pros::delay(250);
 
 
-  pros::delay(3000);
-  setIntake(0);
+  // setIntake(127);
+  // pros::delay(300);
+  // setIntake(0);
+
+  // chassis.pid_turn_set(135, TURN_SPEED);
+  // chassis.pid_wait_quick_chain();
+
+  // chassis.pid_drive_set(-18, DRIVE_SPEED);
+  // chassis.pid_wait_quick_chain();
+
+
+
+  // pros::delay(3000);
+  // setIntake(0);
+
+
 }
 
 void goalrushrightred() {

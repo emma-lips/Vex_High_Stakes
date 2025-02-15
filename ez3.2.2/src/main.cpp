@@ -154,37 +154,43 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+      Auton("leftblue\n\nnah", goalrushleftblue),
       Auton("rightred\n\nnah", goalrushrightred),
-      Auton("rightred\n\nnah", goalrushrightred2),
 
       Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),
       Auton("rightred\n\nworkingrightred", sigma_moderightred),
       Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
       Auton("leftred\n\nworkingleftred", sigma_modeleftred),
+
+      Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
       Auton("v2robotskills1daybeforeWWW\n\nbetterstrongersmarter", robotskillsv2),
+
       Auton("tsissocookedletotherteamgetawponleftblue\n\nbruuuh", weakahhblueleft),
       Auton("gettingcarriedfrfr\n\nmaaaantheseteamsmakingtsboring", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
       Auton("rightredletotherteamgetawp\n\ntslowksoskibidi2donutsonstake", skibidi_moderightredwithoutdonutinspawn), 
-      Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
-      Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
+
+
     
       Auton("rightbluealliancestake\n\nautonwinpointhopefullyrightblue", autonwinpointrightblue),
       Auton("leftbluealliancestake\n\nautonwinpointhopefullyleftblue", autonwinpointleftblue),
-      
       Auton("leftredalliancestake\n\nautonwinpointhopefullyleftred", autonwinpointleftred),
       Auton("rightredalliancestake\n\nautonwinpointhopefullyrightred", autonwinpointrightred),
 
+      Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
+
       Auton("skibiid\n\ntrash", skibidi_rizz),
+
       Auton("v2leftblue\n\ntryingtogettwostakesdoNOTuse", Version2_LeftBlue),
       Auton("v3leftblue\n\npoopoocodenotrealdoesntworkforrealsies", Version3_LeftBlue),
-      Auton("Example Drive\n\nDrive forward and come back.", drive_example),
-      Auton("Example Turn\n\nTurn 3 times.", turn_example),
-      Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
-      Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
-      Auton("Swing Example\n\nSwing in an 'S' curve", swing_example),
-      Auton("Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining),
-      Auton("Combine all 3 movements", combining_movements),
-      Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
+
+      // Auton("Example Drive\n\nDrive forward and come back.", drive_example),
+      // Auton("Example Turn\n\nTurn 3 times.", turn_example),
+      // Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
+      // Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
+      // Auton("Swing Example\n\nSwing in an 'S' curve", swing_example),
+      // Auton("Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining),
+      // Auton("Combine all 3 movements", combining_movements),
+      // Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
   });
 
   // Initialize chassis and auton selector
@@ -423,7 +429,7 @@ void opcontrol() {
   //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
   // }
 
-  chassis.opcontrol_drive_activebrake_set(2.0);  
+  // chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);
       // Start the task only if it hasn't already been started
 
