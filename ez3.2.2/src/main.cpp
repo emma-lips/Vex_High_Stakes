@@ -267,11 +267,9 @@ void sigmarizz_task_function() {
 
             if (wrongcolour && ringDetector.get() < 50) {
                 button_enabled = false;
-                setIntakesigma(50, 127);
-                pros::delay(2000);
-                setIntake(-127);
-                pros::delay(300);
-                setIntake(0);
+                intake11W.tare_position();
+                intakePID.target_set(300);
+                intakePID.target_set(-400);
                 button_enabled = true;
                 wrongcolour = false;
             }
@@ -425,9 +423,9 @@ void opcontrol() {
     //     }
     // });
 
-  //   if (sigmarizztaskcolorsort == nullptr) {
-  //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-  // }
+    if (sigmarizztaskcolorsort == nullptr) {
+      sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+  }
 
   chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);

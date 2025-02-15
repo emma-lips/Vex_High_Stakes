@@ -6,7 +6,10 @@ void lift_task();
 void set_lift();
 void lift_wait();
 
+void coloursort_task();
+void set_intake();
 
+extern ez::PID intakePID;
 
 extern ez::PID liftPID;
 
