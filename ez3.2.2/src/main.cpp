@@ -235,7 +235,7 @@ void competition_initialize() {
 
 
 pros::Task Lift_Task(lift_task);  // Create the task, this will cause the function to start running
-
+pros::Task* intake_task = nullptr; // declare the task globally but do not start it here
 // ring detector
 pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
@@ -266,6 +266,9 @@ void sigmarizz_task_function() {
             }
 
             if (wrongcolour && ringDetector.get() < 50) {
+              if (intake_task == nullptr) {
+                intake_task = new pros::Task(intakecoloursort_task);
+            }
                 button_enabled = false;
                 intake11W.tare_position();
                 intakePID.target_set(300);
@@ -426,6 +429,9 @@ void opcontrol() {
     if (sigmarizztaskcolorsort == nullptr) {
       sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
   }
+
+    
+  
 
   chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);

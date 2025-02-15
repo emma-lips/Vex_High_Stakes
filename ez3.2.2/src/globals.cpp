@@ -12,7 +12,7 @@ void set_intake(int input) {
   intake11W.move(input);
 }
 
-void coloursort_task() {
+void intakecoloursort_task() {
   pros::delay(2000);
   while (true) {
     set_intake(intakePID.compute(intake11W.get_position()));
