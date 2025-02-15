@@ -269,17 +269,24 @@ void sigmarizz_task_function() {
               if (intake_task == nullptr) {
                 intake_task = new pros::Task(intakecoloursort_task);
             }
+                intake_task->resume();
                 button_enabled = false;
                 intake11W.tare_position();
-                intakePID.target_set(300);
-                intakePID.target_set(-400);
+                intakePID.target_set(30);
+                pros::delay(309);
+                intakePID.target_set(-30);
+                pros::delay(309);
                 button_enabled = true;
                 wrongcolour = false;
+                intake_task->suspend();
+                
             }
         }
         pros::delay(20);  // Allow other tasks to run
     }
 }
+
+    
 
 void autonomous() {
   chassis.pid_targets_reset();                // Resets PID targets to 0
@@ -430,7 +437,9 @@ void opcontrol() {
       sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
   }
 
-    
+                  if (intake_task == nullptr) {
+                intake_task = new pros::Task(intakecoloursort_task);
+            }
   
 
   chassis.opcontrol_drive_activebrake_set(2.0);  
@@ -508,9 +517,13 @@ void opcontrol() {
     }
 
       if(master.get_digital(DIGITAL_RIGHT)){
-        intake11W.tare_position();
-        intake11W.move_absolute(12, 127);
-        pros::delay(2000);
+        // intake11W.tare_position();
+        // // intakePID.target_set(301);
+        // intake11W.move_absolute(127, 127);
+        // pros::delay(1000);
+      setDoinkerPOS(123, 123);
+      
+      
       }
 
 
