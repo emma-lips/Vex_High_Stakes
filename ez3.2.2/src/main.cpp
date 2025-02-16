@@ -516,12 +516,16 @@ void opcontrol() {
       setDoinker(0);
     }
 
-      if(master.get_digital(DIGITAL_RIGHT)){
+      if(master.get_digital_new_press(DIGITAL_RIGHT)){
         intake11W.tare_position();
         // // intakePID.target_set(301);
         // intake11W.move_absolute(127, 127);
         // pros::delay(1000);
-      setDoinkerPOS(123, 123);
+        intake11W.move_relative(100, 100); // Moves 100 units forward
+  while (!((intake11W.get_position() < 105) && (intake11W.get_position() > 95))) {
+    // Continue running this loop as long as the motor is not within +-5 units of its goal
+    pros::delay(2);
+  }
       pros::delay(2000);
       setIntakesigma(132, 124);
       pros::delay(2000);
