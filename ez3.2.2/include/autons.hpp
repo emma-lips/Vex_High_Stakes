@@ -4,6 +4,7 @@
 
 // extern Drive chassis;
 
+void soloawprightblue();
 void goalrushrightred();
 void goalrushleftblue();
 void robotskillsv2();

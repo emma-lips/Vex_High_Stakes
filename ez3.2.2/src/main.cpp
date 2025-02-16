@@ -169,7 +169,7 @@ ez::as::auton_selector.autons_add({
       Auton("gettingcarriedfrfr\n\nmaaaantheseteamsmakingtsboring", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
       Auton("rightredletotherteamgetawp\n\ntslowksoskibidi2donutsonstake", skibidi_moderightredwithoutdonutinspawn), 
 
-
+      Auton("rightblue solo awp???\n\nsolo auton winpoint right blue", soloawprightblue),
     
       Auton("rightblue alliancestake\n\nauton winpoint rightblue", autonwinpointrightblue),
       Auton("leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
@@ -426,12 +426,12 @@ void ez_template_extras() {
 
 void opcontrol() {
 
-        pros::Task liftControlTask([]{
-        while (true) {
-            liftControl();
-            pros::delay(10);
-        }
-    });
+    //     pros::Task liftControlTask([]{
+    //     while (true) {
+    //         liftControl();
+    //         pros::delay(10);
+    //     }
+    // });
 
     if (sigmarizztaskcolorsort == nullptr) {
       sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
@@ -441,8 +441,8 @@ void opcontrol() {
   //               intake_task = new pros::Task(intakecoloursort_task);
   //           }
   
-  intake11W.tare_position();
-  chassis.opcontrol_drive_activebrake_set(2.0);  
+  // intake11W.tare_position();
+  // chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);
       // Start the task only if it hasn't already been started
 
