@@ -8,20 +8,20 @@ void set_lift(int input) {
   lb.move(input);
 }
 
-void set_intake(int input) {
-  intake11W.move(input);
-}
+// void set_intake(int input) {
+//   intake11W.move(input);
+// }
 
-void intakecoloursort_task() {
-  pros::delay(2000);
-  while (true) {
-    set_intake(intakePID.compute(intake11W.get_position()));
+// void intakecoloursort_task() {
+//   pros::delay(2000);
+//   while (true) {
+//     set_intake(intakePID.compute(intake11W.get_position()));
 
-    pros::delay(ez::util::DELAY_TIME);
-  }
-}
+//     pros::delay(ez::util::DELAY_TIME);
+//   }
+// }
 
-ez::PID intakePID{0.5, 0, 0.5, 0, "Intake"};
+// ez::PID intakePID{0.5, 0, 0.5, 0, "Intake"};
 
 ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
 

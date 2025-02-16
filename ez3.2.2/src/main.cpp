@@ -235,7 +235,7 @@ void competition_initialize() {
 
 
 pros::Task Lift_Task(lift_task);  // Create the task, this will cause the function to start running
-pros::Task* intake_task = nullptr; // declare the task globally but do not start it here
+// pros::Task* intake_task = nullptr; // declare the task globally but do not start it here
 // ring detector
 pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
@@ -266,19 +266,19 @@ void sigmarizz_task_function() {
             }
 
             if (wrongcolour && ringDetector.get() < 50) {
-              if (intake_task == nullptr) {
-                intake_task = new pros::Task(intakecoloursort_task);
-            }
-                intake_task->resume();
+
+
                 button_enabled = false;
-                intake11W.tare_position();
-                intakePID.target_set(30);
-                pros::delay(309);
-                intakePID.target_set(-30);
-                pros::delay(309);
+                setIntake(127);
+                pros::delay(295);
+
+                setIntake(-127);
+                pros::delay(400);
+                setIntake(0);
+
                 button_enabled = true;
                 wrongcolour = false;
-                intake_task->suspend();
+
                 
             }
         }
@@ -433,15 +433,15 @@ void opcontrol() {
     //     }
     // });
 
-  //   if (sigmarizztaskcolorsort == nullptr) {
-  //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-  // }
+    if (sigmarizztaskcolorsort == nullptr) {
+      sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+  }
 
   //                 if (intake_task == nullptr) {
   //               intake_task = new pros::Task(intakecoloursort_task);
   //           }
   
-
+  intake11W.tare_position();
   chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);
       // Start the task only if it hasn't already been started
@@ -516,22 +516,28 @@ void opcontrol() {
       setDoinker(0);
     }
 
-      if(master.get_digital_new_press(DIGITAL_RIGHT)){
-        intake11W.tare_position();
-        // // intakePID.target_set(301);
-        // intake11W.move_absolute(127, 127);
-        // pros::delay(1000);
-        intake11W.move_relative(100, 100); // Moves 100 units forward
-  while (!((intake11W.get_position() < 105) && (intake11W.get_position() > 95))) {
-    // Continue running this loop as long as the motor is not within +-5 units of its goal
-    pros::delay(2);
-  }
-      pros::delay(2000);
-      setIntakesigma(132, 124);
-      pros::delay(2000);
+  //     if(master.get_digital_new_press(DIGITAL_RIGHT)){
+
+  //       // // intakePID.target_set(301);
+  //       // intake11W.move_absolute(127, 127);
+  //       // pros::delay(1000);
+  //       // intake11W.move(100); // Moves 100 units forward
+  //       // while(intake11W.get_position() < 95){
+  //       //   pros::delay(5);
+
+  //       // }
+  //       // setIntake(0);
+  //       intake11W.move_relative(2302, 127);
+  // while (!((intake11W.get_position() < 2307) && (intake11W.get_position() > 2297))) {
+  //   // Continue running this loop as long as the motor is not within +-5 units of its goal
+  //   pros::delay(2);
+  // }
+
+  //     setIntake(-127);
+  //     pros::delay(3920);
+  //     setIntake(0);
       
-      
-      }
+  //     }
 
 
 // lady brown code
