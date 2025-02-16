@@ -467,6 +467,10 @@ void opcontrol() {
         pros::delay(300);
     }
 
+    if(master.get_digital_new_press(DIGITAL_RIGHT)){
+      isRed = !isRed;
+    }
+
     if(toggleRingSort){
        if(button_enabled && master.get_digital(DIGITAL_R1)){
       setIntake(127);
