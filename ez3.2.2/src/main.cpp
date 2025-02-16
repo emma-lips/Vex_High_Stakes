@@ -171,10 +171,10 @@ ez::as::auton_selector.autons_add({
 
 
     
-      Auton("rightbluealliancestake\n\nautonwinpointhopefullyrightblue", autonwinpointrightblue),
-      Auton("leftbluealliancestake\n\nautonwinpointhopefullyleftblue", autonwinpointleftblue),
-      Auton("leftredalliancestake\n\nautonwinpointhopefullyleftred", autonwinpointleftred),
-      Auton("rightredalliancestake\n\nautonwinpointhopefullyrightred", autonwinpointrightred),
+      Auton("rightblue alliancestake\n\nauton winpoint rightblue", autonwinpointrightblue),
+      Auton("leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
+      Auton("leftred alliancestake\n\nauton winpoint leftred", autonwinpointleftred),
+      Auton("rightred alliancestake\n\nauton winpoint rightred", autonwinpointrightred),
 
       Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
 
@@ -426,12 +426,12 @@ void ez_template_extras() {
 
 void opcontrol() {
 
-    //     pros::Task liftControlTask([]{
-    //     while (true) {
-    //         liftControl();
-    //         pros::delay(10);
-    //     }
-    // });
+        pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
 
     if (sigmarizztaskcolorsort == nullptr) {
       sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
