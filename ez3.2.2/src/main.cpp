@@ -433,13 +433,13 @@ void opcontrol() {
     //     }
     // });
 
-    if (sigmarizztaskcolorsort == nullptr) {
-      sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-  }
+  //   if (sigmarizztaskcolorsort == nullptr) {
+  //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+  // }
 
-                  if (intake_task == nullptr) {
-                intake_task = new pros::Task(intakecoloursort_task);
-            }
+  //                 if (intake_task == nullptr) {
+  //               intake_task = new pros::Task(intakecoloursort_task);
+  //           }
   
 
   chassis.opcontrol_drive_activebrake_set(2.0);  
@@ -517,11 +517,14 @@ void opcontrol() {
     }
 
       if(master.get_digital(DIGITAL_RIGHT)){
-        // intake11W.tare_position();
+        intake11W.tare_position();
         // // intakePID.target_set(301);
         // intake11W.move_absolute(127, 127);
         // pros::delay(1000);
       setDoinkerPOS(123, 123);
+      pros::delay(2000);
+      setIntakesigma(132, 124);
+      pros::delay(2000);
       
       
       }

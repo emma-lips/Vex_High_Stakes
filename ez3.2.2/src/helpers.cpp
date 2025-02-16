@@ -4,8 +4,8 @@ void setIntake(int intakePower){
     intake11W.move(intakePower);
 }
 
-void setIntakesigma(int intakelength, int intakePower){
-    intake11W.move_relative(intakelength, intakePower);
+void setIntakesigma(int deg, int speed){
+    intake11W.move_absolute(deg, speed);
 }
 
 void setDoinker(int doinkerPower){
