@@ -536,12 +536,12 @@ void soloawprightblue() {
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
-  pros::delay(475);
+  pros::delay(575);
   setIntake(0);
 
   chassis.pid_drive_set(-1.5, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(372, TURN_SPEED);
+  chassis.pid_turn_set(373, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
