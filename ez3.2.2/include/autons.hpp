@@ -4,6 +4,7 @@
 
 // extern Drive chassis;
 
+void soloawpleftred();
 void soloawprightblue();
 void goalrushrightred();
 void goalrushleftblue();

@@ -154,7 +154,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
-  Auton("rightblue solo awp???\n\nsolo auton winpoint right blue", soloawprightblue),
+      Auton("leftred solo awp???\n\nsolo auton winpoint left red", soloawpleftred),
+      Auton("rightblue solo awp???\n\nsolo auton winpoint right blue", soloawprightblue),
+
 
       Auton("leftblue\n\nnah", goalrushleftblue),
       Auton("rightred\n\nnah", goalrushrightred),
@@ -257,7 +259,7 @@ void sigmarizz_task_function() {
             colorDetector.set_led_pwm(100);
 
             if (isRed) {
-                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 260 && colorDetector.get_proximity() > 45) {
+                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 240 && colorDetector.get_proximity() > 150) {
                     wrongcolour = true;
                 }
             } else {
@@ -271,7 +273,7 @@ void sigmarizz_task_function() {
 
                 button_enabled = false;
                 setIntake(127);
-                pros::delay(295);
+                pros::delay(310);
 
                 setIntake(-127);
                 pros::delay(400);

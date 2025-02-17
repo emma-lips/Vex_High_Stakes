@@ -522,6 +522,8 @@ void lockedin_rightblue() {
 
 void soloawprightblue() {
 
+  chassis.opcontrol_drive_activebrake_set(2.0);   
+
   isRed = false;
   chassis.drive_angle_set(90_deg);  // Start the robot facing 90 degrees
 
@@ -584,7 +586,7 @@ void soloawprightblue() {
 
 //Right blue forward towards eight donuts
 
-  chassis.pid_drive_set(10, DRIVE_SPEED); // move to second donut
+  chassis.pid_drive_set(9, DRIVE_SPEED); // move to second donut
     chassis.pid_wait_until(6_in);
   setIntake(127);
   pros::delay(250); // intake the second donut
@@ -599,6 +601,116 @@ void soloawprightblue() {
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(8, DRIVE_SPEED);// move towards third donut
+  chassis.pid_wait();
+  
+
+
+  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move away from auton line
+  chassis.pid_wait_quick_chain();
+
+  pros::delay(2000);
+  setIntake(0);
+
+  // chassis.pid_turn_set(50, TURN_SPEED);
+  // chassis.pid_wait_quick_chain();
+
+  // chassis.pid_drive_set(56, DRIVE_SPEED);
+  // chassis.pid_wait_until(40);
+  // lifter.extend();
+  // chassis.pid_wait_until(55);
+  // lifter.retract();
+  // setIntake(127);
+  // pros::delay(600);
+  // setIntake(0);
+
+  // chassis.pid_drive_set(-6, DRIVE_SPEED);
+  // chassis.pid_wait_quick_chain();
+
+  // setIntake(127);
+
+}
+
+void soloawpleftred() {
+
+  chassis.opcontrol_drive_activebrake_set(2.0);   
+
+  isRed = true;
+  chassis.drive_angle_set(-90_deg);  // Start the robot facing 90 degrees
+
+
+  lifter.extend();
+  chassis.pid_turn_set(-130, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(7, slow_speed);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(2.5, slow_speed);
+  chassis.pid_wait_quick_chain();
+  lifter.retract();
+  setIntake(127);
+  pros::delay(575);
+  setIntake(0);
+
+  chassis.pid_drive_set(-1.5, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-371.5, TURN_SPEED);
+  chassis.pid_wait();
+  // chassis.pid_turn_set(2.5, TURN_SPEED);
+  // chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(6.5, slow_speed);
+
+  // chassis.pid_turn_set(355, TURN_SPEED);
+  // chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(4, DRIVE_SPEED);
+  setIntake(127);
+  pros::delay(400);
+  setIntake(0);
+  chassis.pid_wait();
+  liftPID.target_set(3200);
+  lift_wait();
+  chassis.pid_drive_set(-5, slow_speed);
+  chassis.pid_wait_quick_chain();
+  // liftPID.target_set(0);
+  // lift_wait();
+
+
+  chassis.pid_turn_set(-28, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-33, slow_speed);
+  chassis.pid_wait_quick_chain();
+  clamp1.extend();
+  chassis.pid_wait();
+  setIntake(127);
+
+  chassis.pid_turn_set(90, TURN_SPEED2);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(18, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  pros::delay(300);
+
+
+  chassis.pid_turn_set(180, TURN_SPEED); // turn to stack of 8 donuts
+  chassis.pid_wait_quick_chain();
+
+//Right blue forward towards eight donuts
+
+  chassis.pid_drive_set(9, DRIVE_SPEED); // move to second donut
+    chassis.pid_wait_until(6_in);
+  setIntake(127);
+  pros::delay(250); // intake the second donut
+  // setIntake(0);
+
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTbluebyeautonline, DRIVE_SPEED); // move back to avoid autonomous line
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(160, TURN_SPEED);//turn to third donut (beside second donut)
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(8.5, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait();
   
 
