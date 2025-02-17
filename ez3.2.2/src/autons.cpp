@@ -28,7 +28,7 @@ const int delay_2 = 2000; // intaking and dropping first donut
 
 //For donut side(right blue(stack of 8 donuts)) 
 const double RIGHTblueturn3 = -175; // turn towards second donut
-const double RIGHTblueforward2 = 9; // move towards second donut
+const double RIGHTblueforward2 = 10; // move towards second donut
 const int delay_3 = 1500; // intake second donut
 
 //Add on for mogo side(right red(donut in middle of spawn))
@@ -41,7 +41,7 @@ const int delay_3c = 2500; // drop second donut on stake
 //continue RIGHTblue
 const double RIGHTbluebyeautonline = -2; //move away from auton line after second donut
 const double RIGHTblueturn4 = -205; //turn to third donut (beside second donut)
-const double RIGHTblueforward4 = 5; // move towards third donut
+const double RIGHTblueforward4 = 8; // move towards third donut
 const double RIGHTblueback4 = -5; // move away from auton line
 const double RIGHTblueturn5 = 11; // turn to negative corner
 const double RIGHTblueforward5 = 38; // go to negative corner
@@ -550,9 +550,9 @@ void soloawprightblue() {
   liftPID.target_set(3200);
   lift_wait();
   chassis.pid_drive_set(-5, slow_speed);
-  chassis.pid_wait();
-  liftPID.target_set(0);
-  lift_wait();
+  chassis.pid_wait_quick_chain();
+  // liftPID.target_set(0);
+  // lift_wait();
 
 
   chassis.pid_turn_set(30, TURN_SPEED);
@@ -566,11 +566,11 @@ void soloawprightblue() {
   chassis.pid_turn_set(-90, TURN_SPEED2);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(21, DRIVE_SPEED);
+  chassis.pid_drive_set(18, DRIVE_SPEED);
   chassis.pid_wait();
   setIntake(127);
-  pros::delay(2000);
-  setIntake(0);
+  pros::delay(450);
+
 
   chassis.pid_turn_set(RIGHTblueturn3, TURN_SPEED); // turn to stack of 8 donuts
   chassis.pid_wait_quick_chain();
@@ -588,7 +588,7 @@ void soloawprightblue() {
   chassis.pid_drive_set(RIGHTbluebyeautonline, DRIVE_SPEED); // move back to avoid autonomous line
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(RIGHTblueturn4, TURN_SPEED);//turn to third donut (beside second donut)
+  chassis.pid_turn_set(-RIGHTblueturn4, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(RIGHTblueforward4, DRIVE_SPEED);// move towards third donut
