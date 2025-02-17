@@ -653,7 +653,7 @@ void soloawpleftred() {
 
   chassis.pid_drive_set(-1.5, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(-371.5, TURN_SPEED);
+  chassis.pid_turn_set(-370, TURN_SPEED);
   chassis.pid_wait();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
