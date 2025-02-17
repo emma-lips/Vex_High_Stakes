@@ -536,16 +536,16 @@ void soloawprightblue() {
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
-  pros::delay(450);
+  pros::delay(475);
   setIntake(0);
 
-  chassis.pid_drive_set(-2, DRIVE_SPEED);
+  chassis.pid_drive_set(-1, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(375, TURN_SPEED);
+  chassis.pid_turn_set(372, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(9, slow_speed);
+  chassis.pid_drive_set(6.5, slow_speed);
 
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -579,7 +579,7 @@ void soloawprightblue() {
   pros::delay(450);
 
 
-  chassis.pid_turn_set(RIGHTblueturn3, TURN_SPEED); // turn to stack of 8 donuts
+  chassis.pid_turn_set(-173, TURN_SPEED); // turn to stack of 8 donuts
   chassis.pid_wait_quick_chain();
 
 //Right blue forward towards eight donuts
@@ -595,7 +595,7 @@ void soloawprightblue() {
   chassis.pid_drive_set(RIGHTbluebyeautonline, DRIVE_SPEED); // move back to avoid autonomous line
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(RIGHTblueturn4, TURN_SPEED);//turn to third donut (beside second donut)
+  chassis.pid_turn_set(-195, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(8, DRIVE_SPEED);// move towards third donut
