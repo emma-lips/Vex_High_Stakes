@@ -154,6 +154,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("rightblue solo awp???\n\nsolo auton winpoint right blue", soloawprightblue),
+
       Auton("leftblue\n\nnah", goalrushleftblue),
       Auton("rightred\n\nnah", goalrushrightred),
 
@@ -169,7 +171,6 @@ ez::as::auton_selector.autons_add({
       Auton("gettingcarriedfrfr\n\nmaaaantheseteamsmakingtsboring", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
       Auton("rightredletotherteamgetawp\n\ntslowksoskibidi2donutsonstake", skibidi_moderightredwithoutdonutinspawn), 
 
-      Auton("rightblue solo awp???\n\nsolo auton winpoint right blue", soloawprightblue),
     
       Auton("rightblue alliancestake\n\nauton winpoint rightblue", autonwinpointrightblue),
       Auton("leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
@@ -297,9 +298,9 @@ void autonomous() {
   chassis.opcontrol_speed_max_set(127);
 
       // Start the task only if it hasn't already been started
-    // if (sigmarizztaskcolorsort == nullptr) {
-    //      sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-    // }
+    if (sigmarizztaskcolorsort == nullptr) {
+         sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+    }
 
 
   /*
@@ -511,10 +512,10 @@ void opcontrol() {
 
 
     if(master.get_digital(DIGITAL_Y)){
-        setDoinker(60);
+        setDoinker(30);
     }
     else if(master.get_digital(DIGITAL_L1)){
-        setDoinker(-60);
+        setDoinker(-30);
     }
     else {
       setDoinker(0);
