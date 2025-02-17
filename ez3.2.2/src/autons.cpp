@@ -653,7 +653,7 @@ void soloawpleftred() {
 
   chassis.pid_drive_set(-1.5, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(-370, TURN_SPEED);
+  chassis.pid_turn_set(-371, TURN_SPEED);
   chassis.pid_wait();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -662,9 +662,7 @@ void soloawpleftred() {
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(4, DRIVE_SPEED);
-  setIntake(127);
-  pros::delay(400);
-  setIntake(0);
+
   chassis.pid_wait();
   liftPID.target_set(3200);
   lift_wait();

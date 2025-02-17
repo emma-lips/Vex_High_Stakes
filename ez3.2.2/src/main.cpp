@@ -131,10 +131,7 @@ void initialize() {
 
     liftPID.exit_condition_set(80, 50, 300, 150, 500, 500);
 
-        // Start the task only if it hasn't already been started
-        if (sigmarizztaskcolorsort == nullptr) {
-          sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-     }
+
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
   //  - change `back` to `front` if the tracking wheel is in front of the midline
@@ -304,8 +301,13 @@ void autonomous() {
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
   chassis.opcontrol_speed_max_set(127);
 
+  wrongcolour = false;
 
-
+          // Start the task only if it hasn't already been started
+          if (sigmarizztaskcolorsort == nullptr) {
+            sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+       }
+  
 
   /*
   Odometry and Pure Pursuit are not magic
@@ -430,7 +432,7 @@ void ez_template_extras() {
 
 
 void opcontrol() {
-
+  colorDetector.set_led_pwm(100);
     //     pros::Task liftControlTask([]{
     //     while (true) {
     //         liftControl();
