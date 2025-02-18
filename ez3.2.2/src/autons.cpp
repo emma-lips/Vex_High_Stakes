@@ -383,7 +383,7 @@ void sigma_moderightblue() {
   chassis.pid_wait();
 
   setIntake(127);
-  pros::delay(delay_1); // intake preload
+  // pros::delay(450); // intake preload
   // setIntake(0);
 
   chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
@@ -406,7 +406,7 @@ void sigma_moderightblue() {
   chassis.pid_drive_set(RIGHTblueforward2, DRIVE_SPEED); // move to second donut
     chassis.pid_wait_until(6_in);
   setIntake(127);
-  pros::delay(delay_2); // intake the second donut
+  pros::delay(450); // intake the second donut
   // setIntake(0);
 
   chassis.pid_wait();
@@ -418,11 +418,10 @@ void sigma_moderightblue() {
   chassis.pid_wait();
 
   chassis.pid_drive_set(RIGHTblueforward4, DRIVE_SPEED);// move towards third donut
-  chassis.pid_wait_until(1_in);
-  setIntake(127);
+  chassis.pid_wait();
 
 
-  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move away from auton line
+  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move away from autn line
   chassis.pid_wait();
 
   chassis.pid_turn_set(RIGHTblueturn5, TURN_SPEED);// turn to negative corner
@@ -433,7 +432,7 @@ void sigma_moderightblue() {
 
   chassis.pid_turn_set(-80, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  pros::delay(delay_3);
+  pros::delay(delay_2);
   setIntake(0);
 
 }
