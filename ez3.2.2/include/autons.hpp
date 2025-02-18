@@ -5,6 +5,7 @@
 // extern Drive chassis;
 
 void lockedin_rightblue();
+void sigma_moderightblue5donuts();
 void rightredalliancestakeladder();
 void rightbluealliancestakeladder();
 void leftredalliancestakeladder();

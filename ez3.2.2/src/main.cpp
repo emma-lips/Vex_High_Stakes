@@ -170,6 +170,7 @@ ez::as::auton_selector.autons_add({
       Auton("rightred\n\ngoal rush slayyyy left blue", goalrushrightred),
 
       // Auton("rightblue no alliance stake\n\nworkingrightblue then trying for 5 donuts", ),
+      Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts),
       Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
       Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
       Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),

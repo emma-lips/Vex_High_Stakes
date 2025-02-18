@@ -437,6 +437,94 @@ void sigma_moderightblue() {
 
 }
 
+void sigma_moderightblue5donuts() {
+
+  
+  isRed = false;
+  
+  chassis.pid_drive_set(RIGHTblueback, DRIVE_SPEED); // move back towards mogo
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(RIGHTblueturn, TURN_SPEED); // turn toward mogo
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueback2, slow_speed, true); // move slowly to clamp mogo
+  chassis.pid_wait();
+
+  clamp1.extend(); // clamp mogo
+  chassis.pid_wait();
+
+  setIntake(127);
+  // pros::delay(450); // intake preload
+  // setIntake(0);
+
+  chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueforward, DRIVE_SPEED); // move to first donut
+  chassis.pid_wait();
+
+//Picking up first donut
+
+  setIntake(127);
+  pros::delay(delay_2); // intake first donut
+  // setIntake(0);
+
+  chassis.pid_turn_set(RIGHTblueturn3, TURN_SPEED); // turn to stack of 8 donuts
+  chassis.pid_wait();
+
+//Right blue forward towards eight donuts
+
+  chassis.pid_drive_set(RIGHTblueforward2, DRIVE_SPEED); // move to second donut
+    chassis.pid_wait_until(6_in);
+  setIntake(127);
+  pros::delay(450); // intake the second donut
+  // setIntake(0);
+
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTbluebyeautonline, DRIVE_SPEED); // move back to avoid autonomous line
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(RIGHTblueturn4, TURN_SPEED);//turn to third donut (beside second donut)
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(5.5, DRIVE_SPEED);// move towards third donut
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move away from autn line
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(55, TURN_SPEED);// turn to raised donut
+  chassis.pid_wait();
+
+  lifter.extend();
+  chassis.pid_wait_until(37);
+
+  chassis.pid_drive_set(37, FULL_SPEED);// go to negative corner
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(11, slow_speed);
+  chassis.pid_wait();
+
+  
+  lifter.retract();
+  setIntake(127);
+  pros::delay(600);
+  setIntake(0);
+
+  chassis.pid_drive_set(-6, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  setIntake(127);
+  pros::delay(2000);
+
+  // chassis.pid_turn_set(-80, TURN_SPEED);
+  // chassis.pid_wait_quick_chain();
+  // pros::delay(delay_2);
+  // setIntake(0);
+
+}
 
 void lockedin_rightblue() {
 
