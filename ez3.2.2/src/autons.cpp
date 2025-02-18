@@ -653,7 +653,7 @@ void soloawpleftred() {
 
   chassis.pid_drive_set(-1.5, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(-371, TURN_SPEED);
+  chassis.pid_turn_set(-375, TURN_SPEED);
   chassis.pid_wait();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -664,7 +664,7 @@ void soloawpleftred() {
   // chassis.pid_drive_set(4, DRIVE_SPEED);
 
   chassis.pid_wait();
-  liftPID.target_set(3200);
+  liftPID.target_set(3000);
   lift_wait();
   chassis.pid_drive_set(-5, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -694,7 +694,7 @@ void soloawpleftred() {
 
 //Right blue forward towards eight donuts
 
-  chassis.pid_drive_set(9, DRIVE_SPEED); // move to second donut
+  chassis.pid_drive_set(8, DRIVE_SPEED); // move to second donut
     chassis.pid_wait_until(6_in);
   setIntake(127);
   pros::delay(250); // intake the second donut
