@@ -160,25 +160,26 @@ ez::as::auton_selector.autons_add({
       Auton("rightblue solo awp???\n\nsolo auton winpoint right blue", soloawprightblue),
 
 
-      Auton("leftblue\n\nnah", goalrushleftblue),
-      Auton("rightred\n\nnah", goalrushrightred),
+      Auton("leftblue\n\ngoal rush slayyyy left blue", goalrushleftblue),
+      Auton("rightred\n\ngoal rush slayyyy left blue", goalrushrightred),
 
-      Auton("rightblue\n\nFOURDONUTSOMGOMG", sigma_moderightblue),
+      Auton("rightblue\n\nworkingrightblue 4 donuts", sigma_moderightblue),
       Auton("rightred\n\nworkingrightred", sigma_moderightred),
       Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
-      Auton("leftred\n\nworkingleftred", sigma_modeleftred),
+      Auton("leftred\n\nworkingleftred 4 donuts", sigma_modeleftred),
 
       Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
-      Auton("v2robotskills1daybeforeWWW\n\nbetterstrongersmarter", robotskillsv2),
+      Auton("v2robotskills\n\nbetterstrongersmarter", robotskillsv2),
 
-      Auton("tsissocookedletotherteamgetawponleftblue\n\nbruuuh", weakahhblueleft),
+      Auton("weak left blue\n\n dont go for donut in middle", weakahhblueleft),
       Auton("gettingcarriedfrfr\n\nmaaaantheseteamsmakingtsboring", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
-      Auton("rightredletotherteamgetawp\n\ntslowksoskibidi2donutsonstake", skibidi_moderightredwithoutdonutinspawn), 
+      Auton("weak right red\n\ndont go for donut in middle", skibidi_moderightredwithoutdonutinspawn), 
+      Auton("gettingcarriedfrfr\n\n go in a straight line tf", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
 
     
       Auton("rightblue alliancestake\n\nauton winpoint rightblue", autonwinpointrightblue),
       Auton("leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
-      Auton("leftred alliancestake\n\nauton winpoint leftred", autonwinpointleftred),
+      Auton("leftred alliancestake going to ladder\n\nauton winpoint leftred", leftredalliancestakeladder),
       Auton("rightred alliancestake\n\nauton winpoint rightred", autonwinpointrightred),
 
       Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
@@ -433,12 +434,12 @@ void ez_template_extras() {
 
 void opcontrol() {
   colorDetector.set_led_pwm(100);
-    //     pros::Task liftControlTask([]{
-    //     while (true) {
-    //         liftControl();
-    //         pros::delay(10);
-    //     }
-    // });
+        pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
 
   //   if (sigmarizztaskcolorsort == nullptr) {
   //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);

@@ -520,6 +520,72 @@ void lockedin_rightblue() {
 
 }
 
+void leftredalliancestakeladder() {
+  chassis.opcontrol_drive_activebrake_set(0.0);   
+
+  isRed = true;
+  chassis.drive_angle_set(-90_deg);  // Start the robot facing 90 degrees
+
+
+  lifter.extend();
+  chassis.pid_turn_set(-130, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(7, slow_speed);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(2.5, slow_speed);
+  chassis.pid_wait_quick_chain();
+  lifter.retract();
+  setIntake(127);
+  pros::delay(575);
+  setIntake(0);
+
+  chassis.pid_drive_set(-1.5, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-375, TURN_SPEED);
+  chassis.pid_wait();
+  // chassis.pid_turn_set(2.5, TURN_SPEED);
+  // chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(8, slow_speed);
+
+  // chassis.pid_turn_set(355, TURN_SPEED);
+  // chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(4, DRIVE_SPEED);
+
+  chassis.pid_wait();
+  liftPID.target_set(3000);
+  lift_wait();
+  chassis.pid_drive_set(-5, slow_speed);
+  chassis.pid_wait_quick_chain();
+  // liftPID.target_set(0);
+  // lift_wait();
+
+
+  chassis.pid_turn_set(-28, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-31, slow_speed);
+  chassis.pid_wait_quick_chain();
+  clamp1.extend();
+  chassis.pid_wait();
+  setIntake(127);
+
+  chassis.pid_turn_set(90, TURN_SPEED2);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(16, DRIVE_SPEED);
+  chassis.pid_wait();
+
+  pros::delay(300);
+
+  chassis.pid_turn_set(-90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(13, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(4, 127);
+
+
+}
+
 void soloawprightblue() {
 
   chassis.opcontrol_drive_activebrake_set(2.0);   
@@ -657,7 +723,7 @@ void soloawpleftred() {
   chassis.pid_wait();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(6.5, slow_speed);
+  chassis.pid_drive_set(8, slow_speed);
 
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -674,7 +740,7 @@ void soloawpleftred() {
 
   chassis.pid_turn_set(-28, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-33, slow_speed);
+  chassis.pid_drive_set(-31, slow_speed);
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
