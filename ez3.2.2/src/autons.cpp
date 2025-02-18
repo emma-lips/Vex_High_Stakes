@@ -544,11 +544,11 @@ void leftbluealliancestakeladder() {
 
   chassis.pid_drive_set(-1.5, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(-375, TURN_SPEED);
+  chassis.pid_turn_set(-372, TURN_SPEED);
   chassis.pid_wait();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(8, slow_speed);
+  chassis.pid_drive_set(9.5, slow_speed);
 
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -557,7 +557,7 @@ void leftbluealliancestakeladder() {
   chassis.pid_wait();
   liftPID.target_set(3000);
   lift_wait();
-  chassis.pid_drive_set(-5, slow_speed);
+  chassis.pid_drive_set(-7, slow_speed);
   chassis.pid_wait_quick_chain();
   // liftPID.target_set(0);
   // lift_wait();
@@ -681,7 +681,7 @@ void rightbluealliancestakeladder() {
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(6.5, slow_speed);
+  chassis.pid_drive_set(8, slow_speed);
 
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -700,7 +700,7 @@ void rightbluealliancestakeladder() {
 
   chassis.pid_turn_set(28, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-33, slow_speed);
+  chassis.pid_drive_set(-31, slow_speed);
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
@@ -750,7 +750,7 @@ void rightredalliancestakeladder() {
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(6.5, slow_speed);
+  chassis.pid_drive_set(8, slow_speed);
 
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -769,7 +769,7 @@ void rightredalliancestakeladder() {
 
   chassis.pid_turn_set(28, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-33, slow_speed);
+  chassis.pid_drive_set(-31, slow_speed);
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
@@ -819,7 +819,7 @@ void soloawprightblue() {
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(6.5, slow_speed);
+  chassis.pid_drive_set(8, slow_speed);
 
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -838,7 +838,7 @@ void soloawprightblue() {
 
   chassis.pid_turn_set(28, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-33, slow_speed);
+  chassis.pid_drive_set(-31, slow_speed);
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();

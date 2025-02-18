@@ -440,12 +440,12 @@ void ez_template_extras() {
 
 void opcontrol() {
   colorDetector.set_led_pwm(100);
-        pros::Task liftControlTask([]{
-        while (true) {
-            liftControl();
-            pros::delay(10);
-        }
-    });
+    //     pros::Task liftControlTask([]{
+    //     while (true) {
+    //         liftControl();
+    //         pros::delay(10);
+    //     }
+    // });
 
   //   if (sigmarizztaskcolorsort == nullptr) {
   //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
