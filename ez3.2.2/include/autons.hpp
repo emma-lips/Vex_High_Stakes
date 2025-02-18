@@ -4,7 +4,10 @@
 
 // extern Drive chassis;
 
+void rightredalliancestakeladder();
+void rightbluealliancestakeladder();
 void leftredalliancestakeladder();
+void leftbluealliancestakeladder();
 void soloawpleftred();
 void soloawprightblue();
 void goalrushrightred();

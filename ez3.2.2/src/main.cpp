@@ -156,17 +156,23 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
-      Auton("leftred solo awp???\n\nsolo auton winpoint left red", soloawpleftred),
-      Auton("rightblue solo awp???\n\nsolo auton winpoint right blue", soloawprightblue),
+      Auton("leftred almost solo awp???\n\n9 point left red", soloawpleftred),
+      Auton("leftred alliance ladder\n\nalliance stake then go to ladder", leftredalliancestakeladder),
+      Auton("rightblue almost solo awp???\n\n9 point right blue", soloawprightblue),
+      Auton("rightblue alliance ladder\n\nalliance stake then go to ladder", rightbluealliancestakeladder),     
+
+      Auton("leftblue alliance ladder\n\nalliance stake then go to ladder", leftbluealliancestakeladder),
+      Auton("rightred alliance ladder\n\nalliance stake then go to ladder", rightredalliancestakeladder),
+
 
 
       Auton("leftblue\n\ngoal rush slayyyy left blue", goalrushleftblue),
       Auton("rightred\n\ngoal rush slayyyy left blue", goalrushrightred),
 
-      Auton("rightblue\n\nworkingrightblue 4 donuts", sigma_moderightblue),
-      Auton("rightred\n\nworkingrightred", sigma_moderightred),
-      Auton("leftblue\n\nworkingleftblue", sigma_modeleftblue),
-      Auton("leftred\n\nworkingleftred 4 donuts", sigma_modeleftred),
+      Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
+      Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
+      Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
+      Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
 
       Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
       Auton("v2robotskills\n\nbetterstrongersmarter", robotskillsv2),
@@ -177,10 +183,10 @@ ez::as::auton_selector.autons_add({
       Auton("gettingcarriedfrfr\n\n go in a straight line tf", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
 
     
-      Auton("rightblue alliancestake\n\nauton winpoint rightblue", autonwinpointrightblue),
-      Auton("leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
-      Auton("leftred alliancestake going to ladder\n\nauton winpoint leftred", leftredalliancestakeladder),
-      Auton("rightred alliancestake\n\nauton winpoint rightred", autonwinpointrightred),
+      Auton("OLD rightblue alliancestake\n\nauton winpoint rightblue", autonwinpointrightblue),
+      Auton("OLD leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
+      Auton("OLD leftred alliancestake\n\nauton winpoint leftred", autonwinpointleftred),
+      Auton("OLD rightred alliancestake\n\nauton winpoint rightred", autonwinpointrightred),
 
       Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
 
