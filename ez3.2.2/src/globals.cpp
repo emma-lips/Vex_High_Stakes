@@ -1,6 +1,6 @@
 #include "main.h"
 
-
+extern bool wrongcolour = false;
 extern pros::Rotation rotationSensor(15);
 extern pros::Motor lb(5);
 

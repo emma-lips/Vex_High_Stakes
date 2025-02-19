@@ -1,7 +1,7 @@
 #include "main.h"
 
 extern bool isRed;
-
+extern bool wrongcolour;
 void lift_task();
 void set_lift();
 void lift_wait();

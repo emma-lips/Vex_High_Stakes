@@ -254,7 +254,7 @@ pros::Task Lift_Task(lift_task);  // Create the task, this will cause the functi
 pros::Distance ringDetector(4);
 pros::Optical colorDetector(18);
 bool button_enabled = true;
-bool wrongcolour = false;
+
 bool toggleRingSort = true;
 bool nextState1 = true;
 // bool isRed;
