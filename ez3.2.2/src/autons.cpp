@@ -889,16 +889,16 @@ void soloawprightblue() {
   chassis.pid_drive_set(7, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(2.5, slow_speed);
+  chassis.pid_drive_set(2, slow_speed);
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
-  pros::delay(700);
+  pros::delay(575);
   setIntake(0);
 
-  chassis.pid_drive_set(-1.5, DRIVE_SPEED);
+  chassis.pid_drive_set(-1, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(373, TURN_SPEED);
+  chassis.pid_turn_set(368, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -907,9 +907,9 @@ void soloawprightblue() {
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(4, DRIVE_SPEED);
-  setIntake(127);
-  pros::delay(400);
-  setIntake(0);
+  // setIntake(127);
+  // pros::delay(400);
+  // setIntake(0);
   chassis.pid_wait();
   liftPID.target_set(3200);
   lift_wait();
@@ -952,13 +952,13 @@ void soloawprightblue() {
   chassis.pid_drive_set(RIGHTbluebyeautonline, DRIVE_SPEED); // move back to avoid autonomous line
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-160, TURN_SPEED);//turn to third donut (beside second donut)
+  chassis.pid_turn_set(-158, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(8, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait();
   
-
+  pros::delay(350);
 
   chassis.pid_drive_set(RIGHTblueback4, DRIVE_SPEED);// move away from auton line
   chassis.pid_wait_quick_chain();
