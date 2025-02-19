@@ -893,7 +893,7 @@ void soloawprightblue() {
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
-  pros::delay(575);
+  pros::delay(700);
   setIntake(0);
 
   chassis.pid_drive_set(-1.5, DRIVE_SPEED);
