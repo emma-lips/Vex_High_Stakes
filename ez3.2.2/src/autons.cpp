@@ -889,7 +889,7 @@ void rightbluealliancestakeladder() {
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(13, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(3, DRIVE_SPEED);
+  chassis.pid_drive_set(1, DRIVE_SPEED);
 
 }
 

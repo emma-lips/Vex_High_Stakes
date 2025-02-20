@@ -457,13 +457,14 @@ void opcontrol() {
   //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
   // }
 
-  //                 if (intake_task == nullptr) {
-  //               intake_task = new pros::Task(intakecoloursort_task);
-  //           }
+
   
   // intake11W.tare_position();
   // chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);
+    //                 if (intake_task == nullptr) {
+  //               intake_task = new pros::Task(intakecoloursort_task);
+  //           }
       // Start the task only if it hasn't already been started
 
   // This is preference to what you like to drive on
