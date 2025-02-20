@@ -1652,9 +1652,10 @@ void robotskillsv2sides() { //drop preload *CLAMPS 2 STAKE*
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-5, slow_speed);
   chassis.pid_wait_quick_chain();
-  setIntake(-127);
-  pros::delay(300);
-  setIntake(127);
+  // pros::delay(700);
+  // setIntake(-127);
+  // pros::delay(300);
+  // setIntake(127);
   pros::delay(2000);
   setIntake(-100);
   pros::delay(400);
@@ -1662,6 +1663,8 @@ void robotskillsv2sides() { //drop preload *CLAMPS 2 STAKE*
   clamp1.retract();
 
   chassis.pid_wait_quick_chain();
+
+  pros::delay(45000);
 
   chassis.pid_drive_set(6, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
@@ -1672,9 +1675,51 @@ void robotskillsv2sides() { //drop preload *CLAMPS 2 STAKE*
 
   chassis.pid_turn_set(-90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-30, slow_speed);
+  chassis.pid_drive_set(-31, slow_speed); //back into second clamp
   chassis.pid_wait();
   clamp1.extend();
+  chassis.pid_wait();
+
+  setIntake(127);
+
+  chassis.pid_turn_set(5, slow_speed);// turn to first donut
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(14, slow_speed);//go to first donut
+  chassis.pid_wait_quick_chain();
+  pros::delay(500);//wait because it wont work
+  chassis.pid_turn_set(40, TURN_SPEED); // turn to position to far donut
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(33_in, slow_speed); // move to positioning for far donut
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(95, TURN_SPEED); // turn to far donut
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(6, slow_speed); // get far donut
+  chassis.pid_wait_quick_chain();
+  pros::delay(450);
+  chassis.pid_drive_set(-4, slow_speed);// position to drive in straight line to get lots of donuts
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-178, TURN_SPEED); // turn to line of donuts
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(49, 40); //Going in a straight line SLOWLY
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(55, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(10, slow_speed);
+  chassis.pid_wait();
+  chassis.pid_turn_set(-30, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-5, slow_speed);
+  chassis.pid_wait_quick_chain();
+  // pros::delay(300);
+  // setIntake(-127);
+  // pros::delay(300);
+  // setIntake(127);
+  pros::delay(2000);
+  setIntake(-100);
+  pros::delay(400);
+  setIntake(0);
+  clamp1.retract();
+  chassis.pid_drive_set(9, slow_speed);
   chassis.pid_wait();
 }
 
@@ -1910,104 +1955,104 @@ const double robotskillsforward4 = 5; // get away from mogo
 
 //nolansupersigmarobotautonskills
 
-void sigma_robotskills() {
+// void sigma_robotskills() {
 
-  isRed = true; //Team RED
+//   isRed = true; //Team RED
 
-  //Starting (backing up)
-  chassis.pid_drive_set(robotskillsback, DRIVE_SPEED);
-  chassis.pid_wait();
+//   //Starting (backing up)
+//   chassis.pid_drive_set(robotskillsback, DRIVE_SPEED);
+//   chassis.pid_wait();
 
-  //Turn towards stake
-  chassis.pid_turn_set(robotskillsturn, TURN_SPEED);
-  chassis.pid_wait();
+//   //Turn towards stake
+//   chassis.pid_turn_set(robotskillsturn, TURN_SPEED);
+//   chassis.pid_wait();
 
-  //Slowly move towards stake
-  chassis.pid_drive_set(robotskillsback2, slow_speed);
-  // chassis.pid_wait_until(18);
-  //Secure stake
-  clamp1.extend();
-  chassis.pid_wait();
+//   //Slowly move towards stake
+//   chassis.pid_drive_set(robotskillsback2, slow_speed);
+//   // chassis.pid_wait_until(18);
+//   //Secure stake
+//   clamp1.extend();
+//   chassis.pid_wait();
 
 
-  //Turning towards 1st donut
-  chassis.pid_turn_set(robotskillsturn2, TURN_SPEED);
-  chassis.pid_wait();
+//   //Turning towards 1st donut
+//   chassis.pid_turn_set(robotskillsturn2, TURN_SPEED);
+//   chassis.pid_wait();
 
-  //Drives towards 1st donut and secures preload and 1st donut
-  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
-  // chassis.pid_wait_until(16);
-  setIntake(127);
-  //pros::delay(delay_3c);
-  chassis.pid_wait();
-  pros::delay(delay_3c);
+//   //Drives towards 1st donut and secures preload and 1st donut
+//   chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
+//   // chassis.pid_wait_until(16);
+//   setIntake(127);
+//   //pros::delay(delay_3c);
+//   chassis.pid_wait();
+//   pros::delay(delay_3c);
   
-  //Turn towards 2nd donut
-  chassis.pid_turn_relative_set(robotskillsturnb, TURN_SPEED);
-  chassis.pid_wait();
+//   //Turn towards 2nd donut
+//   chassis.pid_turn_relative_set(robotskillsturnb, TURN_SPEED);
+//   chassis.pid_wait();
 
-  //Forward towards 2nd donut
-  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
-  // chassis.pid_wait_until(16);
-  //setIntake(127);
-  //pros::delay(delay_3c);
-  chassis.pid_wait();
-  pros::delay(delay_3c);
+//   //Forward towards 2nd donut
+//   chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED);
+//   // chassis.pid_wait_until(16);
+//   //setIntake(127);
+//   //pros::delay(delay_3c);
+//   chassis.pid_wait();
+//   pros::delay(delay_3c);
 
-  //Turn towards 3rd donut
-  chassis.pid_turn_set(robotskillsturn3, TURN_SPEED);
-  chassis.pid_wait();
+//   //Turn towards 3rd donut
+//   chassis.pid_turn_set(robotskillsturn3, TURN_SPEED);
+//   chassis.pid_wait();
 
-  //Drive forward to 3rd and 4th donut
-  chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED1);
-  // chassis.pid_wait_until(16);
-  //setIntake(127);
-  //pros::delay(delay_3c);
-  chassis.pid_wait();
+//   //Drive forward to 3rd and 4th donut
+//   chassis.pid_drive_set(robotskillsforward, DRIVE_SPEED1);
+//   // chassis.pid_wait_until(16);
+//   //setIntake(127);
+//   //pros::delay(delay_3c);
+//   chassis.pid_wait();
 
-  //Moving to 4th donut
-  chassis.pid_drive_set(robotskillsforward2, DRIVE_SPEED1);
-  chassis.pid_wait();
+//   //Moving to 4th donut
+//   chassis.pid_drive_set(robotskillsforward2, DRIVE_SPEED1);
+//   chassis.pid_wait();
 
-  // go backwards to not hit the wall
-  chassis.pid_drive_set(robotskillsback3, slow_speed);
+//   // go backwards to not hit the wall
+//   chassis.pid_drive_set(robotskillsback3, slow_speed);
 
-  //Turn to 5th donut
-  chassis.pid_turn_set(robotskillsturn4, TURN_SPEED);
-  chassis.pid_wait();
+//   //Turn to 5th donut
+//   chassis.pid_turn_set(robotskillsturn4, TURN_SPEED);
+//   chassis.pid_wait();
 
-  //Drive forward and secures 5th donut
-  chassis.pid_drive_set(robotskillsforward3, DRIVE_SPEED1);
-  // chassis.pid_wait_until(10);
-  //pros::delay(delay_3c);
-  chassis.pid_wait();
-  pros::delay(delay_3c);
+//   //Drive forward and secures 5th donut
+//   chassis.pid_drive_set(robotskillsforward3, DRIVE_SPEED1);
+//   // chassis.pid_wait_until(10);
+//   //pros::delay(delay_3c);
+//   chassis.pid_wait();
+//   pros::delay(delay_3c);
 
-  setIntake(0);
-  chassis.pid_wait();
+//   setIntake(0);
+//   chassis.pid_wait();
 
-  // roll intake back so we dont hook onto donut on stake
-  setIntake(robotskillsintakeback);
-  pros::delay(500);
-  setIntake(0);
+//   // roll intake back so we dont hook onto donut on stake
+//   setIntake(robotskillsintakeback);
+//   pros::delay(500);
+//   setIntake(0);
 
-  // turn before backing up into corner
-  chassis.pid_turn_set(robotskillsturn5, TURN_SPEED);
-  chassis.pid_wait();
+//   // turn before backing up into corner
+//   chassis.pid_turn_set(robotskillsturn5, TURN_SPEED);
+//   chassis.pid_wait();
 
-  // back into corner
-  chassis.pid_drive_set(robotskillsback4, DRIVE_SPEED);
-  chassis.pid_wait();
+//   // back into corner
+//   chassis.pid_drive_set(robotskillsback4, DRIVE_SPEED);
+//   chassis.pid_wait();
 
-  // let it go
-  clamp1.retract();
-  pros::delay(1000);
+//   // let it go
+//   clamp1.retract();
+//   pros::delay(1000);
 
-  // move forward after backing into corner
-  chassis.pid_drive_set(robotskillsforward4, DRIVE_SPEED);
-  chassis.pid_wait();
+//   // move forward after backing into corner
+//   chassis.pid_drive_set(robotskillsforward4, DRIVE_SPEED);
+//   chassis.pid_wait();
 
-}
+// }
 
 
 void skibidi_rizz() {
