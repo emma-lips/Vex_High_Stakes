@@ -11,6 +11,7 @@ void rightredalliancestakeladder();
 void rightbluealliancestakeladder();
 void leftredalliancestakeladder();
 void leftbluealliancestakeladder();
+void robotskillsv2sides();
 void soloawpleftred();
 void soloawprightblue();
 void goalrushrightred();

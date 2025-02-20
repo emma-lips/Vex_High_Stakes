@@ -183,7 +183,7 @@ ez::as::auton_selector.autons_add({
       // Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
       // Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
       // Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
-
+      Auton("robotskillsv2sides\n\n2sidesrobotskills", robotskillsv2sides),
       Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
       Auton("v2robotskills\n\nbetterstrongersmarter", robotskillsv2),
 

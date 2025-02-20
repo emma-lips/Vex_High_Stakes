@@ -1552,7 +1552,7 @@ void sigma_modeleftred() {
   setIntake(0);
 }
 
-void robotskillsv2() {
+void robotskillsv2() { //drop preload //THIS WORKS ONE SIDE 2025-02-19
   setIntake(127);
   pros::delay(1500);
   
@@ -1609,6 +1609,71 @@ void robotskillsv2() {
   chassis.pid_drive_set(48, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
+}
+
+void robotskillsv2sides() { //drop preload *CLAMPS 2 STAKE*
+  setIntake(127);
+  pros::delay(1500);
+  
+  chassis.pid_drive_set(8, slow_speed);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-18, slow_speed);
+  chassis.pid_wait_quick_chain();
+  clamp1.extend();
+  chassis.pid_wait();
+  chassis.pid_turn_set(-5, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(14, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-45, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(29_in, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-95, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(6, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-3, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(178, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(49, 40); //Going in a straight line SLOWLY
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-55, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(10, slow_speed);
+  chassis.pid_wait();
+  chassis.pid_turn_set(30, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-5, slow_speed);
+  chassis.pid_wait_quick_chain();
+  setIntake(-127);
+  pros::delay(300);
+  setIntake(127);
+  pros::delay(2000);
+  setIntake(-100);
+  pros::delay(400);
+  setIntake(0);
+  clamp1.retract();
+
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(6, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(38, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(-90, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-30, slow_speed);
+  chassis.pid_wait();
+  clamp1.extend();
+  chassis.pid_wait();
 }
 
 //Emmaverysigma(left blue)
