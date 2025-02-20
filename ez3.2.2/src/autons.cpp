@@ -826,7 +826,7 @@ void leftredalliancestakeladder() {
 
 void rightbluealliancestakeladder() {
 
-  chassis.opcontrol_drive_activebrake_set(2.0);   
+  chassis.opcontrol_drive_activebrake_set(0.0);   
 
   isRed = false;
   chassis.drive_angle_set(90_deg);  // Start the robot facing 90 degrees
@@ -838,16 +838,16 @@ void rightbluealliancestakeladder() {
   chassis.pid_drive_set(7, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(2.5, slow_speed);
+  chassis.pid_drive_set(2, slow_speed);
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
   pros::delay(575);
   setIntake(0);
 
-  chassis.pid_drive_set(-1.5, DRIVE_SPEED);
+  chassis.pid_drive_set(-2, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(373, TURN_SPEED);
+  chassis.pid_turn_set(375, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -856,9 +856,9 @@ void rightbluealliancestakeladder() {
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(4, DRIVE_SPEED);
-  setIntake(127);
-  pros::delay(400);
-  setIntake(0);
+  // setIntake(127);
+  // pros::delay(400);
+  // setIntake(0);
   chassis.pid_wait();
   liftPID.target_set(3200);
   lift_wait();
@@ -895,7 +895,7 @@ void rightbluealliancestakeladder() {
 
 void rightredalliancestakeladder() {
 
-  chassis.opcontrol_drive_activebrake_set(2.0);   
+  chassis.opcontrol_drive_activebrake_set(0.0);   
 
   isRed = true;
   chassis.drive_angle_set(90_deg);  // Start the robot facing 90 degrees
@@ -907,16 +907,16 @@ void rightredalliancestakeladder() {
   chassis.pid_drive_set(7, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(2.5, slow_speed);
+  chassis.pid_drive_set(2, slow_speed);
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
   pros::delay(575);
   setIntake(0);
 
-  chassis.pid_drive_set(-1.5, DRIVE_SPEED);
+  chassis.pid_drive_set(-2, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(373, TURN_SPEED);
+  chassis.pid_turn_set(375, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -925,9 +925,9 @@ void rightredalliancestakeladder() {
   // chassis.pid_turn_set(355, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(4, DRIVE_SPEED);
-  setIntake(127);
-  pros::delay(400);
-  setIntake(0);
+  // setIntake(127);
+  // pros::delay(400);
+  // setIntake(0);
   chassis.pid_wait();
   liftPID.target_set(3200);
   lift_wait();
@@ -958,7 +958,7 @@ void rightredalliancestakeladder() {
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(13, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(3, DRIVE_SPEED);
+  chassis.pid_drive_set(1, DRIVE_SPEED);
 
 }
 
@@ -987,7 +987,7 @@ void soloawprightblue() {
 
   chassis.pid_drive_set(-2, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(374, TURN_SPEED);
+  chassis.pid_turn_set(375, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
