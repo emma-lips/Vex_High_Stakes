@@ -118,19 +118,86 @@ void default_constants() {
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
-void lowkcannotdoanythingbruhtheseteamscarryforrealsies() {
-  chassis.pid_drive_set(20, 127);
-  chassis.pid_wait();
-}
 
-void sigmasigma() {
-  chassis.pid_drive_set(10, 110);
-  chassis.pid_wait();
-  liftPID.target_set(3000);
-  lift_wait();
-  liftPID.target_set(0);
-  lift_wait();
+void sigma_modeleftred() {
+  //   // Start the task only if it hasn't already been started
+  // if (sigmarizztaskcolorsort == nullptr) {
+  //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+  // }
+isRed = true;
 
+  chassis.pid_drive_set(LEFTredback, DRIVE_SPEED); // move back to mogo
+chassis.pid_wait();
+
+chassis.pid_turn_set(LEFTredturn, TURN_SPEED); // turn towards mogo
+chassis.pid_wait();
+
+chassis.pid_drive_set(LEFTredback2, slow_speed, true); // move to mogo slowly
+chassis.pid_wait();
+
+clamp1.extend(); // clamp mogo mech
+chassis.pid_wait();
+
+setIntake(127);
+pros::delay(delay_1); // load preload
+//setIntake(0);
+
+chassis.pid_turn_set(LEFTredturn2, TURN_SPEED); // turn towards first donut 
+chassis.pid_wait();
+
+chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED); // move towards first donut
+chassis.pid_wait();
+
+//Picking up first donut
+
+setIntake(127);
+pros::delay(delay_2); // pick up first donut
+//setIntake(0);
+
+chassis.pid_turn_set(LEFTredturn3, TURN_SPEED); // turn to stack of 8 donuts
+chassis.pid_wait();
+
+//left red forward towards eight donuts
+
+chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED); // move to second donut
+chassis.pid_wait_until(6_in);
+setIntake(127); // intake second donut
+pros::delay(delay_2);
+//setIntake(0);
+
+chassis.pid_wait();
+
+// setIntake(127);
+// pros::delay(delay_3); // finish off second donut just in case
+// setIntake(0);
+
+//move away from auton line
+chassis.pid_drive_set(LEFTredbyeautonline, DRIVE_SPEED);
+chassis.pid_wait();
+
+// setIntake(127);
+// pros::delay(500); // just in case again?
+// setIntake(0);
+
+chassis.pid_turn_set(LEFTredturn4, TURN_SPEED);//turn to third donut (beside second donut)
+chassis.pid_wait();
+
+chassis.pid_drive_set(LEFTredforward4, DRIVE_SPEED);// move towards third donut
+chassis.pid_wait();
+setIntake(127);
+
+
+chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);// move away from auton line
+chassis.pid_wait();
+
+chassis.pid_turn_set(LEFTredturn5, TURN_SPEED);// turn to negatives
+chassis.pid_wait();
+
+chassis.pid_drive_set(LEFTredforward5, FULL_SPEED);// go to negatives
+chassis.pid_wait();
+
+pros::delay(delay_3);
+setIntake(0);
 }
 
 void autonwinpointleftblue() {
@@ -437,6 +504,7 @@ void sigma_moderightblue() {
 
 }
 
+//THIS WORKS 2025-02-19
 void sigma_moderightblue5donuts() {
 
   

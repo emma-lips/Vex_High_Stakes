@@ -170,7 +170,7 @@ ez::as::auton_selector.autons_add({
       Auton("rightred\n\ngoal rush slayyyy left blue", goalrushrightred),
 
       // Auton("rightblue no alliance stake\n\nworkingrightblue then trying for 5 donuts", ),
-      Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts),
+      Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
       Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
       Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
       Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
@@ -180,7 +180,6 @@ ez::as::auton_selector.autons_add({
       Auton("v2robotskills\n\nbetterstrongersmarter", robotskillsv2),
 
       Auton("weak left blue\n\n dont go for donut in middle", weakahhblueleft),
-      Auton("gettingcarriedfrfr\n\nmaaaantheseteamsmakingtsboring", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
       Auton("weak right red\n\ndont go for donut in middle", skibidi_moderightredwithoutdonutinspawn), 
       Auton("gettingcarriedfrfr\n\n go in a straight line tf", lowkcannotdoanythingbruhtheseteamscarryforrealsies), 
 
@@ -189,8 +188,6 @@ ez::as::auton_selector.autons_add({
       Auton("OLD leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
       Auton("OLD leftred alliancestake\n\nauton winpoint leftred", autonwinpointleftred),
       Auton("OLD rightred alliancestake\n\nauton winpoint rightred", autonwinpointrightred),
-
-      Auton("liftnotsigmafr\n\ntrollingcodedon'tuse", sigmasigma), 
 
       Auton("skibiid\n\ntrash", skibidi_rizz),
 
