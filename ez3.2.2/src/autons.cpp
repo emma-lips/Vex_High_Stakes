@@ -1496,7 +1496,7 @@ void sigma_modeleftred() {
   chassis.pid_turn_set(LEFTredturn2, TURN_SPEED); // turn towards first donut 
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredforward, DRIVE_SPEED); // move towards first donut
+  chassis.pid_drive_set(21, DRIVE_SPEED); // move towards first donut
   chassis.pid_wait();
 
 //Picking up first donut
@@ -1510,7 +1510,7 @@ void sigma_modeleftred() {
 
 //left red forward towards eight donuts
 
-  chassis.pid_drive_set(LEFTredforward2, DRIVE_SPEED); // move to second donut
+  chassis.pid_drive_set(10, DRIVE_SPEED); // move to second donut
   chassis.pid_wait_until(6_in);
   setIntake(127); // intake second donut
   pros::delay(delay_2);
@@ -1530,11 +1530,12 @@ void sigma_modeleftred() {
   // pros::delay(500); // just in case again?
   // setIntake(0);
 
-  chassis.pid_turn_set(LEFTredturn4, TURN_SPEED);//turn to third donut (beside second donut)
+  chassis.pid_turn_set(160, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait();
 
-  chassis.pid_drive_set(LEFTredforward4, DRIVE_SPEED);// move towards third donut
+  chassis.pid_drive_set(5, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait();
+  pros::delay(200);
   setIntake(127);
 
   
