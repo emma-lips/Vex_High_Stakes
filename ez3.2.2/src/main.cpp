@@ -156,6 +156,13 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
+      Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
+      Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
+      Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
+      Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
+      Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
+
       Auton("leftred almost solo awp???\n\n9 point left red", soloawpleftred),
       Auton("leftred alliance ladder\n\nalliance stake then go to ladder", leftredalliancestakeladder),
       Auton("rightblue almost solo awp???\n\n9 point right blue", soloawprightblue),
@@ -170,12 +177,12 @@ ez::as::auton_selector.autons_add({
       Auton("rightred\n\ngoal rush slayyyy left blue", goalrushrightred),
 
       // Auton("rightblue no alliance stake\n\nworkingrightblue then trying for 5 donuts", ),
-      Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
-      Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
-      Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
-      Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
-      Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
-      Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
+      // Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
+      // Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
+      // Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
+      // Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
+      // Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
+      // Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
 
       Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
       Auton("v2robotskills\n\nbetterstrongersmarter", robotskillsv2),
