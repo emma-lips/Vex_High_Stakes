@@ -5,6 +5,7 @@
 // extern Drive chassis;
 
 void lockedin_rightblue();
+void sigma_modeleftred5donuts();
 void sigma_moderightblue5donuts();
 void rightredalliancestakeladder();
 void rightbluealliancestakeladder();
@@ -16,9 +17,7 @@ void goalrushrightred();
 void goalrushleftblue();
 void robotskillsv2();
 void weakahhblueleft();
-void lowkcannotdoanythingbruhtheseteamscarryforrealsies();
 void skibidi_moderightredwithoutdonutinspawn();
-void sigmasigma();
 void sigma_robotskills();
 void sigma_moderightblue();
 void autonwinpointleftblue();
