@@ -823,7 +823,7 @@ void leftredalliancestakeladder() {
 
 
 }
-
+// THESE WORK FEB 20
 void rightbluealliancestakeladder() {
 
   chassis.opcontrol_drive_activebrake_set(0.0);   
@@ -838,16 +838,16 @@ void rightbluealliancestakeladder() {
   chassis.pid_drive_set(7, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(2, slow_speed);
+  chassis.pid_drive_set(1, slow_speed);
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
-  pros::delay(575);
+  pros::delay(525);
   setIntake(0);
 
   chassis.pid_drive_set(-2, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(375, TURN_SPEED);
+  chassis.pid_turn_set(375.5, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -860,7 +860,7 @@ void rightbluealliancestakeladder() {
   // pros::delay(400);
   // setIntake(0);
   chassis.pid_wait();
-  liftPID.target_set(3200);
+  liftPID.target_set(3000);
   lift_wait();
   chassis.pid_drive_set(-5, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -892,7 +892,7 @@ void rightbluealliancestakeladder() {
   chassis.pid_drive_set(1, DRIVE_SPEED);
 
 }
-
+// WORKS FEB 20
 void rightredalliancestakeladder() {
 
   chassis.opcontrol_drive_activebrake_set(0.0);   
@@ -907,16 +907,16 @@ void rightredalliancestakeladder() {
   chassis.pid_drive_set(7, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(2, slow_speed);
+  chassis.pid_drive_set(1, slow_speed);
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
-  pros::delay(575);
+  pros::delay(525);
   setIntake(0);
 
   chassis.pid_drive_set(-2, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(375, TURN_SPEED);
+  chassis.pid_turn_set(375.5, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -929,7 +929,7 @@ void rightredalliancestakeladder() {
   // pros::delay(400);
   // setIntake(0);
   chassis.pid_wait();
-  liftPID.target_set(3200);
+  liftPID.target_set(3000);
   lift_wait();
   chassis.pid_drive_set(-5, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -963,7 +963,7 @@ void rightredalliancestakeladder() {
 }
 
 
-// THIS WORKS!! NINE POINTS FEB 19
+// THIS WORKS!! NINE POINTS FEB 20
 void soloawprightblue() {
 
   chassis.opcontrol_drive_activebrake_set(2.0);   
@@ -978,7 +978,7 @@ void soloawprightblue() {
   chassis.pid_drive_set(7, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(2, slow_speed);
+  chassis.pid_drive_set(1, slow_speed);
   chassis.pid_wait_quick_chain();
   lifter.retract();
   setIntake(127);
@@ -987,7 +987,7 @@ void soloawprightblue() {
 
   chassis.pid_drive_set(-2, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(375, TURN_SPEED);
+  chassis.pid_turn_set(375.5, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(2.5, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -1000,7 +1000,7 @@ void soloawprightblue() {
   // pros::delay(400);
   // setIntake(0);
   chassis.pid_wait();
-  liftPID.target_set(3200);
+  liftPID.target_set(3000);
   lift_wait();
   chassis.pid_drive_set(-5, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -1025,14 +1025,13 @@ void soloawprightblue() {
   pros::delay(450);
 
 
-  chassis.pid_turn_set(-180, TURN_SPEED); // turn to stack of 8 donuts
+  chassis.pid_turn_set(-177, TURN_SPEED); // turn to stack of 8 donuts
   chassis.pid_wait_quick_chain();
 
 //Right blue forward towards eight donuts
 
-  chassis.pid_drive_set(9, DRIVE_SPEED); // move to second donut
-    chassis.pid_wait_until(6_in);
-  setIntake(127);
+  chassis.pid_drive_set(7.5, DRIVE_SPEED); // move to second donut
+    chassis.pid_wait();
   pros::delay(250); // intake the second donut
   // setIntake(0);
 
@@ -1044,7 +1043,7 @@ void soloawprightblue() {
   chassis.pid_turn_set(-158, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(8, DRIVE_SPEED);// move towards third donut
+  chassis.pid_drive_set(8.5, DRIVE_SPEED);// move towards third donut
   chassis.pid_wait();
   
   pros::delay(350);
