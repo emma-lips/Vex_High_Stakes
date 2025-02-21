@@ -1613,7 +1613,7 @@ void robotskillsv2() { //drop preload //THIS WORKS ONE SIDE 2025-02-19
 
 }
 
-void robotskillsv2sides() { //drop preload *CLAMPS 2 STAKE*
+void robotskillsv2sides() { //WORKING VERY SIGMA february 20th
   setIntake(127);
   pros::delay(1500);
   
@@ -1670,7 +1670,7 @@ void robotskillsv2sides() { //drop preload *CLAMPS 2 STAKE*
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(90, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(38, DRIVE_SPEED);
+  chassis.pid_drive_set(38, slow_speed);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(-90, TURN_SPEED);
@@ -1691,7 +1691,7 @@ void robotskillsv2sides() { //drop preload *CLAMPS 2 STAKE*
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(33_in, slow_speed); // move to positioning for far donut
   chassis.pid_wait_quick_chain();
-  chassis.pid_turn_set(95, TURN_SPEED); // turn to far donut
+  chassis.pid_turn_set(87, TURN_SPEED); // turn to far donut
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(6, slow_speed); // get far donut
   chassis.pid_wait_quick_chain();
@@ -1708,7 +1708,7 @@ void robotskillsv2sides() { //drop preload *CLAMPS 2 STAKE*
   chassis.pid_wait();
   chassis.pid_turn_set(-30, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-5, slow_speed);
+  chassis.pid_drive_set(-6, slow_speed);
   chassis.pid_wait_quick_chain();
   // pros::delay(300);
   // setIntake(-127);
