@@ -562,7 +562,7 @@ void sigma_moderightblue5donuts() {
 
 //Right blue forward towards eight donuts
 
-  chassis.pid_drive_set(RIGHTblueforward2, DRIVE_SPEED); // move to second donut
+  chassis.pid_drive_set(8.5, DRIVE_SPEED); // move to second donut
     chassis.pid_wait_until(6_in);
   setIntake(127);
   pros::delay(450); // intake the second donut
