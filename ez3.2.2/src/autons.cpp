@@ -183,9 +183,9 @@ chassis.pid_wait();
 chassis.pid_turn_set(160, TURN_SPEED);//turn to third donut (beside second donut)
 chassis.pid_wait();
 
-chassis.pid_drive_set(5, DRIVE_SPEED);// move towards third donut
+chassis.pid_drive_set(4.5, DRIVE_SPEED);// move towards third donut
 chassis.pid_wait();
-pros::delay(200);
+pros::delay(300);
 setIntake(127);
 
 
@@ -196,9 +196,9 @@ chassis.pid_turn_set(-55, TURN_SPEED);// turn to raised donut
 chassis.pid_wait();
 
 lifter.extend();
-chassis.pid_wait_until(37);
+chassis.pid_wait_until(32);
 
-chassis.pid_drive_set(37, FULL_SPEED);// go to negative corner
+chassis.pid_drive_set(35, FULL_SPEED);// go to raised donut
 chassis.pid_wait_quick_chain();
 
 chassis.pid_drive_set(11, slow_speed);
@@ -597,7 +597,7 @@ void sigma_moderightblue5donuts() {
   
   lifter.retract();
   setIntake(127);
-  pros::delay(600);
+  pros::delay(700);
   setIntake(0);
 
   chassis.pid_drive_set(-6, DRIVE_SPEED);
@@ -1192,7 +1192,7 @@ void goalrushleftblue() {
   setIntake(127); //setting the intake just cause tahaha
   chassis.pid_drive_set(41, DRIVE_SPEED); // driving forward because it needs to drive forward
   chassis.pid_wait(); 
-  pros::delay(600); //picking up blue donut. and red donut :(
+  pros::delay(550); //picking up blue donut. and red donut :(
   setIntake(0);
 
   setDoinker(-70); // putting down doinker and getting that goal because its a goal rush
@@ -1274,7 +1274,7 @@ void goalrushrightred() {
   setIntake(127); //setting the intake just cause tahaha
   chassis.pid_drive_set(41, DRIVE_SPEED); // driving forward because it needs to drive forward
   chassis.pid_wait(); 
-  pros::delay(600); //picking up red donut. and blue donut :(
+  pros::delay(550); //picking up red donut. and blue donut :(
   setIntake(0);
 
   setDoinker(-70); // putting down doinker and getting that goal because its a goal rush
@@ -1338,7 +1338,7 @@ void goalrushrightred() {
   pros::delay(500);
   setDoinker(0);
 
-  pros::delay(250);
+  pros::delay(2500);
 
 
   // setIntake(127);
@@ -1381,7 +1381,7 @@ void sigma_moderightred() {
 
   setIntake(127);
   pros::delay(delay_1); // load preload
-  setIntake(0);
+
 
   chassis.pid_turn_set(RIGHTblueturn2, TURN_SPEED); // turn to first donut
   chassis.pid_wait();
@@ -1391,9 +1391,9 @@ void sigma_moderightred() {
 
 //Pick up first floor donut
 
-  setIntake(127);
+  // setIntake(127);
   pros::delay(delay_2); // intake first donut
-  setIntake(0);
+  // setIntake(0);
 
 //Add on
   chassis.pid_turn_set(RIGHTblueturn3b, TURN_SPEED); // turn to second donut in spawn
@@ -1767,7 +1767,7 @@ void sigma_modeleftblue() {
   chassis.pid_wait_until(47_in);
   lifter.retract(); // let down lifter to intake raised second donut
   setIntake(127);
-  pros::delay(450); // pick up second raised donut
+  pros::delay(600); // pick up second raised donut
   setIntake(0);
 
 
@@ -1780,7 +1780,7 @@ void sigma_modeleftblue() {
   chassis.pid_wait_quick_chain();
 
   setIntake(127);
-  // pros::delay(800); // load second donut onto stake
+  pros::delay(300); // load second donut onto stake
 
 
   chassis.pid_drive_set(-10, slow_speed); // shake second donut onto stake just in case

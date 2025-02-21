@@ -174,7 +174,7 @@ ez::as::auton_selector.autons_add({
 
 
       Auton("leftblue\n\ngoal rush slayyyy left blue", goalrushleftblue),
-      Auton("rightred\n\ngoal rush slayyyy left blue", goalrushrightred),
+      Auton("rightred\n\ngoal rush slayyyy right red", goalrushrightred),
 
       // Auton("rightblue no alliance stake\n\nworkingrightblue then trying for 5 donuts", ),
       // Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
@@ -446,22 +446,23 @@ void ez_template_extras() {
 
 void opcontrol() {
   colorDetector.set_led_pwm(100);
-    //     pros::Task liftControlTask([]{
-    //     while (true) {
-    //         liftControl();
-    //         pros::delay(10);
-    //     }
-    // });
+        pros::Task liftControlTask([]{
+        while (true) {
+            liftControl();
+            pros::delay(10);
+        }
+    });
 
-  //   if (sigmarizztaskcolorsort == nullptr) {
-  //     sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
-  // }
+    if (sigmarizztaskcolorsort == nullptr) {
+      sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
+  }
 
 
   
-  // intake11W.tare_position();
-  // chassis.opcontrol_drive_activebrake_set(2.0);  
+
+  chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);
+    // intake11W.tare_position();
     //                 if (intake_task == nullptr) {
   //               intake_task = new pros::Task(intakecoloursort_task);
   //           }
