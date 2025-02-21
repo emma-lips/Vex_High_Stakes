@@ -695,7 +695,7 @@ void lockedin_rightblue() {
 
 
 }
-
+// WORKING FEB 20
 void leftbluealliancestakeladder() {
   chassis.opcontrol_drive_activebrake_set(0.0);   
 
@@ -735,9 +735,9 @@ void leftbluealliancestakeladder() {
   // lift_wait();
 
 
-  chassis.pid_turn_set(-28, TURN_SPEED);
+  chassis.pid_turn_set(-26.5, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-29, slow_speed);
+  chassis.pid_drive_set(-27.5, slow_speed);
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
@@ -759,7 +759,7 @@ void leftbluealliancestakeladder() {
 
 
 }
-
+// WORKING FEB 20
 void leftredalliancestakeladder() {
   chassis.opcontrol_drive_activebrake_set(0.0);   
 
@@ -801,7 +801,7 @@ void leftredalliancestakeladder() {
 
   chassis.pid_turn_set(-26.5, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-29, slow_speed);
+  chassis.pid_drive_set(-27.5, slow_speed);
   chassis.pid_wait_quick_chain();
   clamp1.extend();
   chassis.pid_wait();
@@ -1073,7 +1073,7 @@ void soloawprightblue() {
   // setIntake(127);
 
 }
-//WORKING
+//WORKING feb 20
 void soloawpleftred() { 
 
   chassis.opcontrol_drive_activebrake_set(2.0);   
