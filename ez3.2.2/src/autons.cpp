@@ -1073,8 +1073,8 @@ void soloawprightblue() {
   // setIntake(127);
 
 }
-
-void soloawpleftred() {
+//WORKING
+void soloawpleftred() { 
 
   chassis.opcontrol_drive_activebrake_set(2.0);   
 
@@ -1126,23 +1126,25 @@ void soloawpleftred() {
   chassis.pid_turn_set(90, TURN_SPEED2);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(20, DRIVE_SPEED);
+  chassis.pid_drive_set(22, DRIVE_SPEED);
   chassis.pid_wait();
 
   pros::delay(300);
 
 
-  chassis.pid_turn_set(180, TURN_SPEED); // turn to stack of 8 donuts
+  chassis.pid_turn_set(185, TURN_SPEED); // turn to stack of 8 donuts
   chassis.pid_wait_quick_chain();
 
 //Right blue forward towards eight donuts
 
-  chassis.pid_drive_set(11.5, DRIVE_SPEED); // move to second donut
+  chassis.pid_drive_set(9, DRIVE_SPEED); // move to second donut
     chassis.pid_wait();
   pros::delay(250); // intake the second donut
   // setIntake(0);
 
   chassis.pid_wait();
+
+
 
   chassis.pid_drive_set(RIGHTbluebyeautonline, DRIVE_SPEED); // move back to avoid autonomous line
   chassis.pid_wait_quick_chain();
