@@ -1665,7 +1665,7 @@ void robotskillsv2sides() { //WORKING VERY SIGMA february 20th
 
   chassis.pid_wait_quick_chain();
 
-  pros::delay(45000);
+  pros::delay(45);
 
   chassis.pid_drive_set(6, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
