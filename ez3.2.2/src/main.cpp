@@ -42,7 +42,7 @@ const int numStates = 4;
 //These are in degrees
 int states[numStates] = {0, 625, 625, 3400};
 int currState = 0;
-int target = 0;
+
 
 void backState() {
   currState -= 1;  // Use -= instead of += -1
@@ -128,6 +128,13 @@ void initialize() {
    rotationSensor.reset_position();
 
     lb.tare_position();
+
+    pros::Task liftControlTask([]{
+      while (true) {
+          liftControl();
+          pros::delay(10);
+      }
+  });
 
     liftPID.exit_condition_set(80, 50, 300, 150, 500, 500);
 
@@ -446,12 +453,7 @@ void ez_template_extras() {
 
 void opcontrol() {
   colorDetector.set_led_pwm(100);
-        pros::Task liftControlTask([]{
-        while (true) {
-            liftControl();
-            pros::delay(10);
-        }
-    });
+
 
     if (sigmarizztaskcolorsort == nullptr) {
       sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);

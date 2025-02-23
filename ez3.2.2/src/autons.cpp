@@ -711,7 +711,7 @@ void leftbluealliancestakeladder() {
 
   lifter.retract();
   setIntake(127);
-  pros::delay(525);
+  pros::delay(555);
   setIntake(0);
 
   chassis.pid_drive_set(-1, DRIVE_SPEED);
@@ -727,7 +727,7 @@ void leftbluealliancestakeladder() {
   // chassis.pid_drive_set(4, DRIVE_SPEED);
 
   chassis.pid_wait();
-  liftPID.target_set(3000);
+  target = 3000;
   lift_wait();
   chassis.pid_drive_set(-7, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -791,7 +791,7 @@ void leftredalliancestakeladder() {
   // chassis.pid_drive_set(4, DRIVE_SPEED);
 
   chassis.pid_wait();
-  liftPID.target_set(3000);
+  target = 3000;
   lift_wait();
   chassis.pid_drive_set(-7, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -860,7 +860,7 @@ void rightbluealliancestakeladder() {
   // pros::delay(400);
   // setIntake(0);
   chassis.pid_wait();
-  liftPID.target_set(3000);
+  target = 3000;
   lift_wait();
   chassis.pid_drive_set(-5, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -929,7 +929,7 @@ void rightredalliancestakeladder() {
   // pros::delay(400);
   // setIntake(0);
   chassis.pid_wait();
-  liftPID.target_set(3000);
+  target = 3000;
   lift_wait();
   chassis.pid_drive_set(-5, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -1000,7 +1000,7 @@ void soloawprightblue() {
   // pros::delay(400);
   // setIntake(0);
   chassis.pid_wait();
-  liftPID.target_set(3000);
+  target = 3000;
   lift_wait();
   chassis.pid_drive_set(-5, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -1030,9 +1030,9 @@ void soloawprightblue() {
 
 //Right blue forward towards eight donuts
 
-  chassis.pid_drive_set(7.5, DRIVE_SPEED); // move to second donut
+  chassis.pid_drive_set(9, DRIVE_SPEED); // move to second donut
     chassis.pid_wait();
-  pros::delay(250); // intake the second donut
+  pros::delay(450); // intake the second donut
   // setIntake(0);
 
   chassis.pid_wait();
@@ -1090,7 +1090,7 @@ void soloawpleftred() {
 
   lifter.retract();
   setIntake(127);
-  pros::delay(575);
+  pros::delay(525);
   setIntake(0);
 
   chassis.pid_drive_set(-1, DRIVE_SPEED);
@@ -1106,7 +1106,8 @@ void soloawpleftred() {
   // chassis.pid_drive_set(4, DRIVE_SPEED);
 
   chassis.pid_wait();
-  liftPID.target_set(3000);
+  
+  target = 3000;
   lift_wait();
   chassis.pid_drive_set(-7, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -1536,14 +1537,14 @@ void sigma_modeleftred() {
   chassis.pid_turn_set(160, TURN_SPEED);//turn to third donut (beside second donut)
   chassis.pid_wait();
 
-  chassis.pid_drive_set(5, DRIVE_SPEED);// move towards third donut
-  chassis.pid_wait();
-  pros::delay(200);
-  setIntake(127);
+  // chassis.pid_drive_set(5, DRIVE_SPEED);// move towards third donut
+  // chassis.pid_wait();
+  // pros::delay(200);
+  // setIntake(127);
 
   
-  chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);// move away from auton line
-  chassis.pid_wait();
+  // chassis.pid_drive_set(LEFTredback4, DRIVE_SPEED);// move away from auton line
+  // chassis.pid_wait();
 
   chassis.pid_turn_set(LEFTredturn5, TURN_SPEED);// turn to negatives
   chassis.pid_wait();
@@ -1633,7 +1634,7 @@ void robotskillsv2sides() { //WORKING VERY SIGMA february 20th
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(-45, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(29_in, DRIVE_SPEED);
+  chassis.pid_drive_set(30.5_in, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(-95, TURN_SPEED);
   chassis.pid_wait_quick_chain();
@@ -1643,7 +1644,7 @@ void robotskillsv2sides() { //WORKING VERY SIGMA february 20th
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(178, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(49, 40); //Going in a straight line SLOWLY
+  chassis.pid_drive_set(50, 40); //Going in a straight line SLOWLY
   chassis.pid_wait_quick_chain();
   chassis.pid_turn_set(-55, TURN_SPEED);
   chassis.pid_wait_quick_chain();

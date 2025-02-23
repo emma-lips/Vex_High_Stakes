@@ -1,5 +1,7 @@
 #include "main.h"
 
+
+extern int target;
 extern bool isRed;
 extern bool wrongcolour;
 void lift_task();
