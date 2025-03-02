@@ -77,40 +77,7 @@ void liftControl(){
 
 
 
-// void liftControl() {
-//     double kp = 0.5;
-//     double error = target - rotationSensor.get_position();
-//     double velocity = kp * error;
-//     lb.move_absolute(target, velocity);
-// }
 
-// void liftControl() {
-//     double kp = 1;    // Proportional gain (tune as needed)
-//     double kd = 1;    // Derivative gain (tune as needed)
-//     static double prevError = 0;
-//     static uint32_t prevTime = pros::millis(); // Track time for accurate dt
-
-//     uint32_t currentTime = pros::millis();
-//     double dt = (currentTime - prevTime) / 1000.0; // Convert to seconds
-
-//     // Handle edge cases for time calculation
-//     if (dt <= 0) dt = 0.01; // Prevent division by zero
-
-//     double error = target - rotationSensor.get_position();
-//     double derivative = (error - prevError) / dt; // Calculate derivative
-
-//     // Compute velocity with PD control
-//     double velocity = kp * error + kd * derivative;
-
-//     // Clamp velocity to valid motor range (-127 to 127)
-//     velocity = (velocity > 127) ? 127 : (velocity < -127) ? -127 : velocity;
-
-//     lb.move(velocity);
-
-//     // Save previous error and time for next iteration
-//     prevError = error;
-//     prevTime = currentTime;
-// }
 
 
 /**
@@ -464,10 +431,7 @@ void opcontrol() {
 
   chassis.opcontrol_drive_activebrake_set(2.0);  
   chassis.opcontrol_speed_max_set(113);
-    // intake11W.tare_position();
-    //                 if (intake_task == nullptr) {
-  //               intake_task = new pros::Task(intakecoloursort_task);
-  //           }
+
       // Start the task only if it hasn't already been started
 
   // This is preference to what you like to drive on
@@ -544,34 +508,10 @@ void opcontrol() {
       setDoinker(0);
     }
 
-  //     if(master.get_digital_new_press(DIGITAL_RIGHT)){
 
-  //       // // intakePID.target_set(301);
-  //       // intake11W.move_absolute(127, 127);
-  //       // pros::delay(1000);
-  //       // intake11W.move(100); // Moves 100 units forward
-  //       // while(intake11W.get_position() < 95){
-  //       //   pros::delay(5);
-
-  //       // }
-  //       // setIntake(0);
-  //       intake11W.move_relative(2302, 127);
-  // while (!((intake11W.get_position() < 2307) && (intake11W.get_position() > 2297))) {
-  //   // Continue running this loop as long as the motor is not within +-5 units of its goal
-  //   pros::delay(2);
-  // }
-
-  //     setIntake(-127);
-  //     pros::delay(3920);
-  //     setIntake(0);
-      
-  //     }
 
 
 // lady brown code
-    //   if (master.get_digital(DIGITAL_LEFT)) {
-    //   liftPID.target_set(0);
-    // }
 
     if (master.get_digital_new_press(DIGITAL_DOWN)) {
       backState();
