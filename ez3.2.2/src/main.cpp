@@ -9,15 +9,15 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-2, -3},     // Left Chassis Ports (negative port will reverse it!)
-    {14, 11},  // Right Chassis Ports (negative port will reverse it!)
+    {-2, -3, -6},     // Left Chassis Ports (negative port will reverse it!)
+    {14, 11, 15},  // Right Chassis Ports (negative port will reverse it!)
 
     7,      // IMU Port
     2.75,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM
 
     // right motors are 15, 14, 11
-    // left motors are 2, 5, 3
+    // left motors are 2, 6, 3
     // intake is 8
     // imu is 7
     // distance sensor(ring detector) is 4
@@ -429,7 +429,7 @@ void opcontrol() {
 
   
 
-  chassis.opcontrol_drive_activebrake_set(2.0);  
+  chassis.opcontrol_drive_activebrake_set(0);  
   chassis.opcontrol_speed_max_set(113);
 
       // Start the task only if it hasn't already been started
