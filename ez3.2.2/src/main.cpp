@@ -430,7 +430,7 @@ void opcontrol() {
   
 
   chassis.opcontrol_drive_activebrake_set(0);  
-  chassis.opcontrol_speed_max_set(113);
+  chassis.opcontrol_speed_max_set(127);
 
       // Start the task only if it hasn't already been started
 
