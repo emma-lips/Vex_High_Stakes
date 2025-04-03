@@ -17,6 +17,7 @@ extern ez::PID liftPID;
 
 extern pros::Rotation rotationSensor;
 extern pros::Motor lb;
+extern pros::Motor lb2;
 
 //for motors
 extern pros::Motor intake11W;

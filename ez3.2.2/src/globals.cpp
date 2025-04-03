@@ -4,9 +4,11 @@ extern int target = 0;
 extern bool wrongcolour = false;
 extern pros::Rotation rotationSensor(15);
 extern pros::Motor lb(5);
+extern pros::Motor lb2(-9);
 
 void set_lift(int input) {
   lb.move(input);
+  lb2.move(input);
 }
 
 // void set_intake(int input) {
@@ -54,6 +56,7 @@ extern pros::Motor intake11W(8,pros::v5::MotorGears::blue);
 // extern pros::Distance ringDetector(4);
 //for doinker
 extern pros::MotorGroup doinker5W({17}, pros::v5::MotorGears::green);
+
 
 //pneumatics
 pros::adi::Pneumatics clamp1('A', false);

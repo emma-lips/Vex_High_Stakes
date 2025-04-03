@@ -40,7 +40,7 @@ ez::Drive chassis(
 
 const int numStates = 4;
 //These are in degrees
-int states[numStates] = {0, 625, 625, 3400};
+int states[numStates] = {0, 190, 725, 1300};
 int currState = 0;
 
 
@@ -57,13 +57,13 @@ void nextState() {
     if (currState == numStates) {
         currState = 0;
     }
-    if (currState == 2) {
-      setIntake(75);
-      pros::delay(300);
-       setIntake(-50);
-       pros::delay(75);
-       setIntake(0);
-     }
+    // if (currState == 2) {
+    //   setIntake(75);
+    //   pros::delay(300);
+    //    setIntake(-50);
+    //    pros::delay(75);
+    //    setIntake(0);
+    //  }
 
     target = states[currState];
 }
@@ -501,7 +501,7 @@ void opcontrol() {
     if(master.get_digital(DIGITAL_Y)){
         setDoinker(30);
     }
-    else if(master.get_digital(DIGITAL_L1)){
+    else if(master.get_digital(DIGITAL_A)){
         setDoinker(-30);
     }
     else {
@@ -517,7 +517,7 @@ void opcontrol() {
       backState();
     } 
 
-     if (master.get_digital_new_press(DIGITAL_LEFT)) {
+     if (master.get_digital_new_press(DIGITAL_L1)) {
      nextState();
     }
   
