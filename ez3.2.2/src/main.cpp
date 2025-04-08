@@ -105,6 +105,7 @@ void initialize() {
 
     liftPID.exit_condition_set(80, 50, 300, 150, 500, 500);
 
+    pros::Task Lift_Task(lift_task);  // Create the task, this will cause the function to start running
 
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
@@ -226,7 +227,7 @@ void competition_initialize() {
  */
 
 
-pros::Task Lift_Task(lift_task);  // Create the task, this will cause the function to start running
+
 // pros::Task* intake_task = nullptr; // declare the task globally but do not start it here
 // ring detector
 pros::Distance ringDetector(4);
