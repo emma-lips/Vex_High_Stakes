@@ -119,6 +119,39 @@ void default_constants() {
 }
 
 
+void worldssixdonutsrightblue() {
+  isRed = false;
+  // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"};
+  chassis.pid_drive_set(1.75, 60);
+  chassis.pid_wait_quick_chain();
+  target = 1260;
+  pros::delay(800);
+  chassis.pid_drive_set(-3, slow_speed);
+  chassis.pid_wait_quick_chain();
+  target = -175;
+  pros::delay(650);
+  rotationSensor.reset_position();
+
+  lb.tare_position();
+
+  // chassis.pid_drive_set(-18, 127);
+  // chassis.pid_wait_quick_chain();
+
+  // chassis.pid_drive_set(-4.25, 100);
+  // chassis.pid_wait_quick_chain();
+
+
+
+  // chassis.pid_drive_set(LEFTredback2, 80);
+  // chassis.pid_wait_quick_chain();
+
+  // clamp1.extend();
+  // chassis.pid_wait_quick_chain();
+
+  // setIntake(127);
+
+}
+
 //THIS WORKS 2025-02-19
 void sigma_modeleftred5donuts() {
   //   // Start the task only if it hasn't already been started

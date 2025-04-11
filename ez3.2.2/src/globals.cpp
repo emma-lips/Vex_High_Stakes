@@ -26,7 +26,7 @@ void set_lift(int input) {
 
 // ez::PID intakePID{0.5, 0, 0.5, 0, "Intake"};
 
-ez::PID liftPID{0.5, 0, 0.5, 0, "Lift"};
+ez::PID liftPID{0.18, 0, 0.18, 0, "Lift"};
 
 void lift_task() {
   pros::delay(2000);  // Set EZ-Template calibrate before this function starts running

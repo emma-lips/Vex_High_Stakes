@@ -40,9 +40,9 @@ ez::Drive chassis(
 
 const int numStates = 4;
 //These are in degrees
-int states[numStates] = {0, 175, 725, 1300};
+int states[numStates] = {0, 190, 750, 1300};
 int currState = 0;
-
+// 725, 1300, 
 
 void backState() {
   currState -= 1;  // Use -= instead of += -1
@@ -131,6 +131,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightblue),
   Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
       Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
       Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
@@ -262,12 +263,12 @@ void sigmarizz_task_function() {
 
 
                 button_enabled = false;
-                setIntake(127);
-                pros::delay(310);
-
-                setIntake(-127);
-                pros::delay(400);
+                setIntake(50);
+                pros::delay(275);
                 setIntake(0);
+                // setIntake(-127);
+                // pros::delay(400);
+                // setIntake(0);
 
                 button_enabled = true;
                 wrongcolour = false;
@@ -422,7 +423,7 @@ void ez_template_extras() {
 void opcontrol() {
   colorDetector.set_led_pwm(100);
 
-
+  // ez::PID liftPID{0.27, 0, 0.27, 0, "Lift"};
     if (sigmarizztaskcolorsort == nullptr) {
       sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
   }

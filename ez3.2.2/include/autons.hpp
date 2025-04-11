@@ -4,6 +4,7 @@
 
 // extern Drive chassis;
 
+void worldssixdonutsrightblue();
 void lockedin_rightblue();
 void sigma_modeleftred5donuts();
 void sigma_moderightblue5donuts();
