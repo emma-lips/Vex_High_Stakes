@@ -160,7 +160,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_drive_set(17, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(6, slow_speed);
+  chassis.pid_drive_set(4, slow_speed);
   chassis.pid_wait_quick_chain();
 
 
