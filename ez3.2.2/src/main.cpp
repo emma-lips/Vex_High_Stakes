@@ -463,10 +463,10 @@ void opcontrol() {
 
     if(toggleRingSort){
        if(button_enabled && master.get_digital(DIGITAL_R1)){
-      setIntake(-127);
+      setIntake(127);
     }
       else if(button_enabled && master.get_digital(DIGITAL_X)){
-      setIntake(127);
+      setIntake(-127);
     }
       else if(!wrongcolour){
       setIntake(0);
@@ -475,10 +475,10 @@ void opcontrol() {
     if(!toggleRingSort){
     
     if(master.get_digital(DIGITAL_R1)){
-      setIntake(-127);
+      setIntake(127);
     }
     else if(master.get_digital(DIGITAL_X)){
-      setIntake(127);
+      setIntake(-127);
     }
     else {
       setIntake(0);

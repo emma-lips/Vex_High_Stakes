@@ -47,7 +47,7 @@ void lift_wait() {
 
 
 //for motors
-extern pros::Motor intake11W(8,pros::v5::MotorGears::blue);
+extern pros::Motor intake11W(-8,pros::v5::MotorGears::blue);
 // // for colour sorter
 // extern pros::Optical colorDetector(18);
 // // Vex V5 Distance Sensor (For detecting rings as they approach the top of the intake)
