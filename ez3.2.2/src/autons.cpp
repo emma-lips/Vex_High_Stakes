@@ -154,7 +154,7 @@ void worldssixdonutsrightblue() {
 
   setIntake(127);
 
-  chassis.pid_turn_set(-140, TURN_SPEED);
+  chassis.pid_turn_set(-135, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(17, slow_speed);
