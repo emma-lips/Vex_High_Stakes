@@ -165,8 +165,12 @@ void worldssixdonutsrightblue() {
   chassis.pid_wait_quick_chain();
   pros::delay(100);
 
+  setIntake(0);
+
   chassis.pid_drive_set(1, superslow_speed);
   chassis.pid_wait_quick_chain();
+
+  setIntake(127);
 
   pros::delay(5000);
   setIntake(0);
