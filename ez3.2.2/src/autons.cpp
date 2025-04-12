@@ -121,18 +121,23 @@ void default_constants() {
 
 void worldssixdonutsrightblue() {
   isRed = false;
+  liftPID.constants_set(0.07, 0, 0.07);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"};
-  chassis.pid_drive_set(1.75, 60);
+  chassis.pid_drive_set(1, 60);
   chassis.pid_wait_quick_chain();
-  target = 1260;
-  pros::delay(800);
+
+  target = 1375;
+  pros::delay(750);
   chassis.pid_drive_set(-3, slow_speed);
   chassis.pid_wait_quick_chain();
-  target = -175;
+  liftPID.constants_set(0.2, 0, 0.2);
+  target = -165;
   pros::delay(650);
   rotationSensor.reset_position();
 
   lb.tare_position();
+  target = 0;
+  chassis.pid_wait();
 
   // chassis.pid_drive_set(-18, 127);
   // chassis.pid_wait_quick_chain();
@@ -149,6 +154,7 @@ void worldssixdonutsrightblue() {
   // chassis.pid_wait_quick_chain();
 
   // setIntake(127);
+
 
 }
 
