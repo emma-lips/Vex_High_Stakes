@@ -123,7 +123,7 @@ void worldssixdonutsrightblue() {
   isRed = false;
 
   chassis.drive_angle_set(31.89);
-  liftPID.constants_set(0.07, 0, 0.07);
+  liftPID.constants_set(0.06, 0, 0.06);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"};
   chassis.pid_drive_set(1, 60);
   chassis.pid_wait_quick_chain();
@@ -144,7 +144,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_turn_set(24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-15, DRIVE_SPEED);
+  chassis.pid_drive_set(-15, slow_speed);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(-3, slow_speed);
   chassis.pid_wait_quick_chain();
@@ -154,10 +154,10 @@ void worldssixdonutsrightblue() {
 
   setIntake(127);
 
-  chassis.pid_turn_set(-135, DRIVE_SPEED);
+  chassis.pid_turn_set(-140, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(17, DRIVE_SPEED);
+  chassis.pid_drive_set(17, slow_speed);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(6, slow_speed);
