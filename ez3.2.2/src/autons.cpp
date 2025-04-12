@@ -17,7 +17,7 @@ const int SWING_SPEED = 90;
 const int DRIVE_SPEED1 = 90;
 //ALSO FOR RIGHT RED move to mogo
 const int slow_speed = 60; // speed for clamping mogo
-const int superslow_speed = 40;
+const int superslow_speed = 20;
 const int delay_1 = 870; //While dropping preload
 
 const double RIGHTblueback = -22.75;// move backwards to mogo 
@@ -153,25 +153,19 @@ void worldssixdonutsrightblue() {
   clamp1.extend();
   chassis.pid_wait_quick_chain();
 
-  // setIntake(127);
+  setIntake(127);
 
   chassis.pid_turn_set(-135, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(17, slow_speed);
   chassis.pid_wait_quick_chain();
-
-  setIntake(0);
   
-  chassis.pid_drive_set(3, slow_speed);
+  chassis.pid_drive_set(3, superslow_speed);
   chassis.pid_wait_quick_chain();
-  pros::delay(100);
+  // pros::delay(100);
 
-
-  chassis.pid_drive_set(0.5, superslow_speed);
-  chassis.pid_wait_quick_chain();
-
-  setIntake(127);
+  // setIntake(127);
 
   pros::delay(5000);
   setIntake(0);
