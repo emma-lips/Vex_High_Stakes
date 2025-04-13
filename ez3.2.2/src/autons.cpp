@@ -198,6 +198,12 @@ void worldssixdonutsrightblue() {
   chassis.pid_drive_set(3, 35);
   chassis.pid_wait();
 
+  chassis.pid_turn_set(-44.5, slow_speed);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(3, 35);
+  chassis.pid_wait();
+
   pros::delay(1200);
 
   chassis.pid_drive_set(-15, FULL_SPEED);
@@ -208,6 +214,11 @@ void worldssixdonutsrightblue() {
 
   pros::delay(3000);
 
+  chassis.pid_turn_set(120, slow_speed);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(50, DRIVE_SPEED);
+  chassis.pid_wait();
 
   setIntake(0);
   rotationSensor.reset_position();
