@@ -64,6 +64,14 @@ pros::adi::Pneumatics clamp1('A', false);
 //pneumatics intake lift
 pros::adi::Pneumatics lifter('H', false);
 
+
+//pneumatics doinker right
+pros::adi::Pneumatics doinkerright('G', false);
+
+//pneumatics doinker left
+pros::adi::Pneumatics doinkerleft('F', false);
+
+
 //clamp1.extend();
 //clamp1.retract();
 //clamp1.toggle();

@@ -28,3 +28,9 @@ extern pros::adi::Pneumatics clamp1;
 
 //pneumatics lifter
 extern pros::adi::Pneumatics lifter;
+
+//pneumatics doinker right
+extern pros::adi::Pneumatics doinkerright;
+
+//pneumatics doinker left
+extern pros::adi::Pneumatics doinkerleft;

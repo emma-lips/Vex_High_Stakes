@@ -24,6 +24,8 @@ ez::Drive chassis(
     // colour sensor is 18
     // mogo mech is A
     // lifter is H
+    // right doinker is G
+    // left doinker is F
     // radio is 12
     // lady brown is 5
 
