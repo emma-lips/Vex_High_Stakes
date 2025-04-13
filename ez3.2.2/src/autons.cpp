@@ -134,19 +134,15 @@ void worldssixdonutsrightblue() {
   chassis.pid_drive_set(-3, slow_speed);
   chassis.pid_wait_quick_chain();
   liftPID.constants_set(0.2, 0, 0.2);
-  target = -165;
-  pros::delay(500);
-
-  lb.tare_position();
-  target = 0;
+  target = 725;
 
 
   chassis.pid_turn_set(24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-15, slow_speed);
+  chassis.pid_drive_set(-15, FULL_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-3, slow_speed);
+  chassis.pid_drive_set(-3.5, slow_speed);
   chassis.pid_wait_quick_chain();
 
   clamp1.extend();
@@ -157,7 +153,10 @@ void worldssixdonutsrightblue() {
   chassis.pid_turn_set(-135, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(23.5, slow_speed);
+  chassis.pid_drive_set(19, FULL_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(4.5, slow_speed);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(-90, TURN_SPEED);
@@ -166,23 +165,23 @@ void worldssixdonutsrightblue() {
   chassis.pid_drive_set(5, slow_speed);
 
   pros::delay(100);
-  chassis.pid_wait();
+  chassis.pid_wait_quick_chain();
   // chassis.pid_turn_set(-135, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
 
   chassis.pid_swing_set(ez::LEFT_SWING, -135_deg, 127, 45);
-  chassis.pid_wait();
+  chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(-65, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(25, DRIVE_SPEED);
+  chassis.pid_drive_set(23, DRIVE_SPEED);
   chassis.pid_wait();
 
   chassis.pid_turn_set(0, 80);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(15, DRIVE_SPEED);
+  chassis.pid_drive_set(22.5, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(-46, TURN_SPEED);
@@ -198,7 +197,8 @@ void worldssixdonutsrightblue() {
   chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
   chassis.pid_wait();
 
-  chassis.move(127);
+  chassis.pid_drive_set(5, 127);
+  chassis.pid_wait();
   pros::delay(1250);
 
 
@@ -220,10 +220,9 @@ void worldssixdonutsrightblue() {
   chassis.pid_wait();
 
   setIntake(0);
-  rotationSensor.reset_position();
-
+  // rotationSensor.reset_position();
+  target = -165;
   lb.tare_position();
-  target = 0;
 }
 
 //THIS WORKS 2025-02-19
