@@ -197,7 +197,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(5, 127);
+  chassis.pid_drive_set(5, slow_speed);
   chassis.pid_wait();
   pros::delay(1250);
 
@@ -223,6 +223,7 @@ void worldssixdonutsrightblue() {
   // rotationSensor.reset_position();
   target = -165;
   lb.tare_position();
+  target = 0;
 }
 
 //THIS WORKS 2025-02-19
