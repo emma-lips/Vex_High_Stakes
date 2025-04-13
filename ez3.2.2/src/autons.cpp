@@ -152,7 +152,7 @@ void worldssixdonutsrightblue() {
   clamp1.extend();
   chassis.pid_wait_quick_chain();
 
-  setIntake(127);
+  setIntake(100);
 
   chassis.pid_turn_set(-135, TURN_SPEED);
   chassis.pid_wait_quick_chain();
@@ -182,15 +182,21 @@ void worldssixdonutsrightblue() {
   chassis.pid_turn_set(0, 60);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(17.5, DRIVE_SPEED);
+  chassis.pid_drive_set(16.5, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-40, TURN_SPEED);
+  chassis.pid_turn_set(-44.5, TURN_SPEED);
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(21, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(7, slow_speed);
+  chassis.pid_drive_set(4, 35);
   chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(-46, slow_speed);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(3, 35);
+  chassis.pid_wait();
 
   pros::delay(1200);
 
