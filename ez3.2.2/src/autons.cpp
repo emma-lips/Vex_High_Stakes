@@ -170,7 +170,7 @@ void worldssixdonutsrightblue() {
   // chassis.pid_turn_set(-135, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
 
-  chassis.pid_swing_set(ez::LEFT_SWING, -135_deg, SWING_SPEED, 45);
+  chassis.pid_swing_set(ez::LEFT_SWING, -135_deg, 127, 45);
   chassis.pid_wait();
 
   chassis.pid_turn_set(-65, TURN_SPEED);
@@ -179,45 +179,44 @@ void worldssixdonutsrightblue() {
   chassis.pid_drive_set(25, DRIVE_SPEED);
   chassis.pid_wait();
 
-  chassis.pid_turn_set(0, 60);
+  chassis.pid_turn_set(0, 80);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(16.5, DRIVE_SPEED);
+  chassis.pid_drive_set(15, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-44.5, TURN_SPEED);
+  chassis.pid_turn_set(-46, TURN_SPEED);
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(21, DRIVE_SPEED);
-  chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(4, 35);
+  chassis.pid_drive_set(8, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-46, slow_speed);
-  chassis.pid_wait();
 
-  chassis.pid_drive_set(3, 35);
-  chassis.pid_wait();
 
-  chassis.pid_turn_set(-44.5, slow_speed);
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(3, 35);
-  chassis.pid_wait();
-
-  pros::delay(1200);
-
-  chassis.pid_drive_set(-15, FULL_SPEED);
-  chassis.pid_wait();
-
-  chassis.pid_drive_set(7, slow_speed);
+  chassis.pid_drive_set(19, 35);
   chassis.pid_wait_quick_chain();
 
-  pros::delay(3000);
-
-  chassis.pid_turn_set(120, slow_speed);
+  chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(50, DRIVE_SPEED);
+  chassis.move(127);
+  pros::delay(1250);
+
+
+
+  // pros::delay(3000);
+
+  chassis.pid_drive_set(-17, FULL_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(9, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  pros::delay(1000);
+
+  chassis.pid_turn_set(120, TURN_SPEED);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(50, FULL_SPEED);
   chassis.pid_wait();
 
   setIntake(0);
