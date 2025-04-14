@@ -130,7 +130,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_wait_quick_chain();
 
   target = 1375;
-  pros::delay(750);
+  pros::delay(400);
   chassis.pid_drive_set(-3, slow_speed);
   chassis.pid_wait_quick_chain();
   liftPID.constants_set(0.2, 0, 0.2);
@@ -216,7 +216,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_drive_set(9, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
-  pros::delay(1000);
+  pros::delay(250);
 
   chassis.pid_turn_set(120, TURN_SPEED);
   chassis.pid_wait();
