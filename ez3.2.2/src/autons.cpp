@@ -172,9 +172,10 @@ void worldssixdonutsrightblue() {
   chassis.pid_swing_set(ez::LEFT_SWING, -135_deg, 127, 45);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-65, TURN_SPEED);
+  chassis.pid_turn_set(-55, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
+  //Go towards 4th donut sole donut
   chassis.pid_drive_set(22, DRIVE_SPEED);
   chassis.pid_wait();
 
@@ -182,7 +183,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(24, DRIVE_SPEED);
+  chassis.pid_drive_set(21, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
 
   setIntake(0);
