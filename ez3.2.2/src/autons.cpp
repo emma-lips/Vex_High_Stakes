@@ -200,8 +200,8 @@ void worldssixdonutsrightblue() {
 
   setIntake(127);
 
-
-  chassis.pid_drive_set(6, FULL_SPEED);
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+  chassis.pid_drive_set(7.5, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
   // chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
