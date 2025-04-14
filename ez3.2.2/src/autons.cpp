@@ -226,7 +226,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_turn_set(120, 100);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(55, FULL_SPEED);
+  chassis.pid_drive_set(46, FULL_SPEED);
   chassis.pid_wait();
 
 
