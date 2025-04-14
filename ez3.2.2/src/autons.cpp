@@ -94,9 +94,12 @@ void default_constants() {
   chassis.pid_odom_boomerang_constants_set(5.8, 0.0, 32.5);  // Angular control for boomerang motions
 
   // Exit conditions
-  chassis.pid_turn_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 500_ms, 500_ms);
-  chassis.pid_swing_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 500_ms, 500_ms);
-  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+  // chassis.pid_turn_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 500_ms, 500_ms);
+  // chassis.pid_swing_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 500_ms, 500_ms);
+  // chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+  chassis.pid_turn_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 150_ms, 150_ms);
+  chassis.pid_swing_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 150_ms, 150_ms);
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 150_ms, 150_ms);
   chassis.pid_odom_turn_exit_condition_set(90_ms, 3_deg, 250_ms, 7_deg, 500_ms, 750_ms);
   chassis.pid_odom_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 750_ms);
   chassis.pid_turn_chain_constant_set(3_deg);
@@ -122,7 +125,7 @@ void default_constants() {
 
 void worldssixdonutsrightblue() {
   isRed = false;
-
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
   chassis.drive_angle_set(31.89);
   liftPID.constants_set(0.06, 0, 0.06);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"};
@@ -160,7 +163,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_drive_set(4.5, slow_speed);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-90, TURN_SPEED);
+  chassis.pid_turn_set(-93, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(7, 90, true); // Get 3 donut
@@ -184,7 +187,7 @@ void worldssixdonutsrightblue() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(19, FULL_SPEED);
+  chassis.pid_drive_set(19.75, FULL_SPEED);
   chassis.pid_wait_until(14);
   setIntake(0);
   chassis.pid_wait_quick_chain();
@@ -198,7 +201,7 @@ void worldssixdonutsrightblue() {
   setIntake(127);
 
 
-  chassis.pid_drive_set(7, FULL_SPEED);
+  chassis.pid_drive_set(6, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
   // chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
