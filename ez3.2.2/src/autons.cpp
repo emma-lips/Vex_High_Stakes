@@ -122,6 +122,68 @@ void default_constants() {
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
+void worldssixdonutsleftblue() {
+  isRed = false;
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+  chassis.drive_angle_set(-31.89);
+  liftPID.constants_set(0.06, 0, 0.06);
+  // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
+  chassis.pid_drive_set(1, 60);
+  chassis.pid_wait_quick_chain();
+
+  target = 1375;
+  pros::delay(600);
+  chassis.pid_drive_set(-3, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  liftPID.constants_set(0.2, 0, 0.2);
+
+
+
+  chassis.pid_turn_set(-24, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(-18.5, FULL_SPEED);
+  target = 725;
+  chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(-1.5, slow_speed);
+  // chassis.pid_wait_quick_chain();
+
+  clamp1.extend(); //Clamp stake
+  chassis.pid_wait_quick_chain();
+
+  setIntake(100);
+
+void worldssixdonutsrightred() {
+  isRed = true;
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+  chassis.drive_angle_set(31.89);
+  liftPID.constants_set(0.06, 0, 0.06);
+  // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
+  chassis.pid_drive_set(1, 60);
+  chassis.pid_wait_quick_chain();
+
+  target = 1375;
+  pros::delay(600);
+  chassis.pid_drive_set(-3, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  liftPID.constants_set(0.2, 0, 0.2);
+
+
+
+  chassis.pid_turn_set(24, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(-18.5, FULL_SPEED);
+  target = 725;
+  chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(-1.5, slow_speed);
+  // chassis.pid_wait_quick_chain();
+
+  clamp1.extend(); //Clamp stake
+  chassis.pid_wait_quick_chain();
+
+  setIntake(100);
+
 void worldssixdonutsleftred() {
   isRed = true;
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
