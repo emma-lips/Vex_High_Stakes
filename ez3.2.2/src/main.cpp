@@ -238,6 +238,7 @@ void competition_initialize() {
 // pros::Task* intake_task = nullptr; // declare the task globally but do not start it here
 // ring detector
 pros::Distance ringDetector(4);
+pros::Distance ringdetectortoo(9);
 pros::Optical colorDetector(18);
 bool button_enabled = true;
 
@@ -256,11 +257,11 @@ void sigmarizz_task_function() {
             colorDetector.set_led_pwm(100);
 
             if (isRed) {
-                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 240 && colorDetector.get_proximity() > 150) {
+                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 240 && colorDetector.get_proximity() > 150 && ringdetectortoo.get() < 100) {
                     wrongcolour = true;
                 }
             } else {
-                if (colorDetector.get_hue() < 20 && colorDetector.get_proximity() > 45) {
+                if (colorDetector.get_hue() < 20 && colorDetector.get_proximity() > 45 && ringdetectortoo.get() < 100) {
                     wrongcolour = true;
                 }
             }
