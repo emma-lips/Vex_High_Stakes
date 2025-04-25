@@ -125,6 +125,7 @@ void default_constants() {
 void worldssixdonutsrightbluenoalliance() {
   isRed = false;
   chassis.pid_turn_set(24, TURN_SPEED);
+  chassis.drive_angle_set(31.89);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(-18.5, FULL_SPEED);
@@ -250,34 +251,80 @@ void worldssixdonutsleftblue() {
 
 void worldssixdonutsrightred() {
   isRed = true;
-  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
   chassis.drive_angle_set(31.89);
-  liftPID.constants_set(0.06, 0, 0.06);
-  // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
-  chassis.pid_drive_set(1, 60);
-  chassis.pid_wait_quick_chain();
-
-  target = 1375;
-  pros::delay(600);
-  chassis.pid_drive_set(-3, DRIVE_SPEED);
-  chassis.pid_wait_quick_chain();
-  liftPID.constants_set(0.2, 0, 0.2);
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
 
 
   chassis.pid_turn_set(24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-18.5, FULL_SPEED);
-  target = 725;
+  chassis.pid_drive_set(-18.5, FULL_SPEED);//CHANGE IF SWING NO HIT
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
 
   clamp1.extend(); //Clamp stake
   chassis.pid_wait_quick_chain();
+  setIntake(127);
 
-  setIntake(100);
+  chassis.pid_swing_set(ez::RIGHT_SWING, 90_deg, 127, 45);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(74.29, FULL_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(49.86, FULL_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(0, slow_speed);
+  chassis.pid_wait_quick_chain();
+
+
+  // Going straight towards corner
+  chassis.pid_drive_set(19.75, FULL_SPEED);
+  chassis.pid_wait_until(12);
+  setIntake(0);
+  chassis.pid_wait_quick_chain();
+
+
+  chassis.pid_turn_set(-46, FULL_SPEED); //Turn into corner
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(8, FULL_SPEED); //Drive into corner
+  chassis.pid_wait_quick_chain();
+
+  setIntake(127); //Intake donut 5
+
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+  chassis.pid_drive_set(7.5, FULL_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  // chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
+  // chassis.pid_wait();
+
+  // chassis.pid_drive_set(5, slow_speed);
+  // chassis.pid_wait();
+  // // pros::delay(250);
+
+
+
+  // pros::delay(3000);
+
+  chassis.pid_drive_set(-10, FULL_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(5, FULL_SPEED); //Get 6 donut
+  chassis.pid_wait_quick_chain();
+
+  pros::delay(240);
+
+  chassis.pid_turn_set(120, 100); //Turn to ladder
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(46, FULL_SPEED); //Drive to ladder
+  chassis.pid_wait();
+
+
 }
 
 void worldssixdonutsleftred() {
