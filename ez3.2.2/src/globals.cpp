@@ -66,7 +66,7 @@ pros::adi::Pneumatics lifter('H', false);
 
 
 //pneumatics doinker right
-pros::adi::Pneumatics doinkerright('G', false);
+pros::adi::Pneumatics doinkerright('G', true);
 
 //pneumatics doinker left
 pros::adi::Pneumatics doinkerleft('F', false);

@@ -42,7 +42,7 @@ ez::Drive chassis(
 
 const int numStates = 4;
 //These are in degrees
-int states[numStates] = {0, 190, 750, 1300};
+int states[numStates] = {0, 200, 800, 1300};
 int currState = 0;
 // 725, 1300, 
 
@@ -271,8 +271,14 @@ void sigmarizz_task_function() {
 
                 button_enabled = false;
                 setIntake(127);
+                pros::delay(26);
+                setIntake(0);
+                pros::delay(50);
+                setIntake(-127);
                 pros::delay(30);
                 setIntake(0);
+                pros::delay(200);
+                
                 // setIntake(-127);
                 // pros::delay(400);
                 // setIntake(0);
@@ -500,11 +506,13 @@ void opcontrol() {
 
     }
 
-        if(master.get_digital_new_press(DIGITAL_R2)){
+        if(master.get_digital_new_press(DIGITAL_DOWN)){
         lifter.toggle();
     }
 
-
+        if(master.get_digital_new_press(DIGITAL_R2)){
+          doinkerright.toggle();
+        }
 
 
     if(master.get_digital(DIGITAL_Y)){
