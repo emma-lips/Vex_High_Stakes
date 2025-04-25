@@ -128,7 +128,6 @@ void worldssixdonutsrightbluenoalliance() {
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(-18.5, FULL_SPEED);
-  target = 725;
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
@@ -215,10 +214,6 @@ void worldssixdonutsrightbluenoalliance() {
 
 
   // rotationSensor.reset_position();
-  target = -165;
-  pros::delay(300);
-  lb.tare_position();
-  target = 0;
 }
 
 void worldssixdonutsleftblue() {
