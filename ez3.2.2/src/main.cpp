@@ -238,7 +238,7 @@ void competition_initialize() {
 // pros::Task* intake_task = nullptr; // declare the task globally but do not start it here
 // ring detector
 pros::Distance ringDetector(4);
-pros::Distance ringdetectortoo(9);
+pros::Distance ringdetectortoo(1);
 pros::Optical colorDetector(18);
 bool button_enabled = true;
 
