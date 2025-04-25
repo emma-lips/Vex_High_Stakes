@@ -257,11 +257,11 @@ void sigmarizz_task_function() {
             colorDetector.set_led_pwm(100);
 
             if (isRed) {
-                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 240 && colorDetector.get_proximity() > 150 && ringdetectortoo.get() < 100) {
+                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 240 && ringdetectortoo.get() < 70) {
                     wrongcolour = true;
                 }
             } else {
-                if (colorDetector.get_hue() < 20 && colorDetector.get_proximity() > 45 && ringdetectortoo.get() < 100) {
+                if (colorDetector.get_hue() < 20 && ringdetectortoo.get() < 70) {
                     wrongcolour = true;
                 }
             }
@@ -270,8 +270,8 @@ void sigmarizz_task_function() {
 
 
                 button_enabled = false;
-                setIntake(50);
-                pros::delay(190);
+                setIntake(127);
+                pros::delay(30);
                 setIntake(0);
                 // setIntake(-127);
                 // pros::delay(400);
