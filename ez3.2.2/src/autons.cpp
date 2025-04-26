@@ -122,7 +122,7 @@ void default_constants() {
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
-void worldssixdonutsrightbluenoalliancefivedonuts() {
+void worldssixdonutsrightbluenoalliance() {
   isRed = false;
   chassis.pid_turn_set(24, TURN_SPEED);
   chassis.drive_angle_set(31.89);
