@@ -219,14 +219,14 @@ void worldssixdonutsrightbluenoalliance() {
 
 // IT WORKSS AAHAHH
 void worldssixdonutsleftbluenoalliance() {
-  isRed = true;
+  isRed = false;
   chassis.drive_angle_set(-31.89);
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
   chassis.pid_turn_set(-24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-21.5, FULL_SPEED);//CHANGE IF SWING NO HIT
+  chassis.pid_drive_set(-22, FULL_SPEED);//CHANGE IF SWING NO HIT
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
@@ -235,7 +235,7 @@ void worldssixdonutsleftbluenoalliance() {
   chassis.pid_wait_quick_chain();
   setIntake(127);
 
-  chassis.pid_swing_set(ez::RIGHT_SWING, 96_deg, 127, 45);
+  chassis.pid_swing_set(ez::RIGHT_SWING, -96_deg, 127, 45);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(1, FULL_SPEED);
@@ -253,7 +253,7 @@ void worldssixdonutsleftbluenoalliance() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(23, FULL_SPEED);
+  chassis.pid_drive_set(21, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -265,11 +265,12 @@ void worldssixdonutsleftbluenoalliance() {
   chassis.pid_turn_set(41, FULL_SPEED); //Turn into corner
   chassis.pid_wait_quick_chain();
   setIntake(127); //Intake donut 5
-  chassis.pid_drive_set(14, 100); //Drive into corner
+  chassis.pid_drive_set(16, 100); //Drive into corner
   chassis.pid_wait_quick_chain();
   setIntake(127); //Intake donut 5
+  pros::delay(250);
 
-  chassis.pid_drive_set(7.5, 100);
+  chassis.pid_drive_set(8.5, 100);
   chassis.pid_wait_quick_chain();
 
   // chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
@@ -294,6 +295,8 @@ void worldssixdonutsleftbluenoalliance() {
   chassis.pid_turn_set(-120, 100); //Turn to ladder
   chassis.pid_wait();
 
+
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
   chassis.pid_drive_set(46, FULL_SPEED); //Drive to ladder
   chassis.pid_wait();
 
