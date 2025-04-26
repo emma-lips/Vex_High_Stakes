@@ -487,7 +487,7 @@ void worldssixdonutsleftred() {
   chassis.pid_wait_quick_chain();
 
 
-  chassis.pid_turn_set(46, FULL_SPEED); //Turn into corner
+  chassis.pid_turn_set(47.5, FULL_SPEED); //Turn into corner
   chassis.pid_wait_quick_chain();
   chassis.pid_drive_set(8, FULL_SPEED); //Drive into corner
   chassis.pid_wait_quick_chain();
