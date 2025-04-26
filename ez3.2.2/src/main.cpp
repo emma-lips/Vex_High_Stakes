@@ -459,7 +459,7 @@ void ez_template_extras() {
 
 void opcontrol() {
   colorDetector.set_led_pwm(100);
-
+  lb.tare_position();
   // ez::PID liftPID{0.27, 0, 0.27, 0, "Lift"};
     if (sigmarizztaskcolorsort == nullptr) {
       sigmarizztaskcolorsort = new pros::Task(sigmarizz_task_function);
