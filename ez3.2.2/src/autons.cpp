@@ -523,13 +523,13 @@ void worldssixdonutsleftred() {
   chassis.pid_turn_set(-120, 100); //Turn to ladder
   chassis.pid_wait();
 
-  chassis.pid_drive_set(46, FULL_SPEED); //Drive to ladder
+  chassis.pid_drive_set(53, FULL_SPEED); //Drive to ladder
+  chassis.pid_wait_until(10);
+  target = -180;
   chassis.pid_wait();
 
 
   // rotationSensor.reset_position();
-  target = -165;
-  pros::delay(300);
   lb.tare_position();
   target = 0;
 }
@@ -638,12 +638,13 @@ void worldssixdonutsrightblue() {
   chassis.pid_wait();
 
   chassis.pid_drive_set(46, FULL_SPEED); //Drive to ladder
+  chassis.pid_wait_until(10);
+  target = -180;
   chassis.pid_wait();
 
 
   // rotationSensor.reset_position();
-  target = -165;
-  pros::delay(300);
+
   lb.tare_position();
   target = 0;
 }
