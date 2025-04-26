@@ -420,7 +420,7 @@ void worldssixdonutsleftred() {
   chassis.drive_angle_set(-31.89);
   liftPID.constants_set(0.06, 0, 0.06);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
-  chassis.pid_drive_set(1, 60);
+  chassis.pid_drive_set(0.5, 60);
   chassis.pid_wait_quick_chain();
 
   target = 1375;
