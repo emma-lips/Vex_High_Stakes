@@ -235,7 +235,7 @@ void worldssixdonutsleftbluenoalliance() {
   chassis.pid_wait_quick_chain();
   setIntake(127);
 
-  chassis.pid_swing_set(ez::LEFT_SWING, 96_deg, 127, 45);
+  chassis.pid_swing_set(ez::RIGHT_SWING, 96_deg, 127, 45);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(1, FULL_SPEED);
