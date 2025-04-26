@@ -414,7 +414,7 @@ void worldssixdonutsrightred() {
 
 }
 
-void worldssixdonutsleftrednoalliance() {
+void worldssixdonutsleftred() {
   isRed = true;
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
   chassis.drive_angle_set(-31.89);
