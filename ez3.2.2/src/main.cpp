@@ -133,6 +133,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightred),
   Auton("worlds auton right blue no alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightbluenoalliance),
   Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftred),
   Auton("worlds auton left blue alliance stake 5 donuts \n\nleftblue alliance stake", worldssixdonutsleftblue),
@@ -515,14 +516,8 @@ void opcontrol() {
         }
 
 
-    if(master.get_digital(DIGITAL_Y)){
-        setDoinker(30);
-    }
-    else if(master.get_digital(DIGITAL_A)){
-        setDoinker(-30);
-    }
-    else {
-      setDoinker(0);
+    if(master.get_digital_new_press(DIGITAL_Y)){
+        doinkerleft.toggle();
     }
 
 

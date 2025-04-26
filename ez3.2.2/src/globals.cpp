@@ -69,9 +69,7 @@ pros::adi::Pneumatics lifter('H', false);
 pros::adi::Pneumatics doinkerright('G', true);
 
 //pneumatics doinker left
-pros::adi::Pneumatics doinkerleft('F', false);
-
-
+pros::adi::Pneumatics doinkerleft('E', true);
 //clamp1.extend();
 //clamp1.retract();
 //clamp1.toggle();
