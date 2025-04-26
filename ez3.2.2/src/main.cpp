@@ -42,7 +42,7 @@ ez::Drive chassis(
 
 const int numStates = 4;
 //These are in  NOT degrees
-int states[numStates] = {0, 194, 800, 1590};
+int states[numStates] = {0, 192, 800, 1590};
 int currState = 0;
 // 725, 1300, 
 
@@ -154,6 +154,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("worlds auton right bue no alliance for real this time \n\nyuh", worldssixdonutsrightbluenoalliancefr),
   Auton("worlds auton left blue no alliance stake 6 donuts \n\nleftblue no alliance stake", worldssixdonutsleftbluenoalliance),
     Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftred),
   Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightblue),
