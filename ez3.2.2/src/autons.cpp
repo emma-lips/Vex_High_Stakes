@@ -269,7 +269,7 @@ void worldssixdonutsrightred() {
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(1, FULL_SPEED);
-  chasiss.pid_wait_quick_chain();
+  chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(-105.29, FULL_SPEED);
   chassis.pid_wait_quick_chain();
