@@ -4,6 +4,7 @@
 
 // extern Drive chassis;
 
+void worldssixdonutsleftbluenoalliance();
 void worldssixdonutsrightbluenoalliance();
 void worldssixdonutsleftred();
 void worldssixdonutsrightred();
