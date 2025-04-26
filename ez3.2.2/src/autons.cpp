@@ -434,7 +434,7 @@ void worldssixdonutsleftred() {
   chassis.pid_turn_set(-24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-18.5, FULL_SPEED);
+  chassis.pid_drive_set(-20, FULL_SPEED);
   target = 725;
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
@@ -448,7 +448,7 @@ void worldssixdonutsleftred() {
   chassis.pid_turn_set(135, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(19, FULL_SPEED); //Aquire 2 donut
+  chassis.pid_drive_set(16.5, FULL_SPEED); //Aquire 2 donut
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(4.5, slow_speed);
@@ -491,8 +491,8 @@ void worldssixdonutsleftred() {
 
   setIntake(127); //Intake donut 5
 
-  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 300_ms, 300_ms);
-  chassis.pid_drive_set(7.5, FULL_SPEED);
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 400_ms, 400_ms);
+  chassis.pid_drive_set(8.5, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
   // chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
@@ -508,6 +508,7 @@ void worldssixdonutsleftred() {
 
   chassis.pid_drive_set(-10, FULL_SPEED);
   chassis.pid_wait_quick_chain();
+  pros::delay(250);
 
   chassis.pid_drive_set(5, FULL_SPEED); //Get 6 donut
   chassis.pid_wait_quick_chain();
