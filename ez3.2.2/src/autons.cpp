@@ -272,6 +272,8 @@ void worldssixdonutsrightred() {
   chassis.pid_drive_set(1, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
+  pros::delay(200);
+
   chassis.pid_turn_set(-110, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
