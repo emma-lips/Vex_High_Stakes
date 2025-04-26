@@ -6,7 +6,7 @@
 
 void worldssixdonutsleftbluenoalliance();
 void worldssixdonutsrightbluenoalliance();
-void worldssixdonutsleftred();
+void worldssixdonutsleftrednoalliance();
 void worldssixdonutsrightred();
 void worldssixdonutsleftblue();
 void worldssixdonutsrightblue();
