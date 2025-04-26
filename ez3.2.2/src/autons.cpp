@@ -605,7 +605,7 @@ void worldssixdonutsrightblue() {
 
   setIntake(127); //Intake donut 5
 
-  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 300_ms, 300_ms);
   chassis.pid_drive_set(7.5, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
