@@ -133,13 +133,13 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightblue),
   Auton("worlds auton left blue no alliance stake 6 donuts \n\nleftblue no alliance stake", worldssixdonutsleftbluenoalliance),
   Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightred),
   Auton("worlds auton right blue no alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightbluenoalliance),
   Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftrednoalliance),
   Auton("worlds auton left blue alliance stake 5 donuts \n\nleftblue alliance stake", worldssixdonutsleftblue),
   Auton("worlds auton right red alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightred),
-  Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightblue),
   Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
       Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
       Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
