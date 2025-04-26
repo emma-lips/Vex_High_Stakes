@@ -439,8 +439,10 @@ void worldssixdonutsleftred() {
   chassis.pid_turn_set(-24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-20, FULL_SPEED);
+  chassis.pid_drive_set(-16, FULL_SPEED);
   target = 725;
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-4, 100);
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
@@ -554,8 +556,10 @@ void worldssixdonutsrightblue() {
   chassis.pid_turn_set(24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-20, FULL_SPEED);
+  chassis.pid_drive_set(-16, FULL_SPEED);
   target = 725;
+  chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-4, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
