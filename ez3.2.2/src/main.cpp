@@ -41,10 +41,31 @@ ez::Drive chassis(
 
 
 const int numStates = 4;
-//These are in degrees
+//These are in  NOT degrees
 int states[numStates] = {0, 200, 800, 1300};
 int currState = 0;
 // 725, 1300, 
+
+const int numStates2 = 3;
+//These are in degrees
+int states2[numStates2] = {0, 1300, 1700};
+int currState2 = 0;
+
+void nextState2() {
+  currState2 += 1;
+  if (currState2 == numStates2) {
+      currState2 = 0;
+  }
+  // if (currState == 2) {
+  //   setIntake(75);
+  //   pros::delay(300);
+  //    setIntake(-50);
+  //    pros::delay(75);
+  //    setIntake(0);
+  //  }
+
+  target = states2[currState2];
+}
 
 void backState() {
   currState -= 1;  // Use -= instead of += -1
@@ -521,7 +542,9 @@ void opcontrol() {
         doinkerleft.toggle();
     }
 
-
+    if(master.get_digital_new_press(DIGITAL_LEFT)){
+      void nextState2();
+    }
 
 
 // lady brown code
