@@ -128,11 +128,11 @@ void worldssixdonutsrightbluenoalliance() {
   chassis.drive_angle_set(31.89);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-18.5, FULL_SPEED);
+  chassis.pid_drive_set(-19, 90);
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
-
+  pros::delay(200);
   clamp1.extend(); //Clamp stake
   chassis.pid_wait_quick_chain();
 
@@ -152,7 +152,7 @@ void worldssixdonutsrightbluenoalliance() {
 
   chassis.pid_drive_set(7, 90, true); // Get 3 donut (including preload)
   chassis.pid_wait_quick_chain();
-  pros::delay(200);
+    pros::delay(200);
 
   // chassis.pid_turn_set(-135, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
@@ -226,11 +226,11 @@ void worldssixdonutsleftbluenoalliance() {
   chassis.pid_turn_set(-24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-22, FULL_SPEED);//CHANGE IF SWING NO HIT
+  chassis.pid_drive_set(-22.5, 90);//CHANGE IF SWING NO HIT
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
-
+  pros::delay(200);
   clamp1.extend(); //Clamp stake
   chassis.pid_wait_quick_chain();
   setIntake(127);
@@ -323,12 +323,12 @@ void worldssixdonutsleftblue() {
   chassis.pid_turn_set(-24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-18.5, FULL_SPEED);
+  chassis.pid_drive_set(-19, 90);
   target = 725;
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
-
+  pros::delay(200);
   clamp1.extend(); //Clamp stake
   chassis.pid_wait_quick_chain();
 
@@ -343,13 +343,11 @@ void worldssixdonutsrightred() {
   chassis.pid_turn_set(24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-17, FULL_SPEED);//CHANGE IF SWING NO HIT
-  chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(5, slow_speed);
+  chassis.pid_drive_set(-24.5, 90);//CHANGE IF SWING NO HIT
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
-
+  pros::delay(200);
   clamp1.extend(); //Clamp stake
   chassis.pid_wait_quick_chain();
   setIntake(127);
@@ -439,14 +437,12 @@ void worldssixdonutsleftred() {
   chassis.pid_turn_set(-24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-16, FULL_SPEED);
+  chassis.pid_drive_set(-21, 90);
   target = 725;
-  chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-4, 100);
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
-
+  pros::delay(200);
   clamp1.extend(); //Clamp stake
   chassis.pid_wait_quick_chain();
 
@@ -527,7 +523,7 @@ void worldssixdonutsleftred() {
 
   chassis.pid_drive_set(53, FULL_SPEED); //Drive to ladder
   chassis.pid_wait_until(10);
-  target = -180;
+  target = -170;
   chassis.pid_wait();
 
 
@@ -556,11 +552,10 @@ void worldssixdonutsrightblue() {
   chassis.pid_turn_set(24, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-16, FULL_SPEED);
+  chassis.pid_drive_set(-21, 90);
   target = 725;
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(-4, DRIVE_SPEED);
-  chassis.pid_wait_quick_chain();
+  pros::delay(200);
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
 
@@ -643,7 +638,7 @@ void worldssixdonutsrightblue() {
 
   chassis.pid_drive_set(46, FULL_SPEED); //Drive to ladder
   chassis.pid_wait_until(10);
-  target = -180;
+  target = -170;
   chassis.pid_wait();
 
 
