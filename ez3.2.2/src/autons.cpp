@@ -278,26 +278,27 @@ void worldssixdonutsrightred() {
   chassis.pid_drive_set(43, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-10, slow_speed);
+  chassis.pid_turn_set(0, slow_speed);
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(32, FULL_SPEED);
-  chassis.pid_wait_until(12);
-  setIntake(0);
+  chassis.pid_drive_set(23, FULL_SPEED);
+  chassis.pid_wait_until(13);
+  setIntake(-127);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-2, DRIVE_SPEED);
+  chassis.pid_drive_set(-0.25, 40);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
-  chassis.pid_turn_set(-46, FULL_SPEED); //Turn into corner
+  chassis.pid_turn_set(-41, FULL_SPEED); //Turn into corner
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(12, FULL_SPEED); //Drive into corner
-  chassis.pid_wait_quick_chain();
-
   setIntake(127); //Intake donut 5
-  chassis.pid_drive_set(7.5, FULL_SPEED);
+  chassis.pid_drive_set(14, 100); //Drive into corner
+  chassis.pid_wait_quick_chain();
+  setIntake(127); //Intake donut 5
+
+  chassis.pid_drive_set(7.5, 100);
   chassis.pid_wait_quick_chain();
 
   // chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
@@ -313,8 +314,8 @@ void worldssixdonutsrightred() {
 
   chassis.pid_drive_set(-10, FULL_SPEED);
   chassis.pid_wait_quick_chain();
-
-  chassis.pid_drive_set(5, FULL_SPEED); //Get 6 donut
+  pros::delay(340);
+  chassis.pid_drive_set(5, 100); //Get 6 donut
   chassis.pid_wait_quick_chain();
 
   pros::delay(240);
