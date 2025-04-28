@@ -128,10 +128,10 @@ void worldssixdonutsrightrednoalliance() {
   chassis.drive_angle_set(31.89);
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
-  chassis.pid_turn_set(24, TURN_SPEED);
+  chassis.pid_turn_set(26, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-22.5, 70);//CHANGE IF SWING NO HIT
+  chassis.pid_drive_set(-23, 70);//CHANGE IF SWING NO HIT
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
@@ -148,7 +148,7 @@ void worldssixdonutsrightrednoalliance() {
 
   pros::delay(200);
 
-  chassis.pid_turn_set(-110, FULL_SPEED);
+  chassis.pid_turn_set(-108, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(43, FULL_SPEED);
@@ -158,7 +158,7 @@ void worldssixdonutsrightrednoalliance() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(20.5, FULL_SPEED);
+  chassis.pid_drive_set(29, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -170,7 +170,7 @@ void worldssixdonutsrightrednoalliance() {
   chassis.pid_turn_set(-45, FULL_SPEED); //Turn into corner
   chassis.pid_wait_quick_chain();
   setIntake(127); //Intake donut 5
-  chassis.pid_drive_set(16, 100); //Drive into corner
+  chassis.pid_drive_set(19.5, 100); //Drive into corner
   chassis.pid_wait_quick_chain();
   setIntake(127); //Intake donut 5
   pros::delay(250);
@@ -669,21 +669,27 @@ void worldssixdonutsrightbluenoalliancefr() {
   // chassis.pid_turn_set(-135, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
 
-  chassis.pid_swing_set(ez::LEFT_SWING, -135_deg, 127, 45);
+  chassis.pid_swing_set(ez::LEFT_SWING, -135_deg, 127, 60);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-55, FULL_SPEED);
+  // chassis.pid_drive_set(-5, 100);
+  // chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(-65, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
   //Go towards 4th donut sole donut
-  chassis.pid_drive_set(20, FULL_SPEED);
+  chassis.pid_drive_set(12, FULL_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(8, slow_speed);
   chassis.pid_wait();
 
   chassis.pid_turn_set(0, 85);
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(19.75, FULL_SPEED);
+  chassis.pid_drive_set(25, FULL_SPEED);
   chassis.pid_wait_until(14);
   setIntake(0);
   chassis.pid_wait_quick_chain();
