@@ -672,7 +672,7 @@ void worldssixdonutsrightbluenoalliancefr() {
   chassis.pid_swing_set(ez::LEFT_SWING, -170_deg, 127, 60);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-5, 100);
+  chassis.pid_drive_set(-8, 100);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(-85, FULL_SPEED);
@@ -689,7 +689,7 @@ void worldssixdonutsrightbluenoalliancefr() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(26.5, FULL_SPEED);
+  chassis.pid_drive_set(27.5, FULL_SPEED);
   chassis.pid_wait_until(14);
   setIntake(0);
   chassis.pid_wait_quick_chain();
