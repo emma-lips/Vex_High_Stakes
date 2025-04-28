@@ -3,11 +3,12 @@
 // #include "EZ-Template/drive/drive.hpp"
 
 // extern Drive chassis;
+void worldssixdonutsrightrednoalliance();
 void worldssixdonutsrightbluenoalliancefr();
 void worldssixdonutsleftbluenoalliance();
 void worldssixdonutsrightbluenoalliance();
 void worldssixdonutsleftred();
-void worldssixdonutsrightred();
+void worldssixdonutsrightreddontwork();
 void worldssixdonutsleftblue();
 void worldssixdonutsrightblue();
 void lockedin_rightblue();
