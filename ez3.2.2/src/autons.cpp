@@ -669,13 +669,13 @@ void worldssixdonutsrightbluenoalliancefr() {
   // chassis.pid_turn_set(-135, TURN_SPEED);
   // chassis.pid_wait_quick_chain();
 
-  chassis.pid_swing_set(ez::LEFT_SWING, -135_deg, 127, 60);
+  chassis.pid_swing_set(ez::LEFT_SWING, -170_deg, 127, 60);
   chassis.pid_wait_quick_chain();
 
-  // chassis.pid_drive_set(-5, 100);
-  // chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(-5, 100);
+  chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-65, FULL_SPEED);
+  chassis.pid_turn_set(-85, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
   //Go towards 4th donut sole donut
