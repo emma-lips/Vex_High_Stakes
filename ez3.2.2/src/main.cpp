@@ -40,16 +40,21 @@ ez::Drive chassis(
 
 
 
-const int numStates = 4;
+const int numStates = 5;
 //These are in  NOT degrees
-int states[numStates] = {0, 192, 800, 1590};
+int states[numStates] = {0, 192, 800, 1590, 1800};
 int currState = 0;
-// 725, 1300, 
-
-const int numStates2 = 3;
+// 725, 1300,
+const int numStates2 = 6;
 //These are in degrees
-int states2[numStates2] = {0, 1590, 1800};
+int states2[numStates2] = {0, 1070, 0, 1190, 0, 1300};
 int currState2 = 0;
+
+void calibraterate() {
+  target = target - 15;
+  pros::delay(170);
+  lb.tare_position(currState);
+}
 
 void nextState2() {
   currState2 += 1;
@@ -545,7 +550,7 @@ void opcontrol() {
     }
 
     if(master.get_digital_new_press(DIGITAL_LEFT)){
-      void nextState2();
+      nextState2();
     }
 
 
@@ -557,6 +562,10 @@ void opcontrol() {
 
      if (master.get_digital_new_press(DIGITAL_L1)) {
      nextState();
+    }
+
+    if (master.get_digital_new_press(DIGITAL_A)) {
+      calibraterate();
     }
   
 
