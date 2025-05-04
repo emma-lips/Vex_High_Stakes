@@ -165,7 +165,6 @@ ez::as::auton_selector.autons_add({
   Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftred),
   Auton("worlds auton left blue no alliance stake 6 donuts \n\nleftblue no alliance stake", worldssixdonutsleftbluenoalliance),
   Auton("worlds auton right bue no alliance for real this time \n\nyuh", worldssixdonutsrightbluenoalliancefr),
-  Auton("worlds auton right blue no alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightbluenoalliance),
   Auton("worlds auton left blue alliance stake 5 donuts \n\nleftblue alliance stake", worldssixdonutsleftblue),
   // Auton("worlds auton right red alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightred),
   Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
