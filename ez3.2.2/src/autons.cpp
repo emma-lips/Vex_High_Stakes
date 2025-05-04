@@ -529,13 +529,13 @@ void worldssixdonutsrightbluenoalliancefr() {
   isRed = false;
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
   chassis.drive_angle_set(31.89);
-  liftPID.constants_set(0.06, 0, 0.06);
+  liftPID.constants_set(0.05, 0, 0.05);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
   chassis.pid_drive_set(1, 60);
   chassis.pid_wait_quick_chain();
 
   target = 900;
-  pros::delay(700);
+  pros::delay(200);
   chassis.pid_drive_set(-3, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   liftPID.constants_set(0.2, 0, 0.2);
@@ -610,8 +610,8 @@ void worldssixdonutsrightbluenoalliancefr() {
 
   setIntake(127); //Intake donut 5
 
-  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 300_ms, 300_ms);
-  chassis.pid_drive_set(7.5, FULL_SPEED);
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 600_ms, 600_ms);
+  chassis.pid_drive_set(8.5, FULL_SPEED);
   chassis.pid_wait_quick_chain();
 
   // chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
