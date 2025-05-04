@@ -849,7 +849,7 @@ void worldssixdonutsleftredtransposed() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(18.75, FULL_SPEED);
+  chassis.pid_drive_set(19.75, FULL_SPEED);
   chassis.pid_wait_until(14);
   setIntake(0);
   chassis.pid_wait_quick_chain();
@@ -863,8 +863,9 @@ void worldssixdonutsleftredtransposed() {
   setIntake(127); //Intake donut 5
 
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 600_ms, 600_ms);
-  chassis.pid_drive_set(11.5, 110);
+  chassis.pid_drive_set(13, 110);
   chassis.pid_wait_quick_chain();
+  pros::delay(300);
 
   // chassis.pid_swing_set(ez::RIGHT_SWING, -50, 127, 0);
   // chassis.pid_wait();
