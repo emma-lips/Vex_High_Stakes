@@ -20,14 +20,15 @@ ez::Drive chassis(
     // left motors are 2, 6, 3
     // intake is 8
     // imu is 7
-    // distance sensor(ring detector) is 4
+    // distance sensor at top of intake (ring detector) is 4
+    // distance sensor (ringdetectortoo)beside colour sensor is 1
     // colour sensor is 18
     // mogo mech is A
     // lifter is H
     // right doinker is G
     // left doinker is F
     // radio is 12
-    // lady brown is 5
+    // lady brown is 5 and 9
 
 // Uncomment the trackers you're using here!
 // - `8` and `9` are smart ports (making these negative will reverse the sensor)
@@ -167,55 +168,55 @@ ez::as::auton_selector.autons_add({
   
 
 
-  // Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightreddontwork),
+  // // Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightreddontwork),
 
 
-  Auton("worlds auton left blue alliance stake 5 donuts \n\nleftblue alliance stake", worldssixdonutsleftblue),
-  // Auton("worlds auton right red alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightred),
-  Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
-      Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
-      Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
-      Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
-      Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
-      Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
+  // Auton("worlds auton left blue alliance stake 5 donuts \n\nleftblue alliance stake", worldssixdonutsleftblue),
+  // // Auton("worlds auton right red alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightred),
+  // Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
+  //     Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
+  //     Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
+  //     Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
+  //     Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
+  //     Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
 
-      Auton("leftred almost solo awp???\n\n9 point left red", soloawpleftred),
-      Auton("leftred alliance ladder\n\nalliance stake then go to ladder", leftredalliancestakeladder),
-      Auton("rightblue almost solo awp???\n\n9 point right blue", soloawprightblue),
-      Auton("rightblue alliance ladder\n\nalliance stake then go to ladder", rightbluealliancestakeladder),     
+      // Auton("leftred almost solo awp???\n\n9 point left red", soloawpleftred),
+      // Auton("leftred alliance ladder\n\nalliance stake then go to ladder", leftredalliancestakeladder),
+      // Auton("rightblue almost solo awp???\n\n9 point right blue", soloawprightblue),
+      // Auton("rightblue alliance ladder\n\nalliance stake then go to ladder", rightbluealliancestakeladder),     
 
-      Auton("leftblue alliance ladder\n\nalliance stake then go to ladder", leftbluealliancestakeladder),
-      Auton("rightred alliance ladder\n\nalliance stake then go to ladder", rightredalliancestakeladder),
+      // Auton("leftblue alliance ladder\n\nalliance stake then go to ladder", leftbluealliancestakeladder),
+      // Auton("rightred alliance ladder\n\nalliance stake then go to ladder", rightredalliancestakeladder),
 
 
 
-      Auton("leftblue\n\ngoal rush slayyyy left blue", goalrushleftblue),
-      Auton("rightred\n\ngoal rush slayyyy right red", goalrushrightred),
+      // Auton("leftblue\n\ngoal rush slayyyy left blue", goalrushleftblue),
+      // Auton("rightred\n\ngoal rush slayyyy right red", goalrushrightred),
 
-      // Auton("rightblue no alliance stake\n\nworkingrightblue then trying for 5 donuts", ),
-      // Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
-      // Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
-      // Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
-      // Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
-      // Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
-      // Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
-      Auton("robotskillsv2sides\n\n2sidesrobotskills", robotskillsv2sides),
-      // Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
-      Auton("v2robotskills\n\nnotbetterstrongersmarter", robotskillsv2),
+      // // Auton("rightblue no alliance stake\n\nworkingrightblue then trying for 5 donuts", ),
+      // // Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
+      // // Auton("rightblue five donuts\n\nright blue 5 donuts", sigma_moderightblue5donuts), //THIS WORKS 2025-02-19
+      // // Auton("rightblue no alliance stake\n\nworkingrightblue 4 donuts and then go to negatives", sigma_moderightblue),
+      // // Auton("rightred no alliance stake\n\nworkingrightred", sigma_moderightred),
+      // // Auton("leftblue no alliance stake\n\nworkingleftblue", sigma_modeleftblue),
+      // // Auton("leftred no alliance stake\n\nworkingleftred 4 donuts and then go to negatives", sigma_modeleftred),
+      // Auton("robotskillsv2sides\n\n2sidesrobotskills", robotskillsv2sides),
+      // // Auton("robotskills\n\nobviouslyrobotskills", sigma_robotskills),
+      // Auton("v2robotskills\n\nnotbetterstrongersmarter", robotskillsv2),
 
-      Auton("weak left blue\n\n dont go for donut in middle", weakahhblueleft),
-      Auton("weak right red\n\ndont go for donut in middle", skibidi_moderightredwithoutdonutinspawn), 
+      // Auton("weak left blue\n\n dont go for donut in middle", weakahhblueleft),
+      // Auton("weak right red\n\ndont go for donut in middle", skibidi_moderightredwithoutdonutinspawn), 
 
     
-      Auton("OLD rightblue alliancestake\n\nauton winpoint rightblue", autonwinpointrightblue),
-      Auton("OLD leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
-      Auton("OLD leftred alliancestake\n\nauton winpoint leftred", autonwinpointleftred),
-      Auton("OLD rightred alliancestake\n\nauton winpoint rightred", autonwinpointrightred),
+      // Auton("OLD rightblue alliancestake\n\nauton winpoint rightblue", autonwinpointrightblue),
+      // Auton("OLD leftblue alliancestake\n\nauton winpoint leftblue", autonwinpointleftblue),
+      // Auton("OLD leftred alliancestake\n\nauton winpoint leftred", autonwinpointleftred),
+      // Auton("OLD rightred alliancestake\n\nauton winpoint rightred", autonwinpointrightred),
 
-      Auton("skibiid\n\ntrash", skibidi_rizz),
+      // Auton("skibiid\n\ntrash", skibidi_rizz),
 
-      Auton("v2leftblue\n\ntryingtogettwostakesdoNOTuse", Version2_LeftBlue),
-      Auton("v3leftblue\n\npoopoocodenotrealdoesntworkforrealsies", Version3_LeftBlue),
+      // Auton("v2leftblue\n\ntryingtogettwostakesdoNOTuse", Version2_LeftBlue),
+      // Auton("v3leftblue\n\npoopoocodenotrealdoesntworkforrealsies", Version3_LeftBlue),
 
       // Auton("Example Drive\n\nDrive forward and come back.", drive_example),
       // Auton("Example Turn\n\nTurn 3 times.", turn_example),
@@ -560,9 +561,9 @@ void opcontrol() {
 
 // lady brown code
 
-    if (master.get_digital_new_press(DIGITAL_DOWN)) {
-      backState();
-    } 
+    // if (master.get_digital_new_press(DIGITAL_DOWN)) {
+    //   backState();
+    // } 
 
      if (master.get_digital_new_press(DIGITAL_L1)) {
      nextState();
