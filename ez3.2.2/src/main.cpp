@@ -159,12 +159,17 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
-  Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftredtransposed),
-  Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightblue),
-  Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightrednoalliance),
-  // Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightreddontwork),
   Auton("worlds auton left blue no alliance stake 6 donuts \n\nleftblue no alliance stake", worldssixdonutsleftbluenoalliance),
+  Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightrednoalliance),
+  Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftredtransposed),
   Auton("worlds auton right bue no alliance for real this time \n\nyuh", worldssixdonutsrightbluenoalliancefr),
+  Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightblue),
+  
+
+
+  // Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightreddontwork),
+
+
   Auton("worlds auton left blue alliance stake 5 donuts \n\nleftblue alliance stake", worldssixdonutsleftblue),
   // Auton("worlds auton right red alliance stake 5 donuts \n\nrightred alliance stake", worldssixdonutsrightred),
   Auton("leftred five donuts\n\nleft red 5 donuts", sigma_modeleftred5donuts),
@@ -300,7 +305,7 @@ void sigmarizz_task_function() {
 
                 button_enabled = false;
                 setIntake(127);
-                pros::delay(90);
+                pros::delay(80);
                 setIntake(0);
                 pros::delay(50);
                 setIntake(-127);
