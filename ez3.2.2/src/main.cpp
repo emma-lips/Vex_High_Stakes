@@ -20,14 +20,15 @@ ez::Drive chassis(
     // left motors are 2, 6, 3
     // intake is 8
     // imu is 7
-    // distance sensor(ring detector) is 4
+    // distance sensor at top of intake (ring detector) is 4
+    // distance sensor (ringdetectortoo)beside colour sensor is 1
     // colour sensor is 18
     // mogo mech is A
     // lifter is H
     // right doinker is G
     // left doinker is F
     // radio is 12
-    // lady brown is 5
+    // lady brown is 5 and 9
 
 // Uncomment the trackers you're using here!
 // - `8` and `9` are smart ports (making these negative will reverse the sensor)
