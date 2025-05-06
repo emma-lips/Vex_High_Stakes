@@ -213,13 +213,13 @@ void worldssixdonutsrightredalliance() {
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(-23, 70);//CHANGE IF SWING NO HIT
+  chassis.pid_wait_until(21);
+  clamp1.extend();
+  target = 725;
   chassis.pid_wait_quick_chain();
   // chassis.pid_drive_set(-1.5, slow_speed);
   // chassis.pid_wait_quick_chain();
-  pros::delay(300);
-  target = 725;
-  clamp1.extend(); //Clamp stake
-  chassis.pid_wait_quick_chain();
+
   setIntake(127);
 
   chassis.pid_swing_set(ez::LEFT_SWING, 96_deg, 127, 45);
@@ -233,17 +233,17 @@ void worldssixdonutsrightredalliance() {
 
   pros::delay(200);
 
-  chassis.pid_turn_set(-108, 80);
+  chassis.pid_turn_set(-111, 80);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(43, FULL_SPEED);
+  chassis.pid_drive_set(43, FULL_SPEED, true);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(0, slow_speed);
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(27, FULL_SPEED);
+  chassis.pid_drive_set(23.25, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -251,12 +251,13 @@ void worldssixdonutsrightredalliance() {
   chassis.pid_drive_set(-1, 40);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 600_ms, 600_ms);
   chassis.pid_turn_set(-45, FULL_SPEED); //Turn into corner
   chassis.pid_wait_quick_chain();
   setIntake(127); //Intake donut 5
-  chassis.pid_drive_set(19.5, 100); //Drive into corner
+  chassis.pid_drive_set(8, 70); //Drive into corner
   chassis.pid_wait_quick_chain();
+  chassis.pid_drive_set(9.5, FULL_SPEED);
   setIntake(127); //Intake donut 5
   pros::delay(250);
 
@@ -273,8 +274,10 @@ void worldssixdonutsrightredalliance() {
 
 
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
-  chassis.pid_drive_set(50, FULL_SPEED); //Drive to ladder
+  chassis.pid_drive_set(45, FULL_SPEED); //Drive to ladder
   chassis.pid_wait();
+
+  target = 1400;
 
 
 }
