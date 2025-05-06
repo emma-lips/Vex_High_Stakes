@@ -243,7 +243,7 @@ void worldssixdonutsrightredalliance() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(23.25, FULL_SPEED);
+  chassis.pid_drive_set(23.75, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -251,16 +251,19 @@ void worldssixdonutsrightredalliance() {
   chassis.pid_drive_set(-1, 40);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 600_ms, 600_ms);
   chassis.pid_turn_set(-45, FULL_SPEED); //Turn into corner
   chassis.pid_wait_quick_chain();
-  setIntake(127); //Intake donut 5
-  chassis.pid_drive_set(8, 70); //Drive into corner
+  chassis.pid_drive_set(8, FULL_SPEED); //Drive into corner
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(9.5, FULL_SPEED);
-  setIntake(127); //Intake donut 5
-  pros::delay(250);
 
+  setIntake(127); //Intake donut 5
+
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 600_ms, 600_ms);
+  chassis.pid_drive_set(11.5, 110);
+  chassis.pid_wait_quick_chain();
+  pros::delay(700);
+
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 300_ms, 300_ms);
   chassis.pid_drive_set(-10, FULL_SPEED);
   chassis.pid_wait_quick_chain();
   pros::delay(750);
@@ -274,7 +277,7 @@ void worldssixdonutsrightredalliance() {
 
 
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
-  chassis.pid_drive_set(45, FULL_SPEED); //Drive to ladder
+  chassis.pid_drive_set(46, FULL_SPEED); //Drive to ladder
   chassis.pid_wait();
 
   target = 1400;
