@@ -194,6 +194,90 @@ void worldssixdonutsrightrednoalliance() {
 
 }
 
+void worldssixdonutsrightredalliance() {
+  isRed = true;
+  chassis.drive_angle_set(31.89);
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+  liftPID.constants_set(0.06, 0, 0.06);
+  // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
+  chassis.pid_drive_set(2, 60);
+  chassis.pid_wait_quick_chain();
+
+  target = 1500;
+  pros::delay(700);
+  chassis.pid_drive_set(-2, DRIVE_SPEED);
+  chassis.pid_wait_quick_chain();
+  liftPID.constants_set(0.2, 0, 0.2);
+
+  chassis.pid_turn_set(26, TURN_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(-23, 70);//CHANGE IF SWING NO HIT
+  chassis.pid_wait_quick_chain();
+  // chassis.pid_drive_set(-1.5, slow_speed);
+  // chassis.pid_wait_quick_chain();
+  pros::delay(300);
+  target = 725;
+  clamp1.extend(); //Clamp stake
+  chassis.pid_wait_quick_chain();
+  setIntake(127);
+
+  chassis.pid_swing_set(ez::LEFT_SWING, 96_deg, 127, 45);
+  target = -270;
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(1, FULL_SPEED);
+  lb.tare_position();
+  target = 0;
+  chassis.pid_wait_quick_chain();
+
+  pros::delay(200);
+
+  chassis.pid_turn_set(-108, 80);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(43, FULL_SPEED);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_turn_set(0, slow_speed);
+  chassis.pid_wait_quick_chain();
+
+  // Going straight towards corner
+  chassis.pid_drive_set(27, FULL_SPEED);
+  chassis.pid_wait_until(13);
+  setIntake(-127);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(-1, 40);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+  chassis.pid_turn_set(-45, FULL_SPEED); //Turn into corner
+  chassis.pid_wait_quick_chain();
+  setIntake(127); //Intake donut 5
+  chassis.pid_drive_set(19.5, 100); //Drive into corner
+  chassis.pid_wait_quick_chain();
+  setIntake(127); //Intake donut 5
+  pros::delay(250);
+
+  chassis.pid_drive_set(-10, FULL_SPEED);
+  chassis.pid_wait_quick_chain();
+  pros::delay(750);
+  chassis.pid_drive_set(5, 100); //Get 6 donut
+  chassis.pid_wait_quick_chain();
+
+  pros::delay(240);
+
+  chassis.pid_turn_set(120, 80); //Turn to ladder
+  chassis.pid_wait();
+
+
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
+  chassis.pid_drive_set(50, FULL_SPEED); //Drive to ladder
+  chassis.pid_wait();
+
+
+}
 
 
 // IT WORKSS AAHAHH
@@ -274,12 +358,12 @@ void worldssixdonutsleftblue() {
   chassis.drive_angle_set(-31.89);
   liftPID.constants_set(0.06, 0, 0.06);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
-  chassis.pid_drive_set(1, 60);
+  chassis.pid_drive_set(2, 60);
   chassis.pid_wait_quick_chain();
 
   target = 1375;
   pros::delay(600);
-  chassis.pid_drive_set(-3, DRIVE_SPEED);
+  chassis.pid_drive_set(-4, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   liftPID.constants_set(0.2, 0, 0.2);
 
@@ -306,12 +390,12 @@ void worldssixdonutsleftred() {
   chassis.drive_angle_set(-31.89);
   liftPID.constants_set(0.06, 0, 0.06);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
-  chassis.pid_drive_set(0.5, 60);
+  chassis.pid_drive_set(1.5, 60);
   chassis.pid_wait_quick_chain();
 
   target = 1400;
   pros::delay(700);
-  chassis.pid_drive_set(-3, DRIVE_SPEED);
+  chassis.pid_drive_set(-4, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   liftPID.constants_set(0.2, 0, 0.2);
 
@@ -543,12 +627,12 @@ void worldssixdonutsrightblue() {
   chassis.drive_angle_set(31.89);
   liftPID.constants_set(0.06, 0, 0.06);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
-  chassis.pid_drive_set(1, 60);
+  chassis.pid_drive_set(2, 60);
   chassis.pid_wait_quick_chain();
 
   target = 1500;
   pros::delay(700);
-  chassis.pid_drive_set(-3, DRIVE_SPEED);
+  chassis.pid_drive_set(-4, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   liftPID.constants_set(0.2, 0, 0.2);
 
@@ -671,12 +755,12 @@ void worldssixdonutsleftredtransposed() {
   chassis.drive_angle_set(-31.89);
   liftPID.constants_set(0.06, 0, 0.06);
   // ez::PID liftPID{0.1, 0, 0.1, 0, "Lift"}; //Put donut (preload) on allince stake
-  chassis.pid_drive_set(1, 60);
+  chassis.pid_drive_set(2, 60);
   chassis.pid_wait_quick_chain();
 
   target = 1500;
   pros::delay(700);
-  chassis.pid_drive_set(-3, DRIVE_SPEED);
+  chassis.pid_drive_set(-4, DRIVE_SPEED);
   chassis.pid_wait_quick_chain();
   liftPID.constants_set(0.2, 0, 0.2);
 
