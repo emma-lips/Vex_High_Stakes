@@ -160,6 +160,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("worlds elim auton right blue \n\nright blue 1+6", worldssixdonutsrightblueelims),
   Auton("worlds auton left blue alliance 4 donuts \n\nleftbluealliance", worldssixdonutsleftbluetransposed),
   Auton("worlds auton right red alliance stake 4 donuts \n\nrightred alliance", worldssixdonutsrightredalliance),
   Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue alliance stake", worldssixdonutsrightblue),
