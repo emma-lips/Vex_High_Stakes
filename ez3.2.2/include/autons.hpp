@@ -3,8 +3,11 @@
 // #include "EZ-Template/drive/drive.hpp"
 
 // extern Drive chassis;
+void worldssixdonutsleftblueelims();
+void worldssixdonutsrightredelims();
+void worldssixdonutsleftredelims();
 void worldssixdonutsrightblueelims();
-void worldssixdonutsleftbluetransposed();
+void worldssixdonutsleftbluealliancetransposed();
 void worldssixdonutsrightredalliance();
 void worldssixdonutsleftredtransposed();
 void worldssixdonutsrightrednoalliance();
