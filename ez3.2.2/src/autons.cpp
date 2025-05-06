@@ -887,13 +887,13 @@ void worldssixdonutsrightblueelims() {
   target = 0;
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(4.5, slow_speed);
+  chassis.pid_drive_set(4.5, 80);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(-93, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(7, 90, true); // Get 3 donut (including preload)
+  chassis.pid_drive_set(7, 100, true); // Get 3 donut (including preload)
   chassis.pid_wait_quick_chain();
   pros::delay(200);
 
@@ -918,7 +918,7 @@ void worldssixdonutsrightblueelims() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(20.75, FULL_SPEED);
+  chassis.pid_drive_set(21.3, FULL_SPEED);
   chassis.pid_wait_until(14);
   setIntake(0);
   chassis.pid_wait_quick_chain();
@@ -948,15 +948,16 @@ void worldssixdonutsrightblueelims() {
 
   chassis.pid_drive_set(-10, FULL_SPEED);
   chassis.pid_wait_quick_chain();
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 200_ms, 200_ms);
 
-  pros::delay(500);
+  pros::delay(400);
 
   chassis.pid_drive_set(5, FULL_SPEED); //Get 6 donut
   chassis.pid_wait_quick_chain();
 
-  pros::delay(1000);
+  pros::delay(600);
 
-  chassis.pid_turn_set(105, 100); //Turn to ladder
+  chassis.pid_turn_set(103, 100); //Turn to ladder
   chassis.pid_wait();
 
   chassis.pid_drive_set(50, FULL_SPEED); //Drive to ladder
