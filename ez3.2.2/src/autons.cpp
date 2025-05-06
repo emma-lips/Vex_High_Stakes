@@ -365,8 +365,8 @@ void worldssixdonutsrightredelims() {
 
   pros::delay(240);
 
-  chassis.pid_turn_set(135, 80); //clera corner
-  chassis.pid_wait_until(-90);
+  chassis.pid_turn_set(135, 80); //clear corner
+  chassis.pid_wait_until(-100);
   doinkerright.retract();
   chassis.pid_wait_quick_chain();
 
@@ -463,7 +463,7 @@ void worldssixdonutsleftblueelims() {
 
   pros::delay(240);
 
-  chassis.pid_turn_set(135, 80); //clera corner
+  chassis.pid_turn_set(-135, 80); //clear corner
   chassis.pid_wait_until(-90);
   doinkerright.retract();
   chassis.pid_wait_quick_chain();
