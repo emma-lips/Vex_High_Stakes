@@ -328,13 +328,15 @@ void worldssixdonutsrightredelims() {
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(43, FULL_SPEED, true);
+  chassis.pid_wait_until(13);
+  setIntake(127);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(0, slow_speed);
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(23.75, FULL_SPEED);
+  chassis.pid_drive_set(26, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -344,36 +346,37 @@ void worldssixdonutsrightredelims() {
 
   chassis.pid_turn_set(-45, FULL_SPEED); //Turn into corner
   chassis.pid_wait_quick_chain();
-  chassis.pid_drive_set(8, FULL_SPEED); //Drive into corner
+  chassis.pid_drive_set(10, slow_speed); //Drive into corner
   chassis.pid_wait_quick_chain();
 
   setIntake(127); //Intake donut 5
 
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 600_ms, 600_ms);
-  chassis.pid_drive_set(11.5, 110);
+  chassis.pid_drive_set(14, 110);
   chassis.pid_wait_quick_chain();
-  pros::delay(700);
+  pros::delay(400);
 
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 300_ms, 300_ms);
   chassis.pid_drive_set(-10, FULL_SPEED);
   chassis.pid_wait_quick_chain();
-  pros::delay(750);
-  chassis.pid_drive_set(5, 100); //Get 6 donut
+  pros::delay(560);
+  doinkerright.extend();
+  setIntake(127);
+  chassis.pid_drive_set(6, 100); //Get 6 donut
   chassis.pid_wait_quick_chain();
 
-  doinkerright.extend();
+
 
   pros::delay(240);
+  chassis.pid_turn_set(-90, 80);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-225, 127); //clear corners
+  chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(135, 80); //clear corner
-  chassis.pid_wait_until(-100);
   doinkerright.retract();
-  chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-4);
+  chassis.pid_drive_set(-4, 100);
   chassis.pid_wait_quick_chain();
-
-  clamp1.retract();
 
 
 
@@ -401,8 +404,8 @@ void worldssixdonutsleftblueelims() {
   chassis.pid_turn_set(-26, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-23, 70);//CHANGE IF SWING NO HIT
-  chassis.pid_wait_until(21);
+  chassis.pid_drive_set(-25, 70);//CHANGE IF SWING NO HIT
+  chassis.pid_wait_until(-21);
   clamp1.extend();
   target = 725;
   chassis.pid_wait_quick_chain();
@@ -411,7 +414,7 @@ void worldssixdonutsleftblueelims() {
 
   setIntake(127);
 
-  chassis.pid_swing_set(ez::RIGHT_SWING, -96_deg, 127, 45);
+  chassis.pid_swing_set(ez::RIGHT_SWING, -100_deg, 127, 45);
   target = -270;
   chassis.pid_wait_quick_chain();
 
@@ -422,17 +425,19 @@ void worldssixdonutsleftblueelims() {
 
   pros::delay(200);
 
-  chassis.pid_turn_set(111, 80);
+  chassis.pid_turn_set(115, 80);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(43, FULL_SPEED, true);
+  chassis.pid_wait_until(13);
+  setIntake(127);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(-0, slow_speed);
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(24.25, FULL_SPEED);
+  chassis.pid_drive_set(26, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -455,23 +460,24 @@ void worldssixdonutsleftblueelims() {
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 300_ms, 300_ms);
   chassis.pid_drive_set(-10, FULL_SPEED);
   chassis.pid_wait_quick_chain();
-  pros::delay(750);
-  chassis.pid_drive_set(5, 100); //Get 6 donut
+  pros::delay(560);
+  doinkerright.extend();
+  setIntake(127);
+  chassis.pid_drive_set(6, 100); //Get 6 donut
   chassis.pid_wait_quick_chain();
 
-  doinkerright.extend();
+
 
   pros::delay(240);
+  chassis.pid_turn_set(-90, 80);
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-135, 127); //clear corners
+  chassis.pid_wait_quick_chain();
 
-  chassis.pid_turn_set(-135, 80); //clear corner
-  chassis.pid_wait_until(-90);
   doinkerright.retract();
-  chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-4);
+  chassis.pid_drive_set(-4, 100);
   chassis.pid_wait_quick_chain();
-
-  clamp1.retract();
 
 
 }
