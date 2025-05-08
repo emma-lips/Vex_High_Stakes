@@ -43,7 +43,7 @@ ez::Drive chassis(
 
 const int numStates = 5;
 //These are in  NOT degrees
-int states[numStates] = {0, 210, 800, 1200, 1800};
+int states[numStates] = {0, 210, 800, 1200, 1700};
 int currState = 0;
 // 725, 1300,
 const int numStates2 = 6;
