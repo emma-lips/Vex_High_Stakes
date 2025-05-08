@@ -306,7 +306,7 @@ void sigmarizz_task_function() {
                     wrongcolour = true;
                 }
             } else {
-                if (colorDetector.get_hue() < 20 && ringdetectortoo.get() < 70) {
+                if (colorDetector.get_hue() > 300 && colorDetector.get_hue() < 360 && ringdetectortoo.get() < 70 || colorDetector.get_hue() < 20 && ringdetectortoo.get() < 70) {
                     wrongcolour = true;
                 }
             }
