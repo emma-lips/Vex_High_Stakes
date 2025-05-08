@@ -43,7 +43,7 @@ ez::Drive chassis(
 
 const int numStates = 5;
 //These are in  NOT degrees
-int states[numStates] = {0, 192, 800, 1200, 1800};
+int states[numStates] = {0, 210, 800, 1200, 1800};
 int currState = 0;
 // 725, 1300,
 const int numStates2 = 6;
@@ -53,6 +53,12 @@ int currState2 = 0;
 
 void calibraterate() {
   target = target - 15;
+  pros::delay(170);
+  lb.tare_position(currState);
+}
+
+void decalibraterate() {
+  target = target + 15;
   pros::delay(170);
   lb.tare_position(currState);
 }
@@ -583,7 +589,9 @@ void opcontrol() {
       calibraterate();
     }
   
-
+    if (master.get_digital_new_press(DIGITAL_B)) {
+      decalibraterate();
+    }
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
