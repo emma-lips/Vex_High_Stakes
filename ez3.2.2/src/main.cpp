@@ -308,11 +308,11 @@ void sigmarizz_task_function() {
             colorDetector.set_led_pwm(100);
 
             if (isRed) {
-                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 240 && ringdetectortoo.get() < 70) {
+                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 250 && ringdetectortoo.get() < 70) {
                     wrongcolour = true;
                 }
             } else {
-                if (colorDetector.get_hue() > 300 && colorDetector.get_hue() < 360 && ringdetectortoo.get() < 70 || colorDetector.get_hue() < 20 && ringdetectortoo.get() < 70) {
+                if (colorDetector.get_hue() > 330 && colorDetector.get_hue() < 360 && ringdetectortoo.get() < 70 || colorDetector.get_hue() < 30 && ringdetectortoo.get() < 70) {
                     wrongcolour = true;
                 }
             }
