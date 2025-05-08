@@ -316,7 +316,7 @@ void sigmarizz_task_function() {
 
                 button_enabled = false;
                 setIntake(127);
-                pros::delay(80);
+                pros::delay(68);
                 setIntake(0);
                 pros::delay(50);
                 setIntake(-127);
