@@ -122,6 +122,17 @@ void default_constants() {
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
+
+void freecarryred() {
+  isRed = true;
+  chassis.pid_drive_set(4);
+  chassis.pid_wait();
+}
+void freecarryblue() {
+  isRed = false;
+  chassis.pid_drive_set(4);
+  chassis.pid_wait();
+}
 // IT WORKSS AAHAHH
 void worldssixdonutsrightrednoalliance() {
   isRed = true;

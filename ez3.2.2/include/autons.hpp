@@ -3,6 +3,8 @@
 // #include "EZ-Template/drive/drive.hpp"
 
 // extern Drive chassis;
+void freecarryblue();
+void freecarryred();
 void worldssixdonutsleftblueelims();
 void worldssixdonutsrightredelims();
 void worldssixdonutsleftredelims();

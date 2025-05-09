@@ -166,6 +166,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("let other team solo awp \n\nblue", freecarryblue),
+  Auton("let other team solo awp \n\nred", freecarryred),
   Auton("worlds elim auton right blue \n\nrightblue 1+6", worldssixdonutsrightblueelims),
   Auton("worlds elim auton left blue \n\nleft blue 1+4 corner clear", worldssixdonutsleftblueelims),
   Auton("worlds elim auton right red \n\nrightred 1+4 corner clear", worldssixdonutsrightredelims),
