@@ -223,8 +223,8 @@ void worldssixdonutsrightredalliance() {
   chassis.pid_turn_set(26, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-23, 70);//CHANGE IF SWING NO HIT
-  chassis.pid_wait_until(-21);
+  chassis.pid_drive_set(-26.5, 70);//CHANGE IF SWING NO HIT
+  chassis.pid_wait_until(-22);
   clamp1.extend();
   target = 725;
   chassis.pid_wait_quick_chain();
@@ -248,13 +248,15 @@ void worldssixdonutsrightredalliance() {
   chassis.pid_wait_quick_chain();
 
   chassis.pid_drive_set(43, FULL_SPEED, true);
+  chassis.pid_wait_until(30);
+  setIntake(127);
   chassis.pid_wait_quick_chain();
 
   chassis.pid_turn_set(0, slow_speed);
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(23.75, FULL_SPEED);
+  chassis.pid_drive_set(24.5, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -1260,7 +1262,7 @@ void worldssixdonutsleftredtransposed() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(18, FULL_SPEED);
+  chassis.pid_drive_set(18.75, FULL_SPEED);
   chassis.pid_wait_until(14);
   setIntake(0);
   chassis.pid_wait_quick_chain();

@@ -166,25 +166,31 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+    Auton("worlds elim auton right blue \n\nrightblue 1+6", worldssixdonutsrightblueelims),
+  Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue 1+5 touch ladder", worldssixdonutsrightblue),
+    Auton("worlds auton right bue no alliance for real this time \n\nyuh", worldssixdonutsrightbluenoalliancefr),
+    Auton("worlds elim auton right red \n\nrightred 1+4 corner clear", worldssixdonutsrightredelims),
+    Auton("worlds auton right red alliance stake 4 donuts \n\nrightred 1+4 touch ladder", worldssixdonutsrightredalliance),
+   Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred no alliance stake", worldssixdonutsrightrednoalliance),
    Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftredtransposed),
-    Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred no alliance stake", worldssixdonutsrightrednoalliance),
+     Auton("worlds elim auton left red \n\nleftred 1+6", worldssixdonutsleftredelims),
+       Auton("worlds auton left blue no alliance stake 5 donuts \n\nleftblue no alliance stake", worldssixdonutsleftbluenoalliance),
+     Auton("worlds elim auton left blue \n\nleft blue 1+4 corner clear", worldssixdonutsleftblueelims),
+  Auton("worlds auton left blue alliance 4 donuts \n\nleftblue 1 + 4 touch ladder", worldssixdonutsleftbluealliancetransposed),
   Auton("let other team solo awp \n\nblue", freecarryblue),
   Auton("let other team solo awp \n\nred", freecarryred),
-  Auton("worlds elim auton right blue \n\nrightblue 1+6", worldssixdonutsrightblueelims),
-  Auton("worlds elim auton left blue \n\nleft blue 1+4 corner clear", worldssixdonutsleftblueelims),
-  Auton("worlds elim auton right red \n\nrightred 1+4 corner clear", worldssixdonutsrightredelims),
 
 
-  Auton("worlds elim auton left red \n\nleftred 1+6", worldssixdonutsleftredelims),
 
-  Auton("worlds auton left blue alliance 4 donuts \n\nleftblue 1 + 4 touch ladder", worldssixdonutsleftbluealliancetransposed),
-  Auton("worlds auton right red alliance stake 4 donuts \n\nrightred 1+4 touch ladder", worldssixdonutsrightredalliance),
-  Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue 1+5 touch ladder", worldssixdonutsrightblue),
 
-  Auton("worlds auton left blue no alliance stake 5 donuts \n\nleftblue no alliance stake", worldssixdonutsleftbluenoalliance),
+
+
+
+
+
   // Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred no alliance stake", worldssixdonutsrightrednoalliance),
   // Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftredtransposed),
-  Auton("worlds auton right bue no alliance for real this time \n\nyuh", worldssixdonutsrightbluenoalliancefr),
+
 
 
 
