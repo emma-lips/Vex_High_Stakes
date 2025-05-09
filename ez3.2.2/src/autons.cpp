@@ -125,12 +125,12 @@ void default_constants() {
 
 void freecarryred() {
   isRed = true;
-  chassis.pid_drive_set(4);
+  chassis.pid_drive_set(4, 127);
   chassis.pid_wait();
 }
 void freecarryblue() {
   isRed = false;
-  chassis.pid_drive_set(4);
+  chassis.pid_drive_set(4, 127);
   chassis.pid_wait();
 }
 // IT WORKSS AAHAHH
