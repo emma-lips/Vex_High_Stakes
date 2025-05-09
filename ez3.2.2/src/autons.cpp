@@ -169,7 +169,7 @@ void worldssixdonutsrightrednoalliance() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(29, FULL_SPEED);
+  chassis.pid_drive_set(28, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -177,7 +177,7 @@ void worldssixdonutsrightrednoalliance() {
   chassis.pid_drive_set(-0.4, 40);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 500_ms, 500_ms);
+  chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 600_ms, 600_ms);
   chassis.pid_turn_set(-45, FULL_SPEED); //Turn into corner
   chassis.pid_wait_quick_chain();
   setIntake(127); //Intake donut 5
@@ -1260,7 +1260,7 @@ void worldssixdonutsleftredtransposed() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(19.75, FULL_SPEED);
+  chassis.pid_drive_set(18, FULL_SPEED);
   chassis.pid_wait_until(14);
   setIntake(0);
   chassis.pid_wait_quick_chain();
