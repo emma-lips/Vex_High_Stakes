@@ -305,6 +305,7 @@ pros::Task* sigmarizztaskcolorsort = nullptr;
 
 // The task logic
 void sigmarizz_task_function() {
+  colorDetector.set_integration_time(10);
     while (true) {
         if (toggleRingSort) {
             colorDetector.set_led_pwm(100);
