@@ -293,8 +293,6 @@ void worldssixdonutsrightredalliance() {
   chassis.pid_drive_set(46, FULL_SPEED); //Drive to ladder
   chassis.pid_wait();
 
-  target = 1400;
-
 
 }
 
@@ -316,7 +314,7 @@ void worldssixdonutsrightredelims() {
   chassis.pid_turn_set(26, TURN_SPEED);
   chassis.pid_wait_quick_chain();
 
-  chassis.pid_drive_set(-23, 70);//CHANGE IF SWING NO HIT
+  chassis.pid_drive_set(-25, 70);//CHANGE IF SWING NO HIT
   chassis.pid_wait_until(-21);
   clamp1.extend();
   target = 725;
@@ -349,7 +347,7 @@ void worldssixdonutsrightredelims() {
   chassis.pid_wait_quick_chain();
 
   // Going straight towards corner
-  chassis.pid_drive_set(26, FULL_SPEED);
+  chassis.pid_drive_set(28, FULL_SPEED);
   chassis.pid_wait_until(13);
   setIntake(-127);
   chassis.pid_wait_quick_chain();
@@ -365,7 +363,7 @@ void worldssixdonutsrightredelims() {
   setIntake(127); //Intake donut 5
 
   chassis.pid_drive_exit_condition_set(90_ms, 1_in, 250_ms, 3_in, 600_ms, 600_ms);
-  chassis.pid_drive_set(14, 110);
+  chassis.pid_drive_set(16, 110);
   chassis.pid_wait_quick_chain();
   pros::delay(400);
 

@@ -166,10 +166,11 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
 ez::as::auton_selector.autons_add({
+  Auton("worlds auton right red alliance stake 4 donuts \n\nrightred 1+4 touch ladder", worldssixdonutsrightredalliance),
+  Auton("worlds elim auton right red \n\nrightred 1+4 corner clear", worldssixdonutsrightredelims),
     Auton("worlds elim auton right blue \n\nrightblue 1+6", worldssixdonutsrightblueelims),
   Auton("worlds auton right blue alliance stake 5 donuts \n\nrightblue 1+5 touch ladder", worldssixdonutsrightblue),
     Auton("worlds auton right bue no alliance for real this time \n\nyuh", worldssixdonutsrightbluenoalliancefr),
-    Auton("worlds elim auton right red \n\nrightred 1+4 corner clear", worldssixdonutsrightredelims),
     Auton("worlds auton right red alliance stake 4 donuts \n\nrightred 1+4 touch ladder", worldssixdonutsrightredalliance),
    Auton("worlds auton right red no alliance stake 5 donuts \n\nrightred no alliance stake", worldssixdonutsrightrednoalliance),
    Auton("worlds auton left red alliance stake 5 donuts \n\nleftred alliance stake", worldssixdonutsleftredtransposed),
