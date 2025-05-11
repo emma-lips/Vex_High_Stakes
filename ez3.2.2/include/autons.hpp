@@ -3,6 +3,7 @@
 // #include "EZ-Template/drive/drive.hpp"
 
 // extern Drive chassis;
+void worldssixdonutsleftredalliancegetoffstartline();
 void worldssixdonutsleftbluenoallianceawayfromline();
 void worldssixdonutsrightbluenoallianceawayfromline();
 void worldssixdonutsrightrednoallianceawayfromline();
