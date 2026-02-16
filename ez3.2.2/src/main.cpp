@@ -21,7 +21,7 @@ ez::Drive chassis(
     // intake is 8
     // imu is 7
     // distance sensor at top of intake (ring detector) is 4
-    // distance sensor (ringdetectortoo)beside colour sensor is 1
+    // distance sensor (distance2)beside colour sensor is 1
     // colour sensor is 18
     // mogo mech is A
     // lifter is H
@@ -304,8 +304,8 @@ void competition_initialize() {
 
 // pros::Task* intake_task = nullptr; // declare the task globally but do not start it here
 // ring detector
-pros::Distance ringDetector(4);
-pros::Distance ringdetectortoo(1);
+pros::Distance distance1(4);
+pros::Distance distance2(1);
 pros::Optical colorDetector(18);
 bool button_enabled = true;
 
@@ -325,16 +325,16 @@ void sigmarizz_task_function() {
             colorDetector.set_led_pwm(100);
 
             if (isRed) {
-                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 250 && ringdetectortoo.get() < 70) {
+                if (colorDetector.get_hue() > 200 && colorDetector.get_hue() < 250 && distance2.get() < 70) {
                     wrongcolour = true;
                 }
             } else {
-                if (colorDetector.get_hue() > 330 && colorDetector.get_hue() < 360 && ringdetectortoo.get() < 70 || colorDetector.get_hue() < 30 && ringdetectortoo.get() < 70) {
+                if (colorDetector.get_hue() > 330 && colorDetector.get_hue() < 360 && distance2.get() < 70 || colorDetector.get_hue() < 30 && distance2.get() < 70) {
                     wrongcolour = true;
                 }
             }
 
-            if (wrongcolour && ringDetector.get() < 50) {
+            if (wrongcolour && distance1.get() < 50) {
 
 
                 button_enabled = false;
@@ -529,7 +529,9 @@ void opcontrol() {
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
-
+if(distance1.get > 1000 && distance2.get < 1000) {
+  setIntake(127);
+}
     // . . .
     // Put more user control code here!
     // . . .
